@@ -1,5 +1,8 @@
 # AGENTS
 
+## Package manager
+- npmではなくpnpmを使用すること
+
 ## Web app structure (Next.js)
 ```
 webapp/
