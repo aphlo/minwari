@@ -46,9 +46,6 @@ export default function NewGroupPage() {
             <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-3">
               新しいグループを作成
             </h1>
-            <p className="text-muted">
-              グループ名とあなたの名前を入力してください
-            </p>
           </div>
 
           {/* Form Card */}

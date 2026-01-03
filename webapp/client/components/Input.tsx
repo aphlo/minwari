@@ -1,8 +1,8 @@
 interface InputProps {
-  id: string;
+  id?: string;
   name: string;
   type?: string;
-  label: string;
+  label?: string;
   placeholder?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -23,18 +23,22 @@ export function Input({
   error,
   className = "",
 }: InputProps) {
+  const inputId = id || name;
+
   return (
     <div className={className}>
-      <label
-        htmlFor={id}
-        className="block text-sm font-medium text-foreground mb-2"
-      >
-        {label}
-        {required && <span className="text-[#ff3b30] ml-1">*</span>}
-      </label>
+      {label && (
+        <label
+          htmlFor={inputId}
+          className="block text-sm font-medium text-foreground mb-2"
+        >
+          {label}
+          {required && <span className="text-[#ff3b30] ml-1">*</span>}
+        </label>
+      )}
       <input
         type={type}
-        id={id}
+        id={inputId}
         name={name}
         placeholder={placeholder}
         value={value}
