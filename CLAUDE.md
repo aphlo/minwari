@@ -1,5 +1,4 @@
-# minwari
-An app for splitting the bill among everyone.
+# CLAUDE
 
 ## Web app structure (Next.js)
 ```
@@ -37,3 +36,6 @@ webapp/
 - Separate responsibilities with `client/`, `server/`, and `shared/`.
 - Use Route Groups to split layouts.
 - Keep layouts as Server Components.
+
+### Architecture reference
+See `docs/architecture.md` for the app-wide architecture and data model decisions.
