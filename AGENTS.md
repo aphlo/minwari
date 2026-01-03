@@ -3,6 +3,9 @@
 ## Package manager
 - npmではなくpnpmを使用すること
 
+## Webapp design
+- デスクトップサイズではなく基本的にスマホサイズに最適化されたデザインにすること
+
 ## Web app structure (Next.js)
 ```
 webapp/
