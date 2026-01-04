@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { GroupDetailClient } from "@/client/components/GroupDetailClient";
+import { GroupDetailClient } from "@/client/components/groups/GroupDetailClient";
 import { getExpenses } from "@/server/repositories/expenseRepository";
 import { getGroup } from "@/server/repositories/groupRepository";
 

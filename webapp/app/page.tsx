@@ -2,7 +2,7 @@
 
 import { Button } from "@heroui/button";
 import Link from "next/link";
-import { Header } from "@/client/components/Header";
+import { Header } from "@/client/components/layout/Header";
 
 export default function Home() {
   return (

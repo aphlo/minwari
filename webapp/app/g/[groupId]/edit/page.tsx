@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { EditGroupForm } from "@/client/components/EditGroupForm";
-import { Header } from "@/client/components/Header";
+import { EditGroupForm } from "@/client/components/forms/EditGroupForm";
+import { Header } from "@/client/components/layout/Header";
 import { getGroup } from "@/server/repositories/groupRepository";
 
 type Props = {

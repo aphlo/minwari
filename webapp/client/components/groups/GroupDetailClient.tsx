@@ -4,9 +4,9 @@ import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
 import Link from "next/link";
 import { useState } from "react";
-import { AddExpenseModal } from "./AddExpenseModal";
+import { AddExpenseModal } from "../forms/AddExpenseModal";
 import { ExpenseList } from "./ExpenseList";
-import { Header } from "./Header";
+import { Header } from "../layout/Header";
 import { SettlementSection } from "./SettlementSection";
 
 type SerializedGroup = {

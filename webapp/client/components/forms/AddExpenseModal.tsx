@@ -227,11 +227,7 @@ export function AddExpenseModal({
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button
-              variant="light"
-              onPress={onClose}
-              radius="full"
-            >
+            <Button variant="light" onPress={onClose} radius="full">
               キャンセル
             </Button>
             <Button
