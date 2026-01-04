@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import type { CreateGroupRequest } from "@/shared/types/group";
 import { getAdminAuth } from "@/server/lib/firebaseAdmin";
 import { createGroupUsecase } from "@/server/usecases/createGroup";
+import type { CreateGroupRequest } from "@/shared/types/group";
 
 export const runtime = "nodejs";
 

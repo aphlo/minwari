@@ -28,7 +28,6 @@ export default function NewGroupPage() {
       {/* Main Content */}
       <main className="pt-20 pb-16 px-6 lg:px-8">
         <div className="max-w-md mx-auto">
-
           {/* Form Card */}
           <div className="animate-fade-in-up delay-100 opacity-0 bg-card rounded-2xl border border-border p-8 shadow-sm">
             <NewGroupForm />
