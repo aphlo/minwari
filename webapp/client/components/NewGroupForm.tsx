@@ -1,9 +1,7 @@
 "use client";
 
-import { signInAnonymously } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { getFirebaseAuth } from "@/client/lib/firebaseClient";
 import type { CreateGroupResponse } from "@/shared/types/group";
 import { Button } from "./Button";
 import { Input } from "./Input";
@@ -59,21 +57,10 @@ export function NewGroupForm() {
     setIsSubmitting(true);
 
     try {
-      const auth = getFirebaseAuth();
-      if (!auth.currentUser) {
-        await signInAnonymously(auth);
-      }
-
-      const idToken = await auth.currentUser?.getIdToken();
-      if (!idToken) {
-        throw new Error("auth_token_missing");
-      }
-
       const response = await fetch("/api/groups", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${idToken}`,
         },
         body: JSON.stringify({
           groupName,

@@ -3,9 +3,9 @@
 
 ## 1. 目的 / 方針（確定）
 - グループを作成し、複数人で支出を登録して割り勘（精算）を計算できる。
-- Web（Next.js）/ Mobile（Flutter）ともに **Firebase Auth の匿名認証**を使用する。
+- **認証は不要**：URLを知っている人は誰でもグループにアクセス・操作可能。
 - Webは **Next.js APIでFirestore操作**を行い、モバイルは **Firestoreに直接アクセス**する。
-- **“誰でもグループ作成OK”**（作成制限なし）。
+- **"誰でもグループ作成OK"**（作成制限なし）。
 - **groupId / URL を知っている人は、そのグループに対して誰でも CRUD 可能**（削除・改ざんも許容）。
 - Firebase App Check は **実装しない**。
 - **Firestore のリアルタイム購読（onSnapshot / stream）は使わない**。
@@ -23,14 +23,13 @@
 - Mobile: Flutter
 
 ### 2.2 認証
-- Firebase Auth（Anonymous）
-- 起動時（または最初の画面表示時）に `signInAnonymously` を実行し、以降のFirestore操作は認証状態で行う。
-- `uid` はデータ監査/将来拡張のために任意で保存する（必須ではない）。
+- **認証なし**：URLを知っている人は誰でもアクセス・操作可能。
+- Firebase Authは使用しない。
 
 ### 2.3 WebのAPI構成
 - Next.jsのRoute HandlerをAPIサーバとして利用する。
-- クライアントは匿名認証のIDトークンを付与してAPIを呼び出す。
-- サーバはFirebase Admin SDKでトークン検証を行い、Firestoreへ書き込み/取得を行う。
+- クライアントはAPIを直接呼び出す（認証トークン不要）。
+- サーバはFirebase Admin SDKでFirestoreへ書き込み/取得を行う。
 
 ### 2.4 Firestore アクセス方式（リアルタイムなし）
 - **常に one-shot read** を使う：
@@ -47,39 +46,34 @@
 ---
 
 ## 3. セキュリティ / アクセス制御の方針
-- 仕様上「groupIdを知っていれば誰でもCRUD」なので、厳密な権限制御はしない。
-- ただし **列挙（groups一覧取得）を防ぐ**ため、Firestore Rules で `groups` の `list` を禁止する。
-- 認証（匿名含む）だけは要求する：`request.auth != null`
-- WebのAPIは **Bearerトークン必須**（匿名認証のIDトークン）とする。
+- 仕様上「groupIdを知っていれば誰でもCRUD」なので、**厳密な権限制御はしない**。
+- **認証は不要**：URLを知っていれば誰でもアクセス可能。
+- WebのAPIは認証チェックなしで呼び出し可能。
+- **列挙（groups一覧取得）を防ぐ**ため、Firestore Rules で `groups` の `list` を禁止する。
 
 ### 3.1 Firestore Rules（推奨たたき台）
 ```js
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    function signedIn() {
-      return request.auth != null;
-    }
-
     // groups の列挙を防ぐ（IDを知らないと辿れない）
     match /groups/{groupId} {
-      allow get: if signedIn();
+      allow get: if true;
       allow list: if false;
 
-      // 誰でも作成/更新/削除OK（匿名認証済みなら）
-      allow create, update, delete: if signedIn();
+      // 誰でも作成/更新/削除OK
+      allow create, update, delete: if true;
 
       match /members/{memberId} {
-        allow read, write: if signedIn();
+        allow read, write: if true;
       }
 
       match /expenses/{expenseId} {
-        allow read, write: if signedIn();
+        allow read, write: if true;
       }
 
       match /settlements/{settlementId} {
-        allow read, write: if signedIn();
+        allow read, write: if true;
       }
     }
   }
@@ -153,8 +147,7 @@ service cloud.firestore {
   "currency": "JPY",
   "status": "active",
   "createdAt": "Timestamp",
-  "updatedAt": "Timestamp",
-  "createdByUid": "uid_optional"
+  "updatedAt": "Timestamp"
 }
 ```
 
@@ -176,7 +169,6 @@ service cloud.firestore {
   "normalizedName": "taro",
   "createdAt": "Timestamp",
   "updatedAt": "Timestamp",
-  "createdByUid": "uid_optional",
   "isActive": true
 }
 ```
@@ -193,7 +185,6 @@ service cloud.firestore {
   "spentAt": "Timestamp",
   "createdAt": "Timestamp",
   "updatedAt": "Timestamp",
-  "createdByUid": "uid_optional",
   "isDeleted": false,
   "deletedAt": null
 }
@@ -265,10 +256,9 @@ service cloud.firestore {
 
 ### 10.1 グループ作成（Web/Mobile）
 
-1. 匿名認証（未認証なら `signInAnonymously`）
-2. `groups` に新規作成（Firestoreの自動IDをgroupIdに）
-3. 作成者の名前入力 → `members/{normalizedName}` 作成
-4. 履歴に `groupId` と `name` を保存（Web localStorage / Mobile SharedPreferences）
+1. `groups` に新規作成（Firestoreの自動IDをgroupIdに）
+2. メンバー名を入力（任意）
+3. 履歴に `groupId` と `name` を保存（Web localStorage / Mobile SharedPreferences）
 
 ### 10.2 グループ参加
 
@@ -286,7 +276,7 @@ service cloud.firestore {
 
 ## 11. 既知のリスク / トレードオフ（方針に伴うもの）
 
-* App Check なしのため、匿名認証を使った自動化アクセスで大量操作される可能性がある
+* App Check なし・認証なしのため、自動化アクセスで大量操作される可能性がある
 * groupId 漏洩時は誰でも改ざん・削除できる（仕様として許容）
 * リアルタイム購読なしのため、同時編集は「再取得」しないと反映されない（UX）
 * ポーリングを入れると read 回数が増える（コスト）
@@ -295,7 +285,7 @@ service cloud.firestore {
 
 ## 12. 実装注意点
 
-* Web/モバイルとも匿名認証を初回に必ず実行する
+* **認証は不要**：Firebase Authは使用しない（匿名認証も不要）
 * Firestore Rules は `groups` の `list` を禁止して列挙を防ぐ
 * `updatedAt` を更新系操作のたびに必ず更新する（ポーリング最適化用）
 * members の同名禁止は `memberId = normalizedName` 方式を採用する

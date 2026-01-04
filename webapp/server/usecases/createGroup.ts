@@ -3,7 +3,6 @@ import { createGroup } from "../repositories/groupRepository";
 export type CreateGroupInput = {
   groupName: string;
   members: string[];
-  createdByUid: string;
 };
 
 export async function createGroupUsecase(input: CreateGroupInput) {
@@ -19,6 +18,5 @@ export async function createGroupUsecase(input: CreateGroupInput) {
   return createGroup({
     name: groupName,
     members,
-    createdByUid: input.createdByUid,
   });
 }

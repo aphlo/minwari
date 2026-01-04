@@ -5,7 +5,6 @@ import { getAdminFirestore } from "../lib/firebaseAdmin";
 export type GroupRecord = {
   name: string;
   members: string[];
-  createdByUid: string;
 };
 
 export async function createGroup(record: GroupRecord) {
@@ -13,7 +12,6 @@ export async function createGroup(record: GroupRecord) {
   const docRef = await db.collection("groups").add({
     name: record.name,
     members: record.members,
-    createdByUid: record.createdByUid,
     createdAt: FieldValue.serverTimestamp(),
     updatedAt: FieldValue.serverTimestamp(),
   });
@@ -37,7 +35,6 @@ export async function getGroup(groupId: string): Promise<Group | null> {
     id: docRef.id,
     name: data.name,
     members: data.members,
-    createdByUid: data.createdByUid,
     createdAt: (data.createdAt as Timestamp).toDate(),
     updatedAt: (data.updatedAt as Timestamp).toDate(),
   };

@@ -12,7 +12,6 @@ type SerializedGroup = {
   id: string;
   name: string;
   members: string[];
-  createdByUid: string;
   createdAt: string;
   updatedAt: string;
 };

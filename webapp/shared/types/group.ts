@@ -11,7 +11,6 @@ export type Group = {
   id: string;
   name: string;
   members: string[];
-  createdByUid: string;
   createdAt: Date;
   updatedAt: Date;
 };

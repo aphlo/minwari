@@ -1,28 +1,10 @@
 import { NextResponse } from "next/server";
-import { getAdminAuth } from "@/server/lib/firebaseAdmin";
 import { createGroupUsecase } from "@/server/usecases/createGroup";
 import type { CreateGroupRequest } from "@/shared/types/group";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  const authHeader = request.headers.get("authorization") ?? "";
-  if (!authHeader.startsWith("Bearer ")) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
-  const idToken = authHeader.replace("Bearer ", "").trim();
-  if (!idToken) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
-  let decoded: { uid: string };
-  try {
-    decoded = await getAdminAuth().verifyIdToken(idToken);
-  } catch {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
   let body: CreateGroupRequest;
   try {
     body = (await request.json()) as CreateGroupRequest;
@@ -34,7 +16,6 @@ export async function POST(request: Request) {
     const result = await createGroupUsecase({
       groupName: body?.groupName ?? "",
       members: Array.isArray(body?.members) ? body.members : [],
-      createdByUid: decoded.uid,
     });
     return NextResponse.json(result, { status: 201 });
   } catch (error) {
