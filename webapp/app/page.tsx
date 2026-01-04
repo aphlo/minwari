@@ -1,30 +1,10 @@
-import Link from "next/link";
 import { Button } from "@/client/components/Button";
-import { ThemeToggle } from "@/client/components/ThemeToggle";
-
-const isLocal = process.env.NEXT_PUBLIC_APP_ENV === "local";
+import { Header } from "@/client/components/Header";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14">
-            <Link href="/" className="flex items-center">
-              <span className="text-xl font-semibold text-foreground">
-                みんなの割り勘
-              </span>
-            </Link>
-            <div className="flex items-center gap-4">
-              {isLocal && <ThemeToggle />}
-              <Button href="/new" size="sm">
-                グループを作成
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 px-6 lg:px-8 overflow-hidden">
