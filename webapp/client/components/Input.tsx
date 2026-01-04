@@ -1,8 +1,8 @@
 interface InputProps {
-  id: string;
+  id?: string;
   name: string;
   type?: string;
-  label: string;
+  label?: string;
   placeholder?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -23,18 +23,22 @@ export function Input({
   error,
   className = "",
 }: InputProps) {
+  const inputId = id || name;
+
   return (
     <div className={className}>
-      <label
-        htmlFor={id}
-        className="block text-sm font-medium text-foreground mb-2"
-      >
-        {label}
-        {required && <span className="text-[#ff3b30] ml-1">*</span>}
-      </label>
+      {label && (
+        <label
+          htmlFor={inputId}
+          className="block text-sm font-medium text-foreground mb-2"
+        >
+          {label}
+          {required && <span className="text-[#ff3b30] ml-1">*</span>}
+        </label>
+      )}
       <input
         type={type}
-        id={id}
+        id={inputId}
         name={name}
         placeholder={placeholder}
         value={value}
@@ -46,7 +50,7 @@ export function Input({
           border ${error ? "border-[#ff3b30]" : "border-border"}
           bg-background
           text-foreground
-          placeholder:text-muted
+          placeholder:text-muted/40
           transition-all duration-200
           focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
           hover:border-muted

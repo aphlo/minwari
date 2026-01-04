@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Header } from "@/client/components/Header";
 import { NewGroupForm } from "@/client/components/NewGroupForm";
 
 export const metadata = {
@@ -9,48 +9,11 @@ export const metadata = {
 export default function NewGroupPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center h-14">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-muted hover:text-foreground transition-colors"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              <span className="text-xl font-semibold text-foreground">
-                みんなの割り勘
-              </span>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       {/* Main Content */}
-      <main className="pt-24 pb-16 px-6 lg:px-8">
+      <main className="pt-20 pb-16 px-6 lg:px-8">
         <div className="max-w-md mx-auto">
-          {/* Header */}
-          <div className="text-center mb-10 animate-fade-in-up">
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-3">
-              新しいグループを作成
-            </h1>
-            <p className="text-muted">
-              グループ名とあなたの名前を入力してください
-            </p>
-          </div>
-
           {/* Form Card */}
           <div className="animate-fade-in-up delay-100 opacity-0 bg-card rounded-2xl border border-border p-8 shadow-sm">
             <NewGroupForm />

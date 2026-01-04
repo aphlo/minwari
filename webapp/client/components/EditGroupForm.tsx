@@ -2,16 +2,25 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import type { CreateGroupResponse } from "@/shared/types/group";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-export function NewGroupForm() {
+type Props = {
+  groupId: string;
+  initialName: string;
+  initialMembers: string[];
+};
+
+export function EditGroupForm({ groupId, initialName, initialMembers }: Props) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [members, setMembers] = useState<{ id: string; name: string }[]>([
-    { id: Math.random().toString(36).substring(7), name: "" },
-  ]);
+  const [groupName, setGroupName] = useState(initialName);
+  const [members, setMembers] = useState<{ id: string; name: string }[]>(
+    initialMembers.map((name) => ({
+      id: Math.random().toString(36).substring(7),
+      name,
+    }))
+  );
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const addMember = () => {
@@ -33,16 +42,12 @@ export function NewGroupForm() {
     e.preventDefault();
     setErrors({});
 
-    const formData = new FormData(e.currentTarget);
-    const groupName = formData.get("groupName") as string;
-
     // Validation
-    const newErrors: typeof errors = {};
+    const newErrors: Record<string, string> = {};
     if (!groupName.trim()) {
       newErrors.groupName = "グループ名を入力してください";
     }
 
-    // Member validation
     members.forEach((member) => {
       if (!member.name.trim()) {
         newErrors[`member-${member.id}`] = "メンバー名を入力してください";
@@ -57,8 +62,8 @@ export function NewGroupForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/groups", {
-        method: "POST",
+      const response = await fetch(`/api/groups/${groupId}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -69,15 +74,15 @@ export function NewGroupForm() {
       });
 
       if (!response.ok) {
-        throw new Error("create_group_failed");
+        throw new Error("update_group_failed");
       }
 
-      const result = (await response.json()) as CreateGroupResponse;
-      router.push(`/g/${result.id}`);
+      router.push(`/g/${groupId}`);
+      router.refresh();
     } catch (error) {
-      console.error("Failed to create group:", error);
+      console.error("Failed to update group:", error);
       setErrors({
-        groupName: "グループの作成に失敗しました。もう一度お試しください。",
+        groupName: "グループの更新に失敗しました。もう一度お試しください。",
       });
     } finally {
       setIsSubmitting(false);
@@ -92,6 +97,8 @@ export function NewGroupForm() {
           name="groupName"
           label="グループ名"
           placeholder="例：沖縄旅行2024"
+          value={groupName}
+          onChange={(e) => setGroupName(e.target.value)}
           required
           error={errors.groupName}
         />
@@ -169,7 +176,7 @@ export function NewGroupForm() {
         </button>
       </div>
 
-      <div className="pt-4">
+      <div className="pt-4 space-y-3">
         <Button
           type="submit"
           disabled={isSubmitting}
@@ -198,11 +205,20 @@ export function NewGroupForm() {
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 />
               </svg>
-              作成中...
+              更新中...
             </span>
           ) : (
-            "グループを作成"
+            "変更を保存"
           )}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => router.push(`/g/${groupId}`)}
+          className="w-full"
+          size="lg"
+        >
+          戻る
         </Button>
       </div>
     </form>
