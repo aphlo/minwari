@@ -4,7 +4,7 @@
 ## 1. 目的 / 方針（確定）
 - グループを作成し、複数人で支出を登録して割り勘（精算）を計算できる。
 - Web（Next.js）/ Mobile（Flutter）ともに **Firebase Auth の匿名認証**を使用する。
-- Web/モバイルともに **Firestore に直接アクセスして CRUD**する（APIサーバは置かない）。
+- Webは **Next.js APIでFirestore操作**を行い、モバイルは **Firestoreに直接アクセス**する。
 - **“誰でもグループ作成OK”**（作成制限なし）。
 - **groupId / URL を知っている人は、そのグループに対して誰でも CRUD 可能**（削除・改ざんも許容）。
 - Firebase App Check は **実装しない**。
@@ -27,9 +27,14 @@
 - 起動時（または最初の画面表示時）に `signInAnonymously` を実行し、以降のFirestore操作は認証状態で行う。
 - `uid` はデータ監査/将来拡張のために任意で保存する（必須ではない）。
 
-### 2.3 Firestore アクセス方式（リアルタイムなし）
+### 2.3 WebのAPI構成
+- Next.jsのRoute HandlerをAPIサーバとして利用する。
+- クライアントは匿名認証のIDトークンを付与してAPIを呼び出す。
+- サーバはFirebase Admin SDKでトークン検証を行い、Firestoreへ書き込み/取得を行う。
+
+### 2.4 Firestore アクセス方式（リアルタイムなし）
 - **常に one-shot read** を使う：
-  - Web: `getDoc` / `getDocs`
+  - Web: API経由で取得（サーバ側で `getDoc` / `getDocs`）
   - Flutter: `get()`（QuerySnapshot/DocumentSnapshot）
 - 更新検知は次のいずれか：
   1) 画面に「更新」ボタンを置いて **手動再取得**
@@ -45,6 +50,7 @@
 - 仕様上「groupIdを知っていれば誰でもCRUD」なので、厳密な権限制御はしない。
 - ただし **列挙（groups一覧取得）を防ぐ**ため、Firestore Rules で `groups` の `list` を禁止する。
 - 認証（匿名含む）だけは要求する：`request.auth != null`
+- WebのAPIは **Bearerトークン必須**（匿名認証のIDトークン）とする。
 
 ### 3.1 Firestore Rules（推奨たたき台）
 ```js

@@ -2,6 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { signInAnonymously } from "firebase/auth";
+import { getFirebaseAuth } from "@/client/lib/firebaseClient";
+import type { CreateGroupResponse } from "@/shared/types/group";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
@@ -11,9 +14,7 @@ export function NewGroupForm() {
   const [members, setMembers] = useState<{ id: string; name: string }[]>([
     { id: Math.random().toString(36).substring(7), name: "" },
   ]);
-  const [errors, setErrors] = useState<{
-    groupName?: string;
-  }>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const addMember = () => {
     setMembers([
@@ -43,6 +44,13 @@ export function NewGroupForm() {
       newErrors.groupName = "グループ名を入力してください";
     }
 
+    // Member validation
+    members.forEach((member) => {
+      if (!member.name.trim()) {
+        newErrors[`member-${member.id}`] = "メンバー名を入力してください";
+      }
+    });
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -51,17 +59,34 @@ export function NewGroupForm() {
     setIsSubmitting(true);
 
     try {
-      // TODO: Firebase連携してグループを作成
-      console.log("Creating group:", {
-        groupName,
-        members: members.filter((m) => m.name.trim() !== ""),
+      const auth = getFirebaseAuth();
+      if (!auth.currentUser) {
+        await signInAnonymously(auth);
+      }
+
+      const idToken = await auth.currentUser?.getIdToken();
+      if (!idToken) {
+        throw new Error("auth_token_missing");
+      }
+
+      const response = await fetch("/api/groups", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${idToken}`,
+        },
+        body: JSON.stringify({
+          groupName,
+          members: members.map((member) => member.name),
+        }),
       });
 
-      // 仮のグループIDを生成
-      const mockGroupId = Math.random().toString(36).substring(2, 15);
+      if (!response.ok) {
+        throw new Error("create_group_failed");
+      }
 
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      router.push(`/g/${mockGroupId}`);
+      const result = (await response.json()) as CreateGroupResponse;
+      router.push(`/g/${result.id}`);
     } catch (error) {
       console.error("Failed to create group:", error);
       setErrors({
@@ -75,7 +100,6 @@ export function NewGroupForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
       <div className="space-y-4">
-        <h3 className="text-lg font-medium text-foreground">基本情報</h3>
         <Input
           id="groupName"
           name="groupName"
@@ -87,11 +111,9 @@ export function NewGroupForm() {
       </div>
 
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-medium text-foreground">
-            メンバーを追加
-          </h3>
-        </div>
+        <label className="block text-sm font-medium text-foreground mb-2">
+          メンバー名
+        </label>
 
         <div className="space-y-3">
           {members.map((member, index) => (
@@ -106,6 +128,7 @@ export function NewGroupForm() {
                   placeholder={`メンバー ${index + 1}`}
                   value={member.name}
                   onChange={(e) => updateMember(member.id, e.target.value)}
+                  error={errors[`member-${member.id}`]}
                 />
               </div>
               {members.length > 0 && (

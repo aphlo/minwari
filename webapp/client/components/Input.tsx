@@ -50,7 +50,7 @@ export function Input({
           border ${error ? "border-[#ff3b30]" : "border-border"}
           bg-background
           text-foreground
-          placeholder:text-muted
+          placeholder:text-muted/40
           transition-all duration-200
           focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
           hover:border-muted
