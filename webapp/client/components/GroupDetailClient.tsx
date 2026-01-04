@@ -1,9 +1,10 @@
 "use client";
 
+import { Button } from "@heroui/button";
+import { Chip } from "@heroui/chip";
 import Link from "next/link";
 import { useState } from "react";
 import { AddExpenseModal } from "./AddExpenseModal";
-import { Button } from "./Button";
 import { ExpenseList } from "./ExpenseList";
 import { Header } from "./Header";
 import { SettlementSection } from "./SettlementSection";
@@ -61,12 +62,9 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
                 </h1>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {group.members.map((member) => (
-                    <span
-                      key={member}
-                      className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-bg-secondary text-foreground"
-                    >
+                    <Chip key={member} variant="flat" size="sm">
                       {member}
-                    </span>
+                    </Chip>
                   ))}
                 </div>
               </div>
@@ -95,24 +93,27 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
           {/* Add Expense Button */}
           <div className="animate-fade-in-up delay-100 opacity-0">
             <Button
-              variant="primary"
+              color="primary"
               size="lg"
-              onClick={() => setIsAddModalOpen(true)}
-              className="w-full"
+              radius="full"
+              onPress={() => setIsAddModalOpen(true)}
+              className="w-full font-medium"
+              startContent={
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              }
             >
-              <svg
-                className="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
               立て替えを追加
             </Button>
           </div>

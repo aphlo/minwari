@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@plugin '../hero.ts';
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
 
 :root {
   /* Background Colors - Apple Light Mode */
@@ -150,10 +153,24 @@ html {
   background: rgba(0, 113, 227, 0.3);
 }
 
-/* Focus styles for accessibility */
-:focus-visible {
+/* Focus styles for accessibility - exclude HeroUI components which handle their own focus */
+a:focus-visible,
+button:focus-visible:not([class*="heroui"]):not([data-slot]) {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
+}
+
+/* Remove default focus outline from HeroUI components */
+[data-slot]:focus-visible,
+[data-focus-visible]:focus-visible {
+  outline: none;
+}
+
+/* Remove inner focus ring from HeroUI Input */
+[data-slot="input"]:focus,
+[data-slot="inner-wrapper"] input:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 /* Animations */
