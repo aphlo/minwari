@@ -94,7 +94,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
         );
       }
 
-      router.push(`/g/${groupId}`);
+      router.push(`/groups/${groupId}`);
       router.refresh();
     } catch {
       alert(isEditing ? "更新に失敗しました" : "登録に失敗しました");
@@ -128,6 +128,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
         variant="bordered"
         radius="lg"
         className="mb-8"
+        min={1}
         startContent={
           <div className="pointer-events-none flex items-center">
             <span className="text-default-400 text-small">¥</span>
@@ -220,7 +221,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
           variant="bordered"
           size="lg"
           radius="full"
-          onPress={() => router.push(`/g/${groupId}`)}
+          onPress={() => router.push(`/groups/${groupId}`)}
           className="w-full font-medium"
         >
           キャンセル

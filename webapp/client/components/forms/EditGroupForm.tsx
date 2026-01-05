@@ -78,7 +78,7 @@ export function EditGroupForm({ groupId, initialName, initialMembers }: Props) {
         throw new Error("update_group_failed");
       }
 
-      router.push(`/g/${groupId}`);
+      router.push(`/groups/${groupId}`);
       router.refresh();
     } catch (error) {
       console.error("Failed to update group:", error);
@@ -133,7 +133,7 @@ export function EditGroupForm({ groupId, initialName, initialMembers }: Props) {
           variant="bordered"
           size="lg"
           radius="full"
-          onPress={() => router.push(`/g/${groupId}`)}
+          onPress={() => router.push(`/groups/${groupId}`)}
           className="w-full font-medium"
         >
           戻る

@@ -96,8 +96,8 @@
 .dark {
   /* Background Colors - Apple Dark Mode */
   --background: #000000;
-  --bg-secondary: #1c1c1e;
-  --bg-tertiary: #2c2c2e;
+  --bg-secondary: #2a2a2c;
+  --bg-tertiary: #3a3a3c;
 
   /* Card Background - darker gray instead of white */
   --card: #1c1c1e;
