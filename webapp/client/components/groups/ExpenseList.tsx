@@ -52,6 +52,14 @@ export function ExpenseList({ groupId, expenses }: Props) {
     }).format(amount);
   };
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("ja-JP", {
+      month: "short",
+      day: "numeric",
+    });
+  };
+
   return (
     <div className="space-y-3">
       {expenses.map((expense) => (
@@ -64,11 +72,14 @@ export function ExpenseList({ groupId, expenses }: Props) {
               <h3 className="font-medium text-foreground truncate">
                 {expense.description}
               </h3>
-              <p className="text-sm text-muted mt-1">
-                <span className="text-primary font-medium">
-                  {expense.paidBy}
+              <p className="text-sm text-muted mt-1 flex items-center gap-2">
+                <span>
+                  <span className="text-primary font-medium">
+                    {expense.paidBy}
+                  </span>
+                  が支払い
                 </span>
-                が支払い
+                <span className="text-xs">{formatDate(expense.createdAt)}</span>
               </p>
               <div className="flex flex-wrap gap-1.5 mt-2">
                 {expense.splitWith.map((member) => (
