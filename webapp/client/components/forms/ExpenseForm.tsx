@@ -7,17 +7,32 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Input } from "./Input";
 
+type ExpenseData = {
+  id: string;
+  description: string;
+  amount: number;
+  paidBy: string;
+  splitWith: string[];
+};
+
 type Props = {
   groupId: string;
   members: string[];
+  expense?: ExpenseData;
 };
 
-export function AddExpenseForm({ groupId, members }: Props) {
+export function ExpenseForm({ groupId, members, expense }: Props) {
   const router = useRouter();
-  const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState("");
-  const [paidBy, setPaidBy] = useState(members[0] || "");
-  const [splitWith, setSplitWith] = useState<string[]>(members);
+  const isEditing = !!expense;
+
+  const [description, setDescription] = useState(expense?.description ?? "");
+  const [amount, setAmount] = useState(
+    expense?.amount ? String(expense.amount) : ""
+  );
+  const [paidBy, setPaidBy] = useState(expense?.paidBy ?? members[0] ?? "");
+  const [splitWith, setSplitWith] = useState<string[]>(
+    expense?.splitWith ?? members
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -58,8 +73,12 @@ export function AddExpenseForm({ groupId, members }: Props) {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch(`/api/groups/${groupId}/expenses`, {
-        method: "POST",
+      const url = isEditing
+        ? `/api/groups/${groupId}/expenses/${expense.id}`
+        : `/api/groups/${groupId}/expenses`;
+
+      const res = await fetch(url, {
+        method: isEditing ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           description: description.trim(),
@@ -70,17 +89,27 @@ export function AddExpenseForm({ groupId, members }: Props) {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to create expense");
+        throw new Error(
+          isEditing ? "Failed to update expense" : "Failed to create expense"
+        );
       }
 
       router.push(`/g/${groupId}`);
       router.refresh();
     } catch {
-      alert("登録に失敗しました");
+      alert(isEditing ? "更新に失敗しました" : "登録に失敗しました");
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const submitLabel = isEditing
+    ? isSubmitting
+      ? "更新中..."
+      : "更新する"
+    : isSubmitting
+      ? "追加中..."
+      : "追加する";
 
   return (
     <form onSubmit={handleSubmit}>
@@ -184,7 +213,7 @@ export function AddExpenseForm({ groupId, members }: Props) {
           isLoading={isSubmitting}
           className="w-full font-medium"
         >
-          {isSubmitting ? "追加中..." : "追加する"}
+          {submitLabel}
         </Button>
         <Button
           type="button"
