@@ -1,6 +1,6 @@
-import type { Expense } from "../../../shared/types/group";
 import assert from "node:assert/strict";
 import test from "node:test";
+import type { Expense } from "../../../shared/types/group";
 import { calculateSettlements } from "../calculateSettlements";
 
 const createExpense = (

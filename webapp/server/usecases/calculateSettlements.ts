@@ -1,4 +1,5 @@
 import type { Expense, Settlement } from "@/shared/types/group";
+import { buildMemberOrder, calculateExpenseShares } from "./settlementUtils";
 
 type NetMap = Map<string, number>;
 
@@ -6,21 +7,6 @@ const ensureMember = (net: NetMap, name: string) => {
   if (!net.has(name)) {
     net.set(name, 0);
   }
-};
-
-const buildMemberOrder = (members: string[], expenses: Expense[]) => {
-  const extras = new Set<string>();
-  for (const expense of expenses) {
-    if (!members.includes(expense.paidBy)) {
-      extras.add(expense.paidBy);
-    }
-    for (const member of expense.splitWith) {
-      if (!members.includes(member)) {
-        extras.add(member);
-      }
-    }
-  }
-  return [...members, ...Array.from(extras).sort((a, b) => a.localeCompare(b))];
 };
 
 export function calculateSettlements(
@@ -35,26 +21,12 @@ export function calculateSettlements(
   }
 
   for (const expense of expenses) {
-    const participants =
-      expense.splitWith.length > 0 ? expense.splitWith : memberOrder;
-    const count = participants.length;
-    if (count === 0) {
-      continue;
-    }
-    const perPerson = Math.round(expense.amount / count);
-    const orderedParticipants = participants.includes(expense.paidBy)
-      ? [expense.paidBy, ...participants.filter((m) => m !== expense.paidBy)]
-      : [...participants];
-
     ensureMember(net, expense.paidBy);
     net.set(expense.paidBy, (net.get(expense.paidBy) ?? 0) + expense.amount);
 
-    const shares = orderedParticipants.map(() => perPerson);
-    shares[0] += expense.amount - perPerson * count;
-
-    orderedParticipants.forEach((member, index) => {
+    const shares = calculateExpenseShares(expense, memberOrder);
+    shares.forEach(({ member, share }) => {
       ensureMember(net, member);
-      const share = shares[index];
       net.set(member, (net.get(member) ?? 0) - share);
     });
   }
