@@ -2,10 +2,10 @@
 
 import { Button } from "@heroui/button";
 import { Checkbox } from "@heroui/checkbox";
-import { Input } from "./Input";
 import { Select, SelectItem } from "@heroui/select";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Input } from "./Input";
 
 type Props = {
   groupId: string;

@@ -4,10 +4,10 @@ import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
 import Link from "next/link";
 import { useState } from "react";
-import { ExpenseList } from "./ExpenseList";
-import { Header } from "../layout/Header";
-import { SettlementSection } from "./SettlementSection";
 import { getMemberChipColor } from "@/client/lib/memberColor";
+import { Header } from "../layout/Header";
+import { ExpenseList } from "./ExpenseList";
+import { SettlementSection } from "./SettlementSection";
 
 type SerializedGroup = {
   id: string;

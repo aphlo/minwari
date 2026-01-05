@@ -1,8 +1,8 @@
 "use client";
 
 import { HeroUIProvider } from "@heroui/react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useRouter } from "next/navigation";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 import type * as React from "react";
 
 export function ThemeProvider({

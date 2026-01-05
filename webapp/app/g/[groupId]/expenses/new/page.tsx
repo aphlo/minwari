@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { AddExpenseForm } from "@/client/components/forms/AddExpenseForm";
-import { getGroup } from "@/server/repositories/groupRepository";
 import { Header } from "@/client/components/layout/Header";
+import { getGroup } from "@/server/repositories/groupRepository";
 
 type Props = {
   params: Promise<{ groupId: string }>;
