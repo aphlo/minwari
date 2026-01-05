@@ -33,6 +33,7 @@ export function LanguageSwitcher() {
         trigger:
           "h-8 w-auto min-w-[120px] max-w-[180px] border border-border bg-bg-secondary text-xs font-medium text-foreground shadow-none",
         value: "text-xs truncate",
+        popoverContent: "min-w-[200px]",
       }}
     >
       {orderedLocales.map((supportedLocale) => (
