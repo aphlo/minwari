@@ -100,11 +100,11 @@ export function ExpenseList({ groupId, expenses }: Props) {
               </span>
               <Link
                 href={`/g/${groupId}/expenses/${expense.id}/edit`}
-                className="p-1 rounded-full text-muted hover:bg-bg-secondary transition-colors"
+                className="p-2 rounded-full text-muted hover:bg-bg-secondary transition-colors"
                 aria-label="編集"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
