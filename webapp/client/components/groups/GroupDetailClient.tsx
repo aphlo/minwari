@@ -4,7 +4,6 @@ import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
 import Link from "next/link";
 import { useState } from "react";
-import { AddExpenseModal } from "../forms/AddExpenseModal";
 import { ExpenseList } from "./ExpenseList";
 import { Header } from "../layout/Header";
 import { SettlementSection } from "./SettlementSection";
@@ -35,12 +34,6 @@ type Props = {
 
 export function GroupDetailClient({ group, initialExpenses }: Props) {
   const [expenses, setExpenses] = useState(initialExpenses);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-  const handleExpenseAdded = (newExpense: SerializedExpense) => {
-    setExpenses((prev) => [newExpense, ...prev]);
-    setIsAddModalOpen(false);
-  };
 
   const handleExpenseDeleted = (expenseId: string) => {
     setExpenses((prev) => prev.filter((e) => e.id !== expenseId));
@@ -93,10 +86,11 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
           {/* Add Expense Button */}
           <div className="animate-fade-in-up delay-100 opacity-0">
             <Button
+              as={Link}
+              href={`/g/${group.id}/expenses/new`}
               color="primary"
               size="lg"
               radius="full"
-              onPress={() => setIsAddModalOpen(true)}
               className="w-full font-medium"
               startContent={
                 <svg
@@ -136,15 +130,6 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
           </div>
         </div>
       </main>
-
-      {/* Add Expense Modal */}
-      <AddExpenseModal
-        isOpen={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-        groupId={group.id}
-        members={group.members}
-        onExpenseAdded={handleExpenseAdded}
-      />
     </div>
   );
 }
