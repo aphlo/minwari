@@ -99,7 +99,7 @@ export function ExpenseList({ groupId, expenses }: Props) {
                 {formatAmount(expense.amount)}
               </span>
               <Link
-                href={`/g/${groupId}/expenses/${expense.id}/edit`}
+                href={`/groups/${groupId}/expenses/${expense.id}/edit`}
                 className="p-2 rounded-full text-muted hover:bg-bg-secondary transition-colors"
                 aria-label="編集"
               >

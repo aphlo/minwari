@@ -93,7 +93,7 @@ export function SettlementSection({ expenses, settlements, groupId }: Props) {
 
       {expenses.length > 0 && (
         <Link
-          href={`/g/${groupId}/settlement`}
+          href={`/groups/${groupId}/settlement`}
           className="mt-4 flex items-center justify-center rounded-full border border-border bg-primary/10 px-4 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
         >
           精算の詳細を確認

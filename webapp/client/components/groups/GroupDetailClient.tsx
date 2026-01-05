@@ -76,7 +76,7 @@ export function GroupDetailClient({
                 </div>
               </div>
               <Link
-                href={`/g/${group.id}/edit`}
+                href={`/groups/${group.id}/edit`}
                 className="flex-shrink-0 ml-4 p-2 rounded-full hover:bg-bg-secondary transition-colors"
                 aria-label="グループを編集"
               >
@@ -101,7 +101,7 @@ export function GroupDetailClient({
           <div className="animate-fade-in-up delay-100 opacity-0">
             <Button
               as={Link}
-              href={`/g/${group.id}/expenses/new`}
+              href={`/groups/${group.id}/expenses/new`}
               color="primary"
               size="lg"
               radius="full"

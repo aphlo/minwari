@@ -148,7 +148,7 @@ export default async function SettlementDetailPage({ params }: Props) {
           )}
 
           <Link
-            href={`/g/${groupId}`}
+            href={`/groups/${groupId}`}
             className="flex items-center justify-center rounded-full border border-border bg-bg-secondary px-4 py-3 text-sm font-medium text-foreground transition-colors"
           >
             戻る

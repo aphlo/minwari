@@ -74,7 +74,7 @@ export function NewGroupForm() {
       }
 
       const result = (await response.json()) as CreateGroupResponse;
-      router.push(`/g/${result.id}`);
+      router.push(`/groups/${result.id}`);
     } catch (error) {
       console.error("Failed to create group:", error);
       setErrors({
