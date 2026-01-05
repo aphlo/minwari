@@ -1,0 +1,244 @@
+{
+  "metadata": {
+    "title": "OurSplit | Divisao de despesas simples",
+    "description": "Crie um grupo e registre despesas para calcular automaticamente quem deve a quem.",
+    "groupNotFound": "Grupo nao encontrado",
+    "groupTitle": "{name} | OurSplit",
+    "groupDescription": "Gerencie a divisao de {name}",
+    "groupEditTitle": "Editar {name} | OurSplit",
+    "groupEditDescription": "Edite as informacoes do grupo {name}",
+    "settlementTitle": "Detalhes do acerto | OurSplit",
+    "settlementDescription": "Veja os detalhes do acerto",
+    "expenseAddTitle": "Adicionar despesa | {name} | OurSplit",
+    "expenseEditTitle": "Editar {description} | {name} | OurSplit",
+    "expenseNotFound": "Registro nao encontrado",
+    "newGroupTitle": "Criar grupo | OurSplit",
+    "newGroupDescription": "Crie um novo grupo e convide membros."
+  },
+  "app": {
+    "name": "OurSplit"
+  },
+  "locales": {
+    "label": "Idioma",
+    "ja": "日本語",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ko": "한국어",
+    "zh-TW": "繁體中文",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)"
+  },
+  "theme": {
+    "toggle": "Alternar tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "marketing": {
+    "hero": {
+      "titleLine1": "Divida despesas de viagem",
+      "titleLine2": "com facilidade",
+      "subtitleLine1": "Calcule automaticamente acertos de viagens e eventos.",
+      "subtitleLine2": "Veja quem deve quanto rapidamente.",
+      "actions": {
+        "start": "Comecar",
+        "learnMore": "Saiba mais"
+      }
+    },
+    "features": {
+      "title": "Simples. Inteligente. Fluido.",
+      "subtitle": "Deixe os calculos conosco e aproveite a viagem.",
+      "items": {
+        "create": {
+          "title": "Criacao facil",
+          "description": "Crie um grupo sem cadastro e compartilhe o URL para convidar membros."
+        },
+        "record": {
+          "title": "Registre despesas",
+          "description": "Anote quem pagou o que e escolha participantes com flexibilidade."
+        },
+        "settle": {
+          "title": "Acerto automatico",
+          "description": "Calcule quem paga quem com o minimo de transferencias."
+        }
+      }
+    },
+    "steps": {
+      "title": "Conclua em 3 passos",
+      "items": {
+        "create": {
+          "title": "Crie um grupo",
+          "description": "Digite o nome do grupo e pronto. Sem conta."
+        },
+        "add": {
+          "title": "Adicione membros e despesas",
+          "description": "Adicione participantes e registre quem pagou o que."
+        },
+        "check": {
+          "title": "Confira o acerto",
+          "description": "Veja os resultados calculados automaticamente."
+        }
+      }
+    },
+    "cta": {
+      "title": "Vamos comecar",
+      "subtitleLine1": "Crie um grupo",
+      "subtitleLine2": "e acerte sem stress.",
+      "action": "Criar grupo"
+    },
+    "footer": {
+      "brand": "OurSplit",
+      "copyright": "OurSplit"
+    }
+  },
+  "forms": {
+    "newGroup": {
+      "fields": {
+        "groupName": {
+          "label": "Nome do grupo",
+          "placeholder": "Ex: Viagem Okinawa 2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "Informe o nome do grupo",
+        "memberNameRequired": "Informe o nome do membro",
+        "submitFailed": "Falha ao criar o grupo. Tente novamente."
+      },
+      "actions": {
+        "submitting": "Criando...",
+        "submit": "Criar grupo"
+      }
+    },
+    "editGroup": {
+      "fields": {
+        "groupName": {
+          "label": "Nome do grupo",
+          "placeholder": "Ex: Viagem Okinawa 2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "Informe o nome do grupo",
+        "memberNameRequired": "Informe o nome do membro",
+        "submitFailed": "Falha ao atualizar o grupo. Tente novamente."
+      },
+      "actions": {
+        "submitting": "Salvando...",
+        "submit": "Salvar alteracoes",
+        "back": "Voltar"
+      }
+    },
+    "members": {
+      "label": "Nomes dos membros",
+      "placeholder": "Membro {index}",
+      "removeLabel": "Remover membro",
+      "add": "Adicionar membro"
+    },
+    "expense": {
+      "errors": {
+        "amount": "Informe um valor valido",
+        "description": "Informe a descricao",
+        "paidBy": "Selecione quem pagou",
+        "splitWith": "Selecione os membros",
+        "updateFailed": "Falha ao atualizar",
+        "createFailed": "Falha ao criar"
+      },
+      "actions": {
+        "updating": "Atualizando...",
+        "update": "Atualizar",
+        "creating": "Adicionando...",
+        "create": "Adicionar",
+        "cancel": "Cancelar"
+      },
+      "fields": {
+        "amount": {
+          "label": "Valor",
+          "placeholder": "0"
+        },
+        "description": {
+          "label": "Descricao",
+          "placeholder": "Ex: Almoco"
+        },
+        "paidBy": {
+          "label": "Pago por",
+          "placeholder": "Selecionar"
+        },
+        "splitWith": {
+          "label": "Dividir com",
+          "helper": "Divide igualmente entre os membros selecionados"
+        }
+      }
+    }
+  },
+  "currency": {
+    "label": "Moeda",
+    "options": {
+      "JPY": "Iene japones (JPY)",
+      "USD": "Dolar americano (USD)",
+      "EUR": "Euro (EUR)",
+      "CNY": "Yuan chines (CNY)",
+      "KRW": "Won coreano (KRW)",
+      "TWD": "Novo dolar taiwanes (TWD)"
+    }
+  },
+  "group": {
+    "actions": {
+      "edit": "Editar grupo",
+      "addExpense": "Adicionar despesa"
+    },
+    "sections": {
+      "expenses": "Registros",
+      "settlement": "Acerto"
+    }
+  },
+  "expenses": {
+    "empty": {
+      "title": "Nenhum registro ainda",
+      "subtitle": "Adicione um em “Adicionar despesa”."
+    },
+    "paidBySuffix": " pagou",
+    "actions": {
+      "edit": "Editar"
+    },
+    "add": {
+      "title": "Adicionar despesa"
+    },
+    "edit": {
+      "title": "Editar despesa"
+    }
+  },
+  "settlement": {
+    "empty": {
+      "noExpenses": "Os detalhes aparecem quando houver despesas",
+      "settled": "Todos os membros estao acertados"
+    },
+    "actions": {
+      "detail": "Ver detalhes do acerto"
+    }
+  },
+  "settlementDetail": {
+    "title": "Detalhes do acerto",
+    "subtitle": "Confira valores pagos e devidos por membro",
+    "summary": {
+      "total": "Gasto total do grupo",
+      "paid": "Pago",
+      "owed": "Devido"
+    },
+    "empty": "Ainda nao ha despesas para acertar",
+    "net": {
+      "receive": "Recebe",
+      "pay": "Paga",
+      "even": "Sem diferenca"
+    },
+    "actions": {
+      "back": "Voltar"
+    }
+  },
+  "newGroupPage": {
+    "title": "O que voce pode fazer apos criar um grupo",
+    "features": {
+      "invite": "Compartilhe o URL para convidar membros",
+      "record": "Registre despesas e divida custos",
+      "check": "Veja quem deve quanto de relance"
+    }
+  }
+}

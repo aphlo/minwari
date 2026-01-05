@@ -1,0 +1,244 @@
+{
+  "metadata": {
+    "title": "OurSplit | 輕鬆分攤",
+    "description": "建立群組並記錄支出，自動計算誰該付給誰。",
+    "groupNotFound": "找不到群組",
+    "groupTitle": "{name} | OurSplit",
+    "groupDescription": "管理{name}的分攤",
+    "groupEditTitle": "編輯{name} | OurSplit",
+    "groupEditDescription": "編輯{name}的群組資訊",
+    "settlementTitle": "結算詳情 | OurSplit",
+    "settlementDescription": "查看結算詳情",
+    "expenseAddTitle": "新增墊付 | {name} | OurSplit",
+    "expenseEditTitle": "編輯{description} | {name} | OurSplit",
+    "expenseNotFound": "找不到記錄",
+    "newGroupTitle": "建立群組 | OurSplit",
+    "newGroupDescription": "建立新的分攤群組並邀請成員。"
+  },
+  "app": {
+    "name": "OurSplit"
+  },
+  "locales": {
+    "label": "語言",
+    "ja": "日本語",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ko": "한국어",
+    "zh-TW": "繁體中文",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)"
+  },
+  "theme": {
+    "toggle": "切換主題",
+    "light": "淺色",
+    "dark": "深色",
+    "system": "系統"
+  },
+  "marketing": {
+    "hero": {
+      "titleLine1": "旅行分攤",
+      "titleLine2": "更簡單",
+      "subtitleLine1": "自動計算旅行或活動的分攤。",
+      "subtitleLine2": "誰該付多少，一目了然。",
+      "actions": {
+        "start": "開始使用",
+        "learnMore": "了解更多"
+      }
+    },
+    "features": {
+      "title": "簡單。智慧。順暢。",
+      "subtitle": "繁雜計算交給我們，你只要享受旅程。",
+      "items": {
+        "create": {
+          "title": "快速建立",
+          "description": "無需註冊，建立群組並分享URL邀請成員。"
+        },
+        "record": {
+          "title": "記錄支出",
+          "description": "記錄誰為什麼付了多少，並彈性選擇參與者。"
+        },
+        "settle": {
+          "title": "自動結算",
+          "description": "自動計算誰該給誰多少，最少轉帳完成結算。"
+        }
+      }
+    },
+    "steps": {
+      "title": "三步完成",
+      "items": {
+        "create": {
+          "title": "建立群組",
+          "description": "輸入群組名稱即可開始，無需帳號。"
+        },
+        "add": {
+          "title": "新增成員與支出",
+          "description": "新增參與成員並記錄支出。"
+        },
+        "check": {
+          "title": "查看結算結果",
+          "description": "查看自動計算結果，一目了然。"
+        }
+      }
+    },
+    "cta": {
+      "title": "現在開始",
+      "subtitleLine1": "建立群組，",
+      "subtitleLine2": "讓結算更順暢。",
+      "action": "建立群組"
+    },
+    "footer": {
+      "brand": "OurSplit",
+      "copyright": "OurSplit"
+    }
+  },
+  "forms": {
+    "newGroup": {
+      "fields": {
+        "groupName": {
+          "label": "群組名稱",
+          "placeholder": "例：沖繩旅行2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "請輸入群組名稱",
+        "memberNameRequired": "請輸入成員名稱",
+        "submitFailed": "建立群組失敗，請再試一次。"
+      },
+      "actions": {
+        "submitting": "建立中...",
+        "submit": "建立群組"
+      }
+    },
+    "editGroup": {
+      "fields": {
+        "groupName": {
+          "label": "群組名稱",
+          "placeholder": "例：沖繩旅行2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "請輸入群組名稱",
+        "memberNameRequired": "請輸入成員名稱",
+        "submitFailed": "更新群組失敗，請再試一次。"
+      },
+      "actions": {
+        "submitting": "儲存中...",
+        "submit": "儲存變更",
+        "back": "返回"
+      }
+    },
+    "members": {
+      "label": "成員名稱",
+      "placeholder": "成員 {index}",
+      "removeLabel": "移除成員",
+      "add": "新增成員"
+    },
+    "expense": {
+      "errors": {
+        "amount": "請輸入正確金額",
+        "description": "請輸入用途",
+        "paidBy": "請選擇付款人",
+        "splitWith": "請選擇分攤成員",
+        "updateFailed": "更新失敗",
+        "createFailed": "新增失敗"
+      },
+      "actions": {
+        "updating": "更新中...",
+        "update": "更新",
+        "creating": "新增中...",
+        "create": "新增",
+        "cancel": "取消"
+      },
+      "fields": {
+        "amount": {
+          "label": "金額",
+          "placeholder": "0"
+        },
+        "description": {
+          "label": "用途",
+          "placeholder": "例：午餐"
+        },
+        "paidBy": {
+          "label": "付款人",
+          "placeholder": "請選擇"
+        },
+        "splitWith": {
+          "label": "分攤成員",
+          "helper": "在選取的成員中平均分攤"
+        }
+      }
+    }
+  },
+  "currency": {
+    "label": "貨幣",
+    "options": {
+      "JPY": "日圓 (JPY)",
+      "USD": "美元 (USD)",
+      "EUR": "歐元 (EUR)",
+      "CNY": "人民幣 (CNY)",
+      "KRW": "韓元 (KRW)",
+      "TWD": "新台幣 (TWD)"
+    }
+  },
+  "group": {
+    "actions": {
+      "edit": "編輯群組",
+      "addExpense": "新增墊付"
+    },
+    "sections": {
+      "expenses": "記錄",
+      "settlement": "結算"
+    }
+  },
+  "expenses": {
+    "empty": {
+      "title": "尚無記錄",
+      "subtitle": "從「新增墊付」開始記錄吧"
+    },
+    "paidBySuffix": "已付款",
+    "actions": {
+      "edit": "編輯"
+    },
+    "add": {
+      "title": "新增墊付"
+    },
+    "edit": {
+      "title": "編輯墊付"
+    }
+  },
+  "settlement": {
+    "empty": {
+      "noExpenses": "記錄墊付後會顯示結算內容",
+      "settled": "所有成員皆已結清"
+    },
+    "actions": {
+      "detail": "查看結算詳情"
+    }
+  },
+  "settlementDetail": {
+    "title": "結算詳情",
+    "subtitle": "查看每位成員的支出與負擔",
+    "summary": {
+      "total": "群組總支出",
+      "paid": "支出額",
+      "owed": "負擔額"
+    },
+    "empty": "尚無可結算的墊付",
+    "net": {
+      "receive": "應收",
+      "pay": "應付",
+      "even": "無差額"
+    },
+    "actions": {
+      "back": "返回"
+    }
+  },
+  "newGroupPage": {
+    "title": "建立群組後可以做的事",
+    "features": {
+      "invite": "分享URL邀請成員",
+      "record": "記錄支出並計算分攤",
+      "check": "一眼看清誰該付多少"
+    }
+  }
+}

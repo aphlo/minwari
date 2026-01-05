@@ -2,9 +2,11 @@
 
 import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { getMemberChipColor } from "@/client/lib/memberColor";
+import { Link } from "@/i18n/navigation";
+import type { CurrencyCode } from "@/shared/lib/currency";
 import { Header } from "../layout/Header";
 import { ExpenseList } from "./ExpenseList";
 import { SettlementSection } from "./SettlementSection";
@@ -13,6 +15,7 @@ type SerializedGroup = {
   id: string;
   name: string;
   members: string[];
+  currency: CurrencyCode;
   createdAt: string;
   updatedAt: string;
 };
@@ -47,6 +50,7 @@ export function GroupDetailClient({
 }: Props) {
   const [expenses] = useState(initialExpenses);
   const [settlements] = useState(initialSettlements);
+  const t = useTranslations("group");
 
   return (
     <div className="min-h-screen bg-background">
@@ -78,7 +82,7 @@ export function GroupDetailClient({
               <Link
                 href={`/groups/${group.id}/edit`}
                 className="flex-shrink-0 ml-4 p-2 rounded-full hover:bg-bg-secondary transition-colors"
-                aria-label="グループを編集"
+                aria-label={t("actions.edit")}
               >
                 <svg
                   className="w-5 h-5 text-muted"
@@ -122,16 +126,20 @@ export function GroupDetailClient({
                 </svg>
               }
             >
-              立て替えを追加
+              {t("actions.addExpense")}
             </Button>
           </div>
 
           {/* Expense List */}
           <div className="animate-fade-in-up delay-200 opacity-0">
             <h2 className="text-lg font-semibold text-foreground mb-4">
-              記録一覧
+              {t("sections.expenses")}
             </h2>
-            <ExpenseList groupId={group.id} expenses={expenses} />
+            <ExpenseList
+              groupId={group.id}
+              expenses={expenses}
+              currency={group.currency}
+            />
           </div>
 
           {/* Settlement Section */}
@@ -150,12 +158,13 @@ export function GroupDetailClient({
                   d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-              精算
+              {t("sections.settlement")}
             </h2>
             <SettlementSection
               expenses={expenses}
               settlements={settlements}
               groupId={group.id}
+              currency={group.currency}
             />
           </div>
         </div>

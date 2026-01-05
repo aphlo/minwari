@@ -1,3 +1,9 @@
+import {
+  type CurrencyCode,
+  fromMinorUnits,
+  getCurrencyFractionDigits,
+  toMinorUnits,
+} from "@/shared/lib/currency";
 import type { Expense, Settlement } from "@/shared/types/group";
 import { buildMemberOrder, calculateExpenseShares } from "./settlementUtils";
 
@@ -11,23 +17,26 @@ const ensureMember = (net: NetMap, name: string) => {
 
 export function calculateSettlements(
   expenses: Expense[],
-  members: string[]
+  members: string[],
+  currency: CurrencyCode
 ): Settlement[] {
   const net = new Map<string, number>();
   const memberOrder = buildMemberOrder(members, expenses);
+  const fractionDigits = getCurrencyFractionDigits(currency);
 
   for (const member of memberOrder) {
     net.set(member, 0);
   }
 
   for (const expense of expenses) {
+    const amountMinor = toMinorUnits(expense.amount, fractionDigits);
     ensureMember(net, expense.paidBy);
-    net.set(expense.paidBy, (net.get(expense.paidBy) ?? 0) + expense.amount);
+    net.set(expense.paidBy, (net.get(expense.paidBy) ?? 0) + amountMinor);
 
-    const shares = calculateExpenseShares(expense, memberOrder);
-    shares.forEach(({ member, share }) => {
+    const shares = calculateExpenseShares(expense, memberOrder, fractionDigits);
+    shares.forEach(({ member, shareMinor }) => {
       ensureMember(net, member);
-      net.set(member, (net.get(member) ?? 0) - share);
+      net.set(member, (net.get(member) ?? 0) - shareMinor);
     });
   }
 
@@ -58,7 +67,11 @@ export function calculateSettlements(
 
     creditor.balance -= amount;
     debtor.balance += amount;
-    settlements.push({ from: debtor.name, to: creditor.name, amount });
+    settlements.push({
+      from: debtor.name,
+      to: creditor.name,
+      amount: fromMinorUnits(amount, fractionDigits),
+    });
   }
 
   return settlements;

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Input } from "./Input";
 
 type Member = {
@@ -22,10 +23,12 @@ export function MemberListInput({
   onRemove,
   onUpdate,
 }: Props) {
+  const t = useTranslations("forms.members");
+
   return (
     <div className="space-y-4">
       <span className="block text-sm font-medium text-foreground mb-2">
-        メンバー名
+        {t("label")}
       </span>
 
       <div className="space-y-3">
@@ -37,7 +40,7 @@ export function MemberListInput({
             <div className="flex-1">
               <Input
                 name={`member-${member.id}`}
-                placeholder={`メンバー ${index + 1}`}
+                placeholder={t("placeholder", { index: index + 1 })}
                 value={member.name}
                 onChange={(e) => onUpdate(member.id, e.target.value)}
                 isInvalid={!!errors[`member-${member.id}`]}
@@ -51,7 +54,7 @@ export function MemberListInput({
                 type="button"
                 onClick={() => onRemove(member.id)}
                 className="p-2 text-muted hover:text-red-500 transition-colors rounded-full hover:bg-bg-tertiary"
-                aria-label="メンバーを削除"
+                aria-label={t("removeLabel")}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +96,7 @@ export function MemberListInput({
           <path d="M8 12h8" />
           <path d="M12 8v8" />
         </svg>
-        メンバーを追加する
+        {t("add")}
       </button>
     </div>
   );

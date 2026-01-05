@@ -1,0 +1,244 @@
+{
+  "metadata": {
+    "title": "OurSplit | Simple group expense splitting",
+    "description": "Create a group and track expenses to automatically calculate who owes whom.",
+    "groupNotFound": "Group not found",
+    "groupTitle": "{name} | OurSplit",
+    "groupDescription": "Manage the split for {name}",
+    "groupEditTitle": "Edit {name} | OurSplit",
+    "groupEditDescription": "Edit group details for {name}",
+    "settlementTitle": "Settlement details | OurSplit",
+    "settlementDescription": "Review settlement details",
+    "expenseAddTitle": "Add expense | {name} | OurSplit",
+    "expenseEditTitle": "Edit {description} | {name} | OurSplit",
+    "expenseNotFound": "Record not found",
+    "newGroupTitle": "Create a group | OurSplit",
+    "newGroupDescription": "Create a new group and invite members."
+  },
+  "app": {
+    "name": "OurSplit"
+  },
+  "locales": {
+    "label": "Language",
+    "ja": "日本語",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ko": "한국어",
+    "zh-TW": "繁體中文",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "marketing": {
+    "hero": {
+      "titleLine1": "Split travel expenses",
+      "titleLine2": "Simply.",
+      "subtitleLine1": "Automatically calculate travel and event settlements.",
+      "subtitleLine2": "See who owes how much at a glance.",
+      "actions": {
+        "start": "Get started",
+        "learnMore": "Learn more"
+      }
+    },
+    "features": {
+      "title": "Simple. Smart. Smooth.",
+      "subtitle": "Leave the hard math to us and focus on the trip.",
+      "items": {
+        "create": {
+          "title": "Easy setup",
+          "description": "Create a group without signing up and share the URL to invite members."
+        },
+        "record": {
+          "title": "Track expenses",
+          "description": "Record who paid what and flexibly choose participants."
+        },
+        "settle": {
+          "title": "Automatic settlement",
+          "description": "Calculate who pays whom with minimal transfers."
+        }
+      }
+    },
+    "steps": {
+      "title": "Done in 3 steps",
+      "items": {
+        "create": {
+          "title": "Create a group",
+          "description": "Enter a group name to get started. No account needed."
+        },
+        "add": {
+          "title": "Add members and expenses",
+          "description": "Add participants and track who paid for what."
+        },
+        "check": {
+          "title": "Review settlements",
+          "description": "See the automatically calculated results at a glance."
+        }
+      }
+    },
+    "cta": {
+      "title": "Let’s get started",
+      "subtitleLine1": "Create a group",
+      "subtitleLine2": "and settle with ease.",
+      "action": "Create a group"
+    },
+    "footer": {
+      "brand": "OurSplit",
+      "copyright": "OurSplit"
+    }
+  },
+  "forms": {
+    "newGroup": {
+      "fields": {
+        "groupName": {
+          "label": "Group name",
+          "placeholder": "e.g. Okinawa Trip 2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "Please enter a group name",
+        "memberNameRequired": "Please enter a member name",
+        "submitFailed": "Failed to create the group. Please try again."
+      },
+      "actions": {
+        "submitting": "Creating...",
+        "submit": "Create group"
+      }
+    },
+    "editGroup": {
+      "fields": {
+        "groupName": {
+          "label": "Group name",
+          "placeholder": "e.g. Okinawa Trip 2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "Please enter a group name",
+        "memberNameRequired": "Please enter a member name",
+        "submitFailed": "Failed to update the group. Please try again."
+      },
+      "actions": {
+        "submitting": "Saving...",
+        "submit": "Save changes",
+        "back": "Back"
+      }
+    },
+    "members": {
+      "label": "Member names",
+      "placeholder": "Member {index}",
+      "removeLabel": "Remove member",
+      "add": "Add member"
+    },
+    "expense": {
+      "errors": {
+        "amount": "Enter a valid amount",
+        "description": "Enter a description",
+        "paidBy": "Select who paid",
+        "splitWith": "Select members to split with",
+        "updateFailed": "Failed to update",
+        "createFailed": "Failed to create"
+      },
+      "actions": {
+        "updating": "Updating...",
+        "update": "Update",
+        "creating": "Adding...",
+        "create": "Add",
+        "cancel": "Cancel"
+      },
+      "fields": {
+        "amount": {
+          "label": "Amount",
+          "placeholder": "0"
+        },
+        "description": {
+          "label": "Description",
+          "placeholder": "e.g. Lunch"
+        },
+        "paidBy": {
+          "label": "Paid by",
+          "placeholder": "Select"
+        },
+        "splitWith": {
+          "label": "Split with",
+          "helper": "Split equally among selected members"
+        }
+      }
+    }
+  },
+  "currency": {
+    "label": "Currency",
+    "options": {
+      "JPY": "Japanese Yen (JPY)",
+      "USD": "US Dollar (USD)",
+      "EUR": "Euro (EUR)",
+      "CNY": "Chinese Yuan (CNY)",
+      "KRW": "Korean Won (KRW)",
+      "TWD": "New Taiwan Dollar (TWD)"
+    }
+  },
+  "group": {
+    "actions": {
+      "edit": "Edit group",
+      "addExpense": "Add expense"
+    },
+    "sections": {
+      "expenses": "Records",
+      "settlement": "Settlement"
+    }
+  },
+  "expenses": {
+    "empty": {
+      "title": "No records yet",
+      "subtitle": "Add one from “Add expense”."
+    },
+    "paidBySuffix": " paid",
+    "actions": {
+      "edit": "Edit"
+    },
+    "add": {
+      "title": "Add expense"
+    },
+    "edit": {
+      "title": "Edit expense"
+    }
+  },
+  "settlement": {
+    "empty": {
+      "noExpenses": "Settlement details will appear once expenses are added",
+      "settled": "All members are settled"
+    },
+    "actions": {
+      "detail": "View settlement details"
+    }
+  },
+  "settlementDetail": {
+    "title": "Settlement details",
+    "subtitle": "Review each member's paid and owed amounts",
+    "summary": {
+      "total": "Total group spending",
+      "paid": "Paid",
+      "owed": "Owed"
+    },
+    "empty": "No expenses to settle yet",
+    "net": {
+      "receive": "Receives",
+      "pay": "Pays",
+      "even": "Settled"
+    },
+    "actions": {
+      "back": "Back"
+    }
+  },
+  "newGroupPage": {
+    "title": "What you can do after creating a group",
+    "features": {
+      "invite": "Share the URL to invite members",
+      "record": "Track expenses and split costs",
+      "check": "See who owes what at a glance"
+    }
+  }
+}

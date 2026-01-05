@@ -3,8 +3,15 @@
 import { Button } from "@heroui/button";
 import { Checkbox } from "@heroui/checkbox";
 import { Select, SelectItem } from "@heroui/select";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { useRouter } from "@/i18n/navigation";
+import type { CurrencyCode } from "@/shared/lib/currency";
+import {
+  getCurrencyFractionDigits,
+  getCurrencySymbol,
+  normalizeCurrencyAmount,
+} from "@/shared/lib/currency";
 import { Input } from "./Input";
 
 type ExpenseData = {
@@ -18,11 +25,13 @@ type ExpenseData = {
 type Props = {
   groupId: string;
   members: string[];
+  currency: CurrencyCode;
   expense?: ExpenseData;
 };
 
-export function ExpenseForm({ groupId, members, expense }: Props) {
+export function ExpenseForm({ groupId, members, currency, expense }: Props) {
   const router = useRouter();
+  const t = useTranslations("forms.expense");
   const isEditing = !!expense;
 
   const [description, setDescription] = useState(expense?.description ?? "");
@@ -44,6 +53,9 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
     );
   };
 
+  const fractionDigits = getCurrencyFractionDigits(currency);
+  const amountStep = Number((1 / 10 ** fractionDigits).toFixed(fractionDigits));
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -51,19 +63,19 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
 
     const amountNum = Number(amount);
     if (!amount || Number.isNaN(amountNum) || amountNum <= 0) {
-      newErrors.amount = "正しい金額を入力してください";
+      newErrors.amount = t("errors.amount");
     }
 
     if (!description.trim()) {
-      newErrors.description = "用途を入力してください";
+      newErrors.description = t("errors.description");
     }
 
     if (!paidBy) {
-      newErrors.paidBy = "支払った人を選択してください";
+      newErrors.paidBy = t("errors.paidBy");
     }
 
     if (splitWith.length === 0) {
-      newErrors.splitWith = "割り勘メンバーを選択してください";
+      newErrors.splitWith = t("errors.splitWith");
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -82,7 +94,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           description: description.trim(),
-          amount: amountNum,
+          amount: normalizeCurrencyAmount(amountNum, fractionDigits),
           paidBy,
           splitWith,
         }),
@@ -97,7 +109,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
       router.push(`/groups/${groupId}`);
       router.refresh();
     } catch {
-      alert(isEditing ? "更新に失敗しました" : "登録に失敗しました");
+      alert(isEditing ? t("errors.updateFailed") : t("errors.createFailed"));
     } finally {
       setIsSubmitting(false);
     }
@@ -105,11 +117,11 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
 
   const submitLabel = isEditing
     ? isSubmitting
-      ? "更新中..."
-      : "更新する"
+      ? t("actions.updating")
+      : t("actions.update")
     : isSubmitting
-      ? "追加中..."
-      : "追加する";
+      ? t("actions.creating")
+      : t("actions.create");
 
   return (
     <form onSubmit={handleSubmit}>
@@ -117,9 +129,9 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
       <Input
         name="amount"
         type="number"
-        label="金額"
+        label={t("fields.amount.label")}
         labelPlacement="outside"
-        placeholder="0"
+        placeholder={t("fields.amount.placeholder")}
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         isRequired
@@ -128,10 +140,13 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
         variant="bordered"
         radius="lg"
         className="mb-8"
-        min={1}
+        min={amountStep}
+        step={amountStep}
         startContent={
           <div className="pointer-events-none flex items-center">
-            <span className="text-default-400 text-small">¥</span>
+            <span className="text-default-400 text-small">
+              {getCurrencySymbol(currency)}
+            </span>
           </div>
         }
       />
@@ -139,9 +154,9 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
       {/* Description */}
       <Input
         name="description"
-        label="用途"
+        label={t("fields.description.label")}
         labelPlacement="outside"
-        placeholder="例：ランチ代"
+        placeholder={t("fields.description.placeholder")}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         isRequired
@@ -154,9 +169,9 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
 
       {/* Paid By */}
       <Select
-        label="支払者"
+        label={t("fields.paidBy.label")}
         labelPlacement="outside"
-        placeholder="選択してください"
+        placeholder={t("fields.paidBy.placeholder")}
         selectedKeys={paidBy ? [paidBy] : []}
         onSelectionChange={(keys) => {
           const selected = Array.from(keys)[0];
@@ -177,7 +192,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
       {/* Split With - checkboxes */}
       <div className="mb-8">
         <span className="block text-sm font-medium text-foreground mb-4">
-          割り勘メンバー
+          {t("fields.splitWith.label")}
           <span className="text-danger ml-1">*</span>
         </span>
         <div className="grid grid-cols-2 gap-3">
@@ -200,7 +215,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
           <p className="mt-2 text-sm text-danger">{errors.splitWith}</p>
         )}
         <p className="mt-4 text-xs text-muted">
-          選択したメンバーで均等に割り勘します
+          {t("fields.splitWith.helper")}
         </p>
       </div>
 
@@ -224,7 +239,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
           onPress={() => router.push(`/groups/${groupId}`)}
           className="w-full font-medium"
         >
-          キャンセル
+          {t("actions.cancel")}
         </Button>
       </div>
     </form>

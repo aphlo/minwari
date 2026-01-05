@@ -25,7 +25,7 @@ test("calculates settlements for the sample history", () => {
     createExpense({ amount: 50, paidBy: "C", splitWith: ["A"] }),
   ];
 
-  const settlements = calculateSettlements(expenses, ["A", "B", "C"]);
+  const settlements = calculateSettlements(expenses, ["A", "B", "C"], "JPY");
 
   assert.deepEqual(settlements, [
     { from: "A", to: "B", amount: 10 },
@@ -38,9 +38,11 @@ test("assigns rounding differences to the payer when included", () => {
     createExpense({ amount: 101, paidBy: "A", splitWith: ["A", "B", "C"] }),
   ];
 
-  const settlements = calculateSettlements(expenses, ["A", "B", "C"]).sort(
-    (a, b) => a.from.localeCompare(b.from)
-  );
+  const settlements = calculateSettlements(
+    expenses,
+    ["A", "B", "C"],
+    "JPY"
+  ).sort((a, b) => a.from.localeCompare(b.from));
 
   assert.deepEqual(settlements, [
     { from: "B", to: "A", amount: 33 },
@@ -53,13 +55,13 @@ test("handles a lender who is not part of the split", () => {
     createExpense({ amount: 50, paidBy: "C", splitWith: ["A"] }),
   ];
 
-  const settlements = calculateSettlements(expenses, ["A", "B", "C"]);
+  const settlements = calculateSettlements(expenses, ["A", "B", "C"], "JPY");
 
   assert.deepEqual(settlements, [{ from: "A", to: "C", amount: 50 }]);
 });
 
 test("returns empty settlements when there are no expenses", () => {
-  const settlements = calculateSettlements([], ["A", "B"]);
+  const settlements = calculateSettlements([], ["A", "B"], "JPY");
 
   assert.deepEqual(settlements, []);
 });

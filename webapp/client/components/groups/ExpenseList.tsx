@@ -1,8 +1,13 @@
 "use client";
 
 import { Chip } from "@heroui/chip";
-import Link from "next/link";
+import { useFormatter, useTranslations } from "next-intl";
 import { getMemberChipColor } from "@/client/lib/memberColor";
+import { Link } from "@/i18n/navigation";
+import {
+  type CurrencyCode,
+  getCurrencyFractionDigits,
+} from "@/shared/lib/currency";
 
 type SerializedExpense = {
   id: string;
@@ -18,9 +23,14 @@ type SerializedExpense = {
 type Props = {
   groupId: string;
   expenses: SerializedExpense[];
+  currency: CurrencyCode;
 };
 
-export function ExpenseList({ groupId, expenses }: Props) {
+export function ExpenseList({ groupId, expenses, currency }: Props) {
+  const t = useTranslations("expenses");
+  const format = useFormatter();
+  const fractionDigits = getCurrencyFractionDigits(currency);
+
   if (expenses.length === 0) {
     return (
       <div className="bg-bg-secondary rounded-2xl p-8 text-center">
@@ -37,24 +47,23 @@ export function ExpenseList({ groupId, expenses }: Props) {
             d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
           />
         </svg>
-        <p className="mt-4 text-muted">まだ記録がありません</p>
-        <p className="mt-1 text-sm text-muted/70">
-          「立て替えを追加」から記録を追加しましょう
-        </p>
+        <p className="mt-4 text-muted">{t("empty.title")}</p>
+        <p className="mt-1 text-sm text-muted/70">{t("empty.subtitle")}</p>
       </div>
     );
   }
 
   const formatAmount = (amount: number) => {
-    return new Intl.NumberFormat("ja-JP", {
+    return format.number(amount, {
       style: "currency",
-      currency: "JPY",
-    }).format(amount);
+      currency,
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
+    });
   };
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("ja-JP", {
+    return format.dateTime(new Date(dateString), {
       month: "short",
       day: "numeric",
     });
@@ -77,7 +86,7 @@ export function ExpenseList({ groupId, expenses }: Props) {
                   <span className="text-primary font-medium">
                     {expense.paidBy}
                   </span>
-                  が支払い
+                  {t("paidBySuffix")}
                 </span>
                 <span className="text-xs">{formatDate(expense.createdAt)}</span>
               </p>
@@ -101,7 +110,7 @@ export function ExpenseList({ groupId, expenses }: Props) {
               <Link
                 href={`/groups/${groupId}/expenses/${expense.id}/edit`}
                 className="p-2 rounded-full text-muted hover:bg-bg-secondary transition-colors"
-                aria-label="編集"
+                aria-label={t("actions.edit")}
               >
                 <svg
                   className="w-5 h-5"

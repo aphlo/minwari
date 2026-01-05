@@ -1,0 +1,244 @@
+{
+  "metadata": {
+    "title": "みんなの割り勘 | 旅行の割り勘計算をスムーズに",
+    "description": "グループ旅行やイベントでの割り勘計算を簡単に。支出を記録して、誰がいくら払えばいいか自動で計算します。",
+    "groupNotFound": "グループが見つかりません",
+    "groupTitle": "{name} | みんなの割り勘",
+    "groupDescription": "{name}の割り勘を管理",
+    "groupEditTitle": "{name}を編集 | みんなの割り勘",
+    "groupEditDescription": "{name}のグループ情報を編集",
+    "settlementTitle": "精算詳細 | みんなの割り勘",
+    "settlementDescription": "精算詳細を確認",
+    "expenseAddTitle": "立て替えを追加 | {name} | みんなの割り勘",
+    "expenseEditTitle": "{description}を編集 | {name} | みんなの割り勘",
+    "expenseNotFound": "記録が見つかりません",
+    "newGroupTitle": "グループを作成 | みんなの割り勘",
+    "newGroupDescription": "新しい割り勘グループを作成して、メンバーを招待しましょう。"
+  },
+  "app": {
+    "name": "みんなの割り勘"
+  },
+  "locales": {
+    "label": "言語",
+    "ja": "日本語",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ko": "한국어",
+    "zh-TW": "繁體中文",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)"
+  },
+  "theme": {
+    "toggle": "テーマを切り替える",
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "システム"
+  },
+  "marketing": {
+    "hero": {
+      "titleLine1": "旅行の割り勘を",
+      "titleLine2": "シンプルに",
+      "subtitleLine1": "グループ旅行やイベントでの精算を自動計算。",
+      "subtitleLine2": "誰がいくら払えばいいか、ひと目でわかります。",
+      "actions": {
+        "start": "始める",
+        "learnMore": "詳しく見る"
+      }
+    },
+    "features": {
+      "title": "シンプル。スマート。スムーズ。",
+      "subtitle": "面倒な計算はお任せ。あなたは旅を楽しむことに集中できます。",
+      "items": {
+        "create": {
+          "title": "かんたん作成",
+          "description": "登録不要でグループを作成。URLを共有するだけでメンバーを招待できます。"
+        },
+        "record": {
+          "title": "支出を記録",
+          "description": "誰が何にいくら払ったか記録。参加者を選んで柔軟に設定できます。"
+        },
+        "settle": {
+          "title": "自動で精算",
+          "description": "誰が誰にいくら払うか自動計算。最小限の送金で精算が完了します。"
+        }
+      }
+    },
+    "steps": {
+      "title": "3ステップで完了",
+      "items": {
+        "create": {
+          "title": "グループを作成",
+          "description": "グループ名を入力して作成。アカウント登録は必要ありません。"
+        },
+        "add": {
+          "title": "メンバーと支出を追加",
+          "description": "参加メンバーを追加し、誰が何にいくら払ったかを記録します。"
+        },
+        "check": {
+          "title": "精算結果を確認",
+          "description": "自動計算された精算結果を確認。誰が誰にいくら払うか一目でわかります。"
+        }
+      }
+    },
+    "cta": {
+      "title": "さあ、始めよう",
+      "subtitleLine1": "グループを作成して、",
+      "subtitleLine2": "精算をスムーズに。",
+      "action": "グループを作成する"
+    },
+    "footer": {
+      "brand": "みんなの割り勘",
+      "copyright": "みんなの割り勘"
+    }
+  },
+  "forms": {
+    "newGroup": {
+      "fields": {
+        "groupName": {
+          "label": "グループ名",
+          "placeholder": "例：沖縄旅行2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "グループ名を入力してください",
+        "memberNameRequired": "メンバー名を入力してください",
+        "submitFailed": "グループの作成に失敗しました。もう一度お試しください。"
+      },
+      "actions": {
+        "submitting": "作成中...",
+        "submit": "グループを作成"
+      }
+    },
+    "editGroup": {
+      "fields": {
+        "groupName": {
+          "label": "グループ名",
+          "placeholder": "例：沖縄旅行2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "グループ名を入力してください",
+        "memberNameRequired": "メンバー名を入力してください",
+        "submitFailed": "グループの更新に失敗しました。もう一度お試しください。"
+      },
+      "actions": {
+        "submitting": "更新中...",
+        "submit": "変更を保存",
+        "back": "戻る"
+      }
+    },
+    "members": {
+      "label": "メンバー名",
+      "placeholder": "メンバー {index}",
+      "removeLabel": "メンバーを削除",
+      "add": "メンバーを追加する"
+    },
+    "expense": {
+      "errors": {
+        "amount": "正しい金額を入力してください",
+        "description": "用途を入力してください",
+        "paidBy": "支払った人を選択してください",
+        "splitWith": "割り勘メンバーを選択してください",
+        "updateFailed": "更新に失敗しました",
+        "createFailed": "登録に失敗しました"
+      },
+      "actions": {
+        "updating": "更新中...",
+        "update": "更新する",
+        "creating": "追加中...",
+        "create": "追加する",
+        "cancel": "キャンセル"
+      },
+      "fields": {
+        "amount": {
+          "label": "金額",
+          "placeholder": "0"
+        },
+        "description": {
+          "label": "用途",
+          "placeholder": "例：ランチ代"
+        },
+        "paidBy": {
+          "label": "支払者",
+          "placeholder": "選択してください"
+        },
+        "splitWith": {
+          "label": "割り勘メンバー",
+          "helper": "選択したメンバーで均等に割り勘します"
+        }
+      }
+    }
+  },
+  "currency": {
+    "label": "通貨",
+    "options": {
+      "JPY": "日本円 (JPY)",
+      "USD": "米ドル (USD)",
+      "EUR": "ユーロ (EUR)",
+      "CNY": "中国人民元 (CNY)",
+      "KRW": "韓国ウォン (KRW)",
+      "TWD": "台湾ドル (TWD)"
+    }
+  },
+  "group": {
+    "actions": {
+      "edit": "グループを編集",
+      "addExpense": "立て替えを追加"
+    },
+    "sections": {
+      "expenses": "記録一覧",
+      "settlement": "精算"
+    }
+  },
+  "expenses": {
+    "empty": {
+      "title": "まだ記録がありません",
+      "subtitle": "「立て替えを追加」から記録を追加しましょう"
+    },
+    "paidBySuffix": "が支払い",
+    "actions": {
+      "edit": "編集"
+    },
+    "add": {
+      "title": "立て替えを追加"
+    },
+    "edit": {
+      "title": "立て替えを編集"
+    }
+  },
+  "settlement": {
+    "empty": {
+      "noExpenses": "立て替えを記録すると精算内容が表示されます",
+      "settled": "全員の精算が完了しています"
+    },
+    "actions": {
+      "detail": "精算の詳細を確認"
+    }
+  },
+  "settlementDetail": {
+    "title": "精算詳細",
+    "subtitle": "メンバー別の支出と負担を確認できます",
+    "summary": {
+      "total": "グループ合計支出",
+      "paid": "支出額",
+      "owed": "負担額"
+    },
+    "empty": "まだ精算できる立て替えがありません",
+    "net": {
+      "receive": "受け取り",
+      "pay": "支払い",
+      "even": "差額なし"
+    },
+    "actions": {
+      "back": "戻る"
+    }
+  },
+  "newGroupPage": {
+    "title": "グループ作成後にできること",
+    "features": {
+      "invite": "URLを共有してメンバーを招待",
+      "record": "支出を記録して割り勘を計算",
+      "check": "誰がいくら払うか一目で確認"
+    }
+  }
+}

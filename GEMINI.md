@@ -3,6 +3,9 @@
 ## Package manager
 - npmではなくpnpmを使用すること
 
+## Quality checks
+- 変更後は `webapp/` で `pnpm lint`, `pnpm check`, `pnpm typecheck`, `pnpm test` を実行して通ることを確認すること
+
 ## Webapp design
 - デスクトップサイズではなく基本的にスマホサイズに最適化されたデザインにすること
 
