@@ -7,6 +7,7 @@ import { useState } from "react";
 import { ExpenseList } from "./ExpenseList";
 import { Header } from "../layout/Header";
 import { SettlementSection } from "./SettlementSection";
+import { getMemberChipColor } from "@/client/lib/memberColor";
 
 type SerializedGroup = {
   id: string;
@@ -33,11 +34,7 @@ type Props = {
 };
 
 export function GroupDetailClient({ group, initialExpenses }: Props) {
-  const [expenses, setExpenses] = useState(initialExpenses);
-
-  const handleExpenseDeleted = (expenseId: string) => {
-    setExpenses((prev) => prev.filter((e) => e.id !== expenseId));
-  };
+  const [expenses] = useState(initialExpenses);
 
   return (
     <div className="min-h-screen bg-background">
@@ -55,7 +52,12 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
                 </h1>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {group.members.map((member) => (
-                    <Chip key={member} variant="flat" size="sm">
+                    <Chip
+                      key={member}
+                      color={getMemberChipColor(member)}
+                      variant="flat"
+                      size="sm"
+                    >
                       {member}
                     </Chip>
                   ))}
@@ -117,11 +119,7 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
             <h2 className="text-lg font-semibold text-foreground mb-4">
               記録一覧
             </h2>
-            <ExpenseList
-              groupId={group.id}
-              expenses={expenses}
-              onExpenseDeleted={handleExpenseDeleted}
-            />
+            <ExpenseList groupId={group.id} expenses={expenses} />
           </div>
 
           {/* Settlement Section */}
