@@ -1,5 +1,5 @@
-import { Header } from "@/client/components/Header";
-import { NewGroupForm } from "@/client/components/NewGroupForm";
+import { NewGroupForm } from "@/client/components/forms/NewGroupForm";
+import { Header } from "@/client/components/layout/Header";
 
 export const metadata = {
   title: "グループを作成 | みんなの割り勘",

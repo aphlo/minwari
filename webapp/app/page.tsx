@@ -1,5 +1,8 @@
-import { Button } from "@/client/components/Button";
-import { Header } from "@/client/components/Header";
+"use client";
+
+import { Button } from "@heroui/button";
+import Link from "next/link";
+import { Header } from "@/client/components/layout/Header";
 
 export default function Home() {
   return (
@@ -22,10 +25,24 @@ export default function Home() {
             誰がいくら払えばいいか、ひと目でわかります。
           </p>
           <div className="animate-fade-in-up delay-200 flex flex-col sm:flex-row gap-4 justify-center opacity-0">
-            <Button href="/new" size="lg">
+            <Button
+              as={Link}
+              href="/new"
+              color="primary"
+              size="lg"
+              radius="full"
+              className="font-medium"
+            >
               始める
             </Button>
-            <Button href="#features" variant="outline" size="lg">
+            <Button
+              as={Link}
+              href="#features"
+              variant="bordered"
+              size="lg"
+              radius="full"
+              className="font-medium"
+            >
               詳しく見る
             </Button>
           </div>
@@ -194,10 +211,11 @@ export default function Home() {
                 精算をスムーズに。
               </p>
               <Button
+                as={Link}
                 href="/new"
-                variant="outline"
                 size="lg"
-                className="bg-white text-primary border-white hover:bg-white/90 hover:text-primary-dark"
+                radius="full"
+                className="bg-white text-primary font-medium hover:bg-white/90"
               >
                 グループを作成する
               </Button>

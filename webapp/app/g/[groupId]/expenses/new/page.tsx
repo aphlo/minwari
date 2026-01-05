@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { EditGroupForm } from "@/client/components/forms/EditGroupForm";
+import { AddExpenseForm } from "@/client/components/forms/AddExpenseForm";
 import { Header } from "@/client/components/layout/Header";
 import { getGroup } from "@/server/repositories/groupRepository";
 
@@ -16,12 +16,11 @@ export async function generateMetadata({ params }: Props) {
   }
 
   return {
-    title: `${group.name}を編集 | みんなの割り勘`,
-    description: `${group.name}のグループ情報を編集`,
+    title: `立て替えを追加 | ${group.name} | みんなの割り勘`,
   };
 }
 
-export default async function EditGroupPage({ params }: Props) {
+export default async function AddExpensePage({ params }: Props) {
   const { groupId } = await params;
   const group = await getGroup(groupId);
 
@@ -33,15 +32,13 @@ export default async function EditGroupPage({ params }: Props) {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Main Content */}
       <main className="pt-20 pb-16 px-6 lg:px-8">
         <div className="max-w-md mx-auto">
-          <div className="animate-fade-in-up delay-100 opacity-0 bg-card rounded-2xl border border-border p-8 shadow-sm">
-            <EditGroupForm
-              groupId={group.id}
-              initialName={group.name}
-              initialMembers={group.members}
-            />
+          <div className="animate-fade-in-up opacity-0 bg-card rounded-2xl border border-border p-6 shadow-sm">
+            <h1 className="text-xl font-bold text-foreground mb-8">
+              立て替えを追加
+            </h1>
+            <AddExpenseForm groupId={groupId} members={group.members} />
           </div>
         </div>
       </main>

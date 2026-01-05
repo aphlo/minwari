@@ -1,11 +1,12 @@
 "use client";
 
+import { Button } from "@heroui/button";
+import { Chip } from "@heroui/chip";
 import Link from "next/link";
 import { useState } from "react";
-import { AddExpenseModal } from "./AddExpenseModal";
-import { Button } from "./Button";
+import { getMemberChipColor } from "@/client/lib/memberColor";
+import { Header } from "../layout/Header";
 import { ExpenseList } from "./ExpenseList";
-import { Header } from "./Header";
 import { SettlementSection } from "./SettlementSection";
 
 type SerializedGroup = {
@@ -33,17 +34,7 @@ type Props = {
 };
 
 export function GroupDetailClient({ group, initialExpenses }: Props) {
-  const [expenses, setExpenses] = useState(initialExpenses);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-  const handleExpenseAdded = (newExpense: SerializedExpense) => {
-    setExpenses((prev) => [newExpense, ...prev]);
-    setIsAddModalOpen(false);
-  };
-
-  const handleExpenseDeleted = (expenseId: string) => {
-    setExpenses((prev) => prev.filter((e) => e.id !== expenseId));
-  };
+  const [expenses] = useState(initialExpenses);
 
   return (
     <div className="min-h-screen bg-background">
@@ -61,12 +52,14 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
                 </h1>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {group.members.map((member) => (
-                    <span
+                    <Chip
                       key={member}
-                      className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-bg-secondary text-foreground"
+                      color={getMemberChipColor(member)}
+                      variant="flat"
+                      size="sm"
                     >
                       {member}
-                    </span>
+                    </Chip>
                   ))}
                 </div>
               </div>
@@ -95,24 +88,28 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
           {/* Add Expense Button */}
           <div className="animate-fade-in-up delay-100 opacity-0">
             <Button
-              variant="primary"
+              as={Link}
+              href={`/g/${group.id}/expenses/new`}
+              color="primary"
               size="lg"
-              onClick={() => setIsAddModalOpen(true)}
-              className="w-full"
+              radius="full"
+              className="w-full font-medium"
+              startContent={
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              }
             >
-              <svg
-                className="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
               立て替えを追加
             </Button>
           </div>
@@ -122,11 +119,7 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
             <h2 className="text-lg font-semibold text-foreground mb-4">
               記録一覧
             </h2>
-            <ExpenseList
-              groupId={group.id}
-              expenses={expenses}
-              onExpenseDeleted={handleExpenseDeleted}
-            />
+            <ExpenseList groupId={group.id} expenses={expenses} />
           </div>
 
           {/* Settlement Section */}
@@ -135,15 +128,6 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
           </div>
         </div>
       </main>
-
-      {/* Add Expense Modal */}
-      <AddExpenseModal
-        isOpen={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-        groupId={group.id}
-        members={group.members}
-        onExpenseAdded={handleExpenseAdded}
-      />
     </div>
   );
 }
