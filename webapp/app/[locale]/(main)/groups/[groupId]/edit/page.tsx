@@ -1,29 +1,31 @@
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { EditGroupForm } from "@/client/components/forms/EditGroupForm";
 import { Header } from "@/client/components/layout/Header";
-import { getGroup } from "@/server/repositories/groupRepository";
+import { loadGroup } from "@/server/loaders/groupLoader";
 
 type Props = {
-  params: Promise<{ groupId: string }>;
+  params: Promise<{ locale: string; groupId: string }>;
 };
 
 export async function generateMetadata({ params }: Props) {
-  const { groupId } = await params;
-  const group = await getGroup(groupId);
+  const { groupId, locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  const group = await loadGroup(groupId);
 
   if (!group) {
-    return { title: "グループが見つかりません" };
+    return { title: t("groupNotFound") };
   }
 
   return {
-    title: `${group.name}を編集 | みんなの割り勘`,
-    description: `${group.name}のグループ情報を編集`,
+    title: t("groupEditTitle", { name: group.name }),
+    description: t("groupEditDescription", { name: group.name }),
   };
 }
 
 export default async function EditGroupPage({ params }: Props) {
   const { groupId } = await params;
-  const group = await getGroup(groupId);
+  const group = await loadGroup(groupId);
 
   if (!group) {
     notFound();
@@ -41,6 +43,7 @@ export default async function EditGroupPage({ params }: Props) {
               groupId={group.id}
               initialName={group.name}
               initialMembers={group.members}
+              initialCurrency={group.currency}
             />
           </div>
         </div>

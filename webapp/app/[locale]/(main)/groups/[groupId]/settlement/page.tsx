@@ -1,42 +1,38 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { Header } from "@/client/components/layout/Header";
-import { getExpenses } from "@/server/repositories/expenseRepository";
-import { getGroup } from "@/server/repositories/groupRepository";
-import { calculateMemberBalances } from "@/server/usecases/calculateMemberBalances";
+import { Link } from "@/i18n/navigation";
+import { loadSettlementDetail } from "@/server/loaders/settlementDetailLoader";
 
 type Props = {
-  params: Promise<{ groupId: string }>;
+  params: Promise<{ locale: string; groupId: string }>;
 };
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
   return {
-    title: `精算詳細 | みんなの割り勘`,
-    description: `精算詳細を確認`,
+    title: t("settlementTitle"),
+    description: t("settlementDescription"),
   };
 }
 
-const formatAmount = (amount: number) => {
-  return new Intl.NumberFormat("ja-JP", {
-    style: "currency",
-    currency: "JPY",
-  }).format(amount);
-};
-
 export default async function SettlementDetailPage({ params }: Props) {
   const { groupId } = await params;
-  const group = await getGroup(groupId);
+  const t = await getTranslations("settlementDetail");
+  const format = await getFormatter();
+  const detail = await loadSettlementDetail(groupId);
 
-  if (!group) {
+  if (!detail) {
     notFound();
   }
 
-  const expenses = await getExpenses(groupId);
-  const balances = calculateMemberBalances(expenses, group.members);
-  const totalAmount = expenses.reduce(
-    (sum, expense) => sum + expense.amount,
-    0
-  );
+  const { group, expenses, balances, totalAmount } = detail;
+  const formatAmount = (amount: number) =>
+    format.number(amount, {
+      style: "currency",
+      currency: group.currency,
+    });
 
   return (
     <div className="min-h-screen bg-background">
@@ -59,17 +55,15 @@ export default async function SettlementDetailPage({ params }: Props) {
                   d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-              精算詳細
+              {t("title")}
             </h1>
-            <p className="text-sm text-muted mt-1">
-              メンバー別の支出と負担を確認できます
-            </p>
+            <p className="text-sm text-muted mt-1">{t("subtitle")}</p>
           </div>
 
           {expenses.length > 0 && (
             <div className="rounded-2xl border border-border bg-card px-4 py-3 shadow-sm">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted">グループ合計支出</span>
+                <span className="text-sm text-muted">{t("summary.total")}</span>
                 <span className="text-lg font-semibold text-foreground">
                   {formatAmount(totalAmount)}
                 </span>
@@ -92,9 +86,7 @@ export default async function SettlementDetailPage({ params }: Props) {
                   d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <p className="mt-3 text-muted text-sm">
-                まだ精算できる立て替えがありません
-              </p>
+              <p className="mt-3 text-muted text-sm">{t("empty")}</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -102,10 +94,10 @@ export default async function SettlementDetailPage({ params }: Props) {
                 const netAmount = Math.abs(balance.net);
                 const netLabel =
                   balance.net > 0
-                    ? "受け取り"
+                    ? t("net.receive")
                     : balance.net < 0
-                      ? "支払い"
-                      : "差額なし";
+                      ? t("net.pay")
+                      : t("net.even");
                 const netColor =
                   balance.net > 0
                     ? "text-primary"
@@ -129,13 +121,13 @@ export default async function SettlementDetailPage({ params }: Props) {
                     </div>
                     <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
                       <div className="rounded-xl bg-bg-secondary px-3 py-2">
-                        <p className="text-muted">支出額</p>
+                        <p className="text-muted">{t("summary.paid")}</p>
                         <p className="mt-1 text-sm font-semibold text-foreground">
                           {formatAmount(balance.paid)}
                         </p>
                       </div>
                       <div className="rounded-xl bg-bg-secondary px-3 py-2">
-                        <p className="text-muted">負担額</p>
+                        <p className="text-muted">{t("summary.owed")}</p>
                         <p className="mt-1 text-sm font-semibold text-foreground">
                           {formatAmount(balance.owed)}
                         </p>
@@ -151,7 +143,7 @@ export default async function SettlementDetailPage({ params }: Props) {
             href={`/groups/${groupId}`}
             className="flex items-center justify-center rounded-full border border-border bg-bg-secondary px-4 py-3 text-sm font-medium text-foreground transition-colors"
           >
-            戻る
+            {t("actions.back")}
           </Link>
         </div>
       </main>

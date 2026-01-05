@@ -1,8 +1,10 @@
+import { defaultCurrency, isSupportedCurrency } from "@/shared/lib/currency";
 import { createGroup } from "../repositories/groupRepository";
 
 export type CreateGroupInput = {
   groupName: string;
   members: string[];
+  currency?: string;
 };
 
 export async function createGroupUsecase(input: CreateGroupInput) {
@@ -15,8 +17,14 @@ export async function createGroupUsecase(input: CreateGroupInput) {
     .map((member) => member.trim())
     .filter((member) => member.length > 0);
 
+  const candidateCurrency = input.currency ?? "";
+  const currency = isSupportedCurrency(candidateCurrency)
+    ? candidateCurrency
+    : defaultCurrency;
+
   return createGroup({
     name: groupName,
     members,
+    currency,
   });
 }

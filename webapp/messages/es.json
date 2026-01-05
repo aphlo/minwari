@@ -1,0 +1,244 @@
+{
+  "metadata": {
+    "title": "OurSplit | Division de gastos simple",
+    "description": "Crea un grupo y registra gastos para calcular automaticamente quien debe a quien.",
+    "groupNotFound": "Grupo no encontrado",
+    "groupTitle": "{name} | OurSplit",
+    "groupDescription": "Gestiona la division de {name}",
+    "groupEditTitle": "Editar {name} | OurSplit",
+    "groupEditDescription": "Edita la informacion del grupo {name}",
+    "settlementTitle": "Detalle de liquidacion | OurSplit",
+    "settlementDescription": "Revisa el detalle de la liquidacion",
+    "expenseAddTitle": "Agregar gasto | {name} | OurSplit",
+    "expenseEditTitle": "Editar {description} | {name} | OurSplit",
+    "expenseNotFound": "Registro no encontrado",
+    "newGroupTitle": "Crear grupo | OurSplit",
+    "newGroupDescription": "Crea un nuevo grupo y invita a miembros."
+  },
+  "app": {
+    "name": "OurSplit"
+  },
+  "locales": {
+    "label": "Idioma",
+    "ja": "日本語",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ko": "한국어",
+    "zh-TW": "繁體中文",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)"
+  },
+  "theme": {
+    "toggle": "Cambiar tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "marketing": {
+    "hero": {
+      "titleLine1": "Divide gastos de viaje",
+      "titleLine2": "sin complicaciones",
+      "subtitleLine1": "Calcula automaticamente liquidaciones de viajes o eventos.",
+      "subtitleLine2": "Ve quien debe cuanto de un vistazo.",
+      "actions": {
+        "start": "Empezar",
+        "learnMore": "Saber mas"
+      }
+    },
+    "features": {
+      "title": "Simple. Inteligente. Fluido.",
+      "subtitle": "Deja las cuentas en nuestras manos y disfruta el viaje.",
+      "items": {
+        "create": {
+          "title": "Creacion rapida",
+          "description": "Crea un grupo sin registro y comparte el URL para invitar."
+        },
+        "record": {
+          "title": "Registra gastos",
+          "description": "Anota quien pago que y elige participantes facilmente."
+        },
+        "settle": {
+          "title": "Liquidacion automatica",
+          "description": "Calcula quien paga a quien con el minimo de transferencias."
+        }
+      }
+    },
+    "steps": {
+      "title": "Listo en 3 pasos",
+      "items": {
+        "create": {
+          "title": "Crea un grupo",
+          "description": "Solo escribe el nombre del grupo. Sin cuenta."
+        },
+        "add": {
+          "title": "Agrega miembros y gastos",
+          "description": "Agrega participantes y registra quien pago que."
+        },
+        "check": {
+          "title": "Revisa la liquidacion",
+          "description": "Consulta los resultados calculados automaticamente."
+        }
+      }
+    },
+    "cta": {
+      "title": "Empieza ahora",
+      "subtitleLine1": "Crea un grupo",
+      "subtitleLine2": "y liquida facilmente.",
+      "action": "Crear grupo"
+    },
+    "footer": {
+      "brand": "OurSplit",
+      "copyright": "OurSplit"
+    }
+  },
+  "forms": {
+    "newGroup": {
+      "fields": {
+        "groupName": {
+          "label": "Nombre del grupo",
+          "placeholder": "Ej: Viaje a Okinawa 2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "Ingresa un nombre de grupo",
+        "memberNameRequired": "Ingresa el nombre de un miembro",
+        "submitFailed": "No se pudo crear el grupo. Intentalo de nuevo."
+      },
+      "actions": {
+        "submitting": "Creando...",
+        "submit": "Crear grupo"
+      }
+    },
+    "editGroup": {
+      "fields": {
+        "groupName": {
+          "label": "Nombre del grupo",
+          "placeholder": "Ej: Viaje a Okinawa 2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "Ingresa un nombre de grupo",
+        "memberNameRequired": "Ingresa el nombre de un miembro",
+        "submitFailed": "No se pudo actualizar el grupo. Intentalo de nuevo."
+      },
+      "actions": {
+        "submitting": "Guardando...",
+        "submit": "Guardar cambios",
+        "back": "Volver"
+      }
+    },
+    "members": {
+      "label": "Nombres de miembros",
+      "placeholder": "Miembro {index}",
+      "removeLabel": "Eliminar miembro",
+      "add": "Agregar miembro"
+    },
+    "expense": {
+      "errors": {
+        "amount": "Ingresa un monto valido",
+        "description": "Ingresa una descripcion",
+        "paidBy": "Selecciona quien pago",
+        "splitWith": "Selecciona miembros para dividir",
+        "updateFailed": "No se pudo actualizar",
+        "createFailed": "No se pudo crear"
+      },
+      "actions": {
+        "updating": "Actualizando...",
+        "update": "Actualizar",
+        "creating": "Agregando...",
+        "create": "Agregar",
+        "cancel": "Cancelar"
+      },
+      "fields": {
+        "amount": {
+          "label": "Monto",
+          "placeholder": "0"
+        },
+        "description": {
+          "label": "Descripcion",
+          "placeholder": "Ej: Almuerzo"
+        },
+        "paidBy": {
+          "label": "Pagado por",
+          "placeholder": "Seleccionar"
+        },
+        "splitWith": {
+          "label": "Dividir con",
+          "helper": "Se divide en partes iguales entre los miembros seleccionados"
+        }
+      }
+    }
+  },
+  "currency": {
+    "label": "Moneda",
+    "options": {
+      "JPY": "Yen japones (JPY)",
+      "USD": "Dolar estadounidense (USD)",
+      "EUR": "Euro (EUR)",
+      "CNY": "Yuan chino (CNY)",
+      "KRW": "Won coreano (KRW)",
+      "TWD": "Nuevo dolar taiwanes (TWD)"
+    }
+  },
+  "group": {
+    "actions": {
+      "edit": "Editar grupo",
+      "addExpense": "Agregar gasto"
+    },
+    "sections": {
+      "expenses": "Registros",
+      "settlement": "Liquidacion"
+    }
+  },
+  "expenses": {
+    "empty": {
+      "title": "Aun no hay registros",
+      "subtitle": "Agrega uno desde “Agregar gasto”."
+    },
+    "paidBySuffix": " pagó",
+    "actions": {
+      "edit": "Editar"
+    },
+    "add": {
+      "title": "Agregar gasto"
+    },
+    "edit": {
+      "title": "Editar gasto"
+    }
+  },
+  "settlement": {
+    "empty": {
+      "noExpenses": "La liquidacion aparecera al registrar gastos",
+      "settled": "Todos los miembros estan liquidados"
+    },
+    "actions": {
+      "detail": "Ver detalle de liquidacion"
+    }
+  },
+  "settlementDetail": {
+    "title": "Detalle de liquidacion",
+    "subtitle": "Revisa los montos pagados y adeudados por miembro",
+    "summary": {
+      "total": "Gasto total del grupo",
+      "paid": "Pagado",
+      "owed": "Adeudado"
+    },
+    "empty": "Aun no hay gastos para liquidar",
+    "net": {
+      "receive": "Recibe",
+      "pay": "Paga",
+      "even": "Sin diferencia"
+    },
+    "actions": {
+      "back": "Volver"
+    }
+  },
+  "newGroupPage": {
+    "title": "Lo que puedes hacer despues de crear un grupo",
+    "features": {
+      "invite": "Comparte el URL para invitar miembros",
+      "record": "Registra gastos y divide costos",
+      "check": "Ve quien debe cuanto de un vistazo"
+    }
+  }
+}

@@ -1,6 +1,9 @@
+import type { CurrencyCode } from "@/shared/lib/currency";
+
 export type CreateGroupRequest = {
   groupName: string;
   members: string[];
+  currency?: CurrencyCode;
 };
 
 export type CreateGroupResponse = {
@@ -11,6 +14,7 @@ export type Group = {
   id: string;
   name: string;
   members: string[];
+  currency: CurrencyCode;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -18,6 +22,7 @@ export type Group = {
 export type UpdateGroupRequest = {
   groupName: string;
   members: string[];
+  currency?: CurrencyCode;
 };
 
 export type Expense = {

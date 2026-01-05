@@ -16,6 +16,7 @@ export async function POST(request: Request) {
     const result = await createGroupUsecase({
       groupName: body?.groupName ?? "",
       members: Array.isArray(body?.members) ? body.members : [],
+      currency: body?.currency,
     });
     return NextResponse.json(result, { status: 201 });
   } catch (error) {

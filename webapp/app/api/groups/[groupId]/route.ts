@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getGroup, updateGroup } from "@/server/repositories/groupRepository";
+import { defaultCurrency, isSupportedCurrency } from "@/shared/lib/currency";
 import type { UpdateGroupRequest } from "@/shared/types/group";
 
 export const runtime = "nodejs";
@@ -40,9 +41,18 @@ export async function PUT(request: Request, { params }: Params) {
       return NextResponse.json({ error: "not_found" }, { status: 404 });
     }
 
+    if (body.currency && !isSupportedCurrency(body.currency)) {
+      return NextResponse.json({ error: "invalid_currency" }, { status: 400 });
+    }
+
+    const resolvedCurrency = body.currency
+      ? body.currency
+      : (existingGroup.currency ?? defaultCurrency);
+
     await updateGroup(groupId, {
       name: body.groupName.trim(),
       members: (body.members ?? []).map((m) => m.trim()).filter(Boolean),
+      currency: resolvedCurrency,
     });
 
     const updatedGroup = await getGroup(groupId);

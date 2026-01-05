@@ -1,6 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { useFormatter, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import type { CurrencyCode } from "@/shared/lib/currency";
 
 type SerializedExpense = {
   id: string;
@@ -23,14 +25,23 @@ type Props = {
   expenses: SerializedExpense[];
   settlements: SerializedSettlement[];
   groupId: string;
+  currency: CurrencyCode;
 };
 
-export function SettlementSection({ expenses, settlements, groupId }: Props) {
+export function SettlementSection({
+  expenses,
+  settlements,
+  groupId,
+  currency,
+}: Props) {
+  const t = useTranslations("settlement");
+  const format = useFormatter();
+
   const formatAmount = (amount: number) => {
-    return new Intl.NumberFormat("ja-JP", {
+    return format.number(amount, {
       style: "currency",
-      currency: "JPY",
-    }).format(amount);
+      currency,
+    });
   };
 
   return (
@@ -50,9 +61,7 @@ export function SettlementSection({ expenses, settlements, groupId }: Props) {
               d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
             />
           </svg>
-          <p className="mt-3 text-muted text-sm">
-            立て替えを記録すると精算内容が表示されます
-          </p>
+          <p className="mt-3 text-muted text-sm">{t("empty.noExpenses")}</p>
         </div>
       ) : settlements.length === 0 ? (
         <div className="text-center py-6 border-2 border-dashed border-border rounded-xl">
@@ -69,7 +78,7 @@ export function SettlementSection({ expenses, settlements, groupId }: Props) {
               d="M5 13l4 4L19 7"
             />
           </svg>
-          <p className="mt-3 text-muted text-sm">全員の精算が完了しています</p>
+          <p className="mt-3 text-muted text-sm">{t("empty.settled")}</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -96,7 +105,7 @@ export function SettlementSection({ expenses, settlements, groupId }: Props) {
           href={`/groups/${groupId}/settlement`}
           className="mt-4 flex items-center justify-center rounded-full border border-border bg-primary/10 px-4 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
         >
-          精算の詳細を確認
+          {t("actions.detail")}
         </Link>
       )}
     </div>

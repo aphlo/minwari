@@ -1,10 +1,13 @@
 "use client";
 
 import { Button } from "@heroui/button";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Header } from "@/client/components/layout/Header";
+import { Link } from "@/i18n/navigation";
 
 export default function Home() {
+  const t = useTranslations("marketing");
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -15,14 +18,14 @@ export default function Home() {
 
         <div className="relative max-w-4xl mx-auto text-center">
           <h1 className="animate-fade-in-up text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground tracking-tight leading-[1.1] mb-6">
-            旅行の割り勘を
+            {t("hero.titleLine1")}
             <br />
-            <span className="text-primary">シンプルに</span>
+            <span className="text-primary">{t("hero.titleLine2")}</span>
           </h1>
           <p className="animate-fade-in-up delay-100 text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed opacity-0">
-            グループ旅行やイベントでの精算を自動計算。
+            {t("hero.subtitleLine1")}
             <br className="hidden sm:block" />
-            誰がいくら払えばいいか、ひと目でわかります。
+            {t("hero.subtitleLine2")}
           </p>
           <div className="animate-fade-in-up delay-200 flex flex-col sm:flex-row gap-4 justify-center opacity-0">
             <Button
@@ -33,7 +36,7 @@ export default function Home() {
               radius="full"
               className="font-medium"
             >
-              始める
+              {t("hero.actions.start")}
             </Button>
             <Button
               as={Link}
@@ -43,7 +46,7 @@ export default function Home() {
               radius="full"
               className="font-medium"
             >
-              詳しく見る
+              {t("hero.actions.learnMore")}
             </Button>
           </div>
         </div>
@@ -54,10 +57,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-4">
-              シンプル。スマート。スムーズ。
+              {t("features.title")}
             </h2>
             <p className="text-lg text-muted max-w-2xl mx-auto">
-              面倒な計算はお任せ。あなたは旅を楽しむことに集中できます。
+              {t("features.subtitle")}
             </p>
           </div>
 
@@ -80,10 +83,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3">
-                かんたん作成
+                {t("features.items.create.title")}
               </h3>
               <p className="text-muted leading-relaxed">
-                登録不要でグループを作成。URLを共有するだけでメンバーを招待できます。
+                {t("features.items.create.description")}
               </p>
             </div>
 
@@ -105,10 +108,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3">
-                支出を記録
+                {t("features.items.record.title")}
               </h3>
               <p className="text-muted leading-relaxed">
-                誰が何にいくら払ったか記録。参加者を選んで柔軟に設定できます。
+                {t("features.items.record.description")}
               </p>
             </div>
 
@@ -130,10 +133,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3">
-                自動で精算
+                {t("features.items.settle.title")}
               </h3>
               <p className="text-muted leading-relaxed">
-                誰が誰にいくら払うか自動計算。最小限の送金で精算が完了します。
+                {t("features.items.settle.description")}
               </p>
             </div>
           </div>
@@ -141,10 +144,10 @@ export default function Home() {
       </section>
 
       {/* How it works */}
-      <section className="py-24 px-6 lg:px-8">
+      <section className="py-12 px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-foreground tracking-tight mb-16">
-            3ステップで完了
+            {t("steps.title")}
           </h2>
 
           <div className="space-y-12">
@@ -154,10 +157,10 @@ export default function Home() {
               </div>
               <div className="pt-1">
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  グループを作成
+                  {t("steps.items.create.title")}
                 </h3>
                 <p className="text-muted leading-relaxed">
-                  グループ名を入力して作成。アカウント登録は必要ありません。
+                  {t("steps.items.create.description")}
                 </p>
               </div>
             </div>
@@ -168,10 +171,10 @@ export default function Home() {
               </div>
               <div className="pt-1">
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  メンバーと支出を追加
+                  {t("steps.items.add.title")}
                 </h3>
                 <p className="text-muted leading-relaxed">
-                  参加メンバーを追加し、誰が何にいくら払ったかを記録します。
+                  {t("steps.items.add.description")}
                 </p>
               </div>
             </div>
@@ -182,10 +185,10 @@ export default function Home() {
               </div>
               <div className="pt-1">
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  精算結果を確認
+                  {t("steps.items.check.title")}
                 </h3>
                 <p className="text-muted leading-relaxed">
-                  自動計算された精算結果を確認。誰が誰にいくら払うか一目でわかります。
+                  {t("steps.items.check.description")}
                 </p>
               </div>
             </div>
@@ -194,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 lg:px-8">
+      <section className="py-12 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary-dark p-12 sm:p-16 text-center">
             {/* Decorative circles */}
@@ -203,12 +206,12 @@ export default function Home() {
 
             <div className="relative">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-6">
-                さあ、始めよう
+                {t("cta.title")}
               </h2>
               <p className="text-white/80 text-lg mb-10 max-w-lg mx-auto">
-                グループを作成して、
+                {t("cta.subtitleLine1")}
                 <br className="sm:hidden" />
-                精算をスムーズに。
+                {t("cta.subtitleLine2")}
               </p>
               <Button
                 as={Link}
@@ -217,28 +220,12 @@ export default function Home() {
                 radius="full"
                 className="bg-white text-primary font-medium hover:bg-white/90"
               >
-                グループを作成する
+                {t("cta.action")}
               </Button>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-6 lg:px-8 border-t border-border">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-semibold text-foreground">
-                みんなの割り勘
-              </span>
-            </div>
-            <p className="text-sm text-muted">
-              &copy; {new Date().getFullYear()} みんなの割り勘
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

@@ -1,0 +1,244 @@
+{
+  "metadata": {
+    "title": "OurSplit | 간단한 정산",
+    "description": "그룹을 만들고 지출을 기록하면 자동으로 정산됩니다.",
+    "groupNotFound": "그룹을 찾을 수 없습니다",
+    "groupTitle": "{name} | OurSplit",
+    "groupDescription": "{name} 정산 관리",
+    "groupEditTitle": "{name} 편집 | OurSplit",
+    "groupEditDescription": "{name} 그룹 정보를 편집합니다",
+    "settlementTitle": "정산 상세 | OurSplit",
+    "settlementDescription": "정산 상세를 확인합니다",
+    "expenseAddTitle": "지출 추가 | {name} | OurSplit",
+    "expenseEditTitle": "{description} 편집 | {name} | OurSplit",
+    "expenseNotFound": "기록을 찾을 수 없습니다",
+    "newGroupTitle": "그룹 만들기 | OurSplit",
+    "newGroupDescription": "새 그룹을 만들고 멤버를 초대하세요."
+  },
+  "app": {
+    "name": "OurSplit"
+  },
+  "locales": {
+    "label": "언어",
+    "ja": "日本語",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ko": "한국어",
+    "zh-TW": "繁體中文",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)"
+  },
+  "theme": {
+    "toggle": "테마 전환",
+    "light": "라이트",
+    "dark": "다크",
+    "system": "시스템"
+  },
+  "marketing": {
+    "hero": {
+      "titleLine1": "여행 비용 정산을",
+      "titleLine2": "간단하게",
+      "subtitleLine1": "여행과 이벤트 정산을 자동으로 계산합니다.",
+      "subtitleLine2": "누가 얼마를 내야 하는지 한눈에 확인하세요.",
+      "actions": {
+        "start": "시작하기",
+        "learnMore": "자세히 보기"
+      }
+    },
+    "features": {
+      "title": "심플. 스마트. 스무스.",
+      "subtitle": "복잡한 계산은 맡기고 여행을 즐기세요.",
+      "items": {
+        "create": {
+          "title": "간편 생성",
+          "description": "가입 없이 그룹을 만들고 URL로 멤버를 초대하세요."
+        },
+        "record": {
+          "title": "지출 기록",
+          "description": "누가 무엇에 얼마를 냈는지 기록하고 참여자를 선택하세요."
+        },
+        "settle": {
+          "title": "자동 정산",
+          "description": "최소한의 송금으로 자동으로 정산합니다."
+        }
+      }
+    },
+    "steps": {
+      "title": "3단계로 완료",
+      "items": {
+        "create": {
+          "title": "그룹 만들기",
+          "description": "그룹 이름만 입력하면 바로 시작됩니다."
+        },
+        "add": {
+          "title": "멤버와 지출 추가",
+          "description": "참여 멤버를 추가하고 지출을 기록하세요."
+        },
+        "check": {
+          "title": "정산 결과 확인",
+          "description": "자동 계산된 결과를 한눈에 확인합니다."
+        }
+      }
+    },
+    "cta": {
+      "title": "지금 시작하세요",
+      "subtitleLine1": "그룹을 만들고",
+      "subtitleLine2": "정산을 쉽게 마치세요.",
+      "action": "그룹 만들기"
+    },
+    "footer": {
+      "brand": "OurSplit",
+      "copyright": "OurSplit"
+    }
+  },
+  "forms": {
+    "newGroup": {
+      "fields": {
+        "groupName": {
+          "label": "그룹 이름",
+          "placeholder": "예: 오키나와 여행 2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "그룹 이름을 입력하세요",
+        "memberNameRequired": "멤버 이름을 입력하세요",
+        "submitFailed": "그룹 생성에 실패했습니다. 다시 시도해주세요."
+      },
+      "actions": {
+        "submitting": "생성 중...",
+        "submit": "그룹 만들기"
+      }
+    },
+    "editGroup": {
+      "fields": {
+        "groupName": {
+          "label": "그룹 이름",
+          "placeholder": "예: 오키나와 여행 2024"
+        }
+      },
+      "errors": {
+        "groupNameRequired": "그룹 이름을 입력하세요",
+        "memberNameRequired": "멤버 이름을 입력하세요",
+        "submitFailed": "그룹 업데이트에 실패했습니다. 다시 시도해주세요."
+      },
+      "actions": {
+        "submitting": "저장 중...",
+        "submit": "변경 사항 저장",
+        "back": "뒤로"
+      }
+    },
+    "members": {
+      "label": "멤버 이름",
+      "placeholder": "멤버 {index}",
+      "removeLabel": "멤버 삭제",
+      "add": "멤버 추가"
+    },
+    "expense": {
+      "errors": {
+        "amount": "올바른 금액을 입력하세요",
+        "description": "용도를 입력하세요",
+        "paidBy": "결제한 사람을 선택하세요",
+        "splitWith": "정산 멤버를 선택하세요",
+        "updateFailed": "업데이트에 실패했습니다",
+        "createFailed": "등록에 실패했습니다"
+      },
+      "actions": {
+        "updating": "업데이트 중...",
+        "update": "업데이트",
+        "creating": "추가 중...",
+        "create": "추가",
+        "cancel": "취소"
+      },
+      "fields": {
+        "amount": {
+          "label": "금액",
+          "placeholder": "0"
+        },
+        "description": {
+          "label": "용도",
+          "placeholder": "예: 점심"
+        },
+        "paidBy": {
+          "label": "결제자",
+          "placeholder": "선택하세요"
+        },
+        "splitWith": {
+          "label": "정산 멤버",
+          "helper": "선택한 멤버와 균등하게 나눕니다"
+        }
+      }
+    }
+  },
+  "currency": {
+    "label": "통화",
+    "options": {
+      "JPY": "일본 엔 (JPY)",
+      "USD": "미국 달러 (USD)",
+      "EUR": "유로 (EUR)",
+      "CNY": "중국 위안 (CNY)",
+      "KRW": "한국 원 (KRW)",
+      "TWD": "대만 달러 (TWD)"
+    }
+  },
+  "group": {
+    "actions": {
+      "edit": "그룹 편집",
+      "addExpense": "지출 추가"
+    },
+    "sections": {
+      "expenses": "기록",
+      "settlement": "정산"
+    }
+  },
+  "expenses": {
+    "empty": {
+      "title": "아직 기록이 없습니다",
+      "subtitle": "“지출 추가”에서 기록을 추가하세요"
+    },
+    "paidBySuffix": " 결제",
+    "actions": {
+      "edit": "편집"
+    },
+    "add": {
+      "title": "지출 추가"
+    },
+    "edit": {
+      "title": "지출 편집"
+    }
+  },
+  "settlement": {
+    "empty": {
+      "noExpenses": "지출을 기록하면 정산이 표시됩니다",
+      "settled": "모든 멤버의 정산이 완료되었습니다"
+    },
+    "actions": {
+      "detail": "정산 상세 보기"
+    }
+  },
+  "settlementDetail": {
+    "title": "정산 상세",
+    "subtitle": "멤버별 지출과 부담을 확인할 수 있습니다",
+    "summary": {
+      "total": "그룹 총 지출",
+      "paid": "지출액",
+      "owed": "부담액"
+    },
+    "empty": "정산할 지출이 없습니다",
+    "net": {
+      "receive": "받을 금액",
+      "pay": "낼 금액",
+      "even": "차이 없음"
+    },
+    "actions": {
+      "back": "뒤로"
+    }
+  },
+  "newGroupPage": {
+    "title": "그룹 생성 후 할 수 있는 일",
+    "features": {
+      "invite": "URL을 공유해 멤버를 초대",
+      "record": "지출을 기록하고 정산 계산",
+      "check": "누가 얼마를 내야 하는지 한눈에 확인"
+    }
+  }
+}

@@ -1,11 +1,13 @@
 "use client";
 
 import { Monitor, Moon, Sun } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import * as React from "react";
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
+  const t = useTranslations("theme");
   const [mounted, setMounted] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
@@ -43,7 +45,7 @@ export function ThemeToggle() {
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="w-10 h-10 flex items-center justify-center rounded-full bg-bg-secondary text-foreground hover:bg-bg-tertiary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-        aria-label="Toggle theme"
+        aria-label={t("toggle")}
       >
         <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
         <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -65,7 +67,7 @@ export function ThemeToggle() {
               }`}
             >
               <Sun className="h-4 w-4" />
-              <span>Light</span>
+              <span>{t("light")}</span>
             </button>
             <button
               type="button"
@@ -80,7 +82,7 @@ export function ThemeToggle() {
               }`}
             >
               <Moon className="h-4 w-4" />
-              <span>Dark</span>
+              <span>{t("dark")}</span>
             </button>
             <button
               type="button"
@@ -95,7 +97,7 @@ export function ThemeToggle() {
               }`}
             >
               <Monitor className="h-4 w-4" />
-              <span>System</span>
+              <span>{t("system")}</span>
             </button>
           </div>
         </div>

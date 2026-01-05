@@ -1,12 +1,24 @@
+import { getTranslations } from "next-intl/server";
 import { NewGroupForm } from "@/client/components/forms/NewGroupForm";
 import { Header } from "@/client/components/layout/Header";
 
-export const metadata = {
-  title: "グループを作成 | みんなの割り勘",
-  description: "新しい割り勘グループを作成して、メンバーを招待しましょう。",
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
-export default function NewGroupPage() {
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  return {
+    title: t("newGroupTitle"),
+    description: t("newGroupDescription"),
+  };
+}
+
+export default async function NewGroupPage() {
+  const t = await getTranslations("newGroupPage");
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -35,7 +47,7 @@ export default function NewGroupPage() {
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              グループ作成後にできること
+              {t("title")}
             </h2>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
@@ -55,7 +67,7 @@ export default function NewGroupPage() {
                   </svg>
                 </div>
                 <span className="text-sm text-muted">
-                  URLを共有してメンバーを招待
+                  {t("features.invite")}
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -75,7 +87,7 @@ export default function NewGroupPage() {
                   </svg>
                 </div>
                 <span className="text-sm text-muted">
-                  支出を記録して割り勘を計算
+                  {t("features.record")}
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -95,7 +107,7 @@ export default function NewGroupPage() {
                   </svg>
                 </div>
                 <span className="text-sm text-muted">
-                  誰がいくら払うか一目で確認
+                  {t("features.check")}
                 </span>
               </li>
             </ul>
