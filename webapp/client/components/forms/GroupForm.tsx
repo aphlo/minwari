@@ -1,11 +1,12 @@
 "use client";
 
 import { Button } from "@heroui/button";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { CurrencySelect } from "@/client/components/forms/CurrencySelect";
 import { useRouter } from "@/i18n/navigation";
-import { type CurrencyCode, defaultCurrency } from "@/shared/lib/currency";
+import type { CurrencyCode } from "@/shared/lib/currency";
+import { getDefaultCurrencyForLocale } from "@/shared/lib/localeCurrency";
 import type { CreateGroupResponse } from "@/shared/types/group";
 import { Input } from "./Input";
 import { MemberListInput } from "./MemberListInput";
@@ -24,14 +25,19 @@ export function GroupForm({
   groupId,
   initialName = "",
   initialMembers = [],
-  initialCurrency = defaultCurrency,
+  initialCurrency,
   namespace,
 }: Props) {
   const router = useRouter();
+  const locale = useLocale();
   const t = useTranslations(namespace);
+  const resolvedInitialCurrency =
+    initialCurrency ?? getDefaultCurrencyForLocale(locale);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [groupName, setGroupName] = useState(initialName);
-  const [currency, setCurrency] = useState<CurrencyCode>(initialCurrency);
+  const [currency, setCurrency] = useState<CurrencyCode>(
+    resolvedInitialCurrency
+  );
   const [members, setMembers] = useState<{ id: string; name: string }[]>(
     initialMembers.length > 0
       ? initialMembers.map((name) => ({
