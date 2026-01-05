@@ -1,3 +1,4 @@
+import { toMinorUnits } from "@/shared/lib/currency";
 import type { Expense } from "@/shared/types/group";
 
 export const buildMemberOrder = (members: string[], expenses: Expense[]) => {
@@ -17,7 +18,8 @@ export const buildMemberOrder = (members: string[], expenses: Expense[]) => {
 
 export const calculateExpenseShares = (
   expense: Expense,
-  fallbackMembers: string[]
+  fallbackMembers: string[],
+  fractionDigits: number
 ) => {
   const participants =
     expense.splitWith.length > 0 ? expense.splitWith : fallbackMembers;
@@ -26,7 +28,8 @@ export const calculateExpenseShares = (
     return [];
   }
 
-  const perPerson = Math.floor(expense.amount / count);
+  const amountMinor = toMinorUnits(expense.amount, fractionDigits);
+  const perPerson = Math.floor(amountMinor / count);
   const orderedParticipants = participants.includes(expense.paidBy)
     ? [
         expense.paidBy,
@@ -34,10 +37,10 @@ export const calculateExpenseShares = (
       ]
     : [...participants];
   const shares = orderedParticipants.map(() => perPerson);
-  shares[0] += expense.amount - perPerson * count;
+  shares[0] += amountMinor - perPerson * count;
 
   return orderedParticipants.map((member, index) => ({
     member,
-    share: shares[index],
+    shareMinor: shares[index],
   }));
 };

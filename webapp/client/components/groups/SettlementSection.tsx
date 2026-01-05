@@ -2,7 +2,10 @@
 
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import type { CurrencyCode } from "@/shared/lib/currency";
+import {
+  type CurrencyCode,
+  getCurrencyFractionDigits,
+} from "@/shared/lib/currency";
 
 type SerializedExpense = {
   id: string;
@@ -36,11 +39,14 @@ export function SettlementSection({
 }: Props) {
   const t = useTranslations("settlement");
   const format = useFormatter();
+  const fractionDigits = getCurrencyFractionDigits(currency);
 
   const formatAmount = (amount: number) => {
     return format.number(amount, {
       style: "currency",
       currency,
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
     });
   };
 

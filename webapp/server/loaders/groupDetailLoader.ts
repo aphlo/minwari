@@ -36,7 +36,11 @@ export async function loadGroupDetail(groupId: string) {
   }
 
   const expenses = await getExpenses(groupId);
-  const settlements = calculateSettlements(expenses, group.members);
+  const settlements = calculateSettlements(
+    expenses,
+    group.members,
+    group.currency
+  );
 
   const serializedGroup: SerializedGroup = {
     ...group,

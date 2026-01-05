@@ -34,12 +34,12 @@ test("calculateExpenseShares assigns rounding difference to payer", () => {
     splitWith: ["A", "B", "C"],
   });
 
-  const shares = calculateExpenseShares(expense, ["A", "B", "C"]);
+  const shares = calculateExpenseShares(expense, ["A", "B", "C"], 0);
 
   assert.deepEqual(shares, [
-    { member: "A", share: 35 },
-    { member: "B", share: 33 },
-    { member: "C", share: 33 },
+    { member: "A", shareMinor: 35 },
+    { member: "B", shareMinor: 33 },
+    { member: "C", shareMinor: 33 },
   ]);
 });
 
@@ -50,7 +50,7 @@ test("calculateExpenseShares handles payer not in participants", () => {
     splitWith: ["A"],
   });
 
-  const shares = calculateExpenseShares(expense, ["A", "B", "C"]);
+  const shares = calculateExpenseShares(expense, ["A", "B", "C"], 0);
 
-  assert.deepEqual(shares, [{ member: "A", share: 50 }]);
+  assert.deepEqual(shares, [{ member: "A", shareMinor: 50 }]);
 });

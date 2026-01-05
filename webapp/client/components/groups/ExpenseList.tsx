@@ -4,7 +4,10 @@ import { Chip } from "@heroui/chip";
 import { useFormatter, useTranslations } from "next-intl";
 import { getMemberChipColor } from "@/client/lib/memberColor";
 import { Link } from "@/i18n/navigation";
-import type { CurrencyCode } from "@/shared/lib/currency";
+import {
+  type CurrencyCode,
+  getCurrencyFractionDigits,
+} from "@/shared/lib/currency";
 
 type SerializedExpense = {
   id: string;
@@ -26,6 +29,7 @@ type Props = {
 export function ExpenseList({ groupId, expenses, currency }: Props) {
   const t = useTranslations("expenses");
   const format = useFormatter();
+  const fractionDigits = getCurrencyFractionDigits(currency);
 
   if (expenses.length === 0) {
     return (
@@ -53,6 +57,8 @@ export function ExpenseList({ groupId, expenses, currency }: Props) {
     return format.number(amount, {
       style: "currency",
       currency,
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
     });
   };
 

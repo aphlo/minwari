@@ -3,6 +3,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 import { Header } from "@/client/components/layout/Header";
 import { Link } from "@/i18n/navigation";
 import { loadSettlementDetail } from "@/server/loaders/settlementDetailLoader";
+import { getCurrencyFractionDigits } from "@/shared/lib/currency";
 
 type Props = {
   params: Promise<{ locale: string; groupId: string }>;
@@ -28,10 +29,13 @@ export default async function SettlementDetailPage({ params }: Props) {
   }
 
   const { group, expenses, balances, totalAmount } = detail;
+  const fractionDigits = getCurrencyFractionDigits(group.currency);
   const formatAmount = (amount: number) =>
     format.number(amount, {
       style: "currency",
       currency: group.currency,
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
     });
 
   return (

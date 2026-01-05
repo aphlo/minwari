@@ -7,7 +7,11 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useRouter } from "@/i18n/navigation";
 import type { CurrencyCode } from "@/shared/lib/currency";
-import { getCurrencySymbol } from "@/shared/lib/currency";
+import {
+  getCurrencyFractionDigits,
+  getCurrencySymbol,
+  normalizeCurrencyAmount,
+} from "@/shared/lib/currency";
 import { Input } from "./Input";
 
 type ExpenseData = {
@@ -49,6 +53,9 @@ export function ExpenseForm({ groupId, members, currency, expense }: Props) {
     );
   };
 
+  const fractionDigits = getCurrencyFractionDigits(currency);
+  const amountStep = Number((1 / 10 ** fractionDigits).toFixed(fractionDigits));
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -87,7 +94,7 @@ export function ExpenseForm({ groupId, members, currency, expense }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           description: description.trim(),
-          amount: amountNum,
+          amount: normalizeCurrencyAmount(amountNum, fractionDigits),
           paidBy,
           splitWith,
         }),
@@ -133,7 +140,8 @@ export function ExpenseForm({ groupId, members, currency, expense }: Props) {
         variant="bordered"
         radius="lg"
         className="mb-8"
-        min={1}
+        min={amountStep}
+        step={amountStep}
         startContent={
           <div className="pointer-events-none flex items-center">
             <span className="text-default-400 text-small">

@@ -25,7 +25,7 @@ test("returns paid, owed, and net per member", () => {
     createExpense({ amount: 50, paidBy: "C", splitWith: ["A"] }),
   ];
 
-  const balances = calculateMemberBalances(expenses, ["A", "B", "C"]);
+  const balances = calculateMemberBalances(expenses, ["A", "B", "C"], "JPY");
 
   assert.deepEqual(balances, [
     { name: "A", paid: 121, owed: 131, net: -10 },
@@ -39,7 +39,7 @@ test("includes members appearing only in expenses", () => {
     createExpense({ amount: 30, paidBy: "D", splitWith: ["A", "D"] }),
   ];
 
-  const balances = calculateMemberBalances(expenses, ["A", "B"]);
+  const balances = calculateMemberBalances(expenses, ["A", "B"], "JPY");
 
   assert.deepEqual(balances, [
     { name: "A", paid: 0, owed: 15, net: -15 },
