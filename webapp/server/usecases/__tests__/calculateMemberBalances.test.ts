@@ -28,9 +28,9 @@ test("returns paid, owed, and net per member", () => {
   const balances = calculateMemberBalances(expenses, ["A", "B", "C"]);
 
   assert.deepEqual(balances, [
-    { name: "A", paid: 121, owed: 132, net: -11 },
-    { name: "B", paid: 98, owed: 80, net: 18 },
-    { name: "C", paid: 70, owed: 77, net: -7 },
+    { name: "A", paid: 121, owed: 131, net: -10 },
+    { name: "B", paid: 98, owed: 82, net: 16 },
+    { name: "C", paid: 70, owed: 76, net: -6 },
   ]);
 });
 

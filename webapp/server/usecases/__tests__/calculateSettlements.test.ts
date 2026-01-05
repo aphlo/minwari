@@ -28,8 +28,8 @@ test("calculates settlements for the sample history", () => {
   const settlements = calculateSettlements(expenses, ["A", "B", "C"]);
 
   assert.deepEqual(settlements, [
-    { from: "A", to: "B", amount: 11 },
-    { from: "C", to: "B", amount: 7 },
+    { from: "A", to: "B", amount: 10 },
+    { from: "C", to: "B", amount: 6 },
   ]);
 });
 
@@ -43,8 +43,8 @@ test("assigns rounding differences to the payer when included", () => {
   );
 
   assert.deepEqual(settlements, [
-    { from: "B", to: "A", amount: 34 },
-    { from: "C", to: "A", amount: 34 },
+    { from: "B", to: "A", amount: 33 },
+    { from: "C", to: "A", amount: 33 },
   ]);
 });
 

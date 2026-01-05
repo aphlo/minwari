@@ -26,7 +26,7 @@ export const calculateExpenseShares = (
     return [];
   }
 
-  const perPerson = Math.round(expense.amount / count);
+  const perPerson = Math.floor(expense.amount / count);
   const orderedParticipants = participants.includes(expense.paidBy)
     ? [
         expense.paidBy,

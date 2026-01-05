@@ -128,6 +128,7 @@ export function ExpenseForm({ groupId, members, expense }: Props) {
         variant="bordered"
         radius="lg"
         className="mb-8"
+        min={1}
         startContent={
           <div className="pointer-events-none flex items-center">
             <span className="text-default-400 text-small">¥</span>

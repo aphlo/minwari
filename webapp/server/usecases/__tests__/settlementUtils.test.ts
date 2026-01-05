@@ -37,9 +37,9 @@ test("calculateExpenseShares assigns rounding difference to payer", () => {
   const shares = calculateExpenseShares(expense, ["A", "B", "C"]);
 
   assert.deepEqual(shares, [
-    { member: "A", share: 33 },
-    { member: "B", share: 34 },
-    { member: "C", share: 34 },
+    { member: "A", share: 35 },
+    { member: "B", share: 33 },
+    { member: "C", share: 33 },
   ]);
 });
 
