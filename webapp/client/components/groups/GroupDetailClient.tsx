@@ -28,13 +28,25 @@ type SerializedExpense = {
   updatedAt: string;
 };
 
+type SerializedSettlement = {
+  from: string;
+  to: string;
+  amount: number;
+};
+
 type Props = {
   group: SerializedGroup;
   initialExpenses: SerializedExpense[];
+  initialSettlements: SerializedSettlement[];
 };
 
-export function GroupDetailClient({ group, initialExpenses }: Props) {
+export function GroupDetailClient({
+  group,
+  initialExpenses,
+  initialSettlements,
+}: Props) {
   const [expenses] = useState(initialExpenses);
+  const [settlements] = useState(initialSettlements);
 
   return (
     <div className="min-h-screen bg-background">
@@ -124,7 +136,11 @@ export function GroupDetailClient({ group, initialExpenses }: Props) {
 
           {/* Settlement Section */}
           <div className="animate-fade-in-up delay-300 opacity-0">
-            <SettlementSection expenses={expenses} members={group.members} />
+            <SettlementSection
+              expenses={expenses}
+              members={group.members}
+              settlements={settlements}
+            />
           </div>
         </div>
       </main>

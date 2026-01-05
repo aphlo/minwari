@@ -11,12 +11,19 @@ type SerializedExpense = {
   updatedAt: string;
 };
 
+type SerializedSettlement = {
+  from: string;
+  to: string;
+  amount: number;
+};
+
 type Props = {
   expenses: SerializedExpense[];
   members: string[];
+  settlements: SerializedSettlement[];
 };
 
-export function SettlementSection({ expenses, members }: Props) {
+export function SettlementSection({ expenses, members, settlements }: Props) {
   // 合計金額を計算
   const totalAmount = expenses.reduce((sum, e) => sum + e.amount, 0);
 
@@ -82,31 +89,40 @@ export function SettlementSection({ expenses, members }: Props) {
             立て替えを記録すると精算内容が表示されます
           </p>
         </div>
+      ) : settlements.length === 0 ? (
+        <div className="text-center py-6 border-2 border-dashed border-border rounded-xl">
+          <svg
+            className="w-10 h-10 mx-auto text-muted/30"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          <p className="mt-3 text-muted text-sm">全員の精算が完了しています</p>
+        </div>
       ) : (
         <div className="space-y-3">
-          {/*
-            TODO: サーバーから精算ロジックを取得して表示
-            精算内容のプレースホルダー
-          */}
-          <div className="text-center py-6 border-2 border-dashed border-border rounded-xl">
-            <svg
-              className="w-10 h-10 mx-auto text-muted/30"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {settlements.map((settlement) => (
+            <div
+              key={`${settlement.from}-${settlement.to}-${settlement.amount}`}
+              className="flex items-center justify-between rounded-xl border border-border bg-bg-secondary px-4 py-3"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-              />
-            </svg>
-            <p className="mt-3 text-muted text-sm">精算機能は準備中です</p>
-            <p className="mt-1 text-muted/70 text-xs">
-              誰が誰にいくら払うかがここに表示されます
-            </p>
-          </div>
+              <div className="flex items-center gap-2 text-sm text-foreground">
+                <span className="font-semibold">{settlement.from}</span>
+                <span className="text-muted">→</span>
+                <span className="font-semibold">{settlement.to}</span>
+              </div>
+              <div className="text-sm font-semibold text-foreground">
+                {formatAmount(settlement.amount)}
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>

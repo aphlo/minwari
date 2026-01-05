@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { GroupDetailClient } from "@/client/components/groups/GroupDetailClient";
 import { getExpenses } from "@/server/repositories/expenseRepository";
 import { getGroup } from "@/server/repositories/groupRepository";
+import { calculateSettlements } from "@/server/usecases/calculateSettlements";
 
 type Props = {
   params: Promise<{ groupId: string }>;
@@ -30,6 +31,7 @@ export default async function GroupDetailPage({ params }: Props) {
   }
 
   const expenses = await getExpenses(groupId);
+  const settlements = calculateSettlements(expenses, group.members);
 
   const serializedGroup = {
     ...group,
@@ -47,6 +49,7 @@ export default async function GroupDetailPage({ params }: Props) {
     <GroupDetailClient
       group={serializedGroup}
       initialExpenses={serializedExpenses}
+      initialSettlements={settlements}
     />
   );
 }
