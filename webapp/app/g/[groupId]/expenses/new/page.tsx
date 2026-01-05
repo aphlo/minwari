@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { AddExpenseForm } from "@/client/components/forms/AddExpenseForm";
+import { ExpenseForm } from "@/client/components/forms/ExpenseForm";
 import { Header } from "@/client/components/layout/Header";
 import { getGroup } from "@/server/repositories/groupRepository";
 
@@ -38,7 +38,7 @@ export default async function AddExpensePage({ params }: Props) {
             <h1 className="text-xl font-bold text-foreground mb-8">
               立て替えを追加
             </h1>
-            <AddExpenseForm groupId={groupId} members={group.members} />
+            <ExpenseForm groupId={groupId} members={group.members} />
           </div>
         </div>
       </main>

@@ -52,6 +52,14 @@ export function ExpenseList({ groupId, expenses }: Props) {
     }).format(amount);
   };
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("ja-JP", {
+      month: "short",
+      day: "numeric",
+    });
+  };
+
   return (
     <div className="space-y-3">
       {expenses.map((expense) => (
@@ -64,11 +72,14 @@ export function ExpenseList({ groupId, expenses }: Props) {
               <h3 className="font-medium text-foreground truncate">
                 {expense.description}
               </h3>
-              <p className="text-sm text-muted mt-1">
-                <span className="text-primary font-medium">
-                  {expense.paidBy}
+              <p className="text-sm text-muted mt-1 flex items-center gap-2">
+                <span>
+                  <span className="text-primary font-medium">
+                    {expense.paidBy}
+                  </span>
+                  が支払い
                 </span>
-                が支払い
+                <span className="text-xs">{formatDate(expense.createdAt)}</span>
               </p>
               <div className="flex flex-wrap gap-1.5 mt-2">
                 {expense.splitWith.map((member) => (
@@ -89,11 +100,11 @@ export function ExpenseList({ groupId, expenses }: Props) {
               </span>
               <Link
                 href={`/g/${groupId}/expenses/${expense.id}/edit`}
-                className="p-1 rounded-full text-muted hover:bg-bg-secondary transition-colors"
+                className="p-2 rounded-full text-muted hover:bg-bg-secondary transition-colors"
                 aria-label="編集"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

@@ -29,6 +29,55 @@ export async function createExpense(
   return { id: docRef.id };
 }
 
+export async function getExpense(
+  groupId: string,
+  expenseId: string
+): Promise<Expense | null> {
+  const db = getAdminFirestore();
+  const doc = await db
+    .collection("groups")
+    .doc(groupId)
+    .collection("expenses")
+    .doc(expenseId)
+    .get();
+
+  if (!doc.exists) {
+    return null;
+  }
+
+  const data = doc.data()!;
+  return {
+    id: doc.id,
+    groupId,
+    description: data.description,
+    amount: data.amount,
+    paidBy: data.paidBy,
+    splitWith: data.splitWith,
+    createdAt: (data.createdAt as Timestamp).toDate(),
+    updatedAt: (data.updatedAt as Timestamp).toDate(),
+  };
+}
+
+export async function updateExpense(
+  groupId: string,
+  expenseId: string,
+  data: Omit<ExpenseRecord, "groupId">
+): Promise<void> {
+  const db = getAdminFirestore();
+  await db
+    .collection("groups")
+    .doc(groupId)
+    .collection("expenses")
+    .doc(expenseId)
+    .update({
+      description: data.description,
+      amount: data.amount,
+      paidBy: data.paidBy,
+      splitWith: data.splitWith,
+      updatedAt: FieldValue.serverTimestamp(),
+    });
+}
+
 export async function getExpenses(groupId: string): Promise<Expense[]> {
   const db = getAdminFirestore();
   const snapshot = await db
