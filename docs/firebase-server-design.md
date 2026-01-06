@@ -100,7 +100,7 @@
 ## セキュリティ
 - groupIdを知っている人は誰でもCRUD可能（仕様として許容）
 - Firestore Rulesで `groups` の `list` を禁止して列挙を防ぐ
-- App Checkは実装しない
+- App Check を実装し、Web/モバイルの API 呼び出しにトークンを必須とする
 
 ## 備考
 - `docs/architecture.md` を参照。

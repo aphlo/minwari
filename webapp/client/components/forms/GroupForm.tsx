@@ -4,6 +4,7 @@ import { Button } from "@heroui/button";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { CurrencySelect } from "@/client/components/forms/CurrencySelect";
+import { appCheckFetch } from "@/client/lib/appCheckFetch";
 import { useRouter } from "@/i18n/navigation";
 import type { CurrencyCode } from "@/shared/lib/currency";
 import { getDefaultCurrencyForLocale } from "@/shared/lib/localeCurrency";
@@ -88,7 +89,7 @@ export function GroupForm({
     try {
       const url = mode === "edit" ? `/api/groups/${groupId}` : "/api/groups";
       const method = mode === "edit" ? "PUT" : "POST";
-      const response = await fetch(url, {
+      const response = await appCheckFetch(url, {
         method,
         headers: {
           "Content-Type": "application/json",
