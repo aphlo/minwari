@@ -7,18 +7,11 @@ on:
     paths:
       - "webapp/**"
       - ".github/workflows/cd.yml"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "webapp/**"
-      - ".github/workflows/cd.yml"
 
 jobs:
   deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     permissions:
       contents: read
       id-token: write
