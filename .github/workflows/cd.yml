@@ -1,0 +1,66 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "webapp/**"
+      - ".github/workflows/cd.yml"
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    env:
+      PROJECT_ID: minwarikan
+      REGION: asia-northeast1
+      SERVICE: minwari-webapp
+      REPOSITORY: minwari
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_GITHUB_ACTIONS_SA }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker "$REGION-docker.pkg.dev" --quiet
+
+      - name: Install dotenvx
+        run: curl -sfS https://dotenvx.sh/install.sh | sh
+
+      - name: Decrypt .env.production
+        env:
+          DOTENV_PRIVATE_KEY_PRODUCTION: ${{ secrets.DOTENV_PRIVATE_KEY_PRODUCTION }}
+        run: dotenvx decrypt -f webapp/.env.production --stdout > webapp/.env.production
+
+      - name: Build Docker image
+        run: |
+          IMAGE="$REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$SERVICE:${{ github.sha }}"
+          docker buildx build --platform linux/amd64 -t "$IMAGE" --load ./webapp
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+
+      - name: Push Docker image
+        run: docker push "$IMAGE"
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy "$SERVICE" \
+            --image "$IMAGE" \
+            --region "$REGION" \
+            --project "$PROJECT_ID" \
+            --platform managed \
+            --allow-unauthenticated \
+            --quiet
