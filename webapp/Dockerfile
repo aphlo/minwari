@@ -21,4 +21,4 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/.next ./.next
 COPY --from=build /app/public ./public
 EXPOSE 8080
-CMD ["pnpm", "start", "--", "-p", "8080"]
+CMD ["pnpm", "exec", "next", "start", "-p", "8080"]
