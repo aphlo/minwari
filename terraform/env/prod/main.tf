@@ -56,18 +56,18 @@ module "project" {
 module "iam" {
   source = "../../modules/iam"
 
-  project_id                           = var.project_id
-  cloud_run_service_account_name       = var.cloud_run_service_account_name
+  project_id                             = var.project_id
+  cloud_run_service_account_name         = var.cloud_run_service_account_name
   cloud_run_service_account_display_name = var.cloud_run_service_account_display_name
 }
 
 module "registry" {
   source = "../../modules/registry"
 
-  project_id     = var.project_id
-  region         = var.region
-  repository_id  = var.artifact_registry_repository_id
-  description    = "Container images for Cloud Run"
+  project_id    = var.project_id
+  region        = var.region
+  repository_id = var.artifact_registry_repository_id
+  description   = "Container images for Cloud Run"
 }
 
 module "cloud_run" {
@@ -94,12 +94,12 @@ module "cloud_run" {
 module "gha_oidc" {
   source = "../../modules/gha_oidc"
 
-  project_id                 = var.project_id
-  github_owner               = var.github_owner
-  github_repo                = var.github_repo
-  workload_identity_pool_id  = var.github_workload_identity_pool_id
+  project_id                    = var.project_id
+  github_owner                  = var.github_owner
+  github_repo                   = var.github_repo
+  workload_identity_pool_id     = var.github_workload_identity_pool_id
   workload_identity_provider_id = var.github_workload_identity_provider_id
-  service_account_name       = var.github_service_account_name
-  service_account_display_name = var.github_service_account_display_name
-  service_account_roles      = var.github_service_account_roles
+  service_account_name          = var.github_service_account_name
+  service_account_display_name  = var.github_service_account_display_name
+  service_account_roles         = var.github_service_account_roles
 }

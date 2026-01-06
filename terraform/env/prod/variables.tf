@@ -73,7 +73,7 @@ variable "cloud_run_env_vars" {
 variable "cloud_run_domain_name" {
   description = "Cloud Runドメインマッピング対象のドメイン"
   type        = string
-  default     = ""
+  default     = "app.oursplit.us"
 }
 
 variable "github_owner" {

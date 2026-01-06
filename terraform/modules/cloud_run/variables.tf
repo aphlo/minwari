@@ -62,7 +62,7 @@ variable "container_port" {
 variable "domain_name" {
   description = "Cloud Runドメインマッピングのドメイン"
   type        = string
-  default     = ""
+  default     = "app.oursplit.us"
 }
 
 variable "ingress" {
