@@ -1,0 +1,9 @@
+node_modules
+.next
+.git
+.gitignore
+Dockerfile
+.env
+.env.*
+!.env.production
+.DS_Store
