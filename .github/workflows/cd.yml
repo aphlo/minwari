@@ -38,8 +38,16 @@ jobs:
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker "$REGION-docker.pkg.dev" --quiet
 
-      - name: Install dotenvx
-        run: curl -sfS https://dotenvx.sh/install.sh | sh
+      - name: Install dotenvx (pinned)
+        run: |
+          DOTENVX_VERSION="1.51.4"
+          DOTENVX_TARBALL="dotenvx-${DOTENVX_VERSION}-linux-amd64.tar.gz"
+          DOTENVX_URL="https://github.com/dotenvx/dotenvx/releases/download/v${DOTENVX_VERSION}/${DOTENVX_TARBALL}"
+          DOTENVX_SHA256="a427ef5e52200c8c411c696ca0374e122f775ba20087c35a6cd44d33ee07c412"
+          curl -sSfL -o "$DOTENVX_TARBALL" "$DOTENVX_URL"
+          echo "${DOTENVX_SHA256}  ${DOTENVX_TARBALL}" | sha256sum -c -
+          tar -xzf "$DOTENVX_TARBALL"
+          sudo install -m 0755 dotenvx /usr/local/bin/dotenvx
 
       - name: Decrypt .env.production
         env:
