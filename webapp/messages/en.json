@@ -88,7 +88,136 @@
     },
     "footer": {
       "brand": "OurSplit",
-      "copyright": "OurSplit"
+      "copyright": "OurSplit",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "sections": {
+        "intro": {
+          "title": "1. Terms",
+          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the Walica website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
+        },
+        "applicability": {
+          "title": "2. Applicability",
+          "body": "These Terms govern all relationships between Users and the Service related to use of the Service."
+        },
+        "prohibited": {
+          "title": "3. Prohibited acts",
+          "body": "Users must not engage in any of the following acts when using the Service.",
+          "list": [
+            "Acts that violate laws or public order and morals",
+            "Acts related to criminal activity",
+            "Acts that impair or interfere with the functions of the Service's servers or network",
+            "Acts that may disrupt the operation of the Service",
+            "Collecting or storing personal information about other users",
+            "Impersonating other users",
+            "Directly or indirectly providing benefits to antisocial forces in connection with the Service",
+            "Any other acts deemed inappropriate by the Service"
+          ]
+        },
+        "suspension": {
+          "title": "4. Suspension of the Service",
+          "body": "If any of the following circumstances apply, the Service may suspend or discontinue all or part of the Service without prior notice to Users.",
+          "list": [
+            "When performing maintenance or updates of the system for the Service",
+            "When provision of the Service is difficult due to force majeure such as earthquakes, lightning, fire, power outages, or natural disasters",
+            "When computers or communication lines are stopped due to an accident",
+            "When the Service determines that the provision of the Service is difficult for other reasons"
+          ],
+          "bodyAfter": "The Service is not liable for any disadvantage or damage suffered by Users or third parties due to suspension or interruption, regardless of the reason."
+        },
+        "restriction": {
+          "title": "5. Restrictions and deregistration",
+          "body": "The Service may, without prior notice, restrict use of all or part of the Service or delete a User's registration in the following cases.",
+          "list": [
+            "If any provision of these Terms is violated",
+            "If the Service otherwise deems the use of the Service inappropriate"
+          ],
+          "bodyAfter": "The Service is not liable for any damages incurred by Users as a result of actions taken pursuant to this section."
+        },
+        "change": {
+          "title": "6. Changes to the Service",
+          "body": "The Service may change its contents or discontinue its provision without notice, and is not liable for any damages incurred as a result."
+        },
+        "termsChange": {
+          "title": "7. Changes to the Terms",
+          "body": "If deemed necessary, the Service may change these Terms at any time without notice to Users."
+        },
+        "assignment": {
+          "title": "8. Prohibition of transfer of rights and obligations",
+          "body": "Users may not assign or pledge their position in the user agreement or any rights or obligations under these Terms to a third party without prior written consent."
+        },
+        "disclaimer": {
+          "title": "9. Disclaimer",
+          "body": "The Service is not liable in the following cases.",
+          "list": [
+            "Damages incurred due to downloading third-party content through this site or accessing linked sites operated by third parties",
+            "Damages caused by unauthorized alteration of this site, unauthorized access to data, computer viruses, or other wrongful acts, even when reasonable security measures have been taken",
+            "Any damages arising from the use or non-use of this site (including information provided by the Service), including mental distress or financial losses"
+          ],
+          "bodyAfter": "Even if liability is found, it is limited to cases of willful misconduct or gross negligence, and to direct and ordinary damages."
+        },
+        "governingLaw": {
+          "title": "10. Governing law and jurisdiction",
+          "body": "These Terms are governed by Japanese law. Disputes regarding the Service are subject to the exclusive jurisdiction of the court having jurisdiction over the Service's head office."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "sections": {
+        "compliance": {
+          "title": "1. Privacy Policy",
+          "body": "We handle personal information in line with applicable laws, regulations, and related guidelines, including Japan's Act on the Protection of Personal Information."
+        },
+        "safety": {
+          "title": "2. Security management of personal information",
+          "body": "We take organizational, physical, human, and technical measures to protect personal information from leakage, loss, or damage."
+        },
+        "acquisitionCompliance": {
+          "title": "3. Compliance regarding acquisition of personal information",
+          "body": "When acquiring, using, or providing personal information, we follow the principles below."
+        },
+        "acquisition": {
+          "title": "4. Acquisition of personal information",
+          "body": "We may collect personal information related to general users (\"Users\") or advertisers (\"Advertisers\") to the extent necessary to operate the services on this site."
+        },
+        "purpose": {
+          "title": "5. Purpose of use",
+          "body": "Except as required by law or with the individual's consent, we use personal information only for the purposes below.",
+          "list": [
+            "Operation, maintenance, and management of this site",
+            "Provision and introduction of services through this site",
+            "Surveys to improve the quality of this site"
+          ]
+        },
+        "provision": {
+          "title": "6. Provision of personal information",
+          "body": "We do not provide personal information to third parties without prior consent, except as required by law. We also respond to requests for disclosure, correction, addition, deletion, or notification of purposes of use in accordance with applicable laws."
+        },
+        "purposeChange": {
+          "title": "7. Changes to purpose of use",
+          "body": "The purposes of use may be updated as necessary."
+        },
+        "thirdParty": {
+          "title": "8. Entrustment to third parties",
+          "body": "If we entrust the handling of personal information to a third party, we assess the vendor's suitability and provide appropriate oversight to ensure safe management."
+        },
+        "review": {
+          "title": "9. Improvement and review",
+          "body": "We regularly review our handling of personal information and related management systems, and continuously improve them."
+        },
+        "disposal": {
+          "title": "10. Disposal of personal information",
+          "body": "When personal information is no longer needed for its purpose, we delete or dispose of it in an appropriate manner to prevent external leakage."
+        },
+        "contact": {
+          "title": "11. Contact for complaints and consultations",
+          "body": "We will set up a contact desk and a person responsible for inquiries regarding personal information."
+        }
+      }
     }
   },
   "forms": {
