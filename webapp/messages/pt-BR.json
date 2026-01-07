@@ -90,7 +90,11 @@
       "brand": "OurSplit",
       "copyright": "OurSplit",
       "terms": "Terms of Service",
-      "privacy": "Privacy Policy"
+      "privacy": "Privacy Policy",
+      "contact": "Contato"
+    },
+    "contact": {
+      "title": "Contato"
     },
     "terms": {
       "title": "Terms of Service",

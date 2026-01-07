@@ -90,7 +90,11 @@
       "brand": "みんなの割り勘",
       "copyright": "みんなの割り勘",
       "terms": "利用規約",
-      "privacy": "プライバシーポリシー"
+      "privacy": "プライバシーポリシー",
+      "contact": "お問い合わせ"
+    },
+    "contact": {
+      "title": "お問い合わせ"
     },
     "terms": {
       "title": "利用規約",

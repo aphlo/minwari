@@ -23,6 +23,12 @@ export function Footer() {
           >
             {t("privacy")}
           </Link>
+          <Link
+            href="/contact"
+            className="text-xs text-muted hover:text-foreground transition-colors"
+          >
+            {t("contact")}
+          </Link>
         </div>
         <div className="flex items-center justify-between gap-4">
           <LanguageSwitcher />
