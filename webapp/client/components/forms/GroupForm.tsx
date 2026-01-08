@@ -42,9 +42,9 @@ export function GroupForm({
   const [members, setMembers] = useState<{ id: string; name: string }[]>(
     initialMembers.length > 0
       ? initialMembers.map((name, index) => ({
-        id: `initial-member-${index}`,
-        name,
-      }))
+          id: `initial-member-${index}`,
+          name,
+        }))
       : [{ id: "initial-member-0", name: "" }]
   );
   const [errors, setErrors] = useState<Record<string, string>>({});

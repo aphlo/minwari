@@ -6,7 +6,6 @@ import type { CreateGroupRequest } from "@/shared/types/group";
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-
   let body: CreateGroupRequest;
   try {
     body = (await request.json()) as CreateGroupRequest;

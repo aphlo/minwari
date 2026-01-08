@@ -131,7 +131,11 @@ export function GroupDetailClient({
           <div className="animate-fade-in-up delay-100 opacity-0">
             <Button
               as={group.members.length === 0 ? "button" : Link}
-              href={group.members.length === 0 ? undefined : `/groups/${group.id}/expenses/new`}
+              href={
+                group.members.length === 0
+                  ? undefined
+                  : `/groups/${group.id}/expenses/new`
+              }
               isDisabled={group.members.length === 0}
               color="primary"
               size="lg"
