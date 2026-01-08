@@ -3,6 +3,10 @@
 ## Package manager
 - npmではなくpnpmを使用すること
 
+## i18n
+- i18nのJSONファイル（`webapp/messages/*.json`）を編集する際は、すべての言語ファイル（`en.json`、`ja.json`、`zh-CN.json`、`ko.json`、`es.json`、`pt-BR.json`、`zh-TW.json`）を更新して同期させること
+
+
 ## Quality checks
 - 変更後は `webapp/` で `pnpm lint`, `pnpm check`, `pnpm typecheck`, `pnpm test` を実行して通ることを確認すること
 

@@ -7,11 +7,11 @@ import { useEffect } from "react";
 const widgetConfig = {
   productId: "432a30ee-13ca-426e-8924-051858d06645",
   containerId: "koeloop-widget-432a30ee-13ca-426e-8924-051858d06645",
-  primaryColor: "#7020FF",
+  primaryColor: "#1f2eff",
   showVoting: false,
   showFeedback: true,
   showFAQ: true,
-  showEmailField: false,
+  showEmailField: true,
   locale: "ja",
   apiBase: "https://koeloop.dev",
 };
@@ -132,9 +132,8 @@ export function ContactPage({ title }: ContactPageProps) {
             {title}
           </h1>
         </div>
-        <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
-          <div id={widgetConfig.containerId} className="min-h-[520px] w-full" />
-        </div>
+
+        <div id={widgetConfig.containerId} className="min-h-[520px] w-full" />
       </main>
     </div>
   );

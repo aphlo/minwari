@@ -36,7 +36,7 @@
   },
   "marketing": {
     "hero": {
-      "titleLine1": "Divide gastos de viaje",
+      "titleLine1": "Divide gastos",
       "titleLine2": "sin complicaciones",
       "subtitleLine1": "Calcula automaticamente liquidaciones de viajes o eventos.",
       "subtitleLine2": "Ve quien debe cuanto de un vistazo.",
@@ -50,16 +50,16 @@
       "subtitle": "Deja las cuentas en nuestras manos y disfruta el viaje.",
       "items": {
         "create": {
-          "title": "Creacion rapida",
-          "description": "Crea un grupo sin registro y comparte el URL para invitar."
+          "title": "Fácil configuración",
+          "description": "No se requiere registro ni iniciar sesión. Simplemente ingrese un nombre de grupo para crear un grupo de división al instante. Comparta la URL generada a través de aplicaciones de mensajería para invitar a amigos sin que necesiten instalar una aplicación."
         },
         "record": {
-          "title": "Registra gastos",
-          "description": "Anota quien pago que y elige participantes facilmente."
+          "title": "Seguimiento de gastos",
+          "description": "Simplemente registre quién pagó qué y por quién. Seleccione con flexibilidad a los participantes de cada gasto para gestionar divisiones específicas o partes desiguales. Admite múltiples monedas, incluidos USD, EUR, JPY y más."
         },
         "settle": {
-          "title": "Liquidacion automatica",
-          "description": "Calcula quien paga a quien con el minimo de transferencias."
+          "title": "Liquidación automática",
+          "description": "Calcula automáticamente la forma más eficiente de saldar deudas. Vea exactamente quién debe a quién de un vistazo, minimizando el número de transferencias necesarias y haciendo que las liquidaciones posteriores al viaje sean libres de estrés."
         }
       }
     },
@@ -86,6 +86,49 @@
       "subtitleLine2": "y liquida facilmente.",
       "action": "Crear grupo"
     },
+    "useCases": {
+      "title": "Perfecto para cualquier ocasión",
+      "subtitle": "Maneje cualquier escenario de división con facilidad",
+      "items": {
+        "trip": {
+          "title": "Viajes en grupo",
+          "description": "Lleve un registro del transporte, el alojamiento y las comidas. Registre todo sobre la marcha y liquide una vez al final."
+        },
+        "bbq": {
+          "title": "Barbacoas y fiestas",
+          "description": "¿Varias personas comprando suministros? Simplemente ingrese los recibos más tarde para dividir los gastos hasta el último centavo."
+        },
+        "couple": {
+          "title": "Parejas",
+          "description": "Administre gastos compartidos como citas y facturas del hogar. Registre a medida que gasta y liquide la diferencia mensualmente."
+        },
+        "event": {
+          "title": "Eventos",
+          "description": "Desde fiestas posteriores hasta regalos compartidos, maneje cobros complejos sin dolor de cabeza."
+        }
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": {
+        "account": {
+          "question": "¿Se requiere registro?",
+          "answer": "No. Puede utilizar todas las funciones de forma gratuita simplemente creando un grupo y compartiendo la URL."
+        },
+        "expire": {
+          "question": "¿Cuánto tiempo se guardan los datos?",
+          "answer": "Los datos se conservan indefinidamente."
+        },
+        "currency": {
+          "question": "¿Puedo usarlo para viajes internacionales?",
+          "answer": "Sí. Admitimos las principales monedas, incluidas USD, EUR, JPY, KRW y más."
+        },
+        "privacy": {
+          "question": "¿Están seguros mis datos?",
+          "answer": "Sí. Dado que no requerimos registro de usuario (correo electrónico, contraseña, etc.), la recopilación de datos es mínima. Toda la comunicación está encriptada."
+        }
+      }
+    },
     "footer": {
       "brand": "OurSplit",
       "copyright": "OurSplit",
@@ -101,7 +144,7 @@
       "sections": {
         "intro": {
           "title": "1. Terms",
-          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the Walica website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
+          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the {name} website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
         },
         "applicability": {
           "title": "2. Applicability",

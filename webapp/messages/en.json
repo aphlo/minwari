@@ -36,7 +36,7 @@
   },
   "marketing": {
     "hero": {
-      "titleLine1": "Split travel expenses",
+      "titleLine1": "Split expenses",
       "titleLine2": "Simply.",
       "subtitleLine1": "Automatically calculate travel and event settlements.",
       "subtitleLine2": "See who owes how much at a glance.",
@@ -51,15 +51,15 @@
       "items": {
         "create": {
           "title": "Easy setup",
-          "description": "Create a group without signing up and share the URL to invite members."
+          "description": "No registration or login required. Simply enter a group name to create a split group instantly. Share the generated URL via messaging apps to invite friends without them needing to install an app."
         },
         "record": {
           "title": "Track expenses",
-          "description": "Record who paid what and flexibly choose participants."
+          "description": "Just record who paid what and for whom. Flexibly select participants for each expense to handle specific splits or unequal shares. Supports multiple currencies including USD, EUR, JPY and more."
         },
         "settle": {
           "title": "Automatic settlement",
-          "description": "Calculate who pays whom with minimal transfers."
+          "description": "Automatically calculates the most efficient way to settle debts. See exactly who owes whom at a glance, minimizing the number of transfers needed and making post-trip settlements stress-free."
         }
       }
     },
@@ -86,6 +86,49 @@
       "subtitleLine2": "and settle with ease.",
       "action": "Create a group"
     },
+    "useCases": {
+      "title": "Perfect for any occasion",
+      "subtitle": "Handle any splitting scenario with ease",
+      "items": {
+        "trip": {
+          "title": "Group Trips",
+          "description": "Keep track of transportation, accommodation, and meals. Record everything as you go and settle up once at the end."
+        },
+        "bbq": {
+          "title": "BBQ & Parties",
+          "description": "Multiple people buying supplies? Just enter the receipts later to split expenses down to the cent."
+        },
+        "couple": {
+          "title": "Couples",
+          "description": "Manage shared expenses like dates and household bills. Record as you spend and settle the difference monthly."
+        },
+        "event": {
+          "title": "Events",
+          "description": "From after-parties to shared gifts, handle complex collections without the headache."
+        }
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "items": {
+        "account": {
+          "question": "Is registration required?",
+          "answer": "No. You can use all features for free by simply creating a group and sharing the URL."
+        },
+        "expire": {
+          "question": "How long is data saved?",
+          "answer": "Data is retained indefinitely."
+        },
+        "currency": {
+          "question": "Can I use it for international travel?",
+          "answer": "Yes. We support major currencies including USD, EUR, JPY, KRW, and more."
+        },
+        "privacy": {
+          "question": "Is my data safe?",
+          "answer": "Yes. Since we don't require user registration (email, password, etc.), data collection is minimal. All communication is encrypted."
+        }
+      }
+    },
     "footer": {
       "brand": "OurSplit",
       "copyright": "OurSplit",
@@ -101,7 +144,7 @@
       "sections": {
         "intro": {
           "title": "1. Terms",
-          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the Walica website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
+          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the {name} website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
         },
         "applicability": {
           "title": "2. Applicability",

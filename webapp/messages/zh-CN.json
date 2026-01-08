@@ -36,7 +36,7 @@
   },
   "marketing": {
     "hero": {
-      "titleLine1": "旅行分摊",
+      "titleLine1": "费用分摊",
       "titleLine2": "更简单",
       "subtitleLine1": "自动计算旅行或活动的分摊。",
       "subtitleLine2": "谁该付多少，一目了然。",
@@ -51,15 +51,15 @@
       "items": {
         "create": {
           "title": "轻松创建",
-          "description": "无需注册，创建群组并分享URL邀请成员。"
+          "description": "无需注册或登录。只需输入群组名称即可立即创建拆分群组。通过消息应用分享生成的链接，邀请朋友加入，无需下载APP。"
         },
         "record": {
           "title": "记录支出",
-          "description": "记录谁为啥支付了多少，参与者可灵活设置。"
+          "description": "只需记录谁付了款以及为谁付款。灵活选择每笔费用的参与者，处理特定的拆分或不均等的份额。支持包括美元、欧元、日元等多种货币。"
         },
         "settle": {
           "title": "自动结算",
-          "description": "自动计算谁该给谁多少钱，最少转账完成结算。"
+          "description": "自动计算最有效的债务结算方式。一目了然地查看谁欠谁多少钱，最大限度地减少转账次数，让旅行后的结算轻松无忧。"
         }
       }
     },
@@ -86,6 +86,49 @@
       "subtitleLine2": "让结算更顺畅。",
       "action": "创建群组"
     },
+    "useCases": {
+      "title": "适用于任何场合",
+      "subtitle": "轻松处理任何分摊场景",
+      "items": {
+        "trip": {
+          "title": "团体旅行",
+          "description": "记录交通、住宿和餐饮费用。随时记录，最后一次性结算。"
+        },
+        "bbq": {
+          "title": "烧烤与派对",
+          "description": "多个人购买物资？只需稍后输入收据，即可精确分摊每一分钱。"
+        },
+        "couple": {
+          "title": "情侣",
+          "description": "管理约会和家庭账单等共同支出。随时记录支出，按月结算差额。"
+        },
+        "event": {
+          "title": "活动",
+          "description": "从后续派对到共同礼物，轻松处理复杂的收款问题。"
+        }
+      }
+    },
+    "faq": {
+      "title": "常见问题",
+      "items": {
+        "account": {
+          "question": "需要注册吗？",
+          "answer": "不需要。您只需创建一个群组并分享链接，即可免费使用所有功能。"
+        },
+        "expire": {
+          "question": "数据保存多久？",
+          "answer": "数据将永久保存。"
+        },
+        "currency": {
+          "question": "可以在国际旅行中使用吗？",
+          "answer": "可以。我们支持主要货币，包括美元、欧元、日元、韩元等。"
+        },
+        "privacy": {
+          "question": "我的数据安全吗？",
+          "answer": "安全。由于我们不需要用户注册（邮箱、密码等），数据收集极少。所有通信均经过加密。"
+        }
+      }
+    },
     "footer": {
       "brand": "OurSplit",
       "copyright": "OurSplit",
@@ -101,7 +144,7 @@
       "sections": {
         "intro": {
           "title": "1. Terms",
-          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the Walica website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
+          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the {name} website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
         },
         "applicability": {
           "title": "2. Applicability",
