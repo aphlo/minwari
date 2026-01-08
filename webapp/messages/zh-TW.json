@@ -36,7 +36,7 @@
   },
   "marketing": {
     "hero": {
-      "titleLine1": "旅行分攤",
+      "titleLine1": "費用分攤",
       "titleLine2": "更簡單",
       "subtitleLine1": "自動計算旅行或活動的分攤。",
       "subtitleLine2": "誰該付多少，一目了然。",
@@ -50,16 +50,16 @@
       "subtitle": "繁雜計算交給我們，你只要享受旅程。",
       "items": {
         "create": {
-          "title": "快速建立",
-          "description": "無需註冊，建立群組並分享URL邀請成員。"
+          "title": "輕鬆建立",
+          "description": "無需註冊或登入。只需輸入群組名稱即可立即建立分攤群組。透過通訊軟體分享產生的連結，邀請朋友加入，無需安裝應用程式。"
         },
         "record": {
           "title": "記錄支出",
-          "description": "記錄誰為什麼付了多少，並彈性選擇參與者。"
+          "description": "只需記錄誰為什麼付了款以及為誰付款。靈活選擇每筆費用的參與者，處理特定的分攤或不均等的份額。支援包括美元、歐元、日圓等多種貨幣。"
         },
         "settle": {
           "title": "自動結算",
-          "description": "自動計算誰該給誰多少，最少轉帳完成結算。"
+          "description": "自動計算最有效的債務結算方式。一目了然地查看誰欠誰多少錢，最大限度地減少轉帳次數，讓旅行後的結算輕鬆無憂。"
         }
       }
     },
@@ -86,6 +86,49 @@
       "subtitleLine2": "讓結算更順暢。",
       "action": "建立群組"
     },
+    "useCases": {
+      "title": "適用於任何場合",
+      "subtitle": "輕鬆處理任何分攤場景",
+      "items": {
+        "trip": {
+          "title": "團體旅行",
+          "description": "記錄交通、住宿和餐飲費用。隨時記錄，最後一次性結算。"
+        },
+        "bbq": {
+          "title": "烤肉與派對",
+          "description": "多個人購買物資？只需稍後輸入收據，即可精確分攤每一分錢。"
+        },
+        "couple": {
+          "title": "情侶",
+          "description": "管理約會和家庭帳單等共同支出。隨時記錄支出，按月結算差額。"
+        },
+        "event": {
+          "title": "活動",
+          "description": "從後續派對到共同禮物，輕鬆處理複雜的收款問題。"
+        }
+      }
+    },
+    "faq": {
+      "title": "常見問題",
+      "items": {
+        "account": {
+          "question": "需要註冊嗎？",
+          "answer": "不需要。您只需建立一個群組並分享連結，即可免費使用所有功能。"
+        },
+        "expire": {
+          "question": "資料保存多久？",
+          "answer": "資料將永久保存。"
+        },
+        "currency": {
+          "question": "可以在國際旅行中使用嗎？",
+          "answer": "可以。我們支援主要貨幣，包括美元、歐元、日圓、韓元等。"
+        },
+        "privacy": {
+          "question": "我的資料安全嗎？",
+          "answer": "安全。由於我們不需要使用者註冊（電子郵件、密碼等），資料收集極少。所有通訊均經過加密。"
+        }
+      }
+    },
     "footer": {
       "brand": "OurSplit",
       "copyright": "OurSplit",
@@ -101,7 +144,7 @@
       "sections": {
         "intro": {
           "title": "1. Terms",
-          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the Walica website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
+          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the {name} website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
         },
         "applicability": {
           "title": "2. Applicability",

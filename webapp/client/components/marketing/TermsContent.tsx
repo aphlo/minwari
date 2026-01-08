@@ -7,13 +7,16 @@ export function TermsContent() {
   const restrictionItems = t.raw("sections.restriction.list") as string[];
   const disclaimerItems = t.raw("sections.disclaimer.list") as string[];
 
+  const tApp = useTranslations("app");
+  const name = tApp("name");
+
   return (
     <div className="space-y-6 sm:space-y-8 text-sm sm:text-base leading-relaxed">
       <section>
         <h2 className="text-lg font-semibold mb-3 sm:text-xl">
           {t("sections.intro.title")}
         </h2>
-        <p>{t("sections.intro.body")}</p>
+        <p>{t("sections.intro.body", { name })}</p>
       </section>
 
       <section>

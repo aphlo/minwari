@@ -36,7 +36,7 @@
   },
   "marketing": {
     "hero": {
-      "titleLine1": "Divida despesas de viagem",
+      "titleLine1": "Divida despesas",
       "titleLine2": "com facilidade",
       "subtitleLine1": "Calcule automaticamente acertos de viagens e eventos.",
       "subtitleLine2": "Veja quem deve quanto rapidamente.",
@@ -50,16 +50,16 @@
       "subtitle": "Deixe os calculos conosco e aproveite a viagem.",
       "items": {
         "create": {
-          "title": "Criacao facil",
-          "description": "Crie um grupo sem cadastro e compartilhe o URL para convidar membros."
+          "title": "Criação fácil",
+          "description": "Nenhum registro ou login necessário. Basta inserir um nome de grupo para criar um grupo de divisão instantaneamente. Compartilhe o URL gerado via aplicativos de mensagens para convidar amigos sem que eles precisem instalar um aplicativo."
         },
         "record": {
-          "title": "Registre despesas",
-          "description": "Anote quem pagou o que e escolha participantes com flexibilidade."
+          "title": "Acompanhe despesas",
+          "description": "Apenas registre quem pagou o quê e para quem. Selecione participantes com flexibilidade para cada despesa para lidar com divisões específicas ou parcelas desiguais. Suporta várias moedas, incluindo USD, EUR, JPY e mais."
         },
         "settle": {
-          "title": "Acerto automatico",
-          "description": "Calcule quem paga quem com o minimo de transferencias."
+          "title": "Acerto automático",
+          "description": "Calcula automaticamente a maneira mais eficiente de liquidar dívidas. Veja exatamente quem deve a quem de relance, minimizando o número de transferências necessárias e tornando os acertos pós-viagem livres de estresse."
         }
       }
     },
@@ -86,6 +86,49 @@
       "subtitleLine2": "e acerte sem stress.",
       "action": "Criar grupo"
     },
+    "useCases": {
+      "title": "Perfeito para qualquer ocasião",
+      "subtitle": "Lide com qualquer cenário de divisão com facilidade",
+      "items": {
+        "trip": {
+          "title": "Viagens em grupo",
+          "description": "Acompanhe transporte, acomodação e refeições. Registre tudo conforme acontece e acerte tudo de uma vez no final."
+        },
+        "bbq": {
+          "title": "Churrascos e Festas",
+          "description": "Várias pessoas comprando suprimentos? Basta inserir os recibos mais tarde para dividir as despesas até o último centavo."
+        },
+        "couple": {
+          "title": "Casais",
+          "description": "Gerencie despesas compartilhadas como encontros e contas domésticas. Registre conforme você gasta e acerte a diferença mensalmente."
+        },
+        "event": {
+          "title": "Eventos",
+          "description": "De festas pós-evento a presentes compartilhados, lide com cobranças complexas sem dor de cabeça."
+        }
+      }
+    },
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "items": {
+        "account": {
+          "question": "É necessário registro?",
+          "answer": "Não. Você pode usar todos os recursos gratuitamente simplesmente criando um grupo e compartilhando o URL."
+        },
+        "expire": {
+          "question": "Por quanto tempo os dados são salvos?",
+          "answer": "Os dados são mantidos indefinidamente."
+        },
+        "currency": {
+          "question": "Posso usá-lo para viagens internacionais?",
+          "answer": "Sim. Suportamos as principais moedas, incluindo USD, EUR, JPY, KRW e mais."
+        },
+        "privacy": {
+          "question": "Meus dados estão seguros?",
+          "answer": "Sim. Como não exigimos registro de usuário (e-mail, senha, etc.), a coleta de dados é mínima. Toda a comunicação é criptografada."
+        }
+      }
+    },
     "footer": {
       "brand": "OurSplit",
       "copyright": "OurSplit",
@@ -101,7 +144,7 @@
       "sections": {
         "intro": {
           "title": "1. Terms",
-          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the Walica website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
+          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the {name} website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
         },
         "applicability": {
           "title": "2. Applicability",

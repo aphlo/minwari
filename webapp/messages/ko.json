@@ -36,7 +36,7 @@
   },
   "marketing": {
     "hero": {
-      "titleLine1": "여행 비용 정산을",
+      "titleLine1": "비용 정산을",
       "titleLine2": "간단하게",
       "subtitleLine1": "여행과 이벤트 정산을 자동으로 계산합니다.",
       "subtitleLine2": "누가 얼마를 내야 하는지 한눈에 확인하세요.",
@@ -51,15 +51,15 @@
       "items": {
         "create": {
           "title": "간편 생성",
-          "description": "가입 없이 그룹을 만들고 URL로 멤버를 초대하세요."
+          "description": "회원가입이나 로그인이 필요 없습니다. 그룹 이름을 입력하면 즉시 정산 그룹이 생성됩니다. 생성된 URL을 메시지 앱으로 공유하여 앱 설치 없이 친구를 초대하세요."
         },
         "record": {
           "title": "지출 기록",
-          "description": "누가 무엇에 얼마를 냈는지 기록하고 참여자를 선택하세요."
+          "description": "누가 무엇을 위해 얼마를 지불했는지 기록하세요. 각 지출에 대해 참여자를 유연하게 선택하여 특정 정산이나 불균등한 분배를 처리할 수 있습니다. USD, EUR, JPY 등 다양한 통화를 지원합니다."
         },
         "settle": {
           "title": "자동 정산",
-          "description": "최소한의 송금으로 자동으로 정산합니다."
+          "description": "가장 효율적인 정산 방법을 자동으로 계산합니다. 누가 누구에게 얼마를 빚지고 있는지 한눈에 확인하고, 송금 횟수를 최소화하여 여행 후 정산을 스트레스 없이 처리하세요."
         }
       }
     },
@@ -86,6 +86,49 @@
       "subtitleLine2": "정산을 쉽게 마치세요.",
       "action": "그룹 만들기"
     },
+    "useCases": {
+      "title": "모든 상황에 완벽 대응",
+      "subtitle": "어떤 정산 시나리오도 쉽게 처리하세요",
+      "items": {
+        "trip": {
+          "title": "단체 여행",
+          "description": "교통비, 숙박비, 식비를 기록하세요. 여행 중 지출을 기록하고 마지막에 한 번에 정산하세요."
+        },
+        "bbq": {
+          "title": "BBQ 및 파티",
+          "description": "여러 사람이 물건을 구매했나요? 나중에 영수증을 입력하기만 하면 1원 단위까지 정확하게 정산할 수 있습니다."
+        },
+        "couple": {
+          "title": "커플",
+          "description": "데이트 비용이나 생활비 같은 공동 지출을 관리하세요. 지출할 때마다 기록하고 매달 차액을 정산하세요."
+        },
+        "event": {
+          "title": "이벤트",
+          "description": "뒤풀이부터 공동 선물까지, 복잡한 수금 문제를 골치 아프지 않게 해결하세요."
+        }
+      }
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "items": {
+        "account": {
+          "question": "회원가입이 필요한가요?",
+          "answer": "아니요. 그룹을 만들고 URL을 공유하기만 하면 모든 기능을 무료로 사용할 수 있습니다."
+        },
+        "expire": {
+          "question": "데이터는 얼마나 오래 저장되나요?",
+          "answer": "데이터는 영구적으로 보관됩니다。"
+        },
+        "currency": {
+          "question": "해외여행에서도 사용할 수 있나요?",
+          "answer": "네. USD, EUR, JPY, KRW 등 주요 통화를 지원합니다."
+        },
+        "privacy": {
+          "question": "내 데이터는 안전한가요?",
+          "answer": "네. 사용자 등록(이메일, 비밀번호 등)을 요구하지 않으므로 데이터 수집이 최소화됩니다. 모든 통신은 암호화됩니다."
+        }
+      }
+    },
     "footer": {
       "brand": "OurSplit",
       "copyright": "OurSplit",
@@ -101,7 +144,7 @@
       "sections": {
         "intro": {
           "title": "1. Terms",
-          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the Walica website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
+          "body": "These Terms of Service (\"Terms\") define the conditions for using the services provided on the {name} website (\"Service\"). Users (\"Users\") must use the Service in accordance with these Terms."
         },
         "applicability": {
           "title": "2. Applicability",
