@@ -1,5 +1,6 @@
 import { Noto_Sans_JP } from "next/font/google";
 import { getLocale } from "next-intl/server";
+import { AnalyticsTracker } from "@/client/components/analytics/AnalyticsTracker";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -18,6 +19,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${notoSansJP.variable} font-sans antialiased`}>
+        <AnalyticsTracker />
         {children}
       </body>
     </html>
