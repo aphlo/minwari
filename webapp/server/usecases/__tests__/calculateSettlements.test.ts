@@ -65,3 +65,9 @@ test("returns empty settlements when there are no expenses", () => {
 
   assert.deepEqual(settlements, []);
 });
+
+test("returns empty settlements when members is empty", () => {
+  const settlements = calculateSettlements([], [], "JPY");
+
+  assert.deepEqual(settlements, []);
+});
