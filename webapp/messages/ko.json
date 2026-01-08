@@ -321,6 +321,12 @@
     "sections": {
       "expenses": "기록",
       "settlement": "정산"
+    },
+    "warnings": {
+      "noMembers": {
+        "title": "멤버 없음",
+        "description": "\"그룹 편집\"에서 멤버를 추가해주세요."
+      }
     }
   },
   "expenses": {

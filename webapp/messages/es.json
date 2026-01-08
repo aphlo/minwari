@@ -321,6 +321,12 @@
     "sections": {
       "expenses": "Registros",
       "settlement": "Liquidacion"
+    },
+    "warnings": {
+      "noMembers": {
+        "title": "Sin miembros",
+        "description": "Por favor agregue miembros desde \"Editar grupo\"."
+      }
     }
   },
   "expenses": {

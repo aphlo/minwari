@@ -321,6 +321,12 @@
     "sections": {
       "expenses": "記錄",
       "settlement": "結算"
+    },
+    "warnings": {
+      "noMembers": {
+        "title": "沒有成員",
+        "description": "請從「編輯群組」新增成員。"
+      }
     }
   },
   "expenses": {

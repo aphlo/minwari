@@ -321,6 +321,12 @@
     "sections": {
       "expenses": "記録一覧",
       "settlement": "精算"
+    },
+    "warnings": {
+      "noMembers": {
+        "title": "メンバーがいません",
+        "description": "「グループを編集」からメンバーを追加してください。"
+      }
     }
   },
   "expenses": {

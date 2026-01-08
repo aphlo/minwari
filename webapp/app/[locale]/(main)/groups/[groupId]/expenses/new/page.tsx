@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { ExpenseForm } from "@/client/components/forms/ExpenseForm";
 import { Header } from "@/client/components/layout/Header";
@@ -29,6 +29,10 @@ export default async function AddExpensePage({ params }: Props) {
 
   if (!group) {
     notFound();
+  }
+
+  if (group.members.length === 0) {
+    redirect(`/groups/${groupId}`);
   }
 
   return (

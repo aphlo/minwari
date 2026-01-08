@@ -321,6 +321,12 @@
     "sections": {
       "expenses": "Registros",
       "settlement": "Acerto"
+    },
+    "warnings": {
+      "noMembers": {
+        "title": "Sem membros",
+        "description": "Por favor, adicione membros em \"Editar grupo\"."
+      }
     }
   },
   "expenses": {

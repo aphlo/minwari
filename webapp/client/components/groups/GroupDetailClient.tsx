@@ -101,11 +101,38 @@ export function GroupDetailClient({
             </div>
           </div>
 
+          {group.members.length === 0 && (
+            <div className="animate-fade-in-up delay-50 opacity-0 bg-warning-50 text-warning-600 px-4 py-3 rounded-lg flex items-start gap-3">
+              <svg
+                className="w-5 h-5 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                />
+              </svg>
+              <div>
+                <p className="font-medium text-sm">
+                  {t("warnings.noMembers.title")}
+                </p>
+                <p className="text-sm mt-1">
+                  {t("warnings.noMembers.description")}
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Add Expense Button */}
           <div className="animate-fade-in-up delay-100 opacity-0">
             <Button
-              as={Link}
-              href={`/groups/${group.id}/expenses/new`}
+              as={group.members.length === 0 ? "button" : Link}
+              href={group.members.length === 0 ? undefined : `/groups/${group.id}/expenses/new`}
+              isDisabled={group.members.length === 0}
               color="primary"
               size="lg"
               radius="full"

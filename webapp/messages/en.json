@@ -321,6 +321,12 @@
     "sections": {
       "expenses": "Records",
       "settlement": "Settlement"
+    },
+    "warnings": {
+      "noMembers": {
+        "title": "No members",
+        "description": "Please add members from \"Edit group\"."
+      }
     }
   },
   "expenses": {
