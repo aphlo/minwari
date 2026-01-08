@@ -1,15 +1,11 @@
 import { NextResponse } from "next/server";
-import { requireAppCheck } from "@/server/lib/appCheck";
+
 import { createGroupUsecase } from "@/server/usecases/createGroup";
 import type { CreateGroupRequest } from "@/shared/types/group";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  const appCheckResponse = await requireAppCheck(request);
-  if (appCheckResponse) {
-    return appCheckResponse;
-  }
 
   let body: CreateGroupRequest;
   try {
