@@ -49,6 +49,10 @@ export function calculateSettlements(
   }));
   const settlements: Settlement[] = [];
 
+  if (balances.length === 0) {
+    return [];
+  }
+
   while (true) {
     balances.sort((a, b) => {
       if (b.balance !== a.balance) {

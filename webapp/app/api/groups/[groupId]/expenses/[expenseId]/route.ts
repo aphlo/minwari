@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireAppCheck } from "@/server/lib/appCheck";
+
 import {
   deleteExpense,
   getExpense,
@@ -12,12 +12,7 @@ export const runtime = "nodejs";
 
 type Params = { params: Promise<{ groupId: string; expenseId: string }> };
 
-export async function GET(request: Request, { params }: Params) {
-  const appCheckResponse = await requireAppCheck(request);
-  if (appCheckResponse) {
-    return appCheckResponse;
-  }
-
+export async function GET(_request: Request, { params }: Params) {
   const { groupId, expenseId } = await params;
 
   try {
@@ -38,11 +33,6 @@ export async function GET(request: Request, { params }: Params) {
 }
 
 export async function PUT(request: Request, { params }: Params) {
-  const appCheckResponse = await requireAppCheck(request);
-  if (appCheckResponse) {
-    return appCheckResponse;
-  }
-
   const { groupId, expenseId } = await params;
 
   let body: CreateExpenseRequest;
@@ -95,12 +85,7 @@ export async function PUT(request: Request, { params }: Params) {
   }
 }
 
-export async function DELETE(request: Request, { params }: Params) {
-  const appCheckResponse = await requireAppCheck(request);
-  if (appCheckResponse) {
-    return appCheckResponse;
-  }
-
+export async function DELETE(_request: Request, { params }: Params) {
   const { groupId, expenseId } = await params;
 
   try {

@@ -4,7 +4,7 @@ import { Button } from "@heroui/button";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { CurrencySelect } from "@/client/components/forms/CurrencySelect";
-import { appCheckFetch } from "@/client/lib/appCheckFetch";
+
 import { useRouter } from "@/i18n/navigation";
 import type { CurrencyCode } from "@/shared/lib/currency";
 import { getDefaultCurrencyForLocale } from "@/shared/lib/localeCurrency";
@@ -41,11 +41,11 @@ export function GroupForm({
   );
   const [members, setMembers] = useState<{ id: string; name: string }[]>(
     initialMembers.length > 0
-      ? initialMembers.map((name) => ({
-          id: Math.random().toString(36).substring(7),
+      ? initialMembers.map((name, index) => ({
+          id: `initial-member-${index}`,
           name,
         }))
-      : [{ id: Math.random().toString(36).substring(7), name: "" }]
+      : [{ id: "initial-member-0", name: "" }]
   );
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -73,12 +73,6 @@ export function GroupForm({
       newErrors.groupName = t("errors.groupNameRequired");
     }
 
-    members.forEach((member) => {
-      if (!member.name.trim()) {
-        newErrors[`member-${member.id}`] = t("errors.memberNameRequired");
-      }
-    });
-
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -89,14 +83,16 @@ export function GroupForm({
     try {
       const url = mode === "edit" ? `/api/groups/${groupId}` : "/api/groups";
       const method = mode === "edit" ? "PUT" : "POST";
-      const response = await appCheckFetch(url, {
+      const response = await fetch(url, {
         method,
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           groupName,
-          members: members.map((member) => member.name),
+          members: members
+            .map((member) => member.name.trim())
+            .filter((name) => name !== ""),
           currency,
         }),
       });

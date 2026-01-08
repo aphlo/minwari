@@ -5,7 +5,7 @@ import { Checkbox } from "@heroui/checkbox";
 import { Select, SelectItem } from "@heroui/select";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { appCheckFetch } from "@/client/lib/appCheckFetch";
+
 import { useRouter } from "@/i18n/navigation";
 import type { CurrencyCode } from "@/shared/lib/currency";
 import {
@@ -90,7 +90,7 @@ export function ExpenseForm({ groupId, members, currency, expense }: Props) {
         ? `/api/groups/${groupId}/expenses/${expense.id}`
         : `/api/groups/${groupId}/expenses`;
 
-      const res = await appCheckFetch(url, {
+      const res = await fetch(url, {
         method: isEditing ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
