@@ -5,7 +5,8 @@ resource "google_cloud_run_v2_service" "service" {
   ingress  = var.ingress
 
   template {
-    service_account = var.service_account_email
+    service_account                  = var.service_account_email
+    max_instance_request_concurrency = 1
 
     containers {
       image = var.image

@@ -44,13 +44,13 @@ variable "max_instances" {
 variable "cpu" {
   description = "CPU"
   type        = string
-  default     = "1"
+  default     = "0.5"
 }
 
 variable "memory" {
   description = "メモリ"
   type        = string
-  default     = "256Mi"
+  default     = "128Mi"
 }
 
 variable "container_port" {

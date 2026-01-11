@@ -71,7 +71,8 @@ jobs:
             --project "$PROJECT_ID" \
             --platform managed \
             --allow-unauthenticated \
-            --memory 256Mi \
-            --cpu 1 \
+            --memory 128Mi \
+            --cpu 0.5 \
             --cpu-throttling \
+            --concurrency 1 \
             --quiet
