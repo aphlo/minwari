@@ -72,7 +72,6 @@ jobs:
             --platform managed \
             --allow-unauthenticated \
             --memory 128Mi \
-            --cpu 0.5 \
+            --cpu 1 \
             --cpu-throttling \
-            --concurrency 1 \
             --quiet

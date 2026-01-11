@@ -44,7 +44,7 @@ variable "max_instances" {
 variable "cpu" {
   description = "CPU"
   type        = string
-  default     = "0.5"
+  default     = "1"
 }
 
 variable "memory" {
