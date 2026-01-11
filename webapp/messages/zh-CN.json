@@ -45,6 +45,9 @@
         "learnMore": "了解更多"
       }
     },
+    "recentGroups": {
+      "title": "最近访问的群组"
+    },
     "features": {
       "title": "简单。智能。顺滑。",
       "subtitle": "复杂计算交给我们，你只需享受旅程。",

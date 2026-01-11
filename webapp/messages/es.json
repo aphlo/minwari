@@ -45,6 +45,9 @@
         "learnMore": "Saber mas"
       }
     },
+    "recentGroups": {
+      "title": "Grupos visitados recientemente"
+    },
     "features": {
       "title": "Simple. Inteligente. Fluido.",
       "subtitle": "Deja las cuentas en nuestras manos y disfruta el viaje.",

@@ -45,6 +45,9 @@
         "learnMore": "자세히 보기"
       }
     },
+    "recentGroups": {
+      "title": "최근 방문한 그룹"
+    },
     "features": {
       "title": "심플. 스마트. 스무스.",
       "subtitle": "복잡한 계산은 맡기고 여행을 즐기세요.",

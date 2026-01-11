@@ -45,6 +45,9 @@
         "learnMore": "Learn more"
       }
     },
+    "recentGroups": {
+      "title": "Recently visited"
+    },
     "features": {
       "title": "Simple. Smart. Smooth.",
       "subtitle": "Leave the hard math to us and focus on the trip.",

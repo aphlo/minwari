@@ -3,7 +3,8 @@
 import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { addRecentGroup } from "@/client/lib/recentGroups";
 import { getMemberChipColor } from "@/client/lib/memberColor";
 import { Link } from "@/i18n/navigation";
 import type { CurrencyCode } from "@/shared/lib/currency";
@@ -51,6 +52,14 @@ export function GroupDetailClient({
   const [expenses] = useState(initialExpenses);
   const [settlements] = useState(initialSettlements);
   const t = useTranslations("group");
+
+  useEffect(() => {
+    addRecentGroup({
+      id: group.id,
+      name: group.name,
+      createdAt: group.createdAt,
+    });
+  }, [group.id, group.name, group.createdAt]);
 
   return (
     <div className="min-h-screen bg-background">
