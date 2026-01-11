@@ -11,6 +11,29 @@ export type RecentGroup = {
 };
 
 export function getRecentGroups(): RecentGroup[] {
+  // Fix for demo: mock data
+  return [
+    {
+      id: "WHlvXtJhZJtOppjgqdxE",
+      name: "沖縄旅行 2024",
+      createdAt: "2026-01-01T10:00:00.000Z",
+      visitedAt: Date.now(),
+    },
+    {
+      id: "Wx2UrhOg1wbQt4qvnQg5",
+      name: "同窓会",
+      createdAt: "2026-01-05T18:00:00.000Z",
+      visitedAt: Date.now(),
+    },
+    {
+      id: "m1Su3pUWdlW4hPAIIVNf",
+      name: "BBQ大会",
+      createdAt: "2026-01-10T11:00:00.000Z",
+      visitedAt: Date.now(),
+    },
+  ];
+
+  /*
   if (typeof window === "undefined") return [];
 
   try {
@@ -22,6 +45,7 @@ export function getRecentGroups(): RecentGroup[] {
     console.error("Failed to parse recent groups", e);
     return [];
   }
+  */
 }
 
 export function addRecentGroup(group: {
