@@ -4,9 +4,16 @@ import { Button } from "@heroui/button";
 import { useTranslations } from "next-intl";
 import { Header } from "@/client/components/layout/Header";
 import { Link } from "@/i18n/navigation";
+import { useEffect, useState } from "react";
+import { getRecentGroups, type RecentGroup } from "@/client/lib/recentGroups";
 
 export default function Home() {
   const t = useTranslations("marketing");
+  const [recentGroups, setRecentGroups] = useState<RecentGroup[]>([]);
+
+  useEffect(() => {
+    setRecentGroups(getRecentGroups());
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -50,6 +57,46 @@ export default function Home() {
             </Button>
           </div>
         </div>
+
+        {/* Recent Groups */}
+        {recentGroups.length > 0 && (
+          <div className="mt-12 max-w-xl mx-auto animate-fade-in-up delay-300 opacity-0">
+            <p className="text-sm text-muted mb-4 font-medium uppercase tracking-wider text-center">
+              {t("recentGroups.title")}
+            </p>
+            <div className="flex flex-col gap-3">
+              {recentGroups.map((group) => (
+                <Link
+                  key={group.id}
+                  href={`/groups/${group.id}`}
+                  className="group/item flex items-center justify-between p-4 bg-card/50 hover:bg-card backdrop-blur-sm border border-border/50 hover:border-border rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 text-left"
+                >
+                  <div className="min-w-0">
+                    <p className="font-medium text-foreground truncate px-1">
+                      {group.name}
+                    </p>
+                    <p className="text-xs text-muted px-1 mt-0.5">
+                      {new Date(group.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <svg
+                    className="w-5 h-5 text-muted group-hover/item:text-primary transform group-hover/item:translate-x-1 transition-all"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Features Section */}
