@@ -2,10 +2,10 @@
 
 import { Button } from "@heroui/button";
 import { useTranslations } from "next-intl";
-import { Header } from "@/client/components/layout/Header";
-import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
+import { Header } from "@/client/components/layout/Header";
 import { getRecentGroups, type RecentGroup } from "@/client/lib/recentGroups";
+import { Link } from "@/i18n/navigation";
 
 export default function Home() {
   const t = useTranslations("marketing");
