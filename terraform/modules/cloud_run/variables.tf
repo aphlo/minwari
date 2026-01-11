@@ -50,7 +50,7 @@ variable "cpu" {
 variable "memory" {
   description = "メモリ"
   type        = string
-  default     = "128Mi"
+  default     = "256Mi"
 }
 
 variable "container_port" {
