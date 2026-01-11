@@ -50,7 +50,7 @@ variable "cpu" {
 variable "memory" {
   description = "メモリ"
   type        = string
-  default     = "512Mi"
+  default     = "256Mi"
 }
 
 variable "container_port" {
@@ -69,6 +69,18 @@ variable "ingress" {
   description = "Cloud Run ingress設定"
   type        = string
   default     = "INGRESS_TRAFFIC_ALL"
+}
+
+variable "cpu_idle" {
+  description = "If true, CPU is only allocated during request processing (request-based billing). If false, CPU is always allocated."
+  type        = bool
+  default     = true
+}
+
+variable "startup_cpu_boost" {
+  description = "Whether to enable startup CPU boost"
+  type        = bool
+  default     = true
 }
 
 terraform {

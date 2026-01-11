@@ -27,6 +27,10 @@ resource "google_cloud_run_v2_service" "service" {
           cpu    = var.cpu
           memory = var.memory
         }
+
+        # CPU Throttling enables request-based billing
+        startup_cpu_boost = var.startup_cpu_boost
+        cpu_idle          = var.cpu_idle
       }
     }
 
@@ -65,5 +69,5 @@ resource "google_cloud_run_domain_mapping" "mapping" {
   }
 
   depends_on = [google_cloud_run_v2_service.service]
-  provider = google-beta
+  provider   = google-beta
 }
