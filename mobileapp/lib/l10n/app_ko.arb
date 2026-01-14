@@ -11,5 +11,9 @@
   "noGroups": "그룹 없음",
   "emptyStateDescription": "그룹을 만들어 친구들과 비용을 나눠보세요",
   "createGroup": "그룹 만들기",
-  "groupListTitle": "그룹"
+  "groupListTitle": "그룹",
+  "appearance": "외관",
+  "themeLight": "라이트",
+  "themeDark": "다크",
+  "themeSystem": "시스템"
 }

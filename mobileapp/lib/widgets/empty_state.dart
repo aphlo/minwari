@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../l10n/generated/app_localizations.dart';
-import '../main.dart';
+import '../theme/app_colors.dart';
 
 class EmptyState extends StatelessWidget {
   final VoidCallback onCreateGroup;
@@ -11,6 +11,13 @@ class EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor =
+        isDark ? AppColors.primaryColor : AppColors.primaryColor;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Center(
       child: Padding(
@@ -23,23 +30,23 @@ class EmptyState extends StatelessWidget {
               width: 80,
               height: 80,
               decoration: BoxDecoration(
-                color: MinwariApp.primaryColor.withValues(alpha: 0.1),
+                color: primaryColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Icon(
+              child: Icon(
                 CupertinoIcons.person_3_fill,
                 size: 40,
-                color: MinwariApp.primaryColor,
+                color: primaryColor,
               ),
             ),
             const SizedBox(height: 24),
             // Title
             Text(
               l10n.noGroups,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w600,
-                color: MinwariApp.textPrimary,
+                color: textPrimary,
                 letterSpacing: -0.3,
               ),
               textAlign: TextAlign.center,
@@ -48,9 +55,9 @@ class EmptyState extends StatelessWidget {
             // Subtitle
             Text(
               l10n.emptyStateDescription,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 15,
-                color: MinwariApp.textSecondary,
+                color: textSecondary,
                 height: 1.4,
               ),
               textAlign: TextAlign.center,
@@ -60,7 +67,7 @@ class EmptyState extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: CupertinoButton(
-                color: MinwariApp.primaryColor,
+                color: primaryColor,
                 borderRadius: BorderRadius.circular(12),
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 onPressed: onCreateGroup,

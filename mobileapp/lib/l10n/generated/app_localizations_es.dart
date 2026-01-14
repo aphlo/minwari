@@ -44,4 +44,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get groupListTitle => 'Grupos';
+
+  @override
+  String get appearance => 'Apariencia';
+
+  @override
+  String get themeLight => 'Claro';
+
+  @override
+  String get themeDark => 'Oscuro';
+
+  @override
+  String get themeSystem => 'Sistema';
 }

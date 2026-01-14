@@ -11,5 +11,9 @@
   "noGroups": "グループがありません",
   "emptyStateDescription": "グループを作成して友達と割り勘を始めましょう",
   "createGroup": "グループを作成",
-  "groupListTitle": "グループ"
+  "groupListTitle": "グループ",
+  "appearance": "外観",
+  "themeLight": "ライト",
+  "themeDark": "ダーク",
+  "themeSystem": "システム設定"
 }

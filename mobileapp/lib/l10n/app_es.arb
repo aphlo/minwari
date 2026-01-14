@@ -11,5 +11,9 @@
   "noGroups": "No hay grupos todavía",
   "emptyStateDescription": "Crea un grupo para empezar a dividir gastos con amigos",
   "createGroup": "Crear grupo",
-  "groupListTitle": "Grupos"
+  "groupListTitle": "Grupos",
+  "appearance": "Apariencia",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro",
+  "themeSystem": "Sistema"
 }

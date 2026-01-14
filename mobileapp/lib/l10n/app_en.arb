@@ -11,5 +11,9 @@
   "noGroups": "No groups yet",
   "emptyStateDescription": "Create a group to start splitting expenses with friends",
   "createGroup": "Create a group",
-  "groupListTitle": "Groups"
+  "groupListTitle": "Groups",
+  "appearance": "Appearance",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "themeSystem": "System"
 }

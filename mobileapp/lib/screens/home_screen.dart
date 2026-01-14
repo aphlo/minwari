@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../models/group.dart';
+import '../providers/theme_provider.dart';
 import '../repositories/group_repository.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/group_list.dart';
-import '../main.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final ThemeProvider themeProvider;
+
+  const HomeScreen({super.key, required this.themeProvider});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -47,9 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return Scaffold(
-      backgroundColor: MinwariApp.backgroundColor,
       appBar: AppBar(
-        backgroundColor: MinwariApp.backgroundColor,
         title: Text(l10n.appTitle),
         leading: Builder(
           builder: (context) => IconButton(
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(themeProvider: widget.themeProvider),
       body: _isLoading
           ? const Center(
               child: CupertinoActivityIndicator(radius: 14),

@@ -44,4 +44,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get groupListTitle => 'Groups';
+
+  @override
+  String get appearance => 'Appearance';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
+
+  @override
+  String get themeSystem => 'System';
 }

@@ -44,6 +44,18 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get groupListTitle => 'Grupos';
+
+  @override
+  String get appearance => 'Aparência';
+
+  @override
+  String get themeLight => 'Claro';
+
+  @override
+  String get themeDark => 'Escuro';
+
+  @override
+  String get themeSystem => 'Sistema';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -86,4 +98,16 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get groupListTitle => 'Grupos';
+
+  @override
+  String get appearance => 'Aparência';
+
+  @override
+  String get themeLight => 'Claro';
+
+  @override
+  String get themeDark => 'Escuro';
+
+  @override
+  String get themeSystem => 'Sistema';
 }

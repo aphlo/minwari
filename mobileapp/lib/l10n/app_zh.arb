@@ -11,5 +11,9 @@
   "noGroups": "暂无群组",
   "emptyStateDescription": "创建群组，与朋友开始分账",
   "createGroup": "创建群组",
-  "groupListTitle": "群组"
+  "groupListTitle": "群组",
+  "appearance": "外观",
+  "themeLight": "浅色",
+  "themeDark": "深色",
+  "themeSystem": "跟随系统"
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import '../models/group.dart';
-import '../main.dart';
+import '../theme/app_colors.dart';
 
 class GroupList extends StatelessWidget {
   final List<Group> groups;
@@ -16,6 +16,16 @@ class GroupList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor =
+        isDark ? AppColors.primaryColor : AppColors.primaryColor;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final cardBackground =
+        isDark ? AppColors.darkCardBackground : AppColors.lightCardBackground;
+
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
       itemCount: groups.length,
@@ -30,7 +40,7 @@ class GroupList extends StatelessWidget {
             bottom: isLast ? 0 : 0,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: cardBackground,
             borderRadius: BorderRadius.vertical(
               top: isFirst ? const Radius.circular(12) : Radius.zero,
               bottom: isLast ? const Radius.circular(12) : Radius.zero,
@@ -58,14 +68,13 @@ class GroupList extends StatelessWidget {
                           width: 44,
                           height: 44,
                           decoration: BoxDecoration(
-                            color:
-                                MinwariApp.primaryColor.withValues(alpha: 0.1),
+                            color: primaryColor.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const Icon(
+                          child: Icon(
                             CupertinoIcons.person_3_fill,
                             size: 22,
-                            color: MinwariApp.primaryColor,
+                            color: primaryColor,
                           ),
                         ),
                         const SizedBox(width: 14),
@@ -76,10 +85,10 @@ class GroupList extends StatelessWidget {
                             children: [
                               Text(
                                 group.name,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w600,
-                                  color: MinwariApp.textPrimary,
+                                  color: textPrimary,
                                 ),
                               ),
                               const SizedBox(height: 2),
@@ -87,19 +96,19 @@ class GroupList extends StatelessWidget {
                                 DateFormat.yMMMd(
                                   Localizations.localeOf(context).toString(),
                                 ).format(group.createdAt),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 15,
-                                  color: MinwariApp.textSecondary,
+                                  color: textSecondary,
                                 ),
                               ),
                             ],
                           ),
                         ),
                         // Chevron
-                        const Icon(
+                        Icon(
                           CupertinoIcons.chevron_forward,
                           size: 18,
-                          color: MinwariApp.textSecondary,
+                          color: textSecondary,
                         ),
                       ],
                     ),
@@ -108,9 +117,14 @@ class GroupList extends StatelessWidget {
               ),
               // Divider (except for last item)
               if (!isLast)
-                const Padding(
-                  padding: EdgeInsets.only(left: 74),
-                  child: Divider(height: 0.5, thickness: 0.5),
+                Padding(
+                  padding: const EdgeInsets.only(left: 74),
+                  child: Divider(
+                    height: 0.5,
+                    thickness: 0.5,
+                    color:
+                        isDark ? AppColors.darkDivider : AppColors.lightDivider,
+                  ),
                 ),
             ],
           ),

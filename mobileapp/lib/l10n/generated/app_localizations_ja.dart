@@ -43,4 +43,16 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get groupListTitle => 'グループ';
+
+  @override
+  String get appearance => '外観';
+
+  @override
+  String get themeLight => 'ライト';
+
+  @override
+  String get themeDark => 'ダーク';
+
+  @override
+  String get themeSystem => 'システム設定';
 }

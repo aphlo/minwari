@@ -43,4 +43,16 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get groupListTitle => '그룹';
+
+  @override
+  String get appearance => '외관';
+
+  @override
+  String get themeLight => '라이트';
+
+  @override
+  String get themeDark => '다크';
+
+  @override
+  String get themeSystem => '시스템';
 }

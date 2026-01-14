@@ -43,6 +43,18 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get groupListTitle => '群组';
+
+  @override
+  String get appearance => '外观';
+
+  @override
+  String get themeLight => '浅色';
+
+  @override
+  String get themeDark => '深色';
+
+  @override
+  String get themeSystem => '跟随系统';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -84,6 +96,18 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get groupListTitle => '群组';
+
+  @override
+  String get appearance => '外观';
+
+  @override
+  String get themeLight => '浅色';
+
+  @override
+  String get themeDark => '深色';
+
+  @override
+  String get themeSystem => '跟随系统';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -125,4 +149,16 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get groupListTitle => '群組';
+
+  @override
+  String get appearance => '外觀';
+
+  @override
+  String get themeLight => '淺色';
+
+  @override
+  String get themeDark => '深色';
+
+  @override
+  String get themeSystem => '跟隨系統';
 }
