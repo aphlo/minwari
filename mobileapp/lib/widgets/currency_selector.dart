@@ -212,7 +212,8 @@ class _CurrencyPickerSheetState extends State<_CurrencyPickerSheet> {
                     style: TextStyle(
                       fontSize: 17,
                       color: context.textPrimary,
-                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                      fontWeight:
+                          isSelected ? FontWeight.w600 : FontWeight.normal,
                     ),
                   ),
                   trailing: isSelected

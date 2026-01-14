@@ -104,11 +104,13 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
         ),
       );
     } catch (e) {
+      debugPrint('Group creation error: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(context.l10n.createGroupError),
+            content: Text('${context.l10n.createGroupError}: $e'),
             backgroundColor: Colors.red,
+            duration: const Duration(seconds: 10),
           ),
         );
       }
