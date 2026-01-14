@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/l10n/generated/app_localizations.dart';
-import 'package:mobileapp/lib/settlement_calculator.dart';
-import 'package:mobileapp/models/expense.dart';
 import 'package:mobileapp/models/group.dart';
-import 'package:mobileapp/repositories/expense_repository.dart';
 import 'package:mobileapp/repositories/group_repository.dart';
+import 'package:mobileapp/theme/app_theme_extension.dart';
 import 'package:mobileapp/widgets/expense_list.dart';
 import 'package:mobileapp/widgets/group_info_card.dart';
 import 'package:mobileapp/widgets/settlement_list.dart';
@@ -20,12 +17,8 @@ class GroupDetailScreen extends StatefulWidget {
 }
 
 class _GroupDetailScreenState extends State<GroupDetailScreen> {
-  final GroupRepository _groupRepository = GroupRepository();
-  final ExpenseRepository _expenseRepository = ExpenseRepository();
-
+  final GroupRepository _repository = GroupRepository();
   Group? _group;
-  List<Expense> _expenses = [];
-  List<Settlement> _settlements = [];
   bool _isLoading = true;
   String? _error;
 
@@ -42,36 +35,18 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
     });
 
     try {
-      final group = await _groupRepository.getGroup(widget.groupId);
-      if (group == null) {
+      final group = await _repository.getGroup(widget.groupId);
+      if (group != null) {
+        setState(() {
+          _group = group;
+          _isLoading = false;
+        });
+      } else {
         setState(() {
           _error = 'Group not found';
           _isLoading = false;
         });
-        return;
       }
-
-      final expenses = await _expenseRepository.getExpenses(widget.groupId);
-
-      // Calculate settlements
-      final expensesForSettlement =
-          expenses.map((e) => e.toExpenseForSettlement()).toList();
-      final settlements = calculateSettlements(
-        expensesForSettlement,
-        group.members,
-        group.currency,
-      );
-
-      // Save to local history and last opened
-      await _groupRepository.saveGroupToLocal(group);
-      await _groupRepository.saveLastOpenedGroupId(widget.groupId);
-
-      setState(() {
-        _group = group;
-        _expenses = expenses;
-        _settlements = settlements;
-        _isLoading = false;
-      });
     } catch (e) {
       setState(() {
         _error = e.toString();
@@ -82,75 +57,104 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
     if (_isLoading) {
       return Scaffold(
-        appBar: AppBar(title: Text(l10n?.groupDetail ?? 'Group Details')),
+        backgroundColor: context.scaffoldBackgroundColor,
+        appBar: AppBar(
+          title: Text(
+            context.l10n.groupDetail,
+            style: TextStyle(color: context.textPrimary),
+          ),
+          backgroundColor: context.scaffoldBackgroundColor,
+          elevation: 0,
+          leading: const BackButton(),
+        ),
         body: const Center(child: CupertinoActivityIndicator(radius: 14)),
       );
     }
 
     if (_error != null || _group == null) {
-      return _buildErrorState(l10n);
+      return Scaffold(
+        backgroundColor: context.scaffoldBackgroundColor,
+        appBar: AppBar(
+          title: Text(
+            context.l10n.groupDetail,
+            style: TextStyle(color: context.textPrimary),
+          ),
+          backgroundColor: context.scaffoldBackgroundColor,
+          elevation: 0,
+          leading: const BackButton(),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _error ?? context.l10n.groupNotFound,
+                style: TextStyle(color: context.textSecondary),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: _loadData,
+                child: const Text('Retry'),
+              ),
+            ],
+          ),
+        ),
+      );
     }
 
+    final group = _group!;
+
     return Scaffold(
+      backgroundColor: context.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text(_group!.name),
+        title: Text(
+          group.name,
+          style: TextStyle(color: context.textPrimary),
+        ),
+        backgroundColor: context.scaffoldBackgroundColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: context.textPrimary),
+        leading: const BackButton(),
         actions: [
           IconButton(
-            icon: const Icon(CupertinoIcons.refresh),
-            onPressed: _loadData,
+            icon: const Icon(CupertinoIcons.settings),
+            onPressed: () {
+              // TODO: Implement group settings
+            },
           ),
         ],
       ),
       body: RefreshIndicator(
         onRefresh: _loadData,
-        child: ListView(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
-          children: [
-            GroupInfoCard(group: _group!),
-            const SizedBox(height: 24),
-            SettlementList(
-              settlements: _settlements,
-              currency: _group!.currency,
-            ),
-            const SizedBox(height: 24),
-            ExpenseList(
-              expenses: _expenses,
-              currency: _group!.currency,
-            ),
-          ],
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GroupInfoCard(group: group),
+              const SizedBox(height: 24),
+              SettlementList(
+                settlements: const [], // TODO: Calculate settlements
+                currency: group.currency,
+              ),
+              const SizedBox(height: 24),
+              ExpenseList(
+                expenses: const [], // TODO: Load expenses
+                currency: group.currency,
+              ),
+            ],
+          ),
         ),
       ),
-    );
-  }
-
-  Widget _buildErrorState(AppLocalizations? l10n) {
-    return Scaffold(
-      appBar: AppBar(title: Text(l10n?.groupDetail ?? 'Group Details')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              CupertinoIcons.exclamationmark_circle,
-              size: 48,
-              color: Theme.of(context).colorScheme.error,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              _error ?? l10n?.groupNotFound ?? 'Group not found',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(l10n?.goBack ?? 'Go Back'),
-            ),
-          ],
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // TODO: Add expense
+        },
+        backgroundColor: context.primaryColor,
+        child: const Icon(CupertinoIcons.add, color: Colors.white),
       ),
     );
   }

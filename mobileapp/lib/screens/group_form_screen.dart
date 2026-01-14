@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/l10n/generated/app_localizations.dart';
+
 import 'package:mobileapp/lib/currency.dart';
 import 'package:mobileapp/lib/locale_currency.dart';
 import 'package:mobileapp/models/group.dart';
@@ -9,7 +9,7 @@ import 'package:mobileapp/screens/group_detail_screen.dart';
 import 'package:mobileapp/theme/app_theme_extension.dart';
 import 'package:mobileapp/widgets/currency_selector.dart';
 import 'package:mobileapp/widgets/members_editor.dart';
-import 'package:mobileapp/widgets/section_header.dart';
+import 'package:mobileapp/widgets/section_header.dart'; // Ensure correct import
 
 /// Screen for creating or editing a group
 /// Set [group] to edit an existing group, leave null to create new
@@ -26,8 +26,7 @@ class GroupFormScreen extends StatefulWidget {
 
 class _GroupFormScreenState extends State<GroupFormScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _groupNameController = TextEditingController();
-  final _memberController = TextEditingController();
+  final _nameController = TextEditingController();
   final _repository = GroupRepository();
 
   final List<String> _members = [];
@@ -39,7 +38,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
     super.initState();
     // Initialize with existing group data if editing
     if (widget.group != null) {
-      _groupNameController.text = widget.group!.name;
+      _nameController.text = widget.group!.name;
       _members.addAll(widget.group!.members);
       _selectedCurrency = widget.group!.currency;
     }
@@ -60,39 +59,8 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
 
   @override
   void dispose() {
-    _groupNameController.dispose();
-    _memberController.dispose();
+    _nameController.dispose();
     super.dispose();
-  }
-
-  void _addMember() {
-    final memberName = _memberController.text.trim();
-    if (memberName.isEmpty) return;
-
-    if (_members.contains(memberName)) {
-      _showSnackBar(
-        AppLocalizations.of(context)?.memberAlreadyExists ??
-            'Member already exists',
-      );
-      return;
-    }
-
-    setState(() {
-      _members.add(memberName);
-      _memberController.clear();
-    });
-  }
-
-  void _removeMember(String member) {
-    setState(() {
-      _members.remove(member);
-    });
-  }
-
-  void _showSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
-    );
   }
 
   Future<void> _submit() async {
@@ -107,7 +75,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
         // Update existing group
         await _repository.updateGroup(
           widget.group!.id,
-          name: _groupNameController.text.trim(),
+          name: _nameController.text.trim(),
           members: _members,
           currency: _selectedCurrency,
         );
@@ -115,7 +83,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
       } else {
         // Create new group
         groupId = await _repository.createGroup(
-          name: _groupNameController.text.trim(),
+          name: _nameController.text.trim(),
           members: _members,
           currency: _selectedCurrency,
         );
@@ -136,10 +104,14 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
         ),
       );
     } catch (e) {
-      _showSnackBar(
-        AppLocalizations.of(context)?.createGroupError ??
-            'Failed to save group',
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(context.l10n.createGroupError),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     } finally {
       if (mounted) {
         setState(() => _isLoading = false);
@@ -149,19 +121,34 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
-    final title = widget.isEditing
-        ? (l10n?.editGroup ?? 'Edit Group')
-        : (l10n?.createGroup ?? 'Create Group');
-
     return Scaffold(
+      backgroundColor: context.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text(title),
+        title: Text(
+          widget.isEditing ? context.l10n.editGroup : context.l10n.createGroup,
+          style: TextStyle(color: context.textPrimary),
+        ),
+        backgroundColor: context.scaffoldBackgroundColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: context.textPrimary),
         leading: IconButton(
           icon: const Icon(CupertinoIcons.xmark),
           onPressed: () => Navigator.of(context).pop(),
         ),
+        actions: [
+          TextButton(
+            onPressed: _isLoading ? null : _submit,
+            child: Text(
+              widget.isEditing ? context.l10n.save : context.l10n.create,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 17,
+                color:
+                    _isLoading ? context.textSecondary : context.primaryColor,
+              ),
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Form(
@@ -170,16 +157,13 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
             padding: const EdgeInsets.all(16),
             children: [
               // Group Name Section
-              SectionHeader(
-                title: l10n?.groupName ?? 'Group Name',
-                textColor: context.textPrimary.withValues(alpha: 0.6),
-              ),
+              SectionHeader(title: context.l10n.groupName),
               const SizedBox(height: 8),
               TextFormField(
-                controller: _groupNameController,
-                style: const TextStyle(fontSize: 17),
+                controller: _nameController,
+                style: TextStyle(color: context.textPrimary),
                 decoration: InputDecoration(
-                  hintText: l10n?.groupNameHint ?? 'e.g., Okinawa Trip 2026',
+                  hintText: context.l10n.groupNameHint,
                   filled: true,
                   fillColor: context.inputFillColor,
                   border: OutlineInputBorder(
@@ -190,11 +174,14 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
                     horizontal: 16,
                     vertical: 14,
                   ),
+                  prefixIcon: Icon(
+                    CupertinoIcons.person_2_fill,
+                    color: context.textSecondary,
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return l10n?.groupNameRequired ??
-                        'Please enter a group name';
+                    return context.l10n.groupNameRequired;
                   }
                   return null;
                 },
@@ -203,31 +190,38 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
               const SizedBox(height: 24),
 
               // Currency Section
-              SectionHeader(
-                title: l10n?.currency ?? 'Currency',
-                textColor: context.textPrimary.withValues(alpha: 0.6),
-              ),
+              SectionHeader(title: context.l10n.currency),
               const SizedBox(height: 8),
               CurrencySelector(
                 selectedCurrency: _selectedCurrency,
-                onCurrencyChanged: (currency) {
-                  setState(() => _selectedCurrency = currency);
+                onCurrencyChanged: (value) {
+                  setState(() => _selectedCurrency = value);
                 },
               ),
 
               const SizedBox(height: 24),
 
               // Members Section
-              SectionHeader(
-                title: l10n?.members ?? 'Members',
-                textColor: context.textPrimary.withValues(alpha: 0.6),
-              ),
+              SectionHeader(title: context.l10n.members),
               const SizedBox(height: 8),
               MembersEditor(
                 members: _members,
-                controller: _memberController,
-                onAddMember: _addMember,
-                onRemoveMember: _removeMember,
+                onMemberChanged: (index, name) {
+                  setState(() {
+                    if (index >= _members.length) {
+                      _members.add(name);
+                    } else {
+                      _members[index] = name;
+                    }
+                  });
+                },
+                onMemberRemove: (index) {
+                  setState(() {
+                    if (index >= 0 && index < _members.length) {
+                      _members.removeAt(index);
+                    }
+                  });
+                },
               ),
 
               const SizedBox(height: 32),
@@ -240,8 +234,8 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
                   child: _isLoading
                       ? const CupertinoActivityIndicator(color: Colors.white)
                       : Text(widget.isEditing
-                          ? (l10n?.save ?? 'Save')
-                          : (l10n?.create ?? 'Create')),
+                          ? context.l10n.save
+                          : context.l10n.create),
                 ),
               ),
             ],

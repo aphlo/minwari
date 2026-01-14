@@ -1,49 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'shared_preferences_provider.dart';
 
-/// Theme mode options
-enum AppThemeMode { light, dark, system }
+part 'theme_provider.g.dart';
 
-/// Provider for managing app theme state
-class ThemeProvider extends ChangeNotifier {
-  static const String _themeKey = 'theme_mode';
+@riverpod
+class ThemeNotifier extends _$ThemeNotifier {
+  static const _key = 'theme_mode';
 
-  AppThemeMode _themeMode = AppThemeMode.system;
-
-  AppThemeMode get themeMode => _themeMode;
-
-  ThemeMode get materialThemeMode {
-    switch (_themeMode) {
-      case AppThemeMode.light:
-        return ThemeMode.light;
-      case AppThemeMode.dark:
-        return ThemeMode.dark;
-      case AppThemeMode.system:
-        return ThemeMode.system;
-    }
-  }
-
-  /// Initialize theme from stored preferences
-  Future<void> init() async {
-    final prefs = await SharedPreferences.getInstance();
-    final storedValue = prefs.getString(_themeKey);
-    if (storedValue != null) {
-      _themeMode = AppThemeMode.values.firstWhere(
-        (e) => e.name == storedValue,
-        orElse: () => AppThemeMode.system,
+  @override
+  ThemeMode build() {
+    final prefs = ref.watch(sharedPreferencesProvider);
+    final saved = prefs.getString(_key);
+    if (saved != null) {
+      return ThemeMode.values.firstWhere(
+        (e) => e.name == saved,
+        orElse: () => ThemeMode.system,
       );
-      notifyListeners();
     }
+    return ThemeMode.system;
   }
 
-  /// Set theme mode and persist to storage
-  Future<void> setThemeMode(AppThemeMode mode) async {
-    if (_themeMode == mode) return;
-
-    _themeMode = mode;
-    notifyListeners();
-
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_themeKey, mode.name);
+  Future<void> setMode(ThemeMode mode) async {
+    state = mode;
+    final prefs = ref.read(sharedPreferencesProvider);
+    await prefs.setString(_key, mode.name);
   }
 }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobileapp/l10n/generated/app_localizations.dart';
 import 'package:mobileapp/theme/app_colors.dart';
 
-/// Extension to provide easy access to theme colors and status
-extension AppThemeExtension on BuildContext {
+/// Extension to provide easy access to theme colors, status, and l10n
+extension AppContextExtension on BuildContext {
+  /// Easy access to AppLocalizations
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
+
   /// Whether the current theme is dark mode
   bool get isDark => Theme.of(this).brightness == Brightness.dark;
 

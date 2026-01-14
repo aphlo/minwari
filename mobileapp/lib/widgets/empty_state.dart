@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../l10n/generated/app_localizations.dart';
-import '../theme/app_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:mobileapp/theme/app_theme_extension.dart';
 
 class EmptyState extends StatelessWidget {
   final VoidCallback onCreateGroup;
@@ -10,86 +9,62 @@ class EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor =
-        isDark ? AppColors.primaryColor : AppColors.primaryColor;
-    final textPrimary =
-        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
-
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Apple-style icon container
-            Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                color: primaryColor.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Icon(
-                CupertinoIcons.person_3_fill,
-                size: 40,
-                color: primaryColor,
-              ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            CupertinoIcons.person_3,
+            size: 64,
+            color: context.textSecondary.withValues(alpha: 0.3),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            context.l10n.noGroups,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: context.textPrimary,
             ),
-            const SizedBox(height: 24),
-            // Title
-            Text(
-              l10n.noGroups,
+          ),
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Text(
+              context.l10n.emptyStateDescription,
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-                color: textPrimary,
-                letterSpacing: -0.3,
+                fontSize: 15,
+                color: context.textSecondary,
               ),
-              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8),
-            // Subtitle
-            Text(
-              l10n.emptyStateDescription,
-              style: TextStyle(fontSize: 15, color: textSecondary, height: 1.4),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 32),
-            // Apple-style button
-            SizedBox(
-              width: double.infinity,
-              child: CupertinoButton(
-                color: primaryColor,
-                borderRadius: BorderRadius.circular(12),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                onPressed: onCreateGroup,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      CupertinoIcons.plus,
-                      size: 20,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      l10n.createGroup,
-                      style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
+          ),
+          const SizedBox(height: 24),
+          CupertinoButton(
+            color: context.primaryColor,
+            borderRadius: BorderRadius.circular(24),
+            onPressed: onCreateGroup,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  CupertinoIcons.add,
+                  color: Colors.white,
+                  size: 20,
                 ),
-              ),
+                const SizedBox(width: 8),
+                Text(
+                  context.l10n.createGroup,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

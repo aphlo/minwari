@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/l10n/generated/app_localizations.dart';
 import 'package:mobileapp/lib/currency.dart';
 import 'package:mobileapp/models/group.dart';
 import 'package:mobileapp/theme/app_theme_extension.dart';
@@ -13,105 +12,92 @@ class GroupInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
     return Container(
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: context.cardBackground,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 12,
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
             offset: const Offset(0, 4),
           ),
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Members
-            Row(
-              children: [
-                Icon(
-                  CupertinoIcons.person_3_fill,
-                  size: 20,
-                  color: context.primaryColor,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Title
+          Text(
+            group.name,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // Members
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: group.members.map((member) {
+              return Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
                 ),
-                const SizedBox(width: 8),
-                Text(
-                  l10n?.members ?? 'Members',
+                decoration: BoxDecoration(
+                  color: context.primaryColor.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  member,
                   style: TextStyle(
                     fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: context.textSecondary,
+                    fontWeight: FontWeight.w500,
+                    color: context.primaryColor,
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: group.members.map((member) {
-                return Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: context.primaryColor.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    member,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: context.primaryColor,
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
+              );
+            }).toList(),
+          ),
 
-            const SizedBox(height: 20),
-            Divider(
-              color: context.dividerColor,
-            ),
-            const SizedBox(height: 16),
+          const SizedBox(height: 20),
+          Divider(
+            color: context.dividerColor,
+          ),
+          const SizedBox(height: 16),
 
-            // Currency
-            Row(
-              children: [
-                Icon(
-                  CupertinoIcons.money_dollar_circle,
-                  size: 20,
-                  color: context.primaryColor,
+          // Currency
+          Row(
+            children: [
+              Icon(
+                CupertinoIcons.money_dollar_circle,
+                size: 20,
+                color: context.primaryColor,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                context.l10n.currency,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: context.textSecondary,
                 ),
-                const SizedBox(width: 8),
-                Text(
-                  l10n?.currency ?? 'Currency',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: context.textSecondary,
-                  ),
+              ),
+              const Spacer(),
+              Text(
+                '${getCurrencySymbol(group.currency)} ${group.currency}',
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
                 ),
-                const Spacer(),
-                Text(
-                  '${getCurrencySymbol(group.currency)} ${group.currency}',
-                  style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

@@ -82,7 +82,7 @@ class ExpenseList extends StatelessWidget {
                       children: [
                         Text(
                           expense.description.isEmpty
-                              ? l10n?.noDescription ?? 'No description'
+                              ? context.l10n.noDescription
                               : expense.description,
                           style: const TextStyle(
                             fontSize: 17,
@@ -91,7 +91,7 @@ class ExpenseList extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          '${l10n?.paidBy ?? "Paid by"} ${expense.paidBy}',
+                          '${context.l10n.paidBy} ${expense.paidBy}',
                           style: TextStyle(
                             fontSize: 15,
                             color: context.textSecondary,

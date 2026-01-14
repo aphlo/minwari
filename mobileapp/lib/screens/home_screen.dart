@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../l10n/generated/app_localizations.dart';
-import '../models/group.dart';
-import '../providers/theme_provider.dart';
-import '../repositories/group_repository.dart';
-import '../widgets/app_drawer.dart';
-import '../widgets/empty_state.dart';
-import '../widgets/group_list.dart';
-import 'group_form_screen.dart';
-import 'group_detail_screen.dart';
+import 'package:mobileapp/theme/app_theme_extension.dart';
+import 'package:mobileapp/models/group.dart';
+import 'package:mobileapp/repositories/group_repository.dart';
+import 'package:mobileapp/widgets/app_drawer.dart';
+import 'package:mobileapp/widgets/empty_state.dart';
+import 'package:mobileapp/widgets/group_list.dart';
+import 'package:mobileapp/screens/group_form_screen.dart';
+import 'package:mobileapp/screens/group_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final ThemeProvider themeProvider;
-
-  const HomeScreen({super.key, required this.themeProvider});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -21,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GroupRepository _repository = GroupRepository();
-  List<Group>? _groups;
+  List<Group> _groups = [];
   bool _isLoading = true;
 
   @override
@@ -38,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _navigateToCreateGroup() async {
+  void _navigateToCreateGroup(BuildContext context) async {
     await Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => const GroupFormScreen()),
     );
@@ -46,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadGroups();
   }
 
-  void _navigateToGroupDetail(Group group) async {
+  void _navigateToGroupDetail(BuildContext context, Group group) async {
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => GroupDetailScreen(groupId: group.id),
@@ -58,42 +55,39 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
-    if (l10n == null) {
-      return const Scaffold(
-        body: Center(child: CupertinoActivityIndicator(radius: 14)),
+    if (_isLoading) {
+      return Scaffold(
+        backgroundColor: context.scaffoldBackgroundColor,
+        body: const Center(child: CupertinoActivityIndicator()),
       );
     }
 
     return Scaffold(
+      backgroundColor: context.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text(l10n.appTitle),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(CupertinoIcons.line_horizontal_3),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+        backgroundColor: context.scaffoldBackgroundColor,
+        elevation: 0,
+        title: Text(
+          context.l10n.appTitle,
+          style: TextStyle(
+            color: context.textPrimary,
+            fontWeight: FontWeight.w700,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(CupertinoIcons.plus),
-            onPressed: _navigateToCreateGroup,
-          ),
-        ],
+        iconTheme: IconThemeData(color: context.textPrimary),
       ),
-      drawer: AppDrawer(themeProvider: widget.themeProvider),
-      body: _isLoading
-          ? const Center(child: CupertinoActivityIndicator(radius: 14))
-          : _groups == null || _groups!.isEmpty
-              ? EmptyState(onCreateGroup: _navigateToCreateGroup)
-              : RefreshIndicator(
-                  onRefresh: _loadGroups,
-                  child: GroupList(
-                    groups: _groups!,
-                    onGroupTap: _navigateToGroupDetail,
-                  ),
-                ),
+      drawer: const AppDrawer(),
+      body: _groups.isEmpty
+          ? EmptyState(onCreateGroup: () => _navigateToCreateGroup(context))
+          : GroupList(
+              groups: _groups,
+              onGroupTap: (group) => _navigateToGroupDetail(context, group),
+            ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _navigateToCreateGroup(context),
+        backgroundColor: context.primaryColor,
+        child: const Icon(CupertinoIcons.add, color: Colors.white),
+      ),
     );
   }
 }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
 import 'l10n/generated/app_localizations.dart';
+import 'providers/shared_preferences_provider.dart';
 import 'providers/theme_provider.dart';
 import 'screens/home_screen.dart';
 import 'theme/app_theme.dart';
@@ -11,46 +14,31 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  final themeProvider = ThemeProvider();
-  await themeProvider.init();
+  final prefs = await SharedPreferences.getInstance();
 
-  runApp(MinwariApp(themeProvider: themeProvider));
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(prefs),
+      ],
+      child: const MinwariApp(),
+    ),
+  );
 }
 
-class MinwariApp extends StatefulWidget {
-  final ThemeProvider themeProvider;
-
-  const MinwariApp({super.key, required this.themeProvider});
+class MinwariApp extends ConsumerWidget {
+  const MinwariApp({super.key});
 
   @override
-  State<MinwariApp> createState() => _MinwariAppState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeProvider);
 
-class _MinwariAppState extends State<MinwariApp> {
-  @override
-  void initState() {
-    super.initState();
-    widget.themeProvider.addListener(_onThemeChanged);
-  }
-
-  @override
-  void dispose() {
-    widget.themeProvider.removeListener(_onThemeChanged);
-    super.dispose();
-  }
-
-  void _onThemeChanged() {
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'OurSplit',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
-      themeMode: widget.themeProvider.materialThemeMode,
+      themeMode: themeMode,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -66,7 +54,7 @@ class _MinwariAppState extends State<MinwariApp> {
         Locale('pt', 'BR'),
         Locale('zh', 'TW'),
       ],
-      home: HomeScreen(themeProvider: widget.themeProvider),
+      home: const HomeScreen(),
     );
   }
 }
