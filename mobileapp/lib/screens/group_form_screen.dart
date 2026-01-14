@@ -6,7 +6,7 @@ import 'package:mobileapp/lib/locale_currency.dart';
 import 'package:mobileapp/models/group.dart';
 import 'package:mobileapp/repositories/group_repository.dart';
 import 'package:mobileapp/screens/group_detail_screen.dart';
-import 'package:mobileapp/theme/app_colors.dart';
+import 'package:mobileapp/theme/app_theme_extension.dart';
 import 'package:mobileapp/widgets/currency_selector.dart';
 import 'package:mobileapp/widgets/members_editor.dart';
 import 'package:mobileapp/widgets/section_header.dart';
@@ -150,11 +150,6 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textPrimary =
-        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final inputFillColor =
-        isDark ? AppColors.darkSurface : AppColors.lightBackground;
 
     final title = widget.isEditing
         ? (l10n?.editGroup ?? 'Edit Group')
@@ -177,7 +172,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
               // Group Name Section
               SectionHeader(
                 title: l10n?.groupName ?? 'Group Name',
-                textColor: textPrimary.withValues(alpha: 0.6),
+                textColor: context.textPrimary.withValues(alpha: 0.6),
               ),
               const SizedBox(height: 8),
               TextFormField(
@@ -186,7 +181,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
                 decoration: InputDecoration(
                   hintText: l10n?.groupNameHint ?? 'e.g., Okinawa Trip 2026',
                   filled: true,
-                  fillColor: inputFillColor,
+                  fillColor: context.inputFillColor,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide.none,
@@ -210,7 +205,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
               // Currency Section
               SectionHeader(
                 title: l10n?.currency ?? 'Currency',
-                textColor: textPrimary.withValues(alpha: 0.6),
+                textColor: context.textPrimary.withValues(alpha: 0.6),
               ),
               const SizedBox(height: 8),
               CurrencySelector(
@@ -225,7 +220,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
               // Members Section
               SectionHeader(
                 title: l10n?.members ?? 'Members',
-                textColor: textPrimary.withValues(alpha: 0.6),
+                textColor: context.textPrimary.withValues(alpha: 0.6),
               ),
               const SizedBox(height: 8),
               MembersEditor(

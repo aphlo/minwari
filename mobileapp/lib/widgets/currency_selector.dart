@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileapp/lib/currency.dart';
-import 'package:mobileapp/theme/app_colors.dart';
+import 'package:mobileapp/theme/app_theme_extension.dart';
 
 /// Currency selector widget for group forms
 /// Used in both group creation and editing
@@ -17,13 +17,9 @@ class CurrencySelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final backgroundColor =
-        isDark ? AppColors.darkCardBackground : AppColors.lightCardBackground;
-
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: context.cardBackground,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -56,9 +52,9 @@ class CurrencySelector extends StatelessWidget {
                         ),
                         const Spacer(),
                         if (isSelected)
-                          const Icon(
+                          Icon(
                             CupertinoIcons.checkmark,
-                            color: AppColors.primaryColor,
+                            color: context.primaryColor,
                             size: 20,
                           ),
                       ],
@@ -71,8 +67,7 @@ class CurrencySelector extends StatelessWidget {
                   height: 0.5,
                   thickness: 0.5,
                   indent: 16,
-                  color:
-                      isDark ? AppColors.darkDivider : AppColors.lightDivider,
+                  color: context.dividerColor,
                 ),
             ],
           );

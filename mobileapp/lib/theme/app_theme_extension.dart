@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:mobileapp/theme/app_colors.dart';
+
+/// Extension to provide easy access to theme colors and status
+extension AppThemeExtension on BuildContext {
+  /// Whether the current theme is dark mode
+  bool get isDark => Theme.of(this).brightness == Brightness.dark;
+
+  /// Primary brand color
+  Color get primaryColor => AppColors.primaryColor;
+
+  /// Main text color adaptable to theme
+  Color get textPrimary =>
+      isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+
+  /// Secondary text color adaptable to theme
+  Color get textSecondary =>
+      isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+
+  /// Divider color adaptable to theme
+  Color get dividerColor =>
+      isDark ? AppColors.darkDivider : AppColors.lightDivider;
+
+  /// Card background color adaptable to theme
+  Color get cardBackground =>
+      isDark ? AppColors.darkCardBackground : AppColors.lightCardBackground;
+
+  /// Input field background color adaptable to theme
+  Color get inputFillColor =>
+      isDark ? AppColors.darkSurface : AppColors.lightBackground;
+
+  /// Scaffold background color adaptable to theme
+  Color get scaffoldBackgroundColor =>
+      isDark ? AppColors.darkBackground : AppColors.lightBackground;
+}

@@ -5,7 +5,7 @@ void main() {
   group('Settlement calculator', () {
     test('calculates settlements for simple case', () {
       final expenses = [
-        ExpenseForSettlement(
+        const ExpenseForSettlement(
           amount: 300,
           paidBy: 'A',
           splitWith: ['A', 'B', 'C'],
@@ -36,8 +36,8 @@ void main() {
 
     test('returns empty list when everyone is even', () {
       final expenses = [
-        ExpenseForSettlement(amount: 100, paidBy: 'A', splitWith: ['A']),
-        ExpenseForSettlement(amount: 100, paidBy: 'B', splitWith: ['B']),
+        const ExpenseForSettlement(amount: 100, paidBy: 'A', splitWith: ['A']),
+        const ExpenseForSettlement(amount: 100, paidBy: 'B', splitWith: ['B']),
       ];
       final settlements = calculateSettlements(expenses, ['A', 'B'], 'JPY');
       expect(settlements, isEmpty);
@@ -45,7 +45,7 @@ void main() {
 
     test('handles USD with fractions correctly', () {
       final expenses = [
-        ExpenseForSettlement(
+        const ExpenseForSettlement(
           amount: 100.50,
           paidBy: 'A',
           splitWith: ['A', 'B'],

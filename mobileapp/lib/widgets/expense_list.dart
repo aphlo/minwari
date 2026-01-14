@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobileapp/l10n/generated/app_localizations.dart';
 import 'package:mobileapp/lib/currency.dart';
 import 'package:mobileapp/models/expense.dart';
-import 'package:mobileapp/theme/app_colors.dart';
+import 'package:mobileapp/theme/app_theme_extension.dart';
 import 'package:mobileapp/widgets/section_header.dart';
 
 /// Expense list widget showing group expenses
@@ -19,11 +19,6 @@ class ExpenseList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardBackground =
-        isDark ? AppColors.darkCardBackground : AppColors.lightCardBackground;
-    final textSecondary =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +27,7 @@ class ExpenseList extends StatelessWidget {
         const SizedBox(height: 12),
         Container(
           decoration: BoxDecoration(
-            color: cardBackground,
+            color: context.cardBackground,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
@@ -43,8 +38,8 @@ class ExpenseList extends StatelessWidget {
             ],
           ),
           child: expenses.isEmpty
-              ? _buildEmptyState(l10n, textSecondary)
-              : _buildExpensesList(l10n, isDark, textSecondary),
+              ? _buildEmptyState(l10n, context.textSecondary)
+              : _buildExpensesList(l10n, context),
         ),
       ],
     );
@@ -64,8 +59,7 @@ class ExpenseList extends StatelessWidget {
 
   Widget _buildExpensesList(
     AppLocalizations? l10n,
-    bool isDark,
-    Color textSecondary,
+    BuildContext context,
   ) {
     final symbol = getCurrencySymbol(currency);
     final fractionDigits = getCurrencyFractionDigits(currency);
@@ -98,7 +92,10 @@ class ExpenseList extends StatelessWidget {
                         const SizedBox(height: 2),
                         Text(
                           '${l10n?.paidBy ?? "Paid by"} ${expense.paidBy}',
-                          style: TextStyle(fontSize: 15, color: textSecondary),
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: context.textSecondary,
+                          ),
                         ),
                       ],
                     ),
@@ -119,7 +116,7 @@ class ExpenseList extends StatelessWidget {
                 thickness: 0.5,
                 indent: 20,
                 endIndent: 20,
-                color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
+                color: context.dividerColor,
               ),
           ],
         );

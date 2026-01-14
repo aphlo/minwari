@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobileapp/l10n/generated/app_localizations.dart';
 import 'package:mobileapp/lib/currency.dart';
 import 'package:mobileapp/lib/settlement_calculator.dart';
-import 'package:mobileapp/theme/app_colors.dart';
+import 'package:mobileapp/theme/app_theme_extension.dart';
 import 'package:mobileapp/widgets/section_header.dart';
 
 /// Settlement list widget showing who pays whom
@@ -20,11 +20,6 @@ class SettlementList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardBackground =
-        isDark ? AppColors.darkCardBackground : AppColors.lightCardBackground;
-    final textSecondary =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +28,7 @@ class SettlementList extends StatelessWidget {
         const SizedBox(height: 12),
         Container(
           decoration: BoxDecoration(
-            color: cardBackground,
+            color: context.cardBackground,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
@@ -44,8 +39,8 @@ class SettlementList extends StatelessWidget {
             ],
           ),
           child: settlements.isEmpty
-              ? _buildEmptyState(l10n, textSecondary)
-              : _buildSettlementsList(isDark, textSecondary),
+              ? _buildEmptyState(l10n, context.textSecondary)
+              : _buildSettlementsList(context),
         ),
       ],
     );
@@ -82,7 +77,7 @@ class SettlementList extends StatelessWidget {
     );
   }
 
-  Widget _buildSettlementsList(bool isDark, Color textSecondary) {
+  Widget _buildSettlementsList(BuildContext context) {
     final symbol = getCurrencySymbol(currency);
     final fractionDigits = getCurrencyFractionDigits(currency);
 
@@ -98,7 +93,7 @@ class SettlementList extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               child: Row(
                 children: [
-                  _buildMemberAvatar(settlement.from),
+                  _buildMemberAvatar(context, settlement.from),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
@@ -117,13 +112,15 @@ class SettlementList extends StatelessWidget {
                             Icon(
                               CupertinoIcons.arrow_right,
                               size: 14,
-                              color: textSecondary,
+                              color: context.textSecondary,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               settlement.to,
-                              style:
-                                  TextStyle(fontSize: 15, color: textSecondary),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: context.textSecondary,
+                              ),
                             ),
                           ],
                         ),
@@ -134,15 +131,15 @@ class SettlementList extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: AppColors.primaryColor.withValues(alpha: 0.1),
+                      color: context.primaryColor.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
                       '$symbol${settlement.amount.toStringAsFixed(fractionDigits)}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.primaryColor,
+                        color: context.primaryColor,
                       ),
                     ),
                   ),
@@ -155,7 +152,7 @@ class SettlementList extends StatelessWidget {
                 thickness: 0.5,
                 indent: 20,
                 endIndent: 20,
-                color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
+                color: context.dividerColor,
               ),
           ],
         );
@@ -163,21 +160,21 @@ class SettlementList extends StatelessWidget {
     );
   }
 
-  Widget _buildMemberAvatar(String name) {
+  Widget _buildMemberAvatar(BuildContext context, String name) {
     return Container(
       width: 44,
       height: 44,
       decoration: BoxDecoration(
-        color: AppColors.primaryColor.withValues(alpha: 0.1),
+        color: context.primaryColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(22),
       ),
       child: Center(
         child: Text(
           name.isNotEmpty ? name[0].toUpperCase() : '?',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w700,
-            color: AppColors.primaryColor,
+            color: context.primaryColor,
           ),
         ),
       ),

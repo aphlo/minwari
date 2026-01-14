@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobileapp/l10n/generated/app_localizations.dart';
 import 'package:mobileapp/lib/currency.dart';
 import 'package:mobileapp/models/group.dart';
-import 'package:mobileapp/theme/app_colors.dart';
+import 'package:mobileapp/theme/app_theme_extension.dart';
 
 /// Group info card showing members and currency
 class GroupInfoCard extends StatelessWidget {
@@ -14,15 +14,10 @@ class GroupInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardBackground =
-        isDark ? AppColors.darkCardBackground : AppColors.lightCardBackground;
-    final textSecondary =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Container(
       decoration: BoxDecoration(
-        color: cardBackground,
+        color: context.cardBackground,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -40,10 +35,10 @@ class GroupInfoCard extends StatelessWidget {
             // Members
             Row(
               children: [
-                const Icon(
+                Icon(
                   CupertinoIcons.person_3_fill,
                   size: 20,
-                  color: AppColors.primaryColor,
+                  color: context.primaryColor,
                 ),
                 const SizedBox(width: 8),
                 Text(
@@ -51,7 +46,7 @@ class GroupInfoCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
-                    color: textSecondary,
+                    color: context.textSecondary,
                   ),
                 ),
               ],
@@ -67,15 +62,15 @@ class GroupInfoCard extends StatelessWidget {
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryColor.withValues(alpha: 0.1),
+                    color: context.primaryColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
                     member,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.primaryColor,
+                      color: context.primaryColor,
                     ),
                   ),
                 );
@@ -84,17 +79,17 @@ class GroupInfoCard extends StatelessWidget {
 
             const SizedBox(height: 20),
             Divider(
-              color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
+              color: context.dividerColor,
             ),
             const SizedBox(height: 16),
 
             // Currency
             Row(
               children: [
-                const Icon(
+                Icon(
                   CupertinoIcons.money_dollar_circle,
                   size: 20,
-                  color: AppColors.primaryColor,
+                  color: context.primaryColor,
                 ),
                 const SizedBox(width: 8),
                 Text(
@@ -102,7 +97,7 @@ class GroupInfoCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
-                    color: textSecondary,
+                    color: context.textSecondary,
                   ),
                 ),
                 const Spacer(),
