@@ -1,0 +1,15 @@
+{
+  "@@locale": "es",
+  "appTitle": "OurSplit",
+  "termsOfService": "Términos de servicio",
+  "privacyPolicy": "Política de privacidad",
+  "version": "Versión",
+  "license": "Licencia",
+  "settings": "Configuración",
+  "theme": "Tema",
+  "language": "Idioma",
+  "noGroups": "No hay grupos todavía",
+  "emptyStateDescription": "Crea un grupo para empezar a dividir gastos con amigos",
+  "createGroup": "Crear grupo",
+  "groupListTitle": "Grupos"
+}

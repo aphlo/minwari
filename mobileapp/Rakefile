@@ -1,0 +1,67 @@
+require "rake"
+require "shellwords"
+
+# Switch to physical path to avoid "shell-init: error retrieving current directory"
+# This ensures that if the current directory is a symlink, we work from the real path,
+# preventing subshells from getting confused.
+Dir.chdir(File.realpath(Dir.pwd))
+
+# Update PWD environment variable to match the new directory.
+# Dir.chdir does not update PWD, which can cause subshells to fail.
+ENV["PWD"] = Dir.pwd
+
+def run_command(command)
+  # Parse command string into arguments
+  cmd_args = Shellwords.split(command)
+  puts "→ #{cmd_args.join(' ')}"
+
+  system(*cmd_args) || abort("Command failed: #{command}")
+end
+
+def with_args(base_command)
+  extra_args = ENV["ARGS"].to_s.strip
+  return base_command if extra_args.empty?
+
+  "#{base_command} #{extra_args}"
+end
+
+TASKS = {
+  run: {
+    command: "fvm flutter run",
+    description: "Run app (set ARGS for extra flutter flags)",
+  },
+  format: {
+    command: "fvm dart format lib test",
+    description: "Format dart files",
+  },
+  format_check: {
+    command: "fvm dart format --output=none --set-exit-if-changed lib test",
+    description: "Check dart files formatting",
+  },
+  test: {
+    command: "fvm flutter test",
+    description: "Run Flutter tests (set ARGS to pass extra options)",
+  },
+  lint: {
+    command: "fvm flutter analyze",
+    description: "Run Flutter analyzer (set ARGS to pass extra options)",
+  },
+  pub_get: {
+    command: "fvm flutter pub get",
+    description: "Get dependencies",
+  },
+  clean: {
+    command: "fvm flutter clean",
+    description: "Clean project",
+  }
+}.freeze
+
+TASKS.each do |name, config|
+  desc config.fetch(:description)
+  task name do
+    run_command(with_args(config.fetch(:command)))
+  end
+end
+
+desc "Default task runs the app"
+task default: :run

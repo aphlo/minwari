@@ -1,0 +1,15 @@
+{
+  "@@locale": "zh_CN",
+  "appTitle": "OurSplit",
+  "termsOfService": "服务条款",
+  "privacyPolicy": "隐私政策",
+  "version": "版本",
+  "license": "许可",
+  "settings": "设置",
+  "theme": "主题",
+  "language": "语言",
+  "noGroups": "暂无群组",
+  "emptyStateDescription": "创建群组，与朋友开始分账",
+  "createGroup": "创建群组",
+  "groupListTitle": "群组"
+}
