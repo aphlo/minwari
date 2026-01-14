@@ -131,18 +131,11 @@ class SettingsScreen extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: textColor,
-                  ),
+                  style: TextStyle(fontSize: 17, color: textColor),
                 ),
               ),
               if (isSelected)
-                Icon(
-                  CupertinoIcons.checkmark,
-                  size: 20,
-                  color: primaryColor,
-                ),
+                Icon(CupertinoIcons.checkmark, size: 20, color: primaryColor),
             ],
           ),
         ),

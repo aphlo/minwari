@@ -101,10 +101,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   const SizedBox(height: 4),
                   Text(
                     '${l10n.version} $_version',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: textSecondary,
-                    ),
+                    style: TextStyle(fontSize: 15, color: textSecondary),
                   ),
                 ],
               ),
@@ -222,19 +219,12 @@ class _AppDrawerState extends State<AppDrawer> {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           child: Row(
             children: [
-              Icon(
-                icon,
-                size: 22,
-                color: primaryColor,
-              ),
+              Icon(icon, size: 22, color: primaryColor),
               const SizedBox(width: 14),
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: textPrimary,
-                  ),
+                  style: TextStyle(fontSize: 17, color: textPrimary),
                 ),
               ),
               Icon(

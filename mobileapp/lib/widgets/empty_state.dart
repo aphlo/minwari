@@ -55,11 +55,7 @@ class EmptyState extends StatelessWidget {
             // Subtitle
             Text(
               l10n.emptyStateDescription,
-              style: TextStyle(
-                fontSize: 15,
-                color: textSecondary,
-                height: 1.4,
-              ),
+              style: TextStyle(fontSize: 15, color: textSecondary, height: 1.4),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 32),

@@ -204,6 +204,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'System'**
   String get themeSystem;
+
+  /// No description provided for @groupName.
+  ///
+  /// In en, this message translates to:
+  /// **'Group Name'**
+  String get groupName;
+
+  /// No description provided for @groupNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Okinawa Trip 2026'**
+  String get groupNameHint;
+
+  /// No description provided for @groupNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a group name'**
+  String get groupNameRequired;
+
+  /// No description provided for @currency.
+  ///
+  /// In en, this message translates to:
+  /// **'Currency'**
+  String get currency;
+
+  /// No description provided for @members.
+  ///
+  /// In en, this message translates to:
+  /// **'Members'**
+  String get members;
+
+  /// No description provided for @memberNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Member name'**
+  String get memberNameHint;
+
+  /// No description provided for @noMembersYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No members yet'**
+  String get noMembersYet;
+
+  /// No description provided for @memberAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'Member already exists'**
+  String get memberAlreadyExists;
+
+  /// No description provided for @create.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get create;
+
+  /// No description provided for @createGroupError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to create group'**
+  String get createGroupError;
+
+  /// No description provided for @groupDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Group Details'**
+  String get groupDetail;
+
+  /// No description provided for @groupNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Group not found'**
+  String get groupNotFound;
+
+  /// No description provided for @goBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Go Back'**
+  String get goBack;
+
+  /// No description provided for @settlement.
+  ///
+  /// In en, this message translates to:
+  /// **'Settlement'**
+  String get settlement;
+
+  /// No description provided for @noSettlementsNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'All settled!'**
+  String get noSettlementsNeeded;
+
+  /// No description provided for @everyoneEven.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone is even'**
+  String get everyoneEven;
+
+  /// No description provided for @expenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get expenses;
+
+  /// No description provided for @noExpenses.
+  ///
+  /// In en, this message translates to:
+  /// **'No expenses yet'**
+  String get noExpenses;
+
+  /// No description provided for @noDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'No description'**
+  String get noDescription;
+
+  /// No description provided for @paidBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid by'**
+  String get paidBy;
+
+  /// No description provided for @inquiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Inquiry'**
+  String get inquiry;
+
+  /// No description provided for @editGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Group'**
+  String get editGroup;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
 }
 
 class _AppLocalizationsDelegate

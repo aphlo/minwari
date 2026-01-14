@@ -56,6 +56,75 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get themeSystem => 'Sistema';
+
+  @override
+  String get groupName => 'Nome do grupo';
+
+  @override
+  String get groupNameHint => 'ex., Viagem a Okinawa 2026';
+
+  @override
+  String get groupNameRequired => 'Por favor insira um nome de grupo';
+
+  @override
+  String get currency => 'Moeda';
+
+  @override
+  String get members => 'Membros';
+
+  @override
+  String get memberNameHint => 'Nome do membro';
+
+  @override
+  String get noMembersYet => 'Sem membros ainda';
+
+  @override
+  String get memberAlreadyExists => 'Membro já existe';
+
+  @override
+  String get create => 'Criar';
+
+  @override
+  String get createGroupError => 'Falha ao criar grupo';
+
+  @override
+  String get groupDetail => 'Detalhes do grupo';
+
+  @override
+  String get groupNotFound => 'Grupo não encontrado';
+
+  @override
+  String get goBack => 'Voltar';
+
+  @override
+  String get settlement => 'Liquidação';
+
+  @override
+  String get noSettlementsNeeded => 'Tudo liquidado!';
+
+  @override
+  String get everyoneEven => 'Todos estão quites';
+
+  @override
+  String get expenses => 'Despesas';
+
+  @override
+  String get noExpenses => 'Sem despesas ainda';
+
+  @override
+  String get noDescription => 'Sem descrição';
+
+  @override
+  String get paidBy => 'Pago por';
+
+  @override
+  String get inquiry => 'Contato';
+
+  @override
+  String get editGroup => 'Editar grupo';
+
+  @override
+  String get save => 'Salvar';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -110,4 +179,73 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get themeSystem => 'Sistema';
+
+  @override
+  String get groupName => 'Nome do grupo';
+
+  @override
+  String get groupNameHint => 'ex., Viagem a Okinawa 2026';
+
+  @override
+  String get groupNameRequired => 'Por favor insira um nome de grupo';
+
+  @override
+  String get currency => 'Moeda';
+
+  @override
+  String get members => 'Membros';
+
+  @override
+  String get memberNameHint => 'Nome do membro';
+
+  @override
+  String get noMembersYet => 'Sem membros ainda';
+
+  @override
+  String get memberAlreadyExists => 'Membro já existe';
+
+  @override
+  String get create => 'Criar';
+
+  @override
+  String get createGroupError => 'Falha ao criar grupo';
+
+  @override
+  String get groupDetail => 'Detalhes do grupo';
+
+  @override
+  String get groupNotFound => 'Grupo não encontrado';
+
+  @override
+  String get goBack => 'Voltar';
+
+  @override
+  String get settlement => 'Liquidação';
+
+  @override
+  String get noSettlementsNeeded => 'Tudo liquidado!';
+
+  @override
+  String get everyoneEven => 'Todos estão quites';
+
+  @override
+  String get expenses => 'Despesas';
+
+  @override
+  String get noExpenses => 'Sem despesas ainda';
+
+  @override
+  String get noDescription => 'Sem descrição';
+
+  @override
+  String get paidBy => 'Pago por';
+
+  @override
+  String get inquiry => 'Contato';
+
+  @override
+  String get editGroup => 'Editar grupo';
+
+  @override
+  String get save => 'Salvar';
 }

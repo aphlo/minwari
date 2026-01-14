@@ -8,11 +8,7 @@ class GroupList extends StatelessWidget {
   final List<Group> groups;
   final Function(Group) onGroupTap;
 
-  const GroupList({
-    super.key,
-    required this.groups,
-    required this.onGroupTap,
-  });
+  const GroupList({super.key, required this.groups, required this.onGroupTap});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +31,7 @@ class GroupList extends StatelessWidget {
         final isLast = index == groups.length - 1;
 
         return Container(
-          margin: EdgeInsets.only(
-            top: isFirst ? 8 : 0,
-            bottom: isLast ? 0 : 0,
-          ),
+          margin: EdgeInsets.only(top: isFirst ? 8 : 0, bottom: isLast ? 0 : 0),
           decoration: BoxDecoration(
             color: cardBackground,
             borderRadius: BorderRadius.vertical(
