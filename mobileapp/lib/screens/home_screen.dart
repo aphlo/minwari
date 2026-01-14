@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../l10n/generated/app_localizations.dart';
-import '../models/group.dart';
-import '../providers/theme_provider.dart';
-import '../repositories/group_repository.dart';
-import '../widgets/app_drawer.dart';
-import '../widgets/empty_state.dart';
-import '../widgets/group_list.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/models/group.dart';
+import 'package:minwari/repositories/group_repository.dart';
+import 'package:minwari/widgets/app_drawer.dart';
+import 'package:minwari/widgets/empty_state.dart';
+import 'package:minwari/widgets/group_list.dart';
+import 'package:minwari/screens/group_form_screen.dart';
+import 'package:minwari/screens/group_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final ThemeProvider themeProvider;
-
-  const HomeScreen({super.key, required this.themeProvider});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -19,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GroupRepository _repository = GroupRepository();
-  List<Group>? _groups;
+  List<Group> _groups = [];
   bool _isLoading = true;
 
   @override
@@ -29,58 +28,71 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadGroups() async {
-    final groups = await _repository.getGroups();
+    final groups = await _repository.getLocalGroups();
     setState(() {
       _groups = groups;
       _isLoading = false;
     });
   }
 
+  void _navigateToCreateGroup(BuildContext context) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const GroupFormScreen(),
+        fullscreenDialog: true,
+      ),
+    );
+    // Reload groups when returning
+    _loadGroups();
+  }
+
+  void _navigateToGroupDetail(BuildContext context, Group group) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => GroupDetailScreen(groupId: group.id),
+        fullscreenDialog: true,
+      ),
+    );
+    // Reload groups when returning
+    _loadGroups();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
-    if (l10n == null) {
-      return const Scaffold(
-        body: Center(
-          child: CupertinoActivityIndicator(radius: 14),
-        ),
+    if (_isLoading) {
+      return Scaffold(
+        backgroundColor: context.scaffoldBackgroundColor,
+        body: const Center(child: CupertinoActivityIndicator()),
       );
     }
 
     return Scaffold(
+      backgroundColor: context.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text(l10n.appTitle),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(CupertinoIcons.line_horizontal_3),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+        backgroundColor: context.appBarBackgroundColor,
+        elevation: 0,
+        title: Text(
+          context.l10n.appTitle,
+          style: TextStyle(
+            color: context.textPrimary,
+            fontWeight: FontWeight.w700,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(CupertinoIcons.plus),
-            onPressed: () {
-              // TODO: Navigate to create group
-            },
-          ),
-        ],
+        iconTheme: IconThemeData(color: context.textPrimary),
       ),
-      drawer: AppDrawer(themeProvider: widget.themeProvider),
-      body: _isLoading
-          ? const Center(
-              child: CupertinoActivityIndicator(radius: 14),
-            )
-          : _groups == null || _groups!.isEmpty
-              ? EmptyState(onCreateGroup: () {
-                  // TODO: Navigate to create group
-                })
-              : GroupList(
-                  groups: _groups!,
-                  onGroupTap: (group) {
-                    // TODO: Navigate to group details
-                  },
-                ),
+      drawer: const AppDrawer(),
+      body: _groups.isEmpty
+          ? EmptyState(onCreateGroup: () => _navigateToCreateGroup(context))
+          : GroupList(
+              groups: _groups,
+              onGroupTap: (group) => _navigateToGroupDetail(context, group),
+            ),
+      floatingActionButton: FloatingActionButton(
+        heroTag: 'home_fab',
+        onPressed: () => _navigateToCreateGroup(context),
+        backgroundColor: context.primaryColor,
+        child: const Icon(CupertinoIcons.add, color: Colors.white),
+      ),
     );
   }
 }

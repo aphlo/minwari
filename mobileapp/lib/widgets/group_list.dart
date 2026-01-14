@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../models/group.dart';
-import '../theme/app_colors.dart';
+import 'package:minwari/models/group.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 
 class GroupList extends StatelessWidget {
   final List<Group> groups;
@@ -16,117 +16,86 @@ class GroupList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor =
-        isDark ? AppColors.primaryColor : AppColors.primaryColor;
-    final textPrimary =
-        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
-    final cardBackground =
-        isDark ? AppColors.darkCardBackground : AppColors.lightCardBackground;
-
     return ListView.builder(
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+      padding: const EdgeInsets.all(16),
       itemCount: groups.length,
       itemBuilder: (context, index) {
         final group = groups[index];
-        final isFirst = index == 0;
         final isLast = index == groups.length - 1;
 
-        return Container(
-          margin: EdgeInsets.only(
-            top: isFirst ? 8 : 0,
-            bottom: isLast ? 0 : 0,
-          ),
-          decoration: BoxDecoration(
-            color: cardBackground,
-            borderRadius: BorderRadius.vertical(
-              top: isFirst ? const Radius.circular(12) : Radius.zero,
-              bottom: isLast ? const Radius.circular(12) : Radius.zero,
-            ),
-          ),
-          child: Column(
-            children: [
-              Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: () => onGroupTap(group),
-                  borderRadius: BorderRadius.vertical(
-                    top: isFirst ? const Radius.circular(12) : Radius.zero,
-                    bottom: isLast ? const Radius.circular(12) : Radius.zero,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 14,
+        return Padding(
+          padding: EdgeInsets.only(bottom: isLast ? 0 : 12),
+          child: Material(
+            color: context.cardBackground,
+            borderRadius: BorderRadius.circular(16),
+            child: InkWell(
+              onTap: () => onGroupTap(group),
+              borderRadius: BorderRadius.circular(16),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: context.primaryColor.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(
+                        CupertinoIcons.person_2_fill,
+                        color: context.primaryColor,
+                        size: 24,
+                      ),
                     ),
-                    child: Row(
-                      children: [
-                        // Group icon with colored background
-                        Container(
-                          width: 44,
-                          height: 44,
-                          decoration: BoxDecoration(
-                            color: primaryColor.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(10),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            group.name,
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                              color: context.textPrimary,
+                            ),
                           ),
-                          child: Icon(
-                            CupertinoIcons.person_3_fill,
-                            size: 22,
-                            color: primaryColor,
-                          ),
-                        ),
-                        const SizedBox(width: 14),
-                        // Group info
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                group.name,
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600,
-                                  color: textPrimary,
-                                ),
+                          if (group.members.isNotEmpty) ...[
+                            const SizedBox(height: 4),
+                            Text(
+                              group.members.join(', '),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: context.textSecondary,
                               ),
-                              const SizedBox(height: 2),
-                              Text(
-                                DateFormat.yMMMd(
-                                  Localizations.localeOf(context).toString(),
-                                ).format(group.createdAt),
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: textSecondary,
-                                ),
-                              ),
-                            ],
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                          const SizedBox(height: 4),
+                          Text(
+                            DateFormat.yMMMd(
+                                    Localizations.localeOf(context).toString())
+                                .format(group.createdAt),
+                            style: TextStyle(
+                              fontSize: 12,
+                              color:
+                                  context.textSecondary.withValues(alpha: 0.7),
+                            ),
                           ),
-                        ),
-                        // Chevron
-                        Icon(
-                          CupertinoIcons.chevron_forward,
-                          size: 18,
-                          color: textSecondary,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                    Icon(
+                      CupertinoIcons.chevron_right,
+                      size: 20,
+                      color: context.textSecondary.withValues(alpha: 0.3),
+                    ),
+                  ],
                 ),
               ),
-              // Divider (except for last item)
-              if (!isLast)
-                Padding(
-                  padding: const EdgeInsets.only(left: 74),
-                  child: Divider(
-                    height: 0.5,
-                    thickness: 0.5,
-                    color:
-                        isDark ? AppColors.darkDivider : AppColors.lightDivider,
-                  ),
-                ),
-            ],
+            ),
           ),
         );
       },

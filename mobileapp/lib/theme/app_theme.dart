@@ -63,7 +63,7 @@ class AppTheme {
         secondaryColor: AppColors.darkTextSecondary,
       ),
       appBarTheme: _buildAppBarTheme(
-        backgroundColor: AppColors.darkBackground,
+        backgroundColor: AppColors.darkSurface,
         foregroundColor: AppColors.darkTextPrimary,
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
@@ -161,13 +161,8 @@ class AppTheme {
         foregroundColor: Colors.white,
         elevation: 0,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        textStyle: const TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.w600,
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        textStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -176,10 +171,7 @@ class AppTheme {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: primaryColor,
-        textStyle: const TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.w400,
-        ),
+        textStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
       ),
     );
   }
@@ -188,9 +180,7 @@ class AppTheme {
     return CardThemeData(
       elevation: 0,
       color: backgroundColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
     );
   }
@@ -204,11 +194,7 @@ class AppTheme {
   }
 
   static DividerThemeData _buildDividerTheme(Color color) {
-    return DividerThemeData(
-      color: color,
-      thickness: 0.5,
-      space: 0,
-    );
+    return DividerThemeData(color: color, thickness: 0.5, space: 0);
   }
 
   static ProgressIndicatorThemeData _buildProgressIndicatorTheme(

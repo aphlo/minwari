@@ -1,34 +1,47 @@
-import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Group {
-  final String id;
-  final String name;
-  final DateTime createdAt;
+part 'group.freezed.dart';
+part 'group.g.dart';
 
-  Group({
-    required this.id,
-    required this.name,
-    required this.createdAt,
-  });
+/// Group model representing a warikan group.
+@freezed
+abstract class Group with _$Group {
+  const Group._();
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'createdAt': createdAt.toIso8601String(),
-    };
-  }
+  const factory Group({
+    required String id,
+    required String name,
+    @Default([]) List<String> members,
+    @Default('JPY') String currency,
+    required DateTime createdAt,
+    DateTime? updatedAt,
+  }) = _Group;
 
-  factory Group.fromJson(Map<String, dynamic> json) {
+  /// Create from JSON (for SharedPreferences)
+  factory Group.fromJson(Map<String, dynamic> json) => _$GroupFromJson(json);
+
+  /// Create a Group from Firestore document
+  factory Group.fromFirestore(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
     return Group(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      id: doc.id,
+      name: data['name'] as String? ?? '',
+      members: List<String>.from(data['members'] ?? []),
+      currency: data['currency'] as String? ?? 'JPY',
+      createdAt: (data['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      updatedAt: (data['updatedAt'] as Timestamp?)?.toDate(),
     );
   }
 
-  String encode() => jsonEncode(toJson());
-
-  factory Group.decode(String jsonString) =>
-      Group.fromJson(jsonDecode(jsonString) as Map<String, dynamic>);
+  /// Convert to Firestore document data
+  Map<String, dynamic> toFirestore() {
+    return {
+      'name': name,
+      'members': members,
+      'currency': currency,
+      'createdAt': Timestamp.fromDate(createdAt),
+      'updatedAt': updatedAt != null ? Timestamp.fromDate(updatedAt!) : null,
+    };
+  }
 }

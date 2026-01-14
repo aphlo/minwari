@@ -1,4 +1,4 @@
-name: deliver
+name: deliver-web
 
 on:
   push:

@@ -1,84 +1,73 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../l10n/generated/app_localizations.dart';
-import '../providers/theme_provider.dart';
-import '../theme/app_colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:minwari/providers/theme_provider.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 
-class SettingsScreen extends StatelessWidget {
-  final ThemeProvider themeProvider;
-
-  const SettingsScreen({super.key, required this.themeProvider});
+class SettingsScreen extends ConsumerWidget {
+  const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeProvider);
+    final notifier = ref.read(themeProvider.notifier);
 
     return Scaffold(
+      backgroundColor: context.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text(l10n.settings),
+        title: Text(
+          context.l10n.settings,
+          style: TextStyle(color: context.textPrimary),
+        ),
+        backgroundColor: context.appBarBackgroundColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: context.textPrimary),
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.back),
-          onPressed: () => Navigator.pop(context),
+          icon: const Icon(CupertinoIcons.xmark),
+          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         children: [
-          // Section header
-          Padding(
-            padding: const EdgeInsets.only(left: 16, bottom: 8),
-            child: Text(
-              l10n.appearance.toUpperCase(),
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-                color: isDark
-                    ? AppColors.darkTextSecondary
-                    : AppColors.lightTextSecondary,
-                letterSpacing: 0.5,
-              ),
-            ),
+          _buildSectionHeader(context.l10n.appearance, context),
+          _buildThemeOption(
+            context,
+            title: context.l10n.themeLight,
+            icon: CupertinoIcons.sun_max,
+            isSelected: themeMode == ThemeMode.light,
+            onTap: () => notifier.setMode(ThemeMode.light),
           ),
-          // Theme options
-          Container(
-            decoration: BoxDecoration(
-              color: isDark
-                  ? AppColors.darkCardBackground
-                  : AppColors.lightCardBackground,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              children: [
-                _buildThemeOption(
-                  context,
-                  title: l10n.themeLight,
-                  icon: CupertinoIcons.sun_max_fill,
-                  mode: AppThemeMode.light,
-                  isFirst: true,
-                  isDark: isDark,
-                ),
-                _buildDivider(isDark),
-                _buildThemeOption(
-                  context,
-                  title: l10n.themeDark,
-                  icon: CupertinoIcons.moon_fill,
-                  mode: AppThemeMode.dark,
-                  isDark: isDark,
-                ),
-                _buildDivider(isDark),
-                _buildThemeOption(
-                  context,
-                  title: l10n.themeSystem,
-                  icon: CupertinoIcons.device_phone_portrait,
-                  mode: AppThemeMode.system,
-                  isLast: true,
-                  isDark: isDark,
-                ),
-              ],
-            ),
+          _buildDivider(context),
+          _buildThemeOption(
+            context,
+            title: context.l10n.themeDark,
+            icon: CupertinoIcons.moon,
+            isSelected: themeMode == ThemeMode.dark,
+            onTap: () => notifier.setMode(ThemeMode.dark),
+          ),
+          _buildDivider(context),
+          _buildThemeOption(
+            context,
+            title: context.l10n.themeSystem,
+            icon: CupertinoIcons.device_phone_portrait,
+            isSelected: themeMode == ThemeMode.system,
+            onTap: () => notifier.setMode(ThemeMode.system),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader(String title, BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          color: context.textSecondary,
+        ),
       ),
     );
   }
@@ -87,61 +76,33 @@ class SettingsScreen extends StatelessWidget {
     BuildContext context, {
     required String title,
     required IconData icon,
-    required AppThemeMode mode,
-    required bool isDark,
-    bool isFirst = false,
-    bool isLast = false,
+    required bool isSelected,
+    required VoidCallback onTap,
   }) {
-    final isSelected = themeProvider.themeMode == mode;
-    final primaryColor =
-        isDark ? AppColors.primaryColor : AppColors.primaryColor;
-    final textColor =
-        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final secondaryColor =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
-
     return Material(
-      color: Colors.transparent,
+      color: context.cardBackground,
       child: InkWell(
-        onTap: () => themeProvider.setThemeMode(mode),
-        borderRadius: BorderRadius.vertical(
-          top: isFirst ? const Radius.circular(12) : Radius.zero,
-          bottom: isLast ? const Radius.circular(12) : Radius.zero,
-        ),
+        onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           child: Row(
             children: [
-              Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: isSelected
-                      ? primaryColor.withValues(alpha: 0.15)
-                      : secondaryColor.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(
-                  icon,
-                  size: 18,
-                  color: isSelected ? primaryColor : secondaryColor,
-                ),
-              ),
-              const SizedBox(width: 14),
+              Icon(icon, color: context.textPrimary, size: 24),
+              const SizedBox(width: 16),
               Expanded(
                 child: Text(
                   title,
                   style: TextStyle(
                     fontSize: 17,
-                    color: textColor,
+                    color: context.textPrimary,
                   ),
                 ),
               ),
               if (isSelected)
                 Icon(
                   CupertinoIcons.checkmark,
+                  color: context.primaryColor,
                   size: 20,
-                  color: primaryColor,
                 ),
             ],
           ),
@@ -150,14 +111,7 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDivider(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 62),
-      child: Divider(
-        height: 0.5,
-        thickness: 0.5,
-        color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
-      ),
-    );
+  Widget _buildDivider(BuildContext context) {
+    return Divider(height: 1, indent: 56, color: context.dividerColor);
   }
 }

@@ -55,4 +55,79 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get themeSystem => '시스템';
+
+  @override
+  String get groupName => '그룹 이름';
+
+  @override
+  String get groupNameHint => '예: 오키나와 여행 2026';
+
+  @override
+  String get groupNameRequired => '그룹 이름을 입력하세요';
+
+  @override
+  String get currency => '통화';
+
+  @override
+  String get members => '멤버';
+
+  @override
+  String get memberNameHint => '멤버 이름';
+
+  @override
+  String get noMembersYet => '멤버가 없습니다';
+
+  @override
+  String get memberAlreadyExists => '이미 존재하는 멤버입니다';
+
+  @override
+  String get create => '만들기';
+
+  @override
+  String get createGroupError => '그룹 생성 실패';
+
+  @override
+  String get groupDetail => '그룹 상세';
+
+  @override
+  String get groupNotFound => '그룹을 찾을 수 없습니다';
+
+  @override
+  String get goBack => '뒤로';
+
+  @override
+  String get settlement => '정산';
+
+  @override
+  String get noSettlementsNeeded => '모두 정산됨!';
+
+  @override
+  String get everyoneEven => '모두 정산 완료';
+
+  @override
+  String get expenses => '지출';
+
+  @override
+  String get noExpenses => '지출이 없습니다';
+
+  @override
+  String get noDescription => '설명 없음';
+
+  @override
+  String get paidBy => '결제자';
+
+  @override
+  String get inquiry => '문의';
+
+  @override
+  String get editGroup => '그룹 편집';
+
+  @override
+  String get save => '저장';
+
+  @override
+  String get search => '검색';
+
+  @override
+  String get addMember => '멤버 추가';
 }

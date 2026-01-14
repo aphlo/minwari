@@ -55,4 +55,79 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get themeSystem => 'システム設定';
+
+  @override
+  String get groupName => 'グループ名';
+
+  @override
+  String get groupNameHint => '例：沖縄旅行2026';
+
+  @override
+  String get groupNameRequired => 'グループ名を入力してください';
+
+  @override
+  String get currency => '通貨';
+
+  @override
+  String get members => 'メンバー';
+
+  @override
+  String get memberNameHint => 'メンバー名';
+
+  @override
+  String get noMembersYet => 'メンバーがいません';
+
+  @override
+  String get memberAlreadyExists => '同じ名前のメンバーがいます';
+
+  @override
+  String get create => '作成';
+
+  @override
+  String get createGroupError => 'グループの作成に失敗しました';
+
+  @override
+  String get groupDetail => 'グループ詳細';
+
+  @override
+  String get groupNotFound => 'グループが見つかりません';
+
+  @override
+  String get goBack => '戻る';
+
+  @override
+  String get settlement => '精算';
+
+  @override
+  String get noSettlementsNeeded => '精算完了！';
+
+  @override
+  String get everyoneEven => '全員精算済みです';
+
+  @override
+  String get expenses => '支出';
+
+  @override
+  String get noExpenses => '支出がありません';
+
+  @override
+  String get noDescription => '説明なし';
+
+  @override
+  String get paidBy => '支払者';
+
+  @override
+  String get inquiry => 'お問い合わせ';
+
+  @override
+  String get editGroup => 'グループを編集';
+
+  @override
+  String get save => '保存';
+
+  @override
+  String get search => '検索';
+
+  @override
+  String get addMember => 'メンバーを追加する';
 }

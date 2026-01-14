@@ -55,6 +55,81 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get themeSystem => '跟随系统';
+
+  @override
+  String get groupName => '群组名称';
+
+  @override
+  String get groupNameHint => '例如：冲绳旅行2026';
+
+  @override
+  String get groupNameRequired => '请输入群组名称';
+
+  @override
+  String get currency => '货币';
+
+  @override
+  String get members => '成员';
+
+  @override
+  String get memberNameHint => '成员名称';
+
+  @override
+  String get noMembersYet => '暂无成员';
+
+  @override
+  String get memberAlreadyExists => '成员已存在';
+
+  @override
+  String get create => '创建';
+
+  @override
+  String get createGroupError => '创建群组失败';
+
+  @override
+  String get groupDetail => '群组详情';
+
+  @override
+  String get groupNotFound => '群组未找到';
+
+  @override
+  String get goBack => '返回';
+
+  @override
+  String get settlement => '结算';
+
+  @override
+  String get noSettlementsNeeded => '已结清！';
+
+  @override
+  String get everyoneEven => '大家都结清了';
+
+  @override
+  String get expenses => '支出';
+
+  @override
+  String get noExpenses => '暂无支出';
+
+  @override
+  String get noDescription => '无描述';
+
+  @override
+  String get paidBy => '支付者';
+
+  @override
+  String get inquiry => '咨询';
+
+  @override
+  String get editGroup => '编辑群组';
+
+  @override
+  String get save => '保存';
+
+  @override
+  String get search => '搜索';
+
+  @override
+  String get addMember => '添加成员';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -108,6 +183,81 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get themeSystem => '跟随系统';
+
+  @override
+  String get groupName => '群组名称';
+
+  @override
+  String get groupNameHint => '例如：冲绳旅行2026';
+
+  @override
+  String get groupNameRequired => '请输入群组名称';
+
+  @override
+  String get currency => '货币';
+
+  @override
+  String get members => '成员';
+
+  @override
+  String get memberNameHint => '成员名称';
+
+  @override
+  String get noMembersYet => '暂无成员';
+
+  @override
+  String get memberAlreadyExists => '成员已存在';
+
+  @override
+  String get create => '创建';
+
+  @override
+  String get createGroupError => '创建群组失败';
+
+  @override
+  String get groupDetail => '群组详情';
+
+  @override
+  String get groupNotFound => '群组未找到';
+
+  @override
+  String get goBack => '返回';
+
+  @override
+  String get settlement => '结算';
+
+  @override
+  String get noSettlementsNeeded => '已结清！';
+
+  @override
+  String get everyoneEven => '大家都结清了';
+
+  @override
+  String get expenses => '支出';
+
+  @override
+  String get noExpenses => '暂无支出';
+
+  @override
+  String get noDescription => '无描述';
+
+  @override
+  String get paidBy => '支付者';
+
+  @override
+  String get inquiry => '咨询';
+
+  @override
+  String get editGroup => '编辑群组';
+
+  @override
+  String get save => '保存';
+
+  @override
+  String get search => '搜索';
+
+  @override
+  String get addMember => '添加成员';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -161,4 +311,79 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get themeSystem => '跟隨系統';
+
+  @override
+  String get groupName => '群組名稱';
+
+  @override
+  String get groupNameHint => '例如：沖繩旅行2026';
+
+  @override
+  String get groupNameRequired => '請輸入群組名稱';
+
+  @override
+  String get currency => '貨幣';
+
+  @override
+  String get members => '成員';
+
+  @override
+  String get memberNameHint => '成員名稱';
+
+  @override
+  String get noMembersYet => '暫無成員';
+
+  @override
+  String get memberAlreadyExists => '成員已存在';
+
+  @override
+  String get create => '建立';
+
+  @override
+  String get createGroupError => '建立群組失敗';
+
+  @override
+  String get groupDetail => '群組詳情';
+
+  @override
+  String get groupNotFound => '群組未找到';
+
+  @override
+  String get goBack => '返回';
+
+  @override
+  String get settlement => '結算';
+
+  @override
+  String get noSettlementsNeeded => '已結清！';
+
+  @override
+  String get everyoneEven => '大家都結清了';
+
+  @override
+  String get expenses => '支出';
+
+  @override
+  String get noExpenses => '暫無支出';
+
+  @override
+  String get noDescription => '無描述';
+
+  @override
+  String get paidBy => '支付者';
+
+  @override
+  String get inquiry => '諮詢';
+
+  @override
+  String get editGroup => '編輯群組';
+
+  @override
+  String get save => '儲存';
+
+  @override
+  String get search => '搜尋';
+
+  @override
+  String get addMember => '新增成員';
 }

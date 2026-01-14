@@ -1,4 +1,4 @@
-package com.aphlo.mobileapp
+package com.aphlo.minwari
 
 import io.flutter.embedding.android.FlutterActivity
 

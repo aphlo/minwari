@@ -1,189 +1,81 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../l10n/generated/app_localizations.dart';
-import '../providers/theme_provider.dart';
-import '../screens/settings_screen.dart';
-import '../screens/webview_screen.dart';
-import '../theme/app_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:minwari/providers/package_info_provider.dart';
+import 'package:minwari/screens/license_screen.dart';
+import 'package:minwari/screens/settings_screen.dart';
+import 'package:minwari/screens/webview_screen.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 
-class AppDrawer extends StatefulWidget {
-  final ThemeProvider themeProvider;
-
-  const AppDrawer({super.key, required this.themeProvider});
-
-  @override
-  State<AppDrawer> createState() => _AppDrawerState();
-}
-
-class _AppDrawerState extends State<AppDrawer> {
-  String _version = '';
+class AppDrawer extends ConsumerWidget {
+  const AppDrawer({super.key});
 
   @override
-  void initState() {
-    super.initState();
-    _loadVersion();
-  }
-
-  Future<void> _loadVersion() async {
-    setState(() {
-      _version = '1.0.0';
-    });
-  }
-
-  void _openWebView(BuildContext context, String title, String url) {
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      CupertinoPageRoute(
-        builder: (context) => WebViewScreen(title: title, url: url),
-      ),
-    );
-  }
-
-  void _openSettings(BuildContext context) {
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      CupertinoPageRoute(
-        builder: (context) =>
-            SettingsScreen(themeProvider: widget.themeProvider),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor =
-        isDark ? AppColors.primaryColor : AppColors.primaryColor;
-    final textPrimary =
-        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
-    final cardBackground =
-        isDark ? AppColors.darkCardBackground : AppColors.lightCardBackground;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final packageInfoAsync = ref.watch(packageInfoProvider);
 
     return Drawer(
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      backgroundColor: context.scaffoldBackgroundColor,
       child: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Apple-style header
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: primaryColor,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: const Icon(
-                      CupertinoIcons.money_dollar_circle_fill,
-                      color: Colors.white,
-                      size: 32,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    l10n.appTitle,
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -0.5,
-                      color: textPrimary,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '${l10n.version} $_version',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: textSecondary,
-                    ),
-                  ),
-                ],
+            const SizedBox(height: 24),
+            _buildMenuItem(
+              context,
+              icon: CupertinoIcons.settings,
+              title: context.l10n.settings,
+              onTap: () => _navigateTo(context, const SettingsScreen()),
+            ),
+            _buildDivider(context),
+            _buildMenuItem(
+              context,
+              icon: CupertinoIcons.doc_text,
+              title: context.l10n.termsOfService,
+              onTap: () => _navigateTo(
+                context,
+                const WebViewScreen(
+                  url: 'https://example.com/terms', // Replace with actual URL
+                  title: 'Terms of Service',
+                ),
               ),
             ),
-            const SizedBox(height: 24),
-            // Apple-style grouped list
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                children: [
-                  // Settings section
-                  _buildSection(
-                    cardBackground: cardBackground,
-                    children: [
-                      _buildListTile(
-                        icon: CupertinoIcons.gear,
-                        title: l10n.settings,
-                        onTap: () => _openSettings(context),
-                        primaryColor: primaryColor,
-                        textPrimary: textPrimary,
-                        textSecondary: textSecondary,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  // Legal section
-                  _buildSection(
-                    cardBackground: cardBackground,
-                    children: [
-                      _buildListTile(
-                        icon: CupertinoIcons.doc_text,
-                        title: l10n.termsOfService,
-                        onTap: () => _openWebView(
-                          context,
-                          l10n.termsOfService,
-                          'https://oursplit.us/terms',
-                        ),
-                        primaryColor: primaryColor,
-                        textPrimary: textPrimary,
-                        textSecondary: textSecondary,
-                      ),
-                      _buildDivider(isDark),
-                      _buildListTile(
-                        icon: CupertinoIcons.shield,
-                        title: l10n.privacyPolicy,
-                        onTap: () => _openWebView(
-                          context,
-                          l10n.privacyPolicy,
-                          'https://oursplit.us/privacy',
-                        ),
-                        primaryColor: primaryColor,
-                        textPrimary: textPrimary,
-                        textSecondary: textSecondary,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  // About section
-                  _buildSection(
-                    cardBackground: cardBackground,
-                    children: [
-                      _buildListTile(
-                        icon: CupertinoIcons.info_circle,
-                        title: l10n.license,
-                        onTap: () {
-                          Navigator.pop(context);
-                          showLicensePage(
-                            context: context,
-                            applicationName: l10n.appTitle,
-                            applicationVersion: _version,
-                          );
-                        },
-                        primaryColor: primaryColor,
-                        textPrimary: textPrimary,
-                        textSecondary: textSecondary,
-                      ),
-                    ],
-                  ),
-                ],
+            _buildDivider(context),
+            _buildMenuItem(
+              context,
+              icon: CupertinoIcons.hand_raised,
+              title: context.l10n.privacyPolicy,
+              onTap: () => _navigateTo(
+                context,
+                const WebViewScreen(
+                  url: 'https://example.com/privacy', // Replace with actual URL
+                  title: 'Privacy Policy',
+                ),
+              ),
+            ),
+            _buildDivider(context),
+            _buildMenuItem(
+              context,
+              icon: CupertinoIcons.info,
+              title: context.l10n.license,
+              onTap: () => _navigateTo(
+                context,
+                LicenseScreen(
+                  applicationName: context.l10n.appTitle,
+                  applicationVersion: packageInfoAsync.asData?.value.version,
+                ),
+              ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: packageInfoAsync.when(
+                data: (info) => Text(
+                  '${context.l10n.version} ${info.version} (${info.buildNumber})',
+                  style: TextStyle(color: context.textSecondary, fontSize: 13),
+                ),
+                loading: () => const SizedBox.shrink(),
+                error: (_, __) => const SizedBox.shrink(),
               ),
             ),
           ],
@@ -192,55 +84,36 @@ class _AppDrawerState extends State<AppDrawer> {
     );
   }
 
-  Widget _buildSection({
-    required Color cardBackground,
-    required List<Widget> children,
-  }) {
-    return Container(
-      decoration: BoxDecoration(
-        color: cardBackground,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(children: children),
-    );
-  }
-
-  Widget _buildListTile({
+  Widget _buildMenuItem(
+    BuildContext context, {
     required IconData icon,
     required String title,
     required VoidCallback onTap,
-    required Color primaryColor,
-    required Color textPrimary,
-    required Color textSecondary,
   }) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Row(
             children: [
-              Icon(
-                icon,
-                size: 22,
-                color: primaryColor,
-              ),
-              const SizedBox(width: 14),
+              Icon(icon, color: context.textPrimary, size: 22),
+              const SizedBox(width: 16),
               Expanded(
                 child: Text(
                   title,
                   style: TextStyle(
                     fontSize: 17,
-                    color: textPrimary,
+                    fontWeight: FontWeight.w400,
+                    color: context.textPrimary,
                   ),
                 ),
               ),
               Icon(
-                CupertinoIcons.chevron_forward,
-                size: 18,
-                color: textSecondary,
+                CupertinoIcons.chevron_right,
+                size: 16,
+                color: context.textSecondary.withValues(alpha: 0.5),
               ),
             ],
           ),
@@ -249,13 +122,15 @@ class _AppDrawerState extends State<AppDrawer> {
     );
   }
 
-  Widget _buildDivider(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 52),
-      child: Divider(
-        height: 0.5,
-        thickness: 0.5,
-        color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
+  Widget _buildDivider(BuildContext context) {
+    return Divider(height: 1, indent: 62, color: context.dividerColor);
+  }
+
+  void _navigateTo(BuildContext context, Widget screen) {
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (context) => screen,
+        fullscreenDialog: true,
       ),
     );
   }

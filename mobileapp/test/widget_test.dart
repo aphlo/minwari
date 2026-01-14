@@ -1,21 +1,26 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mobileapp/main.dart';
-import 'package:mobileapp/providers/theme_provider.dart';
+import 'package:minwari/lib/currency.dart';
 
 void main() {
-  testWidgets('App smoke test', (WidgetTester tester) async {
-    // Create a ThemeProvider for testing
-    final themeProvider = ThemeProvider();
+  group('Currency utilities', () {
+    test('getCurrencySymbol returns correct symbols', () {
+      expect(getCurrencySymbol('JPY'), '¥');
+      expect(getCurrencySymbol('USD'), '\$');
+      expect(getCurrencySymbol('EUR'), '€');
+      expect(getCurrencySymbol('KRW'), '₩');
+    });
 
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MinwariApp(themeProvider: themeProvider));
+    test('getCurrencyFractionDigits returns correct values', () {
+      expect(getCurrencyFractionDigits('JPY'), 0);
+      expect(getCurrencyFractionDigits('USD'), 2);
+      expect(getCurrencyFractionDigits('KRW'), 0);
+    });
 
-    // Pump a few frames to allow initial build
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 100));
-
-    // Verify the app renders without errors
-    expect(find.byType(MinwariApp), findsOneWidget);
+    test('toMinorUnits and fromMinorUnits are inverse', () {
+      expect(toMinorUnits(100.0, 0), 100);
+      expect(toMinorUnits(100.50, 2), 10050);
+      expect(fromMinorUnits(10050, 2), 100.50);
+    });
   });
 }
