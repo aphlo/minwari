@@ -71,6 +71,45 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Create dummy Firebase options
+        run: |
+          cat > lib/firebase_options.dart << 'EOF'
+          import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
+          import 'package:flutter/foundation.dart'
+              show defaultTargetPlatform, kIsWeb, TargetPlatform;
+
+          class DefaultFirebaseOptions {
+            static FirebaseOptions get currentPlatform {
+              if (kIsWeb) {
+                throw UnsupportedError('Web not supported');
+              }
+              switch (defaultTargetPlatform) {
+                case TargetPlatform.android:
+                  return android;
+                case TargetPlatform.iOS:
+                  return ios;
+                default:
+                  throw UnsupportedError('Platform not supported');
+              }
+            }
+
+            static const FirebaseOptions android = FirebaseOptions(
+              apiKey: 'dummy',
+              appId: 'dummy',
+              messagingSenderId: 'dummy',
+              projectId: 'dummy',
+            );
+
+            static const FirebaseOptions ios = FirebaseOptions(
+              apiKey: 'dummy',
+              appId: 'dummy',
+              messagingSenderId: 'dummy',
+              projectId: 'dummy',
+              iosBundleId: 'dummy',
+            );
+          }
+          EOF
+
       - name: Check format
         run: dart format --output=none --set-exit-if-changed lib
 
