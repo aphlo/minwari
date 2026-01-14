@@ -63,7 +63,7 @@ class AppTheme {
         secondaryColor: AppColors.darkTextSecondary,
       ),
       appBarTheme: _buildAppBarTheme(
-        backgroundColor: AppColors.darkBackground,
+        backgroundColor: AppColors.darkSurface,
         foregroundColor: AppColors.darkTextPrimary,
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),

@@ -35,9 +35,9 @@ extension AppContextExtension on BuildContext {
 
   /// Scaffold background color adaptable to theme
   Color get scaffoldBackgroundColor =>
-      isDark ? AppColors.darkSurface : AppColors.lightBackground;
+      isDark ? AppColors.darkBackground : AppColors.lightBackground;
 
   /// AppBar background color adaptable to theme
   Color get appBarBackgroundColor =>
-      isDark ? AppColors.darkBackground : AppColors.lightSurface;
+      isDark ? AppColors.darkSurface : AppColors.lightSurface;
 }
