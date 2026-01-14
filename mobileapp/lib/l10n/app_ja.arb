@@ -39,5 +39,6 @@
   "inquiry": "お問い合わせ",
   "editGroup": "グループを編集",
   "save": "保存",
-  "search": "検索"
+  "search": "検索",
+  "addMember": "メンバーを追加する"
 }

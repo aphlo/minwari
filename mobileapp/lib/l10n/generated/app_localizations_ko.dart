@@ -127,4 +127,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get search => '검색';
+
+  @override
+  String get addMember => '멤버 추가';
 }

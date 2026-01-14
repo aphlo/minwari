@@ -127,6 +127,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get search => '搜索';
+
+  @override
+  String get addMember => '添加成员';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -252,6 +255,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get search => '搜索';
+
+  @override
+  String get addMember => '添加成员';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -377,4 +383,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get search => '搜尋';
+
+  @override
+  String get addMember => '新增成員';
 }

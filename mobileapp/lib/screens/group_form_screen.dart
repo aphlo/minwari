@@ -97,12 +97,17 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
 
       if (!mounted) return;
 
-      // Navigate to group detail screen
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => GroupDetailScreen(groupId: groupId),
-        ),
-      );
+      if (widget.isEditing) {
+        // Go back to detail screen
+        Navigator.of(context).pop();
+      } else {
+        // Navigate to group detail screen for new groups
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => GroupDetailScreen(groupId: groupId),
+          ),
+        );
+      }
     } catch (e) {
       debugPrint('Group creation error: $e');
       if (mounted) {

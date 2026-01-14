@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:minwari/models/group.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 
@@ -60,15 +61,28 @@ class GroupList extends StatelessWidget {
                               color: context.textPrimary,
                             ),
                           ),
+                          if (group.members.isNotEmpty) ...[
+                            const SizedBox(height: 4),
+                            Text(
+                              group.members.join(', '),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: context.textSecondary,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
                           const SizedBox(height: 4),
                           Text(
-                            group.members.join(', '),
+                            DateFormat.yMMMd(
+                                    Localizations.localeOf(context).toString())
+                                .format(group.createdAt),
                             style: TextStyle(
-                              fontSize: 14,
-                              color: context.textSecondary,
+                              fontSize: 12,
+                              color:
+                                  context.textSecondary.withValues(alpha: 0.7),
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),

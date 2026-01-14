@@ -128,4 +128,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get search => 'Buscar';
+
+  @override
+  String get addMember => 'Añadir miembro';
 }

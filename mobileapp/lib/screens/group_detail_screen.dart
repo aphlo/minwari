@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:minwari/models/group.dart';
 import 'package:minwari/repositories/group_repository.dart';
+import 'package:minwari/screens/group_form_screen.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/expense_list.dart';
 import 'package:minwari/widgets/group_info_card.dart';
@@ -119,9 +120,15 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
         leading: const BackButton(),
         actions: [
           IconButton(
-            icon: const Icon(CupertinoIcons.settings),
-            onPressed: () {
-              // TODO: Implement group settings
+            icon: const Icon(CupertinoIcons.pencil),
+            onPressed: () async {
+              await Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => GroupFormScreen(group: group),
+                  fullscreenDialog: true,
+                ),
+              );
+              _loadData();
             },
           ),
         ],
@@ -150,6 +157,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'group_detail_fab',
         onPressed: () {
           // TODO: Add expense
         },

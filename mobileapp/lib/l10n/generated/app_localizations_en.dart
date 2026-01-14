@@ -128,4 +128,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search => 'Search';
+
+  @override
+  String get addMember => 'Add member';
 }

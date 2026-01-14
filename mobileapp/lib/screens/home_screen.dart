@@ -88,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onGroupTap: (group) => _navigateToGroupDetail(context, group),
             ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'home_fab',
         onPressed: () => _navigateToCreateGroup(context),
         backgroundColor: context.primaryColor,
         child: const Icon(CupertinoIcons.add, color: Colors.white),

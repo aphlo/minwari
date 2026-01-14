@@ -127,4 +127,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get search => '検索';
+
+  @override
+  String get addMember => 'メンバーを追加する';
 }

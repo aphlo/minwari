@@ -21,20 +21,88 @@ class MembersEditor extends StatefulWidget {
 }
 
 class _MembersEditorState extends State<MembersEditor> {
-  final TextEditingController _controller = TextEditingController();
+  final List<TextEditingController> _controllers = [];
+  final List<FocusNode> _focusNodes = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _syncControllers();
+  }
+
+  @override
+  void didUpdateWidget(MembersEditor oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _syncControllers();
+  }
+
+  void _syncControllers() {
+    // Ensure we have at least one field (for new members)
+    final targetCount = widget.members.isEmpty ? 1 : widget.members.length;
+
+    // Add controllers if needed
+    while (_controllers.length < targetCount) {
+      final controller = TextEditingController();
+      final focusNode = FocusNode();
+      _controllers.add(controller);
+      _focusNodes.add(focusNode);
+    }
+
+    // Remove extra controllers
+    while (_controllers.length > targetCount) {
+      _controllers.removeLast().dispose();
+      _focusNodes.removeLast().dispose();
+    }
+
+    // Update controller texts
+    for (int i = 0; i < widget.members.length; i++) {
+      if (_controllers[i].text != widget.members[i]) {
+        _controllers[i].text = widget.members[i];
+      }
+    }
+
+    // Clear empty field if members list is empty
+    if (widget.members.isEmpty && _controllers.isNotEmpty) {
+      _controllers[0].text = '';
+    }
+  }
 
   @override
   void dispose() {
-    _controller.dispose();
+    for (final controller in _controllers) {
+      controller.dispose();
+    }
+    for (final focusNode in _focusNodes) {
+      focusNode.dispose();
+    }
     super.dispose();
   }
 
   void _addMember() {
-    if (_controller.text.trim().isNotEmpty) {
-      widget.onMemberChanged(widget.members.length, _controller.text.trim());
-      _controller.clear();
-      // Only call onAddMember if it's explicitly passed (usually not needed if we handle state here)
-      widget.onAddMember?.call();
+    // Add empty member to trigger new field
+    widget.onMemberChanged(widget.members.length, '');
+    // Focus on the new field after build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_focusNodes.isNotEmpty) {
+        _focusNodes.last.requestFocus();
+      }
+    });
+  }
+
+  void _onFieldChanged(int index, String value) {
+    if (index < widget.members.length) {
+      widget.onMemberChanged(index, value);
+    } else if (value.isNotEmpty) {
+      // New member being added
+      widget.onMemberChanged(index, value);
+    }
+  }
+
+  void _onFieldSubmitted(int index) {
+    // If this is the last field and it has content, add a new member
+    if (index == _controllers.length - 1 &&
+        _controllers[index].text.trim().isNotEmpty) {
+      _addMember();
     }
   }
 
@@ -43,103 +111,99 @@ class _MembersEditorState extends State<MembersEditor> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (widget.members.isNotEmpty)
-          Container(
-            decoration: BoxDecoration(
-              color: context.cardBackground,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: widget.members.length,
-              separatorBuilder: (context, index) => Divider(
-                height: 1,
-                indent: 16,
-                color: context.dividerColor,
+        // Member fields
+        for (int i = 0; i < _controllers.length; i++)
+          Padding(
+            padding:
+                EdgeInsets.only(bottom: i < _controllers.length - 1 ? 8 : 0),
+            child: _buildMemberField(context, i),
+          ),
+
+        const SizedBox(height: 12),
+
+        // Add member button
+        GestureDetector(
+          onTap: _addMember,
+          child: Row(
+            children: [
+              Icon(
+                CupertinoIcons.add_circled,
+                color: context.primaryColor,
+                size: 22,
               ),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          color: context.primaryColor.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Icon(
-                          CupertinoIcons.person_fill,
-                          size: 18,
-                          color: context.primaryColor,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          widget.members[index],
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: context.textPrimary,
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          CupertinoIcons.minus_circle_fill,
-                          color: Colors.red.withValues(alpha: 0.8),
-                          size: 22,
-                        ),
-                        onPressed: () => widget.onMemberRemove(index),
-                      ),
-                    ],
-                  ),
-                );
-              },
+              const SizedBox(width: 8),
+              Text(
+                context.l10n.addMember,
+                style: TextStyle(
+                  color: context.primaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMemberField(BuildContext context, int index) {
+    final isExistingMember = index < widget.members.length;
+
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              color: context.inputFillColor,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: _focusNodes[index].hasFocus
+                    ? context.primaryColor
+                    : Colors.transparent,
+                width: 2,
+              ),
+            ),
+            child: TextField(
+              controller: _controllers[index],
+              focusNode: _focusNodes[index],
+              decoration: InputDecoration(
+                hintText: context.l10n.memberNameHint,
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 14,
+                ),
+                isDense: true,
+              ),
+              style: TextStyle(
+                fontSize: 17,
+                color: context.textPrimary,
+              ),
+              onChanged: (value) => _onFieldChanged(index, value),
+              onSubmitted: (_) => _onFieldSubmitted(index),
             ),
           ),
-        const SizedBox(height: 12),
-        Row(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: context.inputFillColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: TextField(
-                  controller: _controller,
-                  decoration: InputDecoration(
-                    hintText: context.l10n.memberNameHint,
-                    border: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 14),
-                    isDense: true,
-                  ),
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: context.textPrimary,
-                  ),
-                  onSubmitted: (_) => _addMember(),
-                ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Container(
-              decoration: BoxDecoration(
-                color: context.primaryColor,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: IconButton(
-                icon: const Icon(CupertinoIcons.add, color: Colors.white),
-                onPressed: _addMember,
-              ),
-            ),
-          ],
         ),
+        const SizedBox(width: 8),
+        // Show delete button for existing members or non-empty new fields
+        if (isExistingMember || _controllers[index].text.isNotEmpty)
+          IconButton(
+            icon: Icon(
+              CupertinoIcons.xmark,
+              color: context.textSecondary,
+              size: 20,
+            ),
+            onPressed: () {
+              if (isExistingMember) {
+                widget.onMemberRemove(index);
+              } else {
+                _controllers[index].clear();
+              }
+            },
+          )
+        else
+          const SizedBox(width: 48), // Placeholder for alignment
       ],
     );
   }
