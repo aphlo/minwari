@@ -5,7 +5,7 @@ class AppColors {
   AppColors._();
 
   // Primary brand color
-  static const Color primaryColor = Color(0xFF1F2EFF);
+  static const Color primaryColor = Color(0xFF0778E9);
 
   // Light theme colors
   static const Color lightBackground = Color(0xFFF5F5F7);

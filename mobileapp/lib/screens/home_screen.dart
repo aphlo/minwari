@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: context.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: context.scaffoldBackgroundColor,
+        backgroundColor: context.appBarBackgroundColor,
         elevation: 0,
         title: Text(
           context.l10n.appTitle,

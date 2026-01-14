@@ -124,4 +124,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get save => '저장';
+
+  @override
+  String get search => '검색';
 }

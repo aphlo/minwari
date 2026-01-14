@@ -19,7 +19,7 @@ class SettingsScreen extends ConsumerWidget {
           context.l10n.settings,
           style: TextStyle(color: context.textPrimary),
         ),
-        backgroundColor: context.scaffoldBackgroundColor,
+        backgroundColor: context.appBarBackgroundColor,
         elevation: 0,
         leading: const BackButton(),
       ),

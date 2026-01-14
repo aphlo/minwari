@@ -125,6 +125,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get save => 'Salvar';
+
+  @override
+  String get search => 'Pesquisar';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -248,4 +251,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get save => 'Salvar';
+
+  @override
+  String get search => 'Pesquisar';
 }

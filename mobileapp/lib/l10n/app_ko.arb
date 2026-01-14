@@ -38,5 +38,6 @@
   "paidBy": "결제자",
   "inquiry": "문의",
   "editGroup": "그룹 편집",
-  "save": "저장"
+  "save": "저장",
+  "search": "검색"
 }

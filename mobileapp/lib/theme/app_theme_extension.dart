@@ -31,9 +31,13 @@ extension AppContextExtension on BuildContext {
 
   /// Input field background color adaptable to theme
   Color get inputFillColor =>
-      isDark ? AppColors.darkSurface : AppColors.lightBackground;
+      isDark ? AppColors.darkSurface : AppColors.lightSurface;
 
   /// Scaffold background color adaptable to theme
   Color get scaffoldBackgroundColor =>
-      isDark ? AppColors.darkBackground : AppColors.lightBackground;
+      isDark ? AppColors.darkSurface : AppColors.lightBackground;
+
+  /// AppBar background color adaptable to theme
+  Color get appBarBackgroundColor =>
+      isDark ? AppColors.darkBackground : AppColors.lightSurface;
 }

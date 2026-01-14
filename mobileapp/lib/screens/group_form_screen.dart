@@ -128,7 +128,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
           widget.isEditing ? context.l10n.editGroup : context.l10n.createGroup,
           style: TextStyle(color: context.textPrimary),
         ),
-        backgroundColor: context.scaffoldBackgroundColor,
+        backgroundColor: context.appBarBackgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: context.textPrimary),
         leading: IconButton(
