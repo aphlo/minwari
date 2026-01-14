@@ -1,27 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobileapp/lib/settlement_calculator.dart';
 
-/// Expense model representing a single expense in a group.
-class Expense {
-  final String id;
-  final String groupId;
-  final String description;
-  final double amount;
-  final String paidBy;
-  final List<String> splitWith;
-  final DateTime createdAt;
-  final DateTime? updatedAt;
+part 'expense.freezed.dart';
+part 'expense.g.dart';
 
-  Expense({
-    required this.id,
-    required this.groupId,
-    required this.description,
-    required this.amount,
-    required this.paidBy,
-    required this.splitWith,
-    required this.createdAt,
-    this.updatedAt,
-  });
+/// Expense model representing a single expense in a group.
+@freezed
+abstract class Expense with _$Expense {
+  const Expense._();
+
+  const factory Expense({
+    required String id,
+    required String groupId,
+    required String description,
+    required double amount,
+    required String paidBy,
+    required List<String> splitWith,
+    required DateTime createdAt,
+    DateTime? updatedAt,
+  }) = _Expense;
+
+  factory Expense.fromJson(Map<String, dynamic> json) =>
+      _$ExpenseFromJson(json);
 
   /// Create an Expense from Firestore document
   factory Expense.fromFirestore(DocumentSnapshot doc, String groupId) {
@@ -56,28 +57,6 @@ class Expense {
       amount: amount,
       paidBy: paidBy,
       splitWith: splitWith,
-    );
-  }
-
-  Expense copyWith({
-    String? id,
-    String? groupId,
-    String? description,
-    double? amount,
-    String? paidBy,
-    List<String>? splitWith,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  }) {
-    return Expense(
-      id: id ?? this.id,
-      groupId: groupId ?? this.groupId,
-      description: description ?? this.description,
-      amount: amount ?? this.amount,
-      paidBy: paidBy ?? this.paidBy,
-      splitWith: splitWith ?? this.splitWith,
-      createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 }
