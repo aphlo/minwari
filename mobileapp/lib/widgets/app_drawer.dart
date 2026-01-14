@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:minwari/providers/package_info_provider.dart';
+import 'package:minwari/screens/license_screen.dart';
 import 'package:minwari/screens/settings_screen.dart';
 import 'package:minwari/screens/webview_screen.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
@@ -57,14 +58,13 @@ class AppDrawer extends ConsumerWidget {
               context,
               icon: CupertinoIcons.info,
               title: context.l10n.license,
-              onTap: () {
-                Navigator.pop(context);
-                showLicensePage(
-                  context: context,
+              onTap: () => _navigateTo(
+                context,
+                LicenseScreen(
                   applicationName: context.l10n.appTitle,
                   applicationVersion: packageInfoAsync.asData?.value.version,
-                );
-              },
+                ),
+              ),
             ),
             const Spacer(),
             Padding(
@@ -127,10 +127,11 @@ class AppDrawer extends ConsumerWidget {
   }
 
   void _navigateTo(BuildContext context, Widget screen) {
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      CupertinoPageRoute(builder: (context) => screen),
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (context) => screen,
+        fullscreenDialog: true,
+      ),
     );
   }
 }

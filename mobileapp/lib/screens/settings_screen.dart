@@ -21,7 +21,11 @@ class SettingsScreen extends ConsumerWidget {
         ),
         backgroundColor: context.appBarBackgroundColor,
         elevation: 0,
-        leading: const BackButton(),
+        iconTheme: IconThemeData(color: context.textPrimary),
+        leading: IconButton(
+          icon: const Icon(CupertinoIcons.xmark),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: ListView(
         children: [

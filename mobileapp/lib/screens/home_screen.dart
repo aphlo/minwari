@@ -37,7 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _navigateToCreateGroup(BuildContext context) async {
     await Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const GroupFormScreen()),
+      MaterialPageRoute(
+        builder: (context) => const GroupFormScreen(),
+        fullscreenDialog: true,
+      ),
     );
     // Reload groups when returning
     _loadGroups();
@@ -47,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => GroupDetailScreen(groupId: group.id),
+        fullscreenDialog: true,
       ),
     );
     // Reload groups when returning
