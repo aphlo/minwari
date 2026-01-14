@@ -32,7 +32,7 @@ Use this skill when:
 **Effects**: Glassmorphism, soft shadows, smooth animations
 **Imagery**: High-quality, properly sized images
 
-📖 **Detailed guide**: [design-principles.md](../../../.shared/skills/apple-design/references/design-principles.md)
+📖 **Detailed guide**: [design-principles.md](../../.shared/skills/apple-design/references/design-principles.md)
 
 ### 2. Color System
 
@@ -61,7 +61,7 @@ Use this skill when:
 }
 ```
 
-📖 **Complete palette**: [color-system.md](../../../.shared/skills/apple-design/references/color-system.md)
+📖 **Complete palette**: [color-system.md](../../.shared/skills/apple-design/references/color-system.md)
 
 ### 3. Typography
 
@@ -84,7 +84,7 @@ p {
 }
 ```
 
-📖 **Typography system**: [typography-system.md](../../../.shared/skills/apple-design/references/typography-system.md)
+📖 **Typography system**: [typography-system.md](../../.shared/skills/apple-design/references/typography-system.md)
 
 ### 4. Spacing
 
@@ -208,7 +208,7 @@ Use 8px-based spacing scale:
 }
 ```
 
-📖 **All components**: [components-reference.md](../../../.shared/skills/apple-design/references/components-reference.md)
+📖 **All components**: [components-reference.md](../../.shared/skills/apple-design/references/components-reference.md)
 
 ## Animations
 
@@ -254,7 +254,7 @@ Use 8px-based spacing scale:
 }
 ```
 
-📖 **Animation patterns**: [animation-guide.md](../../../.shared/skills/apple-design/references/animation-guide.md)
+📖 **Animation patterns**: [animation-guide.md](../../.shared/skills/apple-design/references/animation-guide.md)
 
 ## AI Assistant Instructions
 
@@ -318,18 +318,18 @@ When this skill is activated for Apple-inspired design:
 
 ### 8. Reference Documentation
 When users need detailed information, direct them to:
-- **Design philosophy**: [design-principles.md](../../../.shared/skills/apple-design/references/design-principles.md)
-- **Color palettes & gradients**: [color-system.md](../../../.shared/skills/apple-design/references/color-system.md)
-- **Typography scale & hierarchy**: [typography-system.md](../../../.shared/skills/apple-design/references/typography-system.md)
-- **Animation timing & patterns**: [animation-guide.md](../../../.shared/skills/apple-design/references/animation-guide.md)
-- **Component library**: [components-reference.md](../../../.shared/skills/apple-design/references/components-reference.md)
+- **Design philosophy**: [design-principles.md](../../.shared/skills/apple-design/references/design-principles.md)
+- **Color palettes & gradients**: [color-system.md](../../.shared/skills/apple-design/references/color-system.md)
+- **Typography scale & hierarchy**: [typography-system.md](../../.shared/skills/apple-design/references/typography-system.md)
+- **Animation timing & patterns**: [animation-guide.md](../../.shared/skills/apple-design/references/animation-guide.md)
+- **Component library**: [components-reference.md](../../.shared/skills/apple-design/references/components-reference.md)
 
 ### 9. Templates Available
-Ready-to-use templates in `../../../.shared/skills/apple-design/templates/` folder:
+Ready-to-use templates in `../../.shared/skills/apple-design/templates/` folder:
 - `hero-section.html` - Full-screen hero with gradient
 - `project-card.html` - Project showcase cards with hover effects
 
-Pre-built examples in `../../../.shared/skills/apple-design/examples/` folder:
+Pre-built examples in `../../.shared/skills/apple-design/examples/` folder:
 - `color-palette.css` - Complete color system with utilities
 - `animations.css` - Animation library with all patterns
 
@@ -411,11 +411,11 @@ Pre-built examples in `../../../.shared/skills/apple-design/examples/` folder:
 - [Coolors](https://coolors.co/) - Color palette generator
 
 ### Internal Documentation
-- 📖 [Design Principles](../../../.shared/skills/apple-design/references/design-principles.md) - Philosophy and guidelines
-- 🎨 [Color System](../../../.shared/skills/apple-design/references/color-system.md) - Palettes, gradients, dark mode
-- ✏️ [Typography System](../../../.shared/skills/apple-design/references/typography-system.md) - Fonts, scales, hierarchy
-- 🎬 [Animation Guide](../../../.shared/skills/apple-design/references/animation-guide.md) - Timing, easing, patterns
-- 🧩 [Components Reference](../../../.shared/skills/apple-design/references/components-reference.md) - Full component library
+- 📖 [Design Principles](../../.shared/skills/apple-design/references/design-principles.md) - Philosophy and guidelines
+- 🎨 [Color System](../../.shared/skills/apple-design/references/color-system.md) - Palettes, gradients, dark mode
+- ✏️ [Typography System](../../.shared/skills/apple-design/references/typography-system.md) - Fonts, scales, hierarchy
+- 🎬 [Animation Guide](../../.shared/skills/apple-design/references/animation-guide.md) - Timing, easing, patterns
+- 🧩 [Components Reference](../../.shared/skills/apple-design/references/components-reference.md) - Full component library
 
 ---
 
