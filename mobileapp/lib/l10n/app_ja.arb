@@ -1,0 +1,19 @@
+{
+  "@@locale": "ja",
+  "appTitle": "みんなの割り勘",
+  "termsOfService": "利用規約",
+  "privacyPolicy": "プライバシーポリシー",
+  "version": "バージョン",
+  "license": "ライセンス",
+  "settings": "設定",
+  "theme": "テーマ",
+  "language": "言語",
+  "noGroups": "グループがありません",
+  "emptyStateDescription": "グループを作成して友達と割り勘を始めましょう",
+  "createGroup": "グループを作成",
+  "groupListTitle": "グループ",
+  "appearance": "外観",
+  "themeLight": "ライト",
+  "themeDark": "ダーク",
+  "themeSystem": "システム設定"
+}

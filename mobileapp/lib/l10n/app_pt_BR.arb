@@ -1,0 +1,19 @@
+{
+  "@@locale": "pt_BR",
+  "appTitle": "OurSplit",
+  "termsOfService": "Termos de Serviço",
+  "privacyPolicy": "Política de Privacidade",
+  "version": "Versão",
+  "license": "Licença",
+  "settings": "Configurações",
+  "theme": "Tema",
+  "language": "Idioma",
+  "noGroups": "Nenhum grupo ainda",
+  "emptyStateDescription": "Crie um grupo para começar a dividir despesas com amigos",
+  "createGroup": "Criar grupo",
+  "groupListTitle": "Grupos",
+  "appearance": "Aparência",
+  "themeLight": "Claro",
+  "themeDark": "Escuro",
+  "themeSystem": "Sistema"
+}
