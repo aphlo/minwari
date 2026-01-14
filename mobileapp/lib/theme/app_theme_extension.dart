@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobileapp/l10n/generated/app_localizations.dart';
-import 'package:mobileapp/theme/app_colors.dart';
+import 'package:minwari/l10n/generated/app_localizations.dart';
+import 'package:minwari/theme/app_colors.dart';
 
 /// Extension to provide easy access to theme colors, status, and l10n
 extension AppContextExtension on BuildContext {

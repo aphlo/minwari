@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobileapp/lib/settlement_calculator.dart';
+import 'package:minwari/lib/settlement_calculator.dart';
 
 part 'expense.freezed.dart';
 part 'expense.g.dart';

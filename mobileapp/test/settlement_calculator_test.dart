@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobileapp/lib/settlement_calculator.dart';
+import 'package:minwari/lib/settlement_calculator.dart';
 
 void main() {
   group('Settlement calculator', () {

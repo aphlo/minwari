@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/models/group.dart';
-import 'package:mobileapp/repositories/group_repository.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
-import 'package:mobileapp/widgets/expense_list.dart';
-import 'package:mobileapp/widgets/group_info_card.dart';
-import 'package:mobileapp/widgets/settlement_list.dart';
+import 'package:minwari/models/group.dart';
+import 'package:minwari/repositories/group_repository.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/widgets/expense_list.dart';
+import 'package:minwari/widgets/group_info_card.dart';
+import 'package:minwari/widgets/settlement_list.dart';
 
 class GroupDetailScreen extends StatefulWidget {
   final String groupId;

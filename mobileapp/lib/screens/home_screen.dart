@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
-import 'package:mobileapp/models/group.dart';
-import 'package:mobileapp/repositories/group_repository.dart';
-import 'package:mobileapp/widgets/app_drawer.dart';
-import 'package:mobileapp/widgets/empty_state.dart';
-import 'package:mobileapp/widgets/group_list.dart';
-import 'package:mobileapp/screens/group_form_screen.dart';
-import 'package:mobileapp/screens/group_detail_screen.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/models/group.dart';
+import 'package:minwari/repositories/group_repository.dart';
+import 'package:minwari/widgets/app_drawer.dart';
+import 'package:minwari/widgets/empty_state.dart';
+import 'package:minwari/widgets/group_list.dart';
+import 'package:minwari/screens/group_form_screen.dart';
+import 'package:minwari/screens/group_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 
 class MembersEditor extends StatefulWidget {
   final List<String> members;

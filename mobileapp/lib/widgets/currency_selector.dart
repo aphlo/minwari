@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/lib/currency.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
+import 'package:minwari/lib/currency.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 
 /// Currency selector widget for group forms
 /// Used in both group creation and editing

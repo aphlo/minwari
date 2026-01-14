@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:mobileapp/lib/currency.dart';
-import 'package:mobileapp/lib/locale_currency.dart';
-import 'package:mobileapp/models/group.dart';
-import 'package:mobileapp/repositories/group_repository.dart';
-import 'package:mobileapp/screens/group_detail_screen.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
-import 'package:mobileapp/widgets/currency_selector.dart';
-import 'package:mobileapp/widgets/members_editor.dart';
-import 'package:mobileapp/widgets/section_header.dart'; // Ensure correct import
+import 'package:minwari/lib/currency.dart';
+import 'package:minwari/lib/locale_currency.dart';
+import 'package:minwari/models/group.dart';
+import 'package:minwari/repositories/group_repository.dart';
+import 'package:minwari/screens/group_detail_screen.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/widgets/currency_selector.dart';
+import 'package:minwari/widgets/members_editor.dart';
+import 'package:minwari/widgets/section_header.dart'; // Ensure correct import
 
 /// Screen for creating or editing a group
 /// Set [group] to edit an existing group, leave null to create new

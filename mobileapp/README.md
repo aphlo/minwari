@@ -1,4 +1,4 @@
-# mobileapp
+# minwari
 
 A new Flutter project.
 

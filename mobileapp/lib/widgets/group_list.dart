@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/models/group.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
+import 'package:minwari/models/group.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 
 class GroupList extends StatelessWidget {
   final List<Group> groups;

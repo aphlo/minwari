@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mobileapp/lib/currency.dart';
+import 'package:minwari/lib/currency.dart';
 
 void main() {
   group('Currency utilities', () {

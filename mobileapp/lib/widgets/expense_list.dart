@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobileapp/l10n/generated/app_localizations.dart';
-import 'package:mobileapp/lib/currency.dart';
-import 'package:mobileapp/models/expense.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
-import 'package:mobileapp/widgets/section_header.dart';
+import 'package:minwari/l10n/generated/app_localizations.dart';
+import 'package:minwari/lib/currency.dart';
+import 'package:minwari/models/expense.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/widgets/section_header.dart';
 
 /// Expense list widget showing group expenses
 class ExpenseList extends StatelessWidget {

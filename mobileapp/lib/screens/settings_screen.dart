@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobileapp/providers/theme_provider.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
+import 'package:minwari/providers/theme_provider.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});

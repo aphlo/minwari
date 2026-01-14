@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobileapp/providers/package_info_provider.dart';
-import 'package:mobileapp/screens/settings_screen.dart';
-import 'package:mobileapp/screens/webview_screen.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
+import 'package:minwari/providers/package_info_provider.dart';
+import 'package:minwari/screens/settings_screen.dart';
+import 'package:minwari/screens/webview_screen.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 
 class AppDrawer extends ConsumerWidget {
   const AppDrawer({super.key});

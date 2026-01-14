@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/theme/app_theme_extension.dart';
-import 'package:mobileapp/widgets/section_header.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/widgets/section_header.dart';
 
 class SettlementList extends StatelessWidget {
   final List<dynamic> settlements; // map with from, to, amount
