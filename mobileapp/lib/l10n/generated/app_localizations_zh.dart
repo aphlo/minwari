@@ -130,6 +130,27 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get addMember => '添加成员';
+
+  @override
+  String get addExpense => '添加支出';
+
+  @override
+  String get records => '记录列表';
+
+  @override
+  String get noRecordsYet => '暂无记录';
+
+  @override
+  String get noRecordsSubtitle => '从「添加支出」添加记录。';
+
+  @override
+  String get settlementNoExpenses => '添加支出后将显示结算内容';
+
+  @override
+  String get noMembersWarning => '暂无成员';
+
+  @override
+  String get noMembersWarningDescription => '请从「编辑群组」添加成员。';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -258,6 +279,27 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get addMember => '添加成员';
+
+  @override
+  String get addExpense => '添加支出';
+
+  @override
+  String get records => '记录列表';
+
+  @override
+  String get noRecordsYet => '暂无记录';
+
+  @override
+  String get noRecordsSubtitle => '从「添加支出」添加记录。';
+
+  @override
+  String get settlementNoExpenses => '添加支出后将显示结算内容';
+
+  @override
+  String get noMembersWarning => '暂无成员';
+
+  @override
+  String get noMembersWarningDescription => '请从「编辑群组」添加成员。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -386,4 +428,25 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get addMember => '新增成員';
+
+  @override
+  String get addExpense => '新增支出';
+
+  @override
+  String get records => '記錄列表';
+
+  @override
+  String get noRecordsYet => '暫無記錄';
+
+  @override
+  String get noRecordsSubtitle => '從「新增支出」新增記錄。';
+
+  @override
+  String get settlementNoExpenses => '新增支出後將顯示結算內容';
+
+  @override
+  String get noMembersWarning => '暫無成員';
+
+  @override
+  String get noMembersWarningDescription => '請從「編輯群組」新增成員。';
 }

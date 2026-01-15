@@ -40,5 +40,12 @@
   "editGroup": "Editar grupo",
   "save": "Salvar",
   "search": "Pesquisar",
-  "addMember": "Adicionar membro"
+  "addMember": "Adicionar membro",
+  "addExpense": "Adicionar despesa",
+  "records": "Registros",
+  "noRecordsYet": "Ainda não há registros",
+  "noRecordsSubtitle": "Adicione um em \"Adicionar despesa\".",
+  "settlementNoExpenses": "Os detalhes de liquidação aparecerão quando despesas forem adicionadas",
+  "noMembersWarning": "Sem membros",
+  "noMembersWarningDescription": "Por favor adicione membros em \"Editar grupo\"."
 }

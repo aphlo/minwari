@@ -131,4 +131,27 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get addMember => 'Añadir miembro';
+
+  @override
+  String get addExpense => 'Añadir gasto';
+
+  @override
+  String get records => 'Registros';
+
+  @override
+  String get noRecordsYet => 'Aún no hay registros';
+
+  @override
+  String get noRecordsSubtitle => 'Añade uno desde \"Añadir gasto\".';
+
+  @override
+  String get settlementNoExpenses =>
+      'Los detalles de liquidación aparecerán cuando se añadan gastos';
+
+  @override
+  String get noMembersWarning => 'Sin miembros';
+
+  @override
+  String get noMembersWarningDescription =>
+      'Por favor añade miembros desde \"Editar grupo\".';
 }

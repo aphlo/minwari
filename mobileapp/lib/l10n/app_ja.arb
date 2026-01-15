@@ -40,5 +40,12 @@
   "editGroup": "グループを編集",
   "save": "保存",
   "search": "検索",
-  "addMember": "メンバーを追加する"
+  "addMember": "メンバーを追加する",
+  "addExpense": "立て替えを追加",
+  "records": "記録一覧",
+  "noRecordsYet": "まだ記録がありません",
+  "noRecordsSubtitle": "「立て替えを追加」から記録を追加しましょう",
+  "settlementNoExpenses": "立て替えを記録すると精算内容が表示されます",
+  "noMembersWarning": "メンバーがいません",
+  "noMembersWarningDescription": "「グループを編集」からメンバーを追加してください。"
 }

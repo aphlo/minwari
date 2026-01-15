@@ -131,6 +131,29 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get addMember => 'Adicionar membro';
+
+  @override
+  String get addExpense => 'Adicionar despesa';
+
+  @override
+  String get records => 'Registros';
+
+  @override
+  String get noRecordsYet => 'Ainda não há registros';
+
+  @override
+  String get noRecordsSubtitle => 'Adicione um em \"Adicionar despesa\".';
+
+  @override
+  String get settlementNoExpenses =>
+      'Os detalhes de liquidação aparecerão quando despesas forem adicionadas';
+
+  @override
+  String get noMembersWarning => 'Sem membros';
+
+  @override
+  String get noMembersWarningDescription =>
+      'Por favor adicione membros em \"Editar grupo\".';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -260,4 +283,27 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get addMember => 'Adicionar membro';
+
+  @override
+  String get addExpense => 'Adicionar despesa';
+
+  @override
+  String get records => 'Registros';
+
+  @override
+  String get noRecordsYet => 'Ainda não há registros';
+
+  @override
+  String get noRecordsSubtitle => 'Adicione um em \"Adicionar despesa\".';
+
+  @override
+  String get settlementNoExpenses =>
+      'Os detalhes de liquidação aparecerão quando despesas forem adicionadas';
+
+  @override
+  String get noMembersWarning => 'Sem membros';
+
+  @override
+  String get noMembersWarningDescription =>
+      'Por favor adicione membros em \"Editar grupo\".';
 }

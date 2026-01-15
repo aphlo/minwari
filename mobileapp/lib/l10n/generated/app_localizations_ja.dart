@@ -130,4 +130,25 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get addMember => 'メンバーを追加する';
+
+  @override
+  String get addExpense => '立て替えを追加';
+
+  @override
+  String get records => '記録一覧';
+
+  @override
+  String get noRecordsYet => 'まだ記録がありません';
+
+  @override
+  String get noRecordsSubtitle => '「立て替えを追加」から記録を追加しましょう';
+
+  @override
+  String get settlementNoExpenses => '立て替えを記録すると精算内容が表示されます';
+
+  @override
+  String get noMembersWarning => 'メンバーがいません';
+
+  @override
+  String get noMembersWarningDescription => '「グループを編集」からメンバーを追加してください。';
 }

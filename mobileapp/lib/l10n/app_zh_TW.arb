@@ -40,5 +40,12 @@
   "editGroup": "編輯群組",
   "save": "儲存",
   "search": "搜尋",
-  "addMember": "新增成員"
+  "addMember": "新增成員",
+  "addExpense": "新增支出",
+  "records": "記錄列表",
+  "noRecordsYet": "暫無記錄",
+  "noRecordsSubtitle": "從「新增支出」新增記錄。",
+  "settlementNoExpenses": "新增支出後將顯示結算內容",
+  "noMembersWarning": "暫無成員",
+  "noMembersWarningDescription": "請從「編輯群組」新增成員。"
 }

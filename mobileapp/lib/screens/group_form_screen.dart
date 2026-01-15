@@ -98,8 +98,8 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
       if (!mounted) return;
 
       if (widget.isEditing) {
-        // Go back to detail screen
-        Navigator.of(context).pop();
+        // Go back to detail screen with updated group
+        Navigator.of(context).pop(group);
       } else {
         // Navigate to group detail screen for new groups
         Navigator.of(context).pushReplacement(

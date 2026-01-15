@@ -7,6 +7,7 @@ import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/expense_list.dart';
 import 'package:minwari/widgets/group_info_card.dart';
 import 'package:minwari/widgets/settlement_list.dart';
+import 'package:minwari/widgets/section_header.dart';
 
 class GroupDetailScreen extends StatefulWidget {
   final String groupId;
@@ -52,6 +53,21 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
       setState(() {
         _error = e.toString();
         _isLoading = false;
+      });
+    }
+  }
+
+  void _navigateToEditGroup(Group group) async {
+    final updatedGroup = await Navigator.of(context).push<Group>(
+      MaterialPageRoute(
+        builder: (context) => GroupFormScreen(group: group),
+        fullscreenDialog: true,
+      ),
+    );
+    // Only update state if we got an updated group back (user saved changes)
+    if (updatedGroup != null) {
+      setState(() {
+        _group = updatedGroup;
       });
     }
   }
@@ -106,6 +122,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
     }
 
     final group = _group!;
+    final hasMembers = group.members.isNotEmpty;
 
     return Scaffold(
       backgroundColor: context.scaffoldBackgroundColor,
@@ -118,20 +135,6 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
         elevation: 0,
         iconTheme: IconThemeData(color: context.textPrimary),
         leading: const BackButton(),
-        actions: [
-          IconButton(
-            icon: const Icon(CupertinoIcons.pencil),
-            onPressed: () async {
-              await Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => GroupFormScreen(group: group),
-                  fullscreenDialog: true,
-                ),
-              );
-              _loadData();
-            },
-          ),
-        ],
       ),
       body: RefreshIndicator(
         onRefresh: _loadData,
@@ -141,28 +144,111 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GroupInfoCard(group: group),
-              const SizedBox(height: 24),
-              SettlementList(
-                settlements: const [], // TODO: Calculate settlements
-                currency: group.currency,
+              // Group summary card with edit button
+              GroupInfoCard(
+                group: group,
+                onEdit: () => _navigateToEditGroup(group),
               ),
+              const SizedBox(height: 16),
+
+              // No members warning
+              if (!hasMembers) ...[
+                _buildNoMembersWarning(context),
+                const SizedBox(height: 16),
+              ],
+
+              // Add expense button
+              _buildAddExpenseButton(context, hasMembers),
               const SizedBox(height: 24),
+
+              // Records section
+              LargeSectionHeader(title: context.l10n.records),
+              const SizedBox(height: 12),
               ExpenseList(
                 expenses: const [], // TODO: Load expenses
                 currency: group.currency,
+              ),
+              const SizedBox(height: 24),
+
+              // Settlement section
+              SettlementList(
+                settlements: const [], // TODO: Calculate settlements
+                currency: group.currency,
+                hasExpenses: false, // TODO: Check if has expenses
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        heroTag: 'group_detail_fab',
-        onPressed: () {
-          // TODO: Add expense
-        },
-        backgroundColor: context.primaryColor,
-        child: const Icon(CupertinoIcons.add, color: Colors.white),
+    );
+  }
+
+  Widget _buildNoMembersWarning(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.amber.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            CupertinoIcons.exclamationmark_triangle,
+            size: 20,
+            color: Colors.amber[700],
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  context.l10n.noMembersWarning,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.amber[700],
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  context.l10n.noMembersWarningDescription,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.amber[700],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAddExpenseButton(BuildContext context, bool enabled) {
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton.icon(
+        onPressed: enabled
+            ? () {
+                // TODO: Navigate to add expense screen
+              }
+            : null,
+        icon: const Icon(CupertinoIcons.add),
+        label: Text(context.l10n.addExpense),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: context.primaryColor,
+          side: BorderSide(
+            color: enabled
+                ? context.primaryColor
+                : context.primaryColor.withValues(alpha: 0.3),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
       ),
     );
   }

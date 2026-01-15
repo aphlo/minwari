@@ -354,6 +354,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add member'**
   String get addMember;
+
+  /// No description provided for @addExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Add expense'**
+  String get addExpense;
+
+  /// No description provided for @records.
+  ///
+  /// In en, this message translates to:
+  /// **'Records'**
+  String get records;
+
+  /// No description provided for @noRecordsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No records yet'**
+  String get noRecordsYet;
+
+  /// No description provided for @noRecordsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add one from \"Add expense\".'**
+  String get noRecordsSubtitle;
+
+  /// No description provided for @settlementNoExpenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Settlement details will appear once expenses are added'**
+  String get settlementNoExpenses;
+
+  /// No description provided for @noMembersWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'No members'**
+  String get noMembersWarning;
+
+  /// No description provided for @noMembersWarningDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please add members from \"Edit group\".'**
+  String get noMembersWarningDescription;
 }
 
 class _AppLocalizationsDelegate
