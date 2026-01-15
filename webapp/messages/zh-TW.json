@@ -137,7 +137,39 @@
       "copyright": "OurSplit",
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
-      "contact": "聯絡我們"
+      "contact": "聯絡我們",
+      "articles": "文章列表"
+    },
+    "articles": {
+      "title": "文章列表",
+      "subtitle": "關於AA制和費用結算的有用資訊",
+      "latest": "最新文章",
+      "latestSubtitle": "明智的AA制技巧，避免金錢糾紛",
+      "viewAll": "查看所有文章",
+      "readMore": "閱讀更多",
+      "related": "相關文章",
+      "publishedAt": "發布於 {date}"
+    },
+    "about": {
+      "title": "關於我們",
+      "aboutService": {
+        "title": "關於 OurSplit",
+        "description1": "OurSplit 是為了簡單智能地解決旅行、活動、合租等場景下「AA制」問題而開發的網路工具。",
+        "description2": "旨在自動化「誰付了多少錢」、「誰該給誰多少錢」等複雜的計算，不讓計算和結算的繁瑣破壞快樂的時光。"
+      },
+      "profile": {
+        "title": "運營者簡介",
+        "nameLabel": "運營者名稱",
+        "nameValue": "aphlo",
+        "contactLabel": "聯絡方式",
+        "contactValue": "請使用聯絡表單。",
+        "purposeLabel": "目的",
+        "purposeValue": "消除日常生活中或旅行時產生的「AA制」壓力，支持更順暢的人際關係和溝通。"
+      },
+      "disclaimer": {
+        "title": "免責聲明",
+        "content": "關於本網站的內容和資訊，我們盡可能刊載準確的資訊，但不保證其準確性或安全性。對於因本網站刊載的內容而產生的任何損害，我們概不負責，敬請諒解。"
+      }
     },
     "contact": {
       "title": "聯絡我們"

@@ -137,7 +137,39 @@
       "copyright": "OurSplit",
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
-      "contact": "联系我们"
+      "contact": "联系我们",
+      "articles": "文章列表"
+    },
+    "articles": {
+      "title": "文章列表",
+      "subtitle": "关于AA制和费用结算的有用信息",
+      "latest": "最新文章",
+      "latestSubtitle": "明智的AA制技巧，避免金钱纠纷",
+      "viewAll": "查看所有文章",
+      "readMore": "阅读更多",
+      "related": "相关文章",
+      "publishedAt": "发布于 {date}"
+    },
+    "about": {
+      "title": "关于我们",
+      "aboutService": {
+        "title": "关于 OurSplit",
+        "description1": "OurSplit 是为了简单智能地解决旅行、活动、合租等场景下“AA制”问题而开发的网络工具。",
+        "description2": "旨在自动化“谁付了多少钱”、“谁该给谁多少钱”等复杂的计算，不让计算和结算的繁琐破坏快乐的时光。"
+      },
+      "profile": {
+        "title": "运营者简介",
+        "nameLabel": "运营者名称",
+        "nameValue": "aphlo",
+        "contactLabel": "联系方式",
+        "contactValue": "请使用联系表单。",
+        "purposeLabel": "目的",
+        "purposeValue": "消除日常生活中或旅行时产生的“AA制”压力，支持更顺畅的人际关系和沟通。"
+      },
+      "disclaimer": {
+        "title": "免责声明",
+        "content": "关于本网站的内容和信息，我们尽可能登载准确的信息，但不保证其准确性或安全性。对于因本网站登载的内容而产生的任何损害，我们要么概不负责，敬请谅解。"
+      }
     },
     "contact": {
       "title": "联系我们"

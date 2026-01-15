@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@heroui/button";
-import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Header } from "@/client/components/layout/Header";
 import {
@@ -10,9 +11,12 @@ import {
   type RecentGroup,
 } from "@/client/lib/recentGroups";
 import { Link } from "@/i18n/navigation";
+import { getArticles } from "@/shared/lib/articles";
 
 export default function Home() {
   const t = useTranslations("marketing");
+  const locale = useLocale();
+  const articles = getArticles(locale);
   const [recentGroups, setRecentGroups] = useState<RecentGroup[]>([]);
 
   useEffect(() => {
@@ -401,8 +405,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Featured Articles */}
       <section className="py-24 px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-4">
+              {t("articles.latest")}
+            </h2>
+            <p className="text-lg text-muted max-w-2xl mx-auto">
+              {t("articles.latestSubtitle")}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {articles.slice(0, 3).map((article) => (
+              <Link
+                key={article.id}
+                href={`/articles/${article.slug}`}
+                className="group bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border"
+              >
+                <div className="relative aspect-video">
+                  <Image
+                    src={article.imageUrl}
+                    alt={article.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <time className="text-sm text-primary font-medium mb-2 block">
+                    {article.date}
+                  </time>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-muted text-sm line-clamp-3">
+                    {article.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button
+              as={Link}
+              href="/articles"
+              variant="bordered"
+              size="lg"
+              radius="full"
+              className="font-medium"
+            >
+              {t("articles.viewAll")}
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 px-6 lg:px-8 bg-bg-secondary">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-foreground tracking-tight mb-16">
             {t("faq.title")}
