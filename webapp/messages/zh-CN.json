@@ -314,6 +314,7 @@
       "errors": {
         "groupNameRequired": "请输入群组名称",
         "memberNameRequired": "请输入成员姓名",
+        "memberDuplicate": "成员名称不能重复",
         "submitFailed": "创建群组失败，请重试。"
       },
       "actions": {
@@ -331,6 +332,7 @@
       "errors": {
         "groupNameRequired": "请输入群组名称",
         "memberNameRequired": "请输入成员姓名",
+        "memberDuplicate": "成员名称不能重复",
         "submitFailed": "更新群组失败，请重试。"
       },
       "actions": {

@@ -66,6 +66,24 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
+    // Filter out empty member names and trim whitespace
+    final cleanedMembers = _members
+        .map((m) => m.trim())
+        .where((m) => m.isNotEmpty)
+        .toList();
+
+    // Check for duplicate member names
+    final uniqueMembers = cleanedMembers.toSet();
+    if (uniqueMembers.length != cleanedMembers.length) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(context.l10n.memberAlreadyExists),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     setState(() => _isLoading = true);
 
     try {
@@ -76,7 +94,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
         await _repository.updateGroup(
           widget.group!.id,
           name: _nameController.text.trim(),
-          members: _members,
+          members: cleanedMembers,
           currency: _selectedCurrency,
         );
         groupId = widget.group!.id;
@@ -84,7 +102,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
         // Create new group
         groupId = await _repository.createGroup(
           name: _nameController.text.trim(),
-          members: _members,
+          members: cleanedMembers,
           currency: _selectedCurrency,
         );
       }

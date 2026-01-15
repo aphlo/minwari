@@ -314,6 +314,7 @@
       "errors": {
         "groupNameRequired": "Ingresa un nombre de grupo",
         "memberNameRequired": "Ingresa el nombre de un miembro",
+        "memberDuplicate": "Los nombres de los miembros deben ser únicos",
         "submitFailed": "No se pudo crear el grupo. Intentalo de nuevo."
       },
       "actions": {
@@ -331,6 +332,7 @@
       "errors": {
         "groupNameRequired": "Ingresa un nombre de grupo",
         "memberNameRequired": "Ingresa el nombre de un miembro",
+        "memberDuplicate": "Los nombres de los miembros deben ser únicos",
         "submitFailed": "No se pudo actualizar el grupo. Intentalo de nuevo."
       },
       "actions": {
