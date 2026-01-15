@@ -137,7 +137,39 @@
       "copyright": "OurSplit",
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
-      "contact": "문의하기"
+      "contact": "문의하기",
+      "articles": "기사 목록"
+    },
+    "articles": {
+      "title": "기사 목록",
+      "subtitle": "비용 정산에 도움이 되는 정보",
+      "latest": "최신 기사",
+      "latestSubtitle": "비용 정산의 팁과 금전 트러블을 피하는 방법",
+      "viewAll": "모든 기사 보기",
+      "readMore": "더 읽기",
+      "related": "관련 기사",
+      "publishedAt": "{date} 공개"
+    },
+    "about": {
+      "title": "운영자 정보",
+      "aboutService": {
+        "title": "OurSplit 소개",
+        "description1": "OurSplit은 여행, 이벤트, 공동 생활 등에서의 '비용 정산'을 간단하고 스마트하게 해결하기 위해 개발된 웹 도구입니다.",
+        "description2": "'누가 얼마를 지불했는가', '누가 누구에게 얼마를 줘야 하는가'라는 복잡한 계산을 자동화하여, 계산이나 정산의 번거로움으로 즐거운 시간을 망치지 않는 것을 목표로 하고 있습니다."
+      },
+      "profile": {
+        "title": "운영자 프로필",
+        "nameLabel": "운영자명",
+        "nameValue": "aphlo",
+        "contactLabel": "연락처",
+        "contactValue": "문의 양식을 이용해 주세요.",
+        "purposeLabel": "목적",
+        "purposeValue": "일상생활이나 여행에서 발생하는 '비용 정산'의 스트레스를 해소하고, 보다 원활한 인간관계와 의사소통을 지원하는 것."
+      },
+      "disclaimer": {
+        "title": "면책 조항",
+        "content": "본 사이트의 내용 및 정보에 대해 가능한 한 정확한 정보를 게재하도록 노력하고 있습니다만, 정확성이나 안전성을 보장하는 것은 아닙니다. 본 사이트에 게재된 내용으로 인해 발생한 손해 등에 대해서는 일절 책임을 지지 않으므로 양해 바랍니다."
+      }
     },
     "contact": {
       "title": "문의하기"

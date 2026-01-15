@@ -137,7 +137,39 @@
       "copyright": "OurSplit",
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
-      "contact": "Contact"
+      "contact": "Contact",
+      "articles": "Articles"
+    },
+    "articles": {
+      "title": "Articles",
+      "subtitle": "Helpful tips for splitting bills and managing expenses",
+      "latest": "Latest Articles",
+      "latestSubtitle": "Smart tips for splitting costs and avoiding money troubles",
+      "viewAll": "View All Articles",
+      "readMore": "Read More",
+      "related": "Related Articles",
+      "publishedAt": "Published on {date}"
+    },
+    "about": {
+      "title": "About Us",
+      "aboutService": {
+        "title": "About OurSplit",
+        "description1": "OurSplit is a web tool developed to simply and smartly solve 'bill splitting' for travel, events, and shared living.",
+        "description2": "It aims to automate complex calculations like 'who paid how much' and 'who owes whom', ensuring that fun times aren't spoiled by the hassle of calculation and settlement."
+      },
+      "profile": {
+        "title": "Operator Profile",
+        "nameLabel": "Operator Name",
+        "nameValue": "aphlo",
+        "contactLabel": "Contact",
+        "contactValue": "Please use the contact form.",
+        "purposeLabel": "Purpose",
+        "purposeValue": "To eliminate the stress of 'splitting bills' that occurs in daily life and travel, and to support smoother relationships and communication."
+      },
+      "disclaimer": {
+        "title": "Disclaimer",
+        "content": "While we strive to provide the most accurate information possible regarding the content and information on this site, we do not guarantee its accuracy or safety. Please note that we are not responsible for any damages caused by the content posted on this site."
+      }
     },
     "contact": {
       "title": "Contact"

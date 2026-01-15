@@ -29,6 +29,18 @@ export function Footer() {
           >
             {t("contact")}
           </Link>
+          <Link
+            href="/articles"
+            className="text-xs text-muted hover:text-foreground transition-colors"
+          >
+            Articles
+          </Link>
+          <Link
+            href="/about"
+            className="text-xs text-muted hover:text-foreground transition-colors"
+          >
+            About
+          </Link>
         </div>
         <div className="flex items-center justify-between gap-4">
           <LanguageSwitcher />

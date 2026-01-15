@@ -137,7 +137,39 @@
       "copyright": "OurSplit",
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
-      "contact": "Contato"
+      "contact": "Contato",
+      "articles": "Artigos"
+    },
+    "articles": {
+      "title": "Artigos",
+      "subtitle": "Dicas úteis para dividir despesas",
+      "latest": "Últimos Artigos",
+      "latestSubtitle": "Dicas inteligentes para dividir custos e evitar problemas",
+      "viewAll": "Ver todos os artigos",
+      "readMore": "Ler mais",
+      "related": "Artigos Relacionados",
+      "publishedAt": "Publicado em {date}"
+    },
+    "about": {
+      "title": "Sobre Nós",
+      "aboutService": {
+        "title": "Sobre o OurSplit",
+        "description1": "O OurSplit é uma ferramenta web desenvolvida para resolver de forma simples e inteligente a 'divisão de contas' em viagens, eventos e moradia compartilhada.",
+        "description2": "O objetivo é automatizar cálculos complexos como 'quem pagou quanto' e 'quem deve a quem', garantindo que os bons momentos não sejam estragados pelo incômodo de calcular e acertar contas."
+      },
+      "profile": {
+        "title": "Perfil do Operador",
+        "nameLabel": "Nome do Operador",
+        "nameValue": "aphlo",
+        "contactLabel": "Contato",
+        "contactValue": "Por favor, use o formulário de contato.",
+        "purposeLabel": "Propósito",
+        "purposeValue": "Eliminar o estresse da 'divisão de contas' que ocorre na vida diária e em viagens, e apoiar relacionamentos e comunicações mais tranquilos."
+      },
+      "disclaimer": {
+        "title": "Isenção de Responsabilidade",
+        "content": "Embora nos esforcemos para fornecer as informações mais precisas possíveis sobre o conteúdo e as informações deste site, não garantimos sua precisão ou segurança. Observe que não somos responsáveis por quaisquer danos causados pelo conteúdo postado neste site."
+      }
     },
     "contact": {
       "title": "Contato"
