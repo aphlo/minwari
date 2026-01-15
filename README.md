@@ -1,6 +1,7 @@
 # minwari
 [![PR Check](https://github.com/aphlo/minwari/actions/workflows/pr_check.yml/badge.svg)](https://github.com/aphlo/minwari/actions/workflows/pr_check.yml)
 [![Deliver Web](https://github.com/aphlo/minwari/actions/workflows/deliver-web.yml/badge.svg)](https://github.com/aphlo/minwari/actions/workflows/deliver-web.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An app for splitting the bill among everyone.
 
