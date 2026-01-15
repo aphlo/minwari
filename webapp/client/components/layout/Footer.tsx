@@ -33,13 +33,13 @@ export function Footer() {
             href="/articles"
             className="text-xs text-muted hover:text-foreground transition-colors"
           >
-            Articles
+            {t("articles")}
           </Link>
           <Link
             href="/about"
             className="text-xs text-muted hover:text-foreground transition-colors"
           >
-            About
+            {t("about")}
           </Link>
         </div>
         <div className="flex items-center justify-between gap-4">
