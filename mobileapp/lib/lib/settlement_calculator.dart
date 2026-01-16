@@ -92,8 +92,19 @@ List<({String member, int shareMinor})> calculateExpenseShares(
       : [...participants];
 
   final shares = List<int>.filled(orderedParticipants.length, perPerson);
-  // Add remainder to first person (payer)
-  shares[0] += amountMinor - perPerson * count;
+
+  // Distribute remainder to non-payers (from the end) so payer gets more back
+  final remainder = amountMinor - perPerson * count;
+  for (int i = 0; i < remainder; i++) {
+    final targetIndex = shares.length - 1 - i;
+    if (targetIndex > 0) {
+      // Assign to non-payer participants
+      shares[targetIndex] += 1;
+    } else {
+      // If only payer is participating, assign to payer
+      shares[0] += 1;
+    }
+  }
 
   return [
     for (int i = 0; i < orderedParticipants.length; i++)

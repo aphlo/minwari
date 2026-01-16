@@ -27,10 +27,11 @@ test("returns paid, owed, and net per member", () => {
 
   const balances = calculateMemberBalances(expenses, ["A", "B", "C"], "JPY");
 
+  // Rounding remainders are assigned to non-payers, so payers get more back
   assert.deepEqual(balances, [
     { name: "A", paid: 121, owed: 131, net: -10 },
-    { name: "B", paid: 98, owed: 82, net: 16 },
-    { name: "C", paid: 70, owed: 76, net: -6 },
+    { name: "B", paid: 98, owed: 81, net: 17 },
+    { name: "C", paid: 70, owed: 77, net: -7 },
   ]);
 });
 

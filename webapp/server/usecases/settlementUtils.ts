@@ -37,7 +37,19 @@ export const calculateExpenseShares = (
       ]
     : [...participants];
   const shares = orderedParticipants.map(() => perPerson);
-  shares[0] += amountMinor - perPerson * count;
+
+  // Distribute remainder to non-payers (from the end) so payer gets more back
+  const remainder = amountMinor - perPerson * count;
+  for (let i = 0; i < remainder; i++) {
+    const targetIndex = shares.length - 1 - i;
+    if (targetIndex > 0) {
+      // Assign to non-payer participants
+      shares[targetIndex] += 1;
+    } else {
+      // If only payer is participating, assign to payer
+      shares[0] += 1;
+    }
+  }
 
   return orderedParticipants.map((member, index) => ({
     member,
