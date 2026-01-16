@@ -11,6 +11,7 @@ import 'l10n/generated/app_localizations.dart';
 import 'providers/shared_preferences_provider.dart';
 import 'providers/theme_provider.dart';
 import 'screens/home_screen.dart';
+import 'services/user_review_service.dart';
 import 'theme/app_theme.dart';
 
 void main() async {
@@ -22,6 +23,8 @@ void main() async {
   if (FirebaseAuth.instance.currentUser == null) {
     await FirebaseAuth.instance.signInAnonymously();
   }
+
+  await UserReviewService.incrementLaunchCount();
 
   final prefs = await SharedPreferences.getInstance();
 

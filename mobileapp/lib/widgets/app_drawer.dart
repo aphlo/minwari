@@ -5,6 +5,7 @@ import 'package:minwari/providers/package_info_provider.dart';
 import 'package:minwari/screens/license_screen.dart';
 import 'package:minwari/screens/settings_screen.dart';
 import 'package:minwari/screens/webview_screen.dart';
+import 'package:minwari/services/user_review_service.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/banner_ad_widget.dart';
 import 'package:minwari/widgets/native_ad_widget.dart';
@@ -32,6 +33,19 @@ class AppDrawer extends ConsumerWidget {
               icon: CupertinoIcons.settings,
               title: context.l10n.settings,
               onTap: () => _navigateTo(context, const SettingsScreen()),
+            ),
+            _buildDivider(context),
+            _buildMenuItem(
+              context,
+              icon: CupertinoIcons.mail,
+              title: context.l10n.inquiry,
+              onTap: () => _navigateTo(
+                context,
+                WebViewScreen(
+                  url: UserReviewService.getKoeloopUrl(context),
+                  title: context.l10n.inquiry,
+                ),
+              ),
             ),
             _buildDivider(context),
             _buildMenuItem(

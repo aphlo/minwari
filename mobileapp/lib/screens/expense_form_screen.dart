@@ -6,6 +6,7 @@ import 'package:minwari/repositories/expense_repository.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/section_header.dart';
 import 'package:minwari/widgets/banner_ad_widget.dart';
+import 'package:minwari/services/user_review_service.dart';
 
 /// Screen for creating or editing an expense
 class ExpenseFormScreen extends StatefulWidget {
@@ -112,6 +113,9 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
           splitWith: _splitWith.toList(),
         );
       }
+
+      if (!mounted) return;
+      await UserReviewService.trackExpenseAction(context);
 
       if (!mounted) return;
       Navigator.of(context).pop(true);
