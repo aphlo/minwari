@@ -69,6 +69,8 @@ dev_dependencies:
   riverpod_lint: ^3.1.0
   freezed: ^3.2.3
   json_serializable: ^6.11.2
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
