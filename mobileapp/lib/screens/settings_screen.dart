@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:minwari/providers/theme_provider.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/widgets/banner_ad_widget.dart';
+import 'package:minwari/widgets/native_ad_widget.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -27,32 +30,43 @@ class SettingsScreen extends ConsumerWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: ListView(
+      body: Column(
         children: [
-          _buildSectionHeader(context.l10n.appearance, context),
-          _buildThemeOption(
-            context,
-            title: context.l10n.themeLight,
-            icon: CupertinoIcons.sun_max,
-            isSelected: themeMode == ThemeMode.light,
-            onTap: () => notifier.setMode(ThemeMode.light),
+          Expanded(
+            child: ListView(
+              children: [
+                _buildSectionHeader(context.l10n.appearance, context),
+                _buildThemeOption(
+                  context,
+                  title: context.l10n.themeLight,
+                  icon: CupertinoIcons.sun_max,
+                  isSelected: themeMode == ThemeMode.light,
+                  onTap: () => notifier.setMode(ThemeMode.light),
+                ),
+                _buildDivider(context),
+                _buildThemeOption(
+                  context,
+                  title: context.l10n.themeDark,
+                  icon: CupertinoIcons.moon,
+                  isSelected: themeMode == ThemeMode.dark,
+                  onTap: () => notifier.setMode(ThemeMode.dark),
+                ),
+                _buildDivider(context),
+                _buildThemeOption(
+                  context,
+                  title: context.l10n.themeSystem,
+                  icon: CupertinoIcons.device_phone_portrait,
+                  isSelected: themeMode == ThemeMode.system,
+                  onTap: () => notifier.setMode(ThemeMode.system),
+                ),
+              ],
+            ),
           ),
-          _buildDivider(context),
-          _buildThemeOption(
-            context,
-            title: context.l10n.themeDark,
-            icon: CupertinoIcons.moon,
-            isSelected: themeMode == ThemeMode.dark,
-            onTap: () => notifier.setMode(ThemeMode.dark),
-          ),
-          _buildDivider(context),
-          _buildThemeOption(
-            context,
-            title: context.l10n.themeSystem,
-            icon: CupertinoIcons.device_phone_portrait,
-            isSelected: themeMode == ThemeMode.system,
-            onTap: () => notifier.setMode(ThemeMode.system),
-          ),
+          if (Theme.of(context).platform == TargetPlatform.android)
+            const NativeAdWidget(height: 300, width: double.infinity)
+          else
+            const BannerAdWidget(size: AdSize.mediumRectangle),
+          const SizedBox(height: 16),
         ],
       ),
     );

@@ -77,5 +77,27 @@
   "settlementOwed": "Owed",
   "settlementNetReceive": "Receives",
   "settlementNetPay": "Pays",
-  "settlementNetEven": "Settled"
+  "settlementNetEven": "Settled",
+  "reviewEnjoyTitle": "Are you enjoying OurSplit?",
+  "reviewYes": "Yes",
+  "reviewNo": "No",
+  "reviewFeedbackTitle": "Would you mind giving us some feedback?",
+  "reviewFeedbackContent": "Your feedback will help us improve the app.",
+  "reviewSendFeedback": "Send Feedback",
+  "reviewNotNow": "Not Now",
+  "feedbackTitle": "Feedback",
+  "shareMessage": "Check out my group \"{groupName}\" on OurSplit!\nID: {groupId}\nLink: {url}\n",
+  "@shareMessage": {
+    "placeholders": {
+      "groupName": {
+        "type": "String"
+      },
+      "groupId": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  }
 }

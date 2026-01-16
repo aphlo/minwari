@@ -241,4 +241,33 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get settlementNetEven => '精算済み';
+
+  @override
+  String get reviewEnjoyTitle => 'みんなの割り勘を楽しんでいただけていますか？';
+
+  @override
+  String get reviewYes => 'はい';
+
+  @override
+  String get reviewNo => 'いいえ';
+
+  @override
+  String get reviewFeedbackTitle => 'フィードバックをお願いできませんか？';
+
+  @override
+  String get reviewFeedbackContent => 'いただいたご意見は今後の改善に役立てさせていただきます';
+
+  @override
+  String get reviewSendFeedback => '意見を送る';
+
+  @override
+  String get reviewNotNow => '今はしない';
+
+  @override
+  String get feedbackTitle => 'フィードバック';
+
+  @override
+  String shareMessage(String groupName, String groupId, String url) {
+    return 'みんなの割り勘でグループ「$groupName」を共有します。\nID: $groupId\nリンク: $url\n';
+  }
 }

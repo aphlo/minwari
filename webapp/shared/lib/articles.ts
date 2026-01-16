@@ -47,7 +47,7 @@ const articlesJa: Article[] = [
 
       <h2>3. 割り勘アプリを活用する</h2>
       <p>最近のトレンドは、割り勘アプリの活用です。「誰が」「何のために」「いくら」払ったかを入力するだけで、最後に「誰が誰にいくら払えばいいか」を自動計算してくれます。</p>
-      <p>当サイトのツール <strong>minwari</strong> も、まさにそのために作られました。ログイン不要でURLを共有するだけですぐに使えます。</p>
+      <p>当サイトのツール <strong>みんなの割り勘</strong> も、まさにそのために作られました。ログイン不要でURLを共有するだけですぐに使えます。</p>
 
       <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
         <h3>まとめ</h3>
@@ -124,7 +124,7 @@ const articlesJa: Article[] = [
       <p>現金でのやり取りは記録に残りませんが、デジタル送金なら履歴が残ります。「払ったっけ？」「まだもらってないっけ？」という不毛な争いを防ぐことができます。</p>
 
       <h2>アプリ連携でさらに便利に</h2>
-      <p>minwariのような割り勘計算ツールで計算結果を出し、その画面をスクリーンショットでグループLINEに共有。そして各々が送金アプリで支払う。</p>
+      <p>みんなの割り勘のような割り勘計算ツールで計算結果を出し、その画面をスクリーンショットでグループLINEに共有。そして各々が送金アプリで支払う。</p>
       <p><strong>これが現代のスマートな割り勘フローです。</strong></p>
     `,
   },
@@ -169,7 +169,7 @@ const articlesEn: Article[] = [
 
       <h2>3. Use Bill Splitting Apps</h2>
       <p>The recent trend is using bill-splitting apps. Just enter "who", "what for", and "how much", and it automatically calculates "who should pay whom".</p>
-      <p>Our tool <strong>minwari</strong> was made exactly for this. No login required, just share the URL and use it immediately.</p>
+      <p>Our tool <strong>OurSplit</strong> was made exactly for this. No login required, just share the URL and use it immediately.</p>
     `,
   },
   {
