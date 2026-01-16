@@ -3,9 +3,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:minwari/utils/ad_helper.dart';
 
 class BannerAdWidget extends StatefulWidget {
-  final AdSize size;
+  final AdSize? size;
 
-  const BannerAdWidget({super.key, this.size = AdSize.banner});
+  const BannerAdWidget({super.key, this.size});
 
   @override
   State<BannerAdWidget> createState() => _BannerAdWidgetState();
@@ -16,8 +16,8 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   bool _isLoaded = false;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _loadAd();
   }
 
@@ -27,11 +27,32 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     super.dispose();
   }
 
-  void _loadAd() {
+  Future<void> _loadAd() async {
+    // If a specific size is provided (e.g. Medium Rectangle), use it.
+    // Otherwise, calculate adaptive size.
+    final AdSize adSize;
+    if (widget.size != null) {
+      adSize = widget.size!;
+    } else {
+      // Get the width of the screen in logical pixels.
+      final width = MediaQuery.of(context).size.width.truncate();
+      final adaptiveSize =
+          await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(width);
+      if (adaptiveSize == null) {
+        // Fallback if sizing fails
+        adSize = AdSize.banner;
+      } else {
+        adSize = adaptiveSize;
+      }
+    }
+
+    // Dispose previous ad if it exists (though typically this widget won't rebuild often enough to matter)
+    _bannerAd?.dispose();
+
     _bannerAd = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
       request: const AdRequest(),
-      size: widget.size,
+      size: adSize,
       listener: BannerAdListener(
         onAdLoaded: (ad) {
           debugPrint('$ad loaded.');
