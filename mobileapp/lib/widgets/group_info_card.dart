@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:minwari/models/group.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/extensions/currency_extension.dart';
+import 'package:minwari/utils/member_color.dart';
 
 /// Group info card showing members and currency
 class GroupInfoCard extends StatelessWidget {
@@ -62,13 +63,14 @@ class GroupInfoCard extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: group.members.map((member) {
+              final color = getMemberColor(member);
               return Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: context.primaryColor.withValues(alpha: 0.1),
+                  color: color.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -76,7 +78,7 @@ class GroupInfoCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
-                    color: context.primaryColor,
+                    color: color,
                   ),
                 ),
               );

@@ -184,7 +184,17 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                   const SizedBox(height: 24),
 
                   // Records section
-                  LargeSectionHeader(title: context.l10n.records),
+                  Row(
+                    children: [
+                      Icon(
+                        CupertinoIcons.doc_text,
+                        size: 20,
+                        color: context.primaryColor,
+                      ),
+                      const SizedBox(width: 8),
+                      LargeSectionHeader(title: context.l10n.records),
+                    ],
+                  ),
                   const SizedBox(height: 12),
                   ExpenseList(
                     expenses: _expenses,

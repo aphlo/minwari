@@ -66,7 +66,7 @@ class SettlementList extends StatelessWidget {
             Icon(
               CupertinoIcons.square_stack_3d_up,
               size: 20,
-              color: context.textPrimary,
+              color: context.primaryColor,
             ),
             const SizedBox(width: 8),
             LargeSectionHeader(title: context.l10n.settlement),
