@@ -241,6 +241,31 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get settlementNetEven => '已结清';
+
+  @override
+  String get reviewEnjoyTitle => 'Are you enjoying Minwari?';
+
+  @override
+  String get reviewYes => 'Yes';
+
+  @override
+  String get reviewNo => 'No';
+
+  @override
+  String get reviewFeedbackTitle => 'Would you mind giving us some feedback?';
+
+  @override
+  String get reviewFeedbackContent =>
+      'Your feedback will help us improve the app.';
+
+  @override
+  String get reviewSendFeedback => 'Send Feedback';
+
+  @override
+  String get reviewNotNow => 'Not Now';
+
+  @override
+  String get feedbackTitle => 'Feedback';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).

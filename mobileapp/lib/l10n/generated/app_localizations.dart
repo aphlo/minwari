@@ -576,6 +576,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settled'**
   String get settlementNetEven;
+
+  /// No description provided for @reviewEnjoyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you enjoying Minwari?'**
+  String get reviewEnjoyTitle;
+
+  /// No description provided for @reviewYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get reviewYes;
+
+  /// No description provided for @reviewNo.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get reviewNo;
+
+  /// No description provided for @reviewFeedbackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Would you mind giving us some feedback?'**
+  String get reviewFeedbackTitle;
+
+  /// No description provided for @reviewFeedbackContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Your feedback will help us improve the app.'**
+  String get reviewFeedbackContent;
+
+  /// No description provided for @reviewSendFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Feedback'**
+  String get reviewSendFeedback;
+
+  /// No description provided for @reviewNotNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not Now'**
+  String get reviewNotNow;
+
+  /// No description provided for @feedbackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedbackTitle;
 }
 
 class _AppLocalizationsDelegate

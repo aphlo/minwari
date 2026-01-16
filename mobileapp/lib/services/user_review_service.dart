@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:minwari/screens/webview_screen.dart';
+import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserReviewService {
@@ -77,27 +78,30 @@ class UserReviewService {
   }
 
   static Future<void> _showEnjoymentDialog(BuildContext context) async {
+    // Capture the parent context to show the Feedback Dialog later
+    final parentContext = context;
+
     if (Platform.isIOS) {
       await showCupertinoDialog(
         context: context,
-        builder: (context) => CupertinoAlertDialog(
-          title: const Text('minwariを楽しんでいただけていますか？'),
+        builder: (dialogContext) => CupertinoAlertDialog(
+          title: Text(context.l10n.reviewEnjoyTitle),
           actions: [
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.pop(context);
-                _showFeedbackDialog(context);
+                Navigator.pop(dialogContext);
+                _showFeedbackDialog(parentContext);
               },
               isDefaultAction: false,
-              child: const Text('いいえ'),
+              child: Text(context.l10n.reviewNo),
             ),
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(dialogContext);
                 _requestAppReview();
               },
               isDefaultAction: true,
-              child: const Text('はい'),
+              child: Text(context.l10n.reviewYes),
             ),
           ],
         ),
@@ -105,24 +109,24 @@ class UserReviewService {
     } else {
       await showDialog(
         context: context,
-        builder: (context) => SimpleDialog(
-          title: const Text('minwariを楽しんでいただけていますか？'),
+        builder: (dialogContext) => SimpleDialog(
+          title: Text(context.l10n.reviewEnjoyTitle),
           children: [
             SimpleDialogOption(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(dialogContext);
                 _requestAppReview();
               },
-              child: const Text('はい',
-                  style: TextStyle(color: Colors.blue, fontSize: 16)),
+              child: Text(context.l10n.reviewYes,
+                  style: const TextStyle(color: Colors.blue, fontSize: 16)),
             ),
             SimpleDialogOption(
               onPressed: () {
-                Navigator.pop(context);
-                _showFeedbackDialog(context);
+                Navigator.pop(dialogContext);
+                _showFeedbackDialog(parentContext);
               },
-              child: const Text('いいえ',
-                  style: TextStyle(color: Colors.red, fontSize: 16)),
+              child: Text(context.l10n.reviewNo,
+                  style: const TextStyle(color: Colors.red, fontSize: 16)),
             ),
           ],
         ),
@@ -131,21 +135,16 @@ class UserReviewService {
   }
 
   static void _showFeedbackDialog(BuildContext context) {
-    const title = 'フィードバックをお願いできませんか？';
-    const content = 'いただいたご意見は今後の改善に役立てさせていただきます';
-    const actionSend = '意見を送る';
-    const actionNotNow = '今はしない';
-
     if (Platform.isIOS) {
       showCupertinoDialog(
         context: context,
         builder: (context) => CupertinoAlertDialog(
-          title: const Text(title),
-          content: const Text(content),
+          title: Text(context.l10n.reviewFeedbackTitle),
+          content: Text(context.l10n.reviewFeedbackContent),
           actions: [
             CupertinoDialogAction(
               onPressed: () => Navigator.pop(context),
-              child: const Text(actionNotNow),
+              child: Text(context.l10n.reviewNotNow),
             ),
             CupertinoDialogAction(
               onPressed: () {
@@ -153,7 +152,7 @@ class UserReviewService {
                 _openFeedbackWebView(context);
               },
               isDefaultAction: true,
-              child: const Text(actionSend),
+              child: Text(context.l10n.reviewSendFeedback),
             ),
           ],
         ),
@@ -162,11 +161,11 @@ class UserReviewService {
       showDialog(
         context: context,
         builder: (context) => SimpleDialog(
-          title: const Text(title),
+          title: Text(context.l10n.reviewFeedbackTitle),
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: Text(content),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Text(context.l10n.reviewFeedbackContent),
             ),
             const SizedBox(height: 16),
             SimpleDialogOption(
@@ -174,13 +173,13 @@ class UserReviewService {
                 Navigator.pop(context);
                 _openFeedbackWebView(context);
               },
-              child: const Text(actionSend,
-                  style: TextStyle(color: Colors.blue, fontSize: 16)),
+              child: Text(context.l10n.reviewSendFeedback,
+                  style: const TextStyle(color: Colors.blue, fontSize: 16)),
             ),
             SimpleDialogOption(
               onPressed: () => Navigator.pop(context),
-              child: const Text(actionNotNow,
-                  style: TextStyle(color: Colors.grey, fontSize: 16)),
+              child: Text(context.l10n.reviewNotNow,
+                  style: const TextStyle(color: Colors.grey, fontSize: 16)),
             ),
           ],
         ),
@@ -200,7 +199,7 @@ class UserReviewService {
       MaterialPageRoute(
         builder: (context) => WebViewScreen(
           url: getKoeloopUrl(context),
-          title: 'フィードバック',
+          title: context.l10n.feedbackTitle,
         ),
         fullscreenDialog: true,
       ),

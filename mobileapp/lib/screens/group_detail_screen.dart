@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:minwari/lib/settlement_calculator.dart';
 import 'package:minwari/models/expense.dart';
 import 'package:minwari/models/group.dart';
@@ -12,6 +13,7 @@ import 'package:minwari/widgets/expense_list.dart';
 import 'package:minwari/widgets/group_info_card.dart';
 import 'package:minwari/widgets/settlement_list.dart';
 import 'package:minwari/widgets/section_header.dart';
+import 'package:minwari/services/user_review_service.dart';
 import 'package:minwari/widgets/banner_ad_widget.dart';
 
 class GroupDetailScreen extends StatefulWidget {
@@ -94,6 +96,16 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
     }
   }
 
+  void _shareGroup() {
+    final group = _group;
+    if (group == null) return;
+
+    final text =
+        'Check out my group "${group.name}" on Minwari!\nID: ${group.id}';
+    // ignore: deprecated_member_use
+    Share.share(text);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
@@ -157,6 +169,12 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
         elevation: 0,
         iconTheme: IconThemeData(color: context.textPrimary),
         leading: const BackButton(),
+        actions: [
+          IconButton(
+            icon: const Icon(CupertinoIcons.share),
+            onPressed: _shareGroup,
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -205,7 +223,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                           currency: group.currency,
                           groupId: group.id,
                           members: group.members,
-                          onExpenseUpdated: _loadData,
+                          onExpenseUpdated: _handleExpenseUpdated,
                         ),
                         const SizedBox(height: 24),
 
@@ -295,7 +313,17 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
 
     // Reload data if an expense was created
     if (result == true) {
-      _loadData();
+      await _loadData();
+      if (mounted) {
+        await UserReviewService.trackExpenseAction(context);
+      }
+    }
+  }
+
+  Future<void> _handleExpenseUpdated() async {
+    await _loadData();
+    if (mounted) {
+      await UserReviewService.trackExpenseAction(context);
     }
   }
 

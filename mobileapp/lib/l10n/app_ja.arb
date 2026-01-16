@@ -77,5 +77,13 @@
   "settlementOwed": "負担額",
   "settlementNetReceive": "受け取り",
   "settlementNetPay": "支払い",
-  "settlementNetEven": "精算済み"
+  "settlementNetEven": "精算済み",
+  "reviewEnjoyTitle": "minwariを楽しんでいただけていますか？",
+  "reviewYes": "はい",
+  "reviewNo": "いいえ",
+  "reviewFeedbackTitle": "フィードバックをお願いできませんか？",
+  "reviewFeedbackContent": "いただいたご意見は今後の改善に役立てさせていただきます",
+  "reviewSendFeedback": "意見を送る",
+  "reviewNotNow": "今はしない",
+  "feedbackTitle": "フィードバック"
 }
