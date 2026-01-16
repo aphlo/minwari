@@ -6,6 +6,9 @@ import 'package:minwari/screens/license_screen.dart';
 import 'package:minwari/screens/settings_screen.dart';
 import 'package:minwari/screens/webview_screen.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/widgets/banner_ad_widget.dart';
+import 'package:minwari/widgets/native_ad_widget.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AppDrawer extends ConsumerWidget {
   const AppDrawer({super.key});
@@ -78,6 +81,12 @@ class AppDrawer extends ConsumerWidget {
                 error: (_, __) => const SizedBox.shrink(),
               ),
             ),
+            // Native Ad for Android, Medium Rectangle Banner as fallback for iOS
+            if (Theme.of(context).platform == TargetPlatform.android)
+              const NativeAdWidget(height: 300, width: double.infinity)
+            else
+              const BannerAdWidget(size: AdSize.mediumRectangle),
+            const SizedBox(height: 16),
           ],
         ),
       ),

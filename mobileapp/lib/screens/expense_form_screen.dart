@@ -5,6 +5,7 @@ import 'package:minwari/models/expense.dart';
 import 'package:minwari/repositories/expense_repository.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/section_header.dart';
+import 'package:minwari/widgets/banner_ad_widget.dart';
 
 /// Screen for creating or editing an expense
 class ExpenseFormScreen extends StatefulWidget {
@@ -178,227 +179,237 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
         ],
       ),
       body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            padding: const EdgeInsets.all(16),
-            children: [
-              // Amount Section
-              SectionHeader(title: context.l10n.expenseAmount),
-              const SizedBox(height: 8),
-              TextFormField(
-                controller: _amountController,
-                keyboardType:
-                    const TextInputType.numberWithOptions(decimal: true),
-                style: TextStyle(color: context.textPrimary),
-                decoration: InputDecoration(
-                  hintText:
-                      fractionDigits > 0 ? '0.${'0' * fractionDigits}' : '0',
-                  filled: true,
-                  fillColor: context.inputFillColor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 8),
-                    child: Text(
-                      currencySymbol,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: context.textSecondary,
-                      ),
-                    ),
-                  ),
-                  prefixIconConstraints: const BoxConstraints(minWidth: 0),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return context.l10n.expenseAmountRequired;
-                  }
-                  final amount = double.tryParse(value);
-                  if (amount == null || amount <= 0) {
-                    return context.l10n.expenseAmountInvalid;
-                  }
-                  return null;
-                },
-              ),
-
-              const SizedBox(height: 24),
-
-              // Description Section
-              SectionHeader(title: context.l10n.expenseDescription),
-              const SizedBox(height: 8),
-              TextFormField(
-                controller: _descriptionController,
-                style: TextStyle(color: context.textPrimary),
-                decoration: InputDecoration(
-                  hintText: context.l10n.expenseDescriptionHint,
-                  filled: true,
-                  fillColor: context.inputFillColor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                  prefixIcon: Icon(
-                    CupertinoIcons.doc_text,
-                    color: context.textSecondary,
-                  ),
-                ),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return context.l10n.expenseDescriptionRequired;
-                  }
-                  return null;
-                },
-              ),
-
-              const SizedBox(height: 24),
-
-              // Paid By Section
-              SectionHeader(title: context.l10n.expensePaidBy),
-              const SizedBox(height: 8),
-              DropdownMenu<String>(
-                initialSelection: _paidBy,
-                expandedInsets: EdgeInsets.zero,
-                inputDecorationTheme: InputDecorationTheme(
-                  filled: true,
-                  fillColor: context.inputFillColor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                ),
-                textStyle: TextStyle(
-                  color: context.textPrimary,
-                  fontSize: 16,
-                ),
-                trailingIcon: Icon(
-                  CupertinoIcons.chevron_down,
-                  color: context.textSecondary,
-                  size: 18,
-                ),
-                selectedTrailingIcon: Icon(
-                  CupertinoIcons.chevron_up,
-                  color: context.textSecondary,
-                  size: 18,
-                ),
-                menuStyle: MenuStyle(
-                  backgroundColor:
-                      WidgetStatePropertyAll(context.cardBackground),
-                  shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-                dropdownMenuEntries: widget.members.map((member) {
-                  return DropdownMenuEntry<String>(
-                    value: member,
-                    label: member,
-                  );
-                }).toList(),
-                onSelected: (value) {
-                  setState(() => _paidBy = value);
-                },
-              ),
-
-              const SizedBox(height: 24),
-
-              // Split With Section
-              SectionHeader(title: context.l10n.expenseSplitWith),
-              const SizedBox(height: 8),
-              Container(
-                decoration: BoxDecoration(
-                  color: context.inputFillColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  children: widget.members.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final member = entry.value;
-                    final isSelected = _splitWith.contains(member);
-                    final isLast = index == widget.members.length - 1;
-
-                    return Column(
-                      children: [
-                        ListTile(
-                          title: Text(
-                            member,
+        child: Column(
+          children: [
+            Expanded(
+              child: Form(
+                key: _formKey,
+                child: ListView(
+                  padding: const EdgeInsets.all(16),
+                  children: [
+                    // Amount Section
+                    SectionHeader(title: context.l10n.expenseAmount),
+                    const SizedBox(height: 8),
+                    TextFormField(
+                      controller: _amountController,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      style: TextStyle(color: context.textPrimary),
+                      decoration: InputDecoration(
+                        hintText: fractionDigits > 0
+                            ? '0.${'0' * fractionDigits}'
+                            : '0',
+                        filled: true,
+                        fillColor: context.inputFillColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(left: 16, right: 8),
+                          child: Text(
+                            currencySymbol,
                             style: TextStyle(
-                              color: context.textPrimary,
-                              fontWeight: isSelected
-                                  ? FontWeight.w600
-                                  : FontWeight.normal,
+                              fontSize: 17,
+                              color: context.textSecondary,
                             ),
                           ),
-                          trailing: isSelected
-                              ? Icon(
-                                  CupertinoIcons.checkmark_square_fill,
-                                  color: context.primaryColor,
-                                )
-                              : Icon(
-                                  CupertinoIcons.square,
-                                  color: context.textSecondary
-                                      .withValues(alpha: 0.3),
-                                ),
-                          onTap: () => _toggleSplitMember(member),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 4,
+                        ),
+                        prefixIconConstraints:
+                            const BoxConstraints(minWidth: 0),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return context.l10n.expenseAmountRequired;
+                        }
+                        final amount = double.tryParse(value);
+                        if (amount == null || amount <= 0) {
+                          return context.l10n.expenseAmountInvalid;
+                        }
+                        return null;
+                      },
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    // Description Section
+                    SectionHeader(title: context.l10n.expenseDescription),
+                    const SizedBox(height: 8),
+                    TextFormField(
+                      controller: _descriptionController,
+                      style: TextStyle(color: context.textPrimary),
+                      decoration: InputDecoration(
+                        hintText: context.l10n.expenseDescriptionHint,
+                        filled: true,
+                        fillColor: context.inputFillColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
+                        prefixIcon: Icon(
+                          CupertinoIcons.doc_text,
+                          color: context.textSecondary,
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return context.l10n.expenseDescriptionRequired;
+                        }
+                        return null;
+                      },
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    // Paid By Section
+                    SectionHeader(title: context.l10n.expensePaidBy),
+                    const SizedBox(height: 8),
+                    DropdownMenu<String>(
+                      initialSelection: _paidBy,
+                      expandedInsets: EdgeInsets.zero,
+                      inputDecorationTheme: InputDecorationTheme(
+                        filled: true,
+                        fillColor: context.inputFillColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
+                      ),
+                      textStyle: TextStyle(
+                        color: context.textPrimary,
+                        fontSize: 16,
+                      ),
+                      trailingIcon: Icon(
+                        CupertinoIcons.chevron_down,
+                        color: context.textSecondary,
+                        size: 18,
+                      ),
+                      selectedTrailingIcon: Icon(
+                        CupertinoIcons.chevron_up,
+                        color: context.textSecondary,
+                        size: 18,
+                      ),
+                      menuStyle: MenuStyle(
+                        backgroundColor:
+                            WidgetStatePropertyAll(context.cardBackground),
+                        shape: WidgetStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                        if (!isLast)
-                          Divider(
-                            height: 1,
-                            indent: 16,
-                            endIndent: 16,
-                            color: context.dividerColor,
-                          ),
-                      ],
-                    );
-                  }).toList(),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8, left: 4),
-                child: Text(
-                  context.l10n.expenseSplitWithHint,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: context.textSecondary,
-                  ),
-                ),
-              ),
+                      ),
+                      dropdownMenuEntries: widget.members.map((member) {
+                        return DropdownMenuEntry<String>(
+                          value: member,
+                          label: member,
+                        );
+                      }).toList(),
+                      onSelected: (value) {
+                        setState(() => _paidBy = value);
+                      },
+                    ),
 
-              const SizedBox(height: 32),
+                    const SizedBox(height: 24),
 
-              // Submit Button
-              SizedBox(
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: _isLoading ? null : _submit,
-                  child: _isLoading
-                      ? const CupertinoActivityIndicator(color: Colors.white)
-                      : Text(widget.isEditing
-                          ? context.l10n.save
-                          : context.l10n.create),
+                    // Split With Section
+                    SectionHeader(title: context.l10n.expenseSplitWith),
+                    const SizedBox(height: 8),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: context.inputFillColor,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: widget.members.asMap().entries.map((entry) {
+                          final index = entry.key;
+                          final member = entry.value;
+                          final isSelected = _splitWith.contains(member);
+                          final isLast = index == widget.members.length - 1;
+
+                          return Column(
+                            children: [
+                              ListTile(
+                                title: Text(
+                                  member,
+                                  style: TextStyle(
+                                    color: context.textPrimary,
+                                    fontWeight: isSelected
+                                        ? FontWeight.w600
+                                        : FontWeight.normal,
+                                  ),
+                                ),
+                                trailing: isSelected
+                                    ? Icon(
+                                        CupertinoIcons.checkmark_square_fill,
+                                        color: context.primaryColor,
+                                      )
+                                    : Icon(
+                                        CupertinoIcons.square,
+                                        color: context.textSecondary
+                                            .withValues(alpha: 0.3),
+                                      ),
+                                onTap: () => _toggleSplitMember(member),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 4,
+                                ),
+                              ),
+                              if (!isLast)
+                                Divider(
+                                  height: 1,
+                                  indent: 16,
+                                  endIndent: 16,
+                                  color: context.dividerColor,
+                                ),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, left: 4),
+                      child: Text(
+                        context.l10n.expenseSplitWithHint,
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: context.textSecondary,
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 32),
+
+                    // Submit Button
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: _isLoading ? null : _submit,
+                        child: _isLoading
+                            ? const CupertinoActivityIndicator(
+                                color: Colors.white)
+                            : Text(widget.isEditing
+                                ? context.l10n.save
+                                : context.l10n.create),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+            const BannerAdWidget(),
+          ],
         ),
       ),
     );
