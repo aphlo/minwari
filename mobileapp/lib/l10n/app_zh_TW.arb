@@ -77,5 +77,27 @@
   "settlementOwed": "應付",
   "settlementNetReceive": "應收",
   "settlementNetPay": "應付",
-  "settlementNetEven": "已結清"
+  "settlementNetEven": "已結清",
+  "reviewEnjoyTitle": "您喜歡 OurSplit 嗎？",
+  "reviewYes": "是",
+  "reviewNo": "否",
+  "reviewFeedbackTitle": "介意給我們一些回饋嗎？",
+  "reviewFeedbackContent": "您的回饋將幫助我們改進應用程式。",
+  "reviewSendFeedback": "發送回饋",
+  "reviewNotNow": "暫不",
+  "feedbackTitle": "回饋",
+  "shareMessage": "在 OurSplit 上查看我的群組「{groupName}」！\nID: {groupId}\n連結: {url}\n",
+  "@shareMessage": {
+    "placeholders": {
+      "groupName": {
+        "type": "String"
+      },
+      "groupId": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -67,5 +67,37 @@
   "expenseSplitWithRequired": "Por favor selecciona miembros para dividir",
   "expenseSplitWithHint": "Selecciona los miembros que compartirán este gasto",
   "expenseCreateError": "Error al añadir gasto",
-  "expenseUpdateError": "Error al actualizar gasto"
+  "expenseUpdateError": "Error al actualizar gasto",
+  "settlementViewDetail": "Ver detalles de liquidación",
+  "settlementDetailTitle": "Detalles de liquidación",
+  "settlementDetailSubtitle": "Ver pagos y deudas de cada miembro",
+  "settlementDetailEmpty": "No hay gastos para liquidar aún",
+  "settlementTotalSpending": "Gasto total del grupo",
+  "settlementPaid": "Pagado",
+  "settlementOwed": "Debido",
+  "settlementNetReceive": "Recibe",
+  "settlementNetPay": "Paga",
+  "settlementNetEven": "Saldado",
+  "reviewEnjoyTitle": "¿Te gusta OurSplit?",
+  "reviewYes": "Sí",
+  "reviewNo": "No",
+  "reviewFeedbackTitle": "¿Te importaría darnos tu opinión?",
+  "reviewFeedbackContent": "Tu opinión nos ayudará a mejorar la aplicación.",
+  "reviewSendFeedback": "Enviar opinión",
+  "reviewNotNow": "Ahora no",
+  "feedbackTitle": "Opinión",
+  "shareMessage": "¡Mira mi grupo \"{groupName}\" en OurSplit!\nID: {groupId}\nEnlace: {url}\n",
+  "@shareMessage": {
+    "placeholders": {
+      "groupName": {
+        "type": "String"
+      },
+      "groupId": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  }
 }

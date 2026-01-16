@@ -243,33 +243,32 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settlementNetEven => '已结清';
 
   @override
-  String get reviewEnjoyTitle => 'Are you enjoying OurSplit?';
+  String get reviewEnjoyTitle => '你喜欢 OurSplit 吗？';
 
   @override
-  String get reviewYes => 'Yes';
+  String get reviewYes => '是';
 
   @override
-  String get reviewNo => 'No';
+  String get reviewNo => '否';
 
   @override
-  String get reviewFeedbackTitle => 'Would you mind giving us some feedback?';
+  String get reviewFeedbackTitle => '介意给我们一些反馈吗？';
 
   @override
-  String get reviewFeedbackContent =>
-      'Your feedback will help us improve the app.';
+  String get reviewFeedbackContent => '你的反馈将帮助我们改进应用。';
 
   @override
-  String get reviewSendFeedback => 'Send Feedback';
+  String get reviewSendFeedback => '发送反馈';
 
   @override
-  String get reviewNotNow => 'Not Now';
+  String get reviewNotNow => '暂不';
 
   @override
-  String get feedbackTitle => 'Feedback';
+  String get feedbackTitle => '反馈';
 
   @override
   String shareMessage(String groupName, String groupId, String url) {
-    return 'Check out my group \"$groupName\" on OurSplit!\nID: $groupId\nLink: $url\n';
+    return '在 OurSplit 上查看我的群组“$groupName”！\nID: $groupId\n链接: $url\n';
   }
 }
 
@@ -510,6 +509,35 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get settlementNetEven => '已结清';
+
+  @override
+  String get reviewEnjoyTitle => '你喜欢 OurSplit 吗？';
+
+  @override
+  String get reviewYes => '是';
+
+  @override
+  String get reviewNo => '否';
+
+  @override
+  String get reviewFeedbackTitle => '介意给我们一些反馈吗？';
+
+  @override
+  String get reviewFeedbackContent => '你的反馈将帮助我们改进应用。';
+
+  @override
+  String get reviewSendFeedback => '发送反馈';
+
+  @override
+  String get reviewNotNow => '暂不';
+
+  @override
+  String get feedbackTitle => '反馈';
+
+  @override
+  String shareMessage(String groupName, String groupId, String url) {
+    return '在 OurSplit 上查看我的群组“$groupName”！\nID: $groupId\n链接: $url\n';
+  }
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -749,4 +777,33 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get settlementNetEven => '已結清';
+
+  @override
+  String get reviewEnjoyTitle => '您喜歡 OurSplit 嗎？';
+
+  @override
+  String get reviewYes => '是';
+
+  @override
+  String get reviewNo => '否';
+
+  @override
+  String get reviewFeedbackTitle => '介意給我們一些回饋嗎？';
+
+  @override
+  String get reviewFeedbackContent => '您的回饋將幫助我們改進應用程式。';
+
+  @override
+  String get reviewSendFeedback => '發送回饋';
+
+  @override
+  String get reviewNotNow => '暫不';
+
+  @override
+  String get feedbackTitle => '回饋';
+
+  @override
+  String shareMessage(String groupName, String groupId, String url) {
+    return '在 OurSplit 上查看我的群組「$groupName」！\nID: $groupId\n連結: $url\n';
+  }
 }

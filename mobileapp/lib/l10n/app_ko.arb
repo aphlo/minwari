@@ -77,5 +77,27 @@
   "settlementOwed": "부담 금액",
   "settlementNetReceive": "받을 금액",
   "settlementNetPay": "지불할 금액",
-  "settlementNetEven": "정산 완료"
+  "settlementNetEven": "정산 완료",
+  "reviewEnjoyTitle": "OurSplit을 즐겁게 사용하고 계신가요?",
+  "reviewYes": "네",
+  "reviewNo": "아니요",
+  "reviewFeedbackTitle": "피드백을 주시겠어요?",
+  "reviewFeedbackContent": "귀하의 피드백은 앱을 개선하는 데 도움이 됩니다.",
+  "reviewSendFeedback": "피드백 보내기",
+  "reviewNotNow": "나중에",
+  "feedbackTitle": "피드백",
+  "shareMessage": "OurSplit에서 내 그룹 \"{groupName}\"을(를) 확인하세요!\nID: {groupId}\n링크: {url}\n",
+  "@shareMessage": {
+    "placeholders": {
+      "groupName": {
+        "type": "String"
+      },
+      "groupId": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  }
 }

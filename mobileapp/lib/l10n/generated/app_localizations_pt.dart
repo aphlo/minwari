@@ -218,64 +218,65 @@ class AppLocalizationsPt extends AppLocalizations {
   String get expenseUpdateError => 'Falha ao atualizar despesa';
 
   @override
-  String get settlementViewDetail => 'View settlement details';
+  String get settlementViewDetail => 'Ver detalhes da liquidação';
 
   @override
-  String get settlementDetailTitle => 'Settlement Details';
+  String get settlementDetailTitle => 'Detalhes da liquidação';
 
   @override
   String get settlementDetailSubtitle =>
-      'Review each member\'s paid and owed amounts';
+      'Ver pagamentos e dívidas de cada membro';
 
   @override
-  String get settlementDetailEmpty => 'No expenses to settle yet';
+  String get settlementDetailEmpty => 'Sem despesas para liquidar ainda';
 
   @override
-  String get settlementTotalSpending => 'Total group spending';
+  String get settlementTotalSpending => 'Gasto total do grupo';
 
   @override
-  String get settlementPaid => 'Paid';
+  String get settlementPaid => 'Pago';
 
   @override
-  String get settlementOwed => 'Owed';
+  String get settlementOwed => 'Devido';
 
   @override
-  String get settlementNetReceive => 'Receives';
+  String get settlementNetReceive => 'Recebe';
 
   @override
-  String get settlementNetPay => 'Pays';
+  String get settlementNetPay => 'Paga';
 
   @override
-  String get settlementNetEven => 'Settled';
+  String get settlementNetEven => 'Quitado';
 
   @override
-  String get reviewEnjoyTitle => 'Are you enjoying OurSplit?';
+  String get reviewEnjoyTitle => 'Está gostando do OurSplit?';
 
   @override
-  String get reviewYes => 'Yes';
+  String get reviewYes => 'Sim';
 
   @override
-  String get reviewNo => 'No';
+  String get reviewNo => 'Não';
 
   @override
-  String get reviewFeedbackTitle => 'Would you mind giving us some feedback?';
+  String get reviewFeedbackTitle =>
+      'Você se importaria em nos dar um feedback?';
 
   @override
   String get reviewFeedbackContent =>
-      'Your feedback will help us improve the app.';
+      'Seu feedback nos ajudará a melhorar o aplicativo.';
 
   @override
-  String get reviewSendFeedback => 'Send Feedback';
+  String get reviewSendFeedback => 'Enviar feedback';
 
   @override
-  String get reviewNotNow => 'Not Now';
+  String get reviewNotNow => 'Agora não';
 
   @override
   String get feedbackTitle => 'Feedback';
 
   @override
   String shareMessage(String groupName, String groupId, String url) {
-    return 'Check out my group \"$groupName\" on OurSplit!\nID: $groupId\nLink: $url\n';
+    return 'Confira meu grupo \"$groupName\" no OurSplit!\nID: $groupId\nLink: $url\n';
   }
 }
 
@@ -491,4 +492,66 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get expenseUpdateError => 'Falha ao atualizar despesa';
+
+  @override
+  String get settlementViewDetail => 'Ver detalhes da liquidação';
+
+  @override
+  String get settlementDetailTitle => 'Detalhes da liquidação';
+
+  @override
+  String get settlementDetailSubtitle =>
+      'Ver pagamentos e dívidas de cada membro';
+
+  @override
+  String get settlementDetailEmpty => 'Sem despesas para liquidar ainda';
+
+  @override
+  String get settlementTotalSpending => 'Gasto total do grupo';
+
+  @override
+  String get settlementPaid => 'Pago';
+
+  @override
+  String get settlementOwed => 'Devido';
+
+  @override
+  String get settlementNetReceive => 'Recebe';
+
+  @override
+  String get settlementNetPay => 'Paga';
+
+  @override
+  String get settlementNetEven => 'Quitado';
+
+  @override
+  String get reviewEnjoyTitle => 'Está gostando do OurSplit?';
+
+  @override
+  String get reviewYes => 'Sim';
+
+  @override
+  String get reviewNo => 'Não';
+
+  @override
+  String get reviewFeedbackTitle =>
+      'Você se importaria em nos dar um feedback?';
+
+  @override
+  String get reviewFeedbackContent =>
+      'Seu feedback nos ajudará a melhorar o aplicativo.';
+
+  @override
+  String get reviewSendFeedback => 'Enviar feedback';
+
+  @override
+  String get reviewNotNow => 'Agora não';
+
+  @override
+  String get feedbackTitle => 'Feedback';
+
+  @override
+  String shareMessage(String groupName, String groupId, String url) {
+    return 'Confira meu grupo \"$groupName\" no OurSplit!\nID: $groupId\nLink: $url\n';
+  }
 }
