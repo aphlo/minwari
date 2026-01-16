@@ -159,49 +159,55 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
       ),
       body: RefreshIndicator(
         onRefresh: _loadData,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+        child: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Group summary card with edit button
-              GroupInfoCard(
-                group: group,
-                onEdit: () => _navigateToEditGroup(group),
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.all(16),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  // Group summary card with edit button
+                  GroupInfoCard(
+                    group: group,
+                    onEdit: () => _navigateToEditGroup(group),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // No members warning
+                  if (!hasMembers) ...[
+                    _buildNoMembersWarning(context),
+                    const SizedBox(height: 16),
+                  ],
+
+                  // Add expense button
+                  _buildAddExpenseButton(context, hasMembers),
+                  const SizedBox(height: 24),
+
+                  // Records section
+                  LargeSectionHeader(title: context.l10n.records),
+                  const SizedBox(height: 12),
+                  ExpenseList(
+                    expenses: _expenses,
+                    currency: group.currency,
+                    groupId: group.id,
+                    members: group.members,
+                    onExpenseUpdated: _loadData,
+                  ),
+                  const SizedBox(height: 24),
+
+                  // Settlement section
+                  SettlementList(
+                    settlements: _settlements,
+                    currency: group.currency,
+                    hasExpenses: _expenses.isNotEmpty,
+                  ),
+
+                  // Bottom padding for safe area
+                  SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
+                ]),
               ),
-              const SizedBox(height: 16),
-
-              // No members warning
-              if (!hasMembers) ...[
-                _buildNoMembersWarning(context),
-                const SizedBox(height: 16),
-              ],
-
-              // Add expense button
-              _buildAddExpenseButton(context, hasMembers),
-              const SizedBox(height: 24),
-
-              // Records section
-              LargeSectionHeader(title: context.l10n.records),
-              const SizedBox(height: 12),
-              ExpenseList(
-                expenses: _expenses,
-                currency: group.currency,
-                groupId: group.id,
-                members: group.members,
-                onExpenseUpdated: _loadData,
-              ),
-              const SizedBox(height: 24),
-
-              // Settlement section
-              SettlementList(
-                settlements: _settlements,
-                currency: group.currency,
-                hasExpenses: _expenses.isNotEmpty,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
