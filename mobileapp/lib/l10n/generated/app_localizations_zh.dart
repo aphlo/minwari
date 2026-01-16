@@ -243,7 +243,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settlementNetEven => '已结清';
 
   @override
-  String get reviewEnjoyTitle => 'Are you enjoying Minwari?';
+  String get reviewEnjoyTitle => 'Are you enjoying OurSplit?';
 
   @override
   String get reviewYes => 'Yes';
@@ -266,6 +266,11 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get feedbackTitle => 'Feedback';
+
+  @override
+  String shareMessage(String groupName, String groupId, String url) {
+    return 'Check out my group \"$groupName\" on OurSplit!\nID: $groupId\nLink: $url\n';
+  }
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).

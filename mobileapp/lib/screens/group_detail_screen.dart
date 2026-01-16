@@ -100,8 +100,8 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
     final group = _group;
     if (group == null) return;
 
-    final text =
-        'Check out my group "${group.name}" on Minwari!\nID: ${group.id}';
+    final url = 'https://oursplit.us/groups/${group.id}';
+    final text = context.l10n.shareMessage(group.name, group.id, url);
     // ignore: deprecated_member_use
     Share.share(text);
   }

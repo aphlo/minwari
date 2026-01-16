@@ -78,12 +78,26 @@
   "settlementNetReceive": "受け取り",
   "settlementNetPay": "支払い",
   "settlementNetEven": "精算済み",
-  "reviewEnjoyTitle": "minwariを楽しんでいただけていますか？",
+  "reviewEnjoyTitle": "みんなの割り勘を楽しんでいただけていますか？",
   "reviewYes": "はい",
   "reviewNo": "いいえ",
   "reviewFeedbackTitle": "フィードバックをお願いできませんか？",
   "reviewFeedbackContent": "いただいたご意見は今後の改善に役立てさせていただきます",
   "reviewSendFeedback": "意見を送る",
   "reviewNotNow": "今はしない",
-  "feedbackTitle": "フィードバック"
+  "feedbackTitle": "フィードバック",
+  "shareMessage": "みんなの割り勘でグループ「{groupName}」を共有します。\nID: {groupId}\nリンク: {url}\n",
+  "@shareMessage": {
+    "placeholders": {
+      "groupName": {
+        "type": "String"
+      },
+      "groupId": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -243,7 +243,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settlementNetEven => '精算済み';
 
   @override
-  String get reviewEnjoyTitle => 'minwariを楽しんでいただけていますか？';
+  String get reviewEnjoyTitle => 'みんなの割り勘を楽しんでいただけていますか？';
 
   @override
   String get reviewYes => 'はい';
@@ -265,4 +265,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get feedbackTitle => 'フィードバック';
+
+  @override
+  String shareMessage(String groupName, String groupId, String url) {
+    return 'みんなの割り勘でグループ「$groupName」を共有します。\nID: $groupId\nリンク: $url\n';
+  }
 }

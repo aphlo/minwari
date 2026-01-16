@@ -580,7 +580,7 @@ abstract class AppLocalizations {
   /// No description provided for @reviewEnjoyTitle.
   ///
   /// In en, this message translates to:
-  /// **'Are you enjoying Minwari?'**
+  /// **'Are you enjoying OurSplit?'**
   String get reviewEnjoyTitle;
 
   /// No description provided for @reviewYes.
@@ -624,6 +624,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Feedback'**
   String get feedbackTitle;
+
+  /// No description provided for @shareMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Check out my group \"{groupName}\" on OurSplit!\nID: {groupId}\nLink: {url}\n'**
+  String shareMessage(String groupName, String groupId, String url);
 }
 
 class _AppLocalizationsDelegate

@@ -249,7 +249,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settlementNetEven => 'Settled';
 
   @override
-  String get reviewEnjoyTitle => 'Are you enjoying Minwari?';
+  String get reviewEnjoyTitle => 'Are you enjoying OurSplit?';
 
   @override
   String get reviewYes => 'Yes';
@@ -272,4 +272,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get feedbackTitle => 'Feedback';
+
+  @override
+  String shareMessage(String groupName, String groupId, String url) {
+    return 'Check out my group \"$groupName\" on OurSplit!\nID: $groupId\nLink: $url\n';
+  }
 }
