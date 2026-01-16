@@ -47,5 +47,11 @@
   "noRecordsSubtitle": "從「新增支出」新增記錄。",
   "settlementNoExpenses": "新增支出後將顯示結算內容",
   "noMembersWarning": "暫無成員",
-  "noMembersWarningDescription": "請從「編輯群組」新增成員。"
+  "noMembersWarningDescription": "請從「編輯群組」新增成員。",
+  "currencyJPY": "日圓 (JPY)",
+  "currencyUSD": "美元 (USD)",
+  "currencyEUR": "歐元 (EUR)",
+  "currencyCNY": "人民幣 (CNY)",
+  "currencyKRW": "韓元 (KRW)",
+  "currencyTWD": "新台幣 (TWD)"
 }

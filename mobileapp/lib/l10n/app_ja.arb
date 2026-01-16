@@ -47,5 +47,11 @@
   "noRecordsSubtitle": "「立て替えを追加」から記録を追加しましょう",
   "settlementNoExpenses": "立て替えを記録すると精算内容が表示されます",
   "noMembersWarning": "メンバーがいません",
-  "noMembersWarningDescription": "「グループを編集」からメンバーを追加してください。"
+  "noMembersWarningDescription": "「グループを編集」からメンバーを追加してください。",
+  "currencyJPY": "日本円 (JPY)",
+  "currencyUSD": "米ドル (USD)",
+  "currencyEUR": "ユーロ (EUR)",
+  "currencyCNY": "中国人民元 (CNY)",
+  "currencyKRW": "韓国ウォン (KRW)",
+  "currencyTWD": "台湾ドル (TWD)"
 }

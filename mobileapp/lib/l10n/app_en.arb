@@ -47,5 +47,11 @@
   "noRecordsSubtitle": "Add one from \"Add expense\".",
   "settlementNoExpenses": "Settlement details will appear once expenses are added",
   "noMembersWarning": "No members",
-  "noMembersWarningDescription": "Please add members from \"Edit group\"."
+  "noMembersWarningDescription": "Please add members from \"Edit group\".",
+  "currencyJPY": "Japanese Yen (JPY)",
+  "currencyUSD": "US Dollar (USD)",
+  "currencyEUR": "Euro (EUR)",
+  "currencyCNY": "Chinese Yuan (CNY)",
+  "currencyKRW": "Korean Won (KRW)",
+  "currencyTWD": "New Taiwan Dollar (TWD)"
 }

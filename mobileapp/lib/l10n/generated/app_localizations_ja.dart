@@ -151,4 +151,22 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noMembersWarningDescription => '「グループを編集」からメンバーを追加してください。';
+
+  @override
+  String get currencyJPY => '日本円 (JPY)';
+
+  @override
+  String get currencyUSD => '米ドル (USD)';
+
+  @override
+  String get currencyEUR => 'ユーロ (EUR)';
+
+  @override
+  String get currencyCNY => '中国人民元 (CNY)';
+
+  @override
+  String get currencyKRW => '韓国ウォン (KRW)';
+
+  @override
+  String get currencyTWD => '台湾ドル (TWD)';
 }

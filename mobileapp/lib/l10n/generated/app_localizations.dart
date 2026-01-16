@@ -396,6 +396,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please add members from \"Edit group\".'**
   String get noMembersWarningDescription;
+
+  /// No description provided for @currencyJPY.
+  ///
+  /// In en, this message translates to:
+  /// **'Japanese Yen (JPY)'**
+  String get currencyJPY;
+
+  /// No description provided for @currencyUSD.
+  ///
+  /// In en, this message translates to:
+  /// **'US Dollar (USD)'**
+  String get currencyUSD;
+
+  /// No description provided for @currencyEUR.
+  ///
+  /// In en, this message translates to:
+  /// **'Euro (EUR)'**
+  String get currencyEUR;
+
+  /// No description provided for @currencyCNY.
+  ///
+  /// In en, this message translates to:
+  /// **'Chinese Yuan (CNY)'**
+  String get currencyCNY;
+
+  /// No description provided for @currencyKRW.
+  ///
+  /// In en, this message translates to:
+  /// **'Korean Won (KRW)'**
+  String get currencyKRW;
+
+  /// No description provided for @currencyTWD.
+  ///
+  /// In en, this message translates to:
+  /// **'New Taiwan Dollar (TWD)'**
+  String get currencyTWD;
 }
 
 class _AppLocalizationsDelegate

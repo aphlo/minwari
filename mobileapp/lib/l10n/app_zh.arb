@@ -47,5 +47,11 @@
   "noRecordsSubtitle": "从「添加支出」添加记录。",
   "settlementNoExpenses": "添加支出后将显示结算内容",
   "noMembersWarning": "暂无成员",
-  "noMembersWarningDescription": "请从「编辑群组」添加成员。"
+  "noMembersWarningDescription": "请从“编辑群组”添加成员。",
+  "currencyJPY": "日元 (JPY)",
+  "currencyUSD": "美元 (USD)",
+  "currencyEUR": "欧元 (EUR)",
+  "currencyCNY": "人民币 (CNY)",
+  "currencyKRW": "韩元 (KRW)",
+  "currencyTWD": "新台币 (TWD)"
 }

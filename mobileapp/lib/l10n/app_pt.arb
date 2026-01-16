@@ -47,5 +47,11 @@
   "noRecordsSubtitle": "Adicione um em \"Adicionar despesa\".",
   "settlementNoExpenses": "Os detalhes de liquidação aparecerão quando despesas forem adicionadas",
   "noMembersWarning": "Sem membros",
-  "noMembersWarningDescription": "Por favor adicione membros em \"Editar grupo\"."
+  "noMembersWarningDescription": "Por favor, adicione membros em \"Editar grupo\".",
+  "currencyJPY": "Iene japones (JPY)",
+  "currencyUSD": "Dolar americano (USD)",
+  "currencyEUR": "Euro (EUR)",
+  "currencyCNY": "Yuan chines (CNY)",
+  "currencyKRW": "Won coreano (KRW)",
+  "currencyTWD": "Novo dolar taiwanes (TWD)"
 }

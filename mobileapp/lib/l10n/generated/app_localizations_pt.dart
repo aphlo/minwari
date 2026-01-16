@@ -153,7 +153,25 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get noMembersWarningDescription =>
-      'Por favor adicione membros em \"Editar grupo\".';
+      'Por favor, adicione membros em \"Editar grupo\".';
+
+  @override
+  String get currencyJPY => 'Iene japones (JPY)';
+
+  @override
+  String get currencyUSD => 'Dolar americano (USD)';
+
+  @override
+  String get currencyEUR => 'Euro (EUR)';
+
+  @override
+  String get currencyCNY => 'Yuan chines (CNY)';
+
+  @override
+  String get currencyKRW => 'Won coreano (KRW)';
+
+  @override
+  String get currencyTWD => 'Novo dolar taiwanes (TWD)';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -305,5 +323,23 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get noMembersWarningDescription =>
-      'Por favor adicione membros em \"Editar grupo\".';
+      'Por favor, adicione membros em \"Editar grupo\".';
+
+  @override
+  String get currencyJPY => 'Iene japones (JPY)';
+
+  @override
+  String get currencyUSD => 'Dolar americano (USD)';
+
+  @override
+  String get currencyEUR => 'Euro (EUR)';
+
+  @override
+  String get currencyCNY => 'Yuan chines (CNY)';
+
+  @override
+  String get currencyKRW => 'Won coreano (KRW)';
+
+  @override
+  String get currencyTWD => 'Novo dolar taiwanes (TWD)';
 }

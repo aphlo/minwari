@@ -154,4 +154,22 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get noMembersWarningDescription =>
       'Por favor añade miembros desde \"Editar grupo\".';
+
+  @override
+  String get currencyJPY => 'Yen japones (JPY)';
+
+  @override
+  String get currencyUSD => 'Dolar estadounidense (USD)';
+
+  @override
+  String get currencyEUR => 'Euro (EUR)';
+
+  @override
+  String get currencyCNY => 'Yuan chino (CNY)';
+
+  @override
+  String get currencyKRW => 'Won coreano (KRW)';
+
+  @override
+  String get currencyTWD => 'Nuevo dolar taiwanes (TWD)';
 }

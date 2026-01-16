@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:minwari/lib/currency.dart';
+
 import 'package:minwari/models/group.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/extensions/currency_extension.dart';
 
 /// Group info card showing members and currency
 class GroupInfoCard extends StatelessWidget {
@@ -107,7 +108,7 @@ class GroupInfoCard extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '${getCurrencySymbol(group.currency)} ${group.currency}',
+                context.getLocalizedCurrencyName(group.currency),
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,

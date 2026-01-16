@@ -150,7 +150,25 @@ class AppLocalizationsZh extends AppLocalizations {
   String get noMembersWarning => '暂无成员';
 
   @override
-  String get noMembersWarningDescription => '请从「编辑群组」添加成员。';
+  String get noMembersWarningDescription => '请从“编辑群组”添加成员。';
+
+  @override
+  String get currencyJPY => '日元 (JPY)';
+
+  @override
+  String get currencyUSD => '美元 (USD)';
+
+  @override
+  String get currencyEUR => '欧元 (EUR)';
+
+  @override
+  String get currencyCNY => '人民币 (CNY)';
+
+  @override
+  String get currencyKRW => '韩元 (KRW)';
+
+  @override
+  String get currencyTWD => '新台币 (TWD)';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -300,6 +318,24 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get noMembersWarningDescription => '请从「编辑群组」添加成员。';
+
+  @override
+  String get currencyJPY => '日元 (JPY)';
+
+  @override
+  String get currencyUSD => '美元 (USD)';
+
+  @override
+  String get currencyEUR => '欧元 (EUR)';
+
+  @override
+  String get currencyCNY => '人民币 (CNY)';
+
+  @override
+  String get currencyKRW => '韩元 (KRW)';
+
+  @override
+  String get currencyTWD => '新台币 (TWD)';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -449,4 +485,22 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get noMembersWarningDescription => '請從「編輯群組」新增成員。';
+
+  @override
+  String get currencyJPY => '日圓 (JPY)';
+
+  @override
+  String get currencyUSD => '美元 (USD)';
+
+  @override
+  String get currencyEUR => '歐元 (EUR)';
+
+  @override
+  String get currencyCNY => '人民幣 (CNY)';
+
+  @override
+  String get currencyKRW => '韓元 (KRW)';
+
+  @override
+  String get currencyTWD => '新台幣 (TWD)';
 }
