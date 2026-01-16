@@ -48,6 +48,7 @@ dependencies:
   json_annotation: ^4.9.0
   package_info_plus: ^8.0.0
   google_mobile_ads: ^5.2.0
+  firebase_analytics: ^11.6.0
 
 
 dev_dependencies:
