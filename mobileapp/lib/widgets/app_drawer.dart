@@ -6,6 +6,9 @@ import 'package:minwari/screens/license_screen.dart';
 import 'package:minwari/screens/settings_screen.dart';
 import 'package:minwari/screens/webview_screen.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/widgets/banner_ad_widget.dart';
+import 'package:minwari/widgets/native_ad_widget.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AppDrawer extends ConsumerWidget {
   const AppDrawer({super.key});
@@ -13,6 +16,9 @@ class AppDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final packageInfoAsync = ref.watch(packageInfoProvider);
+
+    final locale = Localizations.localeOf(context);
+    final lang = locale.languageCode == 'ja' ? 'ja' : 'en';
 
     return Drawer(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
@@ -34,9 +40,9 @@ class AppDrawer extends ConsumerWidget {
               title: context.l10n.termsOfService,
               onTap: () => _navigateTo(
                 context,
-                const WebViewScreen(
-                  url: 'https://example.com/terms', // Replace with actual URL
-                  title: 'Terms of Service',
+                WebViewScreen(
+                  url: 'https://oursplit.us/$lang/terms',
+                  title: context.l10n.termsOfService,
                 ),
               ),
             ),
@@ -47,9 +53,9 @@ class AppDrawer extends ConsumerWidget {
               title: context.l10n.privacyPolicy,
               onTap: () => _navigateTo(
                 context,
-                const WebViewScreen(
-                  url: 'https://example.com/privacy', // Replace with actual URL
-                  title: 'Privacy Policy',
+                WebViewScreen(
+                  url: 'https://oursplit.us/$lang/privacy',
+                  title: context.l10n.privacyPolicy,
                 ),
               ),
             ),
@@ -78,6 +84,12 @@ class AppDrawer extends ConsumerWidget {
                 error: (_, __) => const SizedBox.shrink(),
               ),
             ),
+            // Native Ad for Android, Medium Rectangle Banner as fallback for iOS
+            if (Theme.of(context).platform == TargetPlatform.android)
+              const NativeAdWidget(height: 300, width: double.infinity)
+            else
+              const BannerAdWidget(size: AdSize.mediumRectangle),
+            const SizedBox(height: 16),
           ],
         ),
       ),

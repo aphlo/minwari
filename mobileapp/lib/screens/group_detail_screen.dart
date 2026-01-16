@@ -12,6 +12,7 @@ import 'package:minwari/widgets/expense_list.dart';
 import 'package:minwari/widgets/group_info_card.dart';
 import 'package:minwari/widgets/settlement_list.dart';
 import 'package:minwari/widgets/section_header.dart';
+import 'package:minwari/widgets/banner_ad_widget.dart';
 
 class GroupDetailScreen extends StatefulWidget {
   final String groupId;
@@ -157,71 +158,79 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
         iconTheme: IconThemeData(color: context.textPrimary),
         leading: const BackButton(),
       ),
-      body: RefreshIndicator(
-        onRefresh: _loadData,
-        child: CustomScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          slivers: [
-            SliverPadding(
-              padding: const EdgeInsets.all(16),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate([
-                  // Group summary card with edit button
-                  GroupInfoCard(
-                    group: group,
-                    onEdit: () => _navigateToEditGroup(group),
+      body: Column(
+        children: [
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: _loadData,
+              child: CustomScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                slivers: [
+                  SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildListDelegate([
+                        // Group summary card with edit button
+                        GroupInfoCard(
+                          group: group,
+                          onEdit: () => _navigateToEditGroup(group),
+                        ),
+                        const SizedBox(height: 16),
+
+                        // No members warning
+                        if (!hasMembers) ...[
+                          _buildNoMembersWarning(context),
+                          const SizedBox(height: 16),
+                        ],
+
+                        // Add expense button
+                        _buildAddExpenseButton(context, hasMembers),
+                        const SizedBox(height: 24),
+
+                        // Records section
+                        Row(
+                          children: [
+                            Icon(
+                              CupertinoIcons.doc_text,
+                              size: 20,
+                              color: context.primaryColor,
+                            ),
+                            const SizedBox(width: 8),
+                            LargeSectionHeader(title: context.l10n.records),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        ExpenseList(
+                          expenses: _expenses,
+                          currency: group.currency,
+                          groupId: group.id,
+                          members: group.members,
+                          onExpenseUpdated: _loadData,
+                        ),
+                        const SizedBox(height: 24),
+
+                        // Settlement section
+                        SettlementList(
+                          settlements: _settlements,
+                          currency: group.currency,
+                          hasExpenses: _expenses.isNotEmpty,
+                          groupName: group.name,
+                          expenses: _expenses,
+                          members: group.members,
+                        ),
+
+                        // Bottom padding for safe area
+                        SizedBox(
+                            height: MediaQuery.of(context).padding.bottom + 16),
+                      ]),
+                    ),
                   ),
-                  const SizedBox(height: 16),
-
-                  // No members warning
-                  if (!hasMembers) ...[
-                    _buildNoMembersWarning(context),
-                    const SizedBox(height: 16),
-                  ],
-
-                  // Add expense button
-                  _buildAddExpenseButton(context, hasMembers),
-                  const SizedBox(height: 24),
-
-                  // Records section
-                  Row(
-                    children: [
-                      Icon(
-                        CupertinoIcons.doc_text,
-                        size: 20,
-                        color: context.primaryColor,
-                      ),
-                      const SizedBox(width: 8),
-                      LargeSectionHeader(title: context.l10n.records),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  ExpenseList(
-                    expenses: _expenses,
-                    currency: group.currency,
-                    groupId: group.id,
-                    members: group.members,
-                    onExpenseUpdated: _loadData,
-                  ),
-                  const SizedBox(height: 24),
-
-                  // Settlement section
-                  SettlementList(
-                    settlements: _settlements,
-                    currency: group.currency,
-                    hasExpenses: _expenses.isNotEmpty,
-                    groupName: group.name,
-                    expenses: _expenses,
-                    members: group.members,
-                  ),
-
-                  // Bottom padding for safe area
-                  SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
-                ]),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+          const BannerAdWidget(),
+        ],
       ),
     );
   }

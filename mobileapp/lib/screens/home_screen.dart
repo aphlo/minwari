@@ -8,6 +8,7 @@ import 'package:minwari/widgets/empty_state.dart';
 import 'package:minwari/widgets/group_list.dart';
 import 'package:minwari/screens/group_form_screen.dart';
 import 'package:minwari/screens/group_detail_screen.dart';
+import 'package:minwari/widgets/banner_ad_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -80,17 +81,29 @@ class _HomeScreenState extends State<HomeScreen> {
         iconTheme: IconThemeData(color: context.textPrimary),
       ),
       drawer: const AppDrawer(),
-      body: _groups.isEmpty
-          ? EmptyState(onCreateGroup: () => _navigateToCreateGroup(context))
-          : GroupList(
-              groups: _groups,
-              onGroupTap: (group) => _navigateToGroupDetail(context, group),
-            ),
-      floatingActionButton: FloatingActionButton(
-        heroTag: 'home_fab',
-        onPressed: () => _navigateToCreateGroup(context),
-        backgroundColor: context.primaryColor,
-        child: const Icon(CupertinoIcons.add, color: Colors.white),
+      body: Column(
+        children: [
+          Expanded(
+            child: _groups.isEmpty
+                ? EmptyState(
+                    onCreateGroup: () => _navigateToCreateGroup(context))
+                : GroupList(
+                    groups: _groups,
+                    onGroupTap: (group) =>
+                        _navigateToGroupDetail(context, group),
+                  ),
+          ),
+          const BannerAdWidget(),
+        ],
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 60),
+        child: FloatingActionButton(
+          heroTag: 'home_fab',
+          onPressed: () => _navigateToCreateGroup(context),
+          backgroundColor: context.primaryColor,
+          child: const Icon(CupertinoIcons.add, color: Colors.white),
+        ),
       ),
     );
   }

@@ -10,6 +10,7 @@ import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/currency_selector.dart';
 import 'package:minwari/widgets/members_editor.dart';
 import 'package:minwari/widgets/section_header.dart'; // Ensure correct import
+import 'package:minwari/widgets/banner_ad_widget.dart';
 
 /// Screen for creating or editing a group
 /// Set [group] to edit an existing group, leave null to create new
@@ -174,95 +175,103 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
         ],
       ),
       body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            padding: const EdgeInsets.all(16),
-            children: [
-              // Group Name Section
-              SectionHeader(title: context.l10n.groupName),
-              const SizedBox(height: 8),
-              TextFormField(
-                controller: _nameController,
-                style: TextStyle(color: context.textPrimary),
-                decoration: InputDecoration(
-                  hintText: context.l10n.groupNameHint,
-                  filled: true,
-                  fillColor: context.inputFillColor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                  prefixIcon: Icon(
-                    CupertinoIcons.person_2_fill,
-                    color: context.textSecondary,
-                  ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Form(
+                key: _formKey,
+                child: ListView(
+                  padding: const EdgeInsets.all(16),
+                  children: [
+                    // Group Name Section
+                    SectionHeader(title: context.l10n.groupName),
+                    const SizedBox(height: 8),
+                    TextFormField(
+                      controller: _nameController,
+                      style: TextStyle(color: context.textPrimary),
+                      decoration: InputDecoration(
+                        hintText: context.l10n.groupNameHint,
+                        filled: true,
+                        fillColor: context.inputFillColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
+                        prefixIcon: Icon(
+                          CupertinoIcons.person_2_fill,
+                          color: context.textSecondary,
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return context.l10n.groupNameRequired;
+                        }
+                        return null;
+                      },
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    // Currency Section
+                    SectionHeader(title: context.l10n.currency),
+                    const SizedBox(height: 8),
+                    CurrencySelector(
+                      selectedCurrency: _selectedCurrency,
+                      onCurrencyChanged: (value) {
+                        setState(() => _selectedCurrency = value);
+                      },
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    // Members Section
+                    SectionHeader(title: context.l10n.members),
+                    const SizedBox(height: 8),
+                    MembersEditor(
+                      members: _members,
+                      onMemberChanged: (index, name) {
+                        setState(() {
+                          if (index >= _members.length) {
+                            _members.add(name);
+                          } else {
+                            _members[index] = name;
+                          }
+                        });
+                      },
+                      onMemberRemove: (index) {
+                        setState(() {
+                          if (index >= 0 && index < _members.length) {
+                            _members.removeAt(index);
+                          }
+                        });
+                      },
+                    ),
+
+                    const SizedBox(height: 32),
+
+                    // Submit Button
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: _isLoading ? null : _submit,
+                        child: _isLoading
+                            ? const CupertinoActivityIndicator(
+                                color: Colors.white)
+                            : Text(widget.isEditing
+                                ? context.l10n.save
+                                : context.l10n.create),
+                      ),
+                    ),
+                  ],
                 ),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return context.l10n.groupNameRequired;
-                  }
-                  return null;
-                },
               ),
-
-              const SizedBox(height: 24),
-
-              // Currency Section
-              SectionHeader(title: context.l10n.currency),
-              const SizedBox(height: 8),
-              CurrencySelector(
-                selectedCurrency: _selectedCurrency,
-                onCurrencyChanged: (value) {
-                  setState(() => _selectedCurrency = value);
-                },
-              ),
-
-              const SizedBox(height: 24),
-
-              // Members Section
-              SectionHeader(title: context.l10n.members),
-              const SizedBox(height: 8),
-              MembersEditor(
-                members: _members,
-                onMemberChanged: (index, name) {
-                  setState(() {
-                    if (index >= _members.length) {
-                      _members.add(name);
-                    } else {
-                      _members[index] = name;
-                    }
-                  });
-                },
-                onMemberRemove: (index) {
-                  setState(() {
-                    if (index >= 0 && index < _members.length) {
-                      _members.removeAt(index);
-                    }
-                  });
-                },
-              ),
-
-              const SizedBox(height: 32),
-
-              // Submit Button
-              SizedBox(
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: _isLoading ? null : _submit,
-                  child: _isLoading
-                      ? const CupertinoActivityIndicator(color: Colors.white)
-                      : Text(widget.isEditing
-                          ? context.l10n.save
-                          : context.l10n.create),
-                ),
-              ),
-            ],
-          ),
+            ),
+            const BannerAdWidget(),
+          ],
         ),
       ),
     );

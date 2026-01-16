@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
@@ -14,6 +16,7 @@ import 'theme/app_theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  MobileAds.instance.initialize();
 
   // Sign in anonymously if not already signed in
   if (FirebaseAuth.instance.currentUser == null) {
@@ -59,6 +62,9 @@ class MinwariApp extends ConsumerWidget {
         Locale('es'),
         Locale('pt', 'BR'),
         Locale('zh', 'TW'),
+      ],
+      navigatorObservers: [
+        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
       ],
       home: const HomeScreen(),
     );
