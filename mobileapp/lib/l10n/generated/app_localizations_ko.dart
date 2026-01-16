@@ -169,4 +169,76 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get currencyTWD => '대만 달러 (TWD)';
+
+  @override
+  String get editExpense => '지출 편집';
+
+  @override
+  String get expenseAmount => '금액';
+
+  @override
+  String get expenseAmountRequired => '금액을 입력하세요';
+
+  @override
+  String get expenseAmountInvalid => '유효한 금액을 입력하세요';
+
+  @override
+  String get expenseDescription => '설명';
+
+  @override
+  String get expenseDescriptionHint => '예: 저녁 식사';
+
+  @override
+  String get expenseDescriptionRequired => '설명을 입력하세요';
+
+  @override
+  String get expensePaidBy => '결제자';
+
+  @override
+  String get expensePaidByRequired => '결제자를 선택하세요';
+
+  @override
+  String get expenseSplitWith => '분담 멤버';
+
+  @override
+  String get expenseSplitWithRequired => '분담 멤버를 선택하세요';
+
+  @override
+  String get expenseSplitWithHint => '이 비용을 분담할 멤버를 선택하세요';
+
+  @override
+  String get expenseCreateError => '지출 추가 실패';
+
+  @override
+  String get expenseUpdateError => '지출 업데이트 실패';
+
+  @override
+  String get settlementViewDetail => '정산 상세 보기';
+
+  @override
+  String get settlementDetailTitle => '정산 상세';
+
+  @override
+  String get settlementDetailSubtitle => '각 멤버의 지불 및 부담 금액 확인';
+
+  @override
+  String get settlementDetailEmpty => '아직 정산할 지출이 없습니다';
+
+  @override
+  String get settlementTotalSpending => '그룹 총 지출';
+
+  @override
+  String get settlementPaid => '지불 금액';
+
+  @override
+  String get settlementOwed => '부담 금액';
+
+  @override
+  String get settlementNetReceive => '받을 금액';
+
+  @override
+  String get settlementNetPay => '지불할 금액';
+
+  @override
+  String get settlementNetEven => '정산 완료';
 }

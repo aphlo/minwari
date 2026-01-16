@@ -169,6 +169,78 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get currencyTWD => '新台币 (TWD)';
+
+  @override
+  String get editExpense => '编辑支出';
+
+  @override
+  String get expenseAmount => '金额';
+
+  @override
+  String get expenseAmountRequired => '请输入金额';
+
+  @override
+  String get expenseAmountInvalid => '请输入有效金额';
+
+  @override
+  String get expenseDescription => '描述';
+
+  @override
+  String get expenseDescriptionHint => '例如：晚餐';
+
+  @override
+  String get expenseDescriptionRequired => '请输入描述';
+
+  @override
+  String get expensePaidBy => '支付者';
+
+  @override
+  String get expensePaidByRequired => '请选择支付者';
+
+  @override
+  String get expenseSplitWith => '分摊成员';
+
+  @override
+  String get expenseSplitWithRequired => '请选择分摊成员';
+
+  @override
+  String get expenseSplitWithHint => '选择分担此费用的成员';
+
+  @override
+  String get expenseCreateError => '添加支出失败';
+
+  @override
+  String get expenseUpdateError => '更新支出失败';
+
+  @override
+  String get settlementViewDetail => '查看结算详情';
+
+  @override
+  String get settlementDetailTitle => '结算详情';
+
+  @override
+  String get settlementDetailSubtitle => '查看每位成员的支付和负担金额';
+
+  @override
+  String get settlementDetailEmpty => '暂无需要结算的支出';
+
+  @override
+  String get settlementTotalSpending => '群组总支出';
+
+  @override
+  String get settlementPaid => '已支付';
+
+  @override
+  String get settlementOwed => '应付';
+
+  @override
+  String get settlementNetReceive => '应收';
+
+  @override
+  String get settlementNetPay => '应付';
+
+  @override
+  String get settlementNetEven => '已结清';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -336,6 +408,78 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get currencyTWD => '新台币 (TWD)';
+
+  @override
+  String get editExpense => '编辑支出';
+
+  @override
+  String get expenseAmount => '金额';
+
+  @override
+  String get expenseAmountRequired => '请输入金额';
+
+  @override
+  String get expenseAmountInvalid => '请输入有效金额';
+
+  @override
+  String get expenseDescription => '描述';
+
+  @override
+  String get expenseDescriptionHint => '例如：晚餐';
+
+  @override
+  String get expenseDescriptionRequired => '请输入描述';
+
+  @override
+  String get expensePaidBy => '支付者';
+
+  @override
+  String get expensePaidByRequired => '请选择支付者';
+
+  @override
+  String get expenseSplitWith => '分摊成员';
+
+  @override
+  String get expenseSplitWithRequired => '请选择分摊成员';
+
+  @override
+  String get expenseSplitWithHint => '选择分担此费用的成员';
+
+  @override
+  String get expenseCreateError => '添加支出失败';
+
+  @override
+  String get expenseUpdateError => '更新支出失败';
+
+  @override
+  String get settlementViewDetail => '查看结算详情';
+
+  @override
+  String get settlementDetailTitle => '结算详情';
+
+  @override
+  String get settlementDetailSubtitle => '查看每位成员的支付和负担金额';
+
+  @override
+  String get settlementDetailEmpty => '暂无需要结算的支出';
+
+  @override
+  String get settlementTotalSpending => '群组总支出';
+
+  @override
+  String get settlementPaid => '已支付';
+
+  @override
+  String get settlementOwed => '应付';
+
+  @override
+  String get settlementNetReceive => '应收';
+
+  @override
+  String get settlementNetPay => '应付';
+
+  @override
+  String get settlementNetEven => '已结清';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -503,4 +647,76 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get currencyTWD => '新台幣 (TWD)';
+
+  @override
+  String get editExpense => '編輯支出';
+
+  @override
+  String get expenseAmount => '金額';
+
+  @override
+  String get expenseAmountRequired => '請輸入金額';
+
+  @override
+  String get expenseAmountInvalid => '請輸入有效金額';
+
+  @override
+  String get expenseDescription => '描述';
+
+  @override
+  String get expenseDescriptionHint => '例如：晚餐';
+
+  @override
+  String get expenseDescriptionRequired => '請輸入描述';
+
+  @override
+  String get expensePaidBy => '支付者';
+
+  @override
+  String get expensePaidByRequired => '請選擇支付者';
+
+  @override
+  String get expenseSplitWith => '分攤成員';
+
+  @override
+  String get expenseSplitWithRequired => '請選擇分攤成員';
+
+  @override
+  String get expenseSplitWithHint => '選擇分擔此費用的成員';
+
+  @override
+  String get expenseCreateError => '新增支出失敗';
+
+  @override
+  String get expenseUpdateError => '更新支出失敗';
+
+  @override
+  String get settlementViewDetail => '查看結算詳情';
+
+  @override
+  String get settlementDetailTitle => '結算詳情';
+
+  @override
+  String get settlementDetailSubtitle => '查看每位成員的支付和負擔金額';
+
+  @override
+  String get settlementDetailEmpty => '暫無需要結算的支出';
+
+  @override
+  String get settlementTotalSpending => '群組總支出';
+
+  @override
+  String get settlementPaid => '已支付';
+
+  @override
+  String get settlementOwed => '應付';
+
+  @override
+  String get settlementNetReceive => '應收';
+
+  @override
+  String get settlementNetPay => '應付';
+
+  @override
+  String get settlementNetEven => '已結清';
 }

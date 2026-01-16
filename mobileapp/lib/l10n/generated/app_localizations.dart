@@ -432,6 +432,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'New Taiwan Dollar (TWD)'**
   String get currencyTWD;
+
+  /// No description provided for @editExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Expense'**
+  String get editExpense;
+
+  /// No description provided for @expenseAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get expenseAmount;
+
+  /// No description provided for @expenseAmountRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter an amount'**
+  String get expenseAmountRequired;
+
+  /// No description provided for @expenseAmountInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid amount'**
+  String get expenseAmountInvalid;
+
+  /// No description provided for @expenseDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get expenseDescription;
+
+  /// No description provided for @expenseDescriptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Dinner'**
+  String get expenseDescriptionHint;
+
+  /// No description provided for @expenseDescriptionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a description'**
+  String get expenseDescriptionRequired;
+
+  /// No description provided for @expensePaidBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid by'**
+  String get expensePaidBy;
+
+  /// No description provided for @expensePaidByRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select who paid'**
+  String get expensePaidByRequired;
+
+  /// No description provided for @expenseSplitWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Split with'**
+  String get expenseSplitWith;
+
+  /// No description provided for @expenseSplitWithRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select members to split with'**
+  String get expenseSplitWithRequired;
+
+  /// No description provided for @expenseSplitWithHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select members who will share this expense'**
+  String get expenseSplitWithHint;
+
+  /// No description provided for @expenseCreateError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to add expense'**
+  String get expenseCreateError;
+
+  /// No description provided for @expenseUpdateError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update expense'**
+  String get expenseUpdateError;
+
+  /// No description provided for @settlementViewDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'View settlement details'**
+  String get settlementViewDetail;
+
+  /// No description provided for @settlementDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settlement Details'**
+  String get settlementDetailTitle;
+
+  /// No description provided for @settlementDetailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review each member\'s paid and owed amounts'**
+  String get settlementDetailSubtitle;
+
+  /// No description provided for @settlementDetailEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No expenses to settle yet'**
+  String get settlementDetailEmpty;
+
+  /// No description provided for @settlementTotalSpending.
+  ///
+  /// In en, this message translates to:
+  /// **'Total group spending'**
+  String get settlementTotalSpending;
+
+  /// No description provided for @settlementPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get settlementPaid;
+
+  /// No description provided for @settlementOwed.
+  ///
+  /// In en, this message translates to:
+  /// **'Owed'**
+  String get settlementOwed;
+
+  /// No description provided for @settlementNetReceive.
+  ///
+  /// In en, this message translates to:
+  /// **'Receives'**
+  String get settlementNetReceive;
+
+  /// No description provided for @settlementNetPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pays'**
+  String get settlementNetPay;
+
+  /// No description provided for @settlementNetEven.
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get settlementNetEven;
 }
 
 class _AppLocalizationsDelegate

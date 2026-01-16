@@ -172,4 +172,79 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get currencyTWD => 'Nuevo dolar taiwanes (TWD)';
+
+  @override
+  String get editExpense => 'Editar gasto';
+
+  @override
+  String get expenseAmount => 'Cantidad';
+
+  @override
+  String get expenseAmountRequired => 'Por favor ingresa una cantidad';
+
+  @override
+  String get expenseAmountInvalid => 'Por favor ingresa una cantidad válida';
+
+  @override
+  String get expenseDescription => 'Descripción';
+
+  @override
+  String get expenseDescriptionHint => 'ej., Cena';
+
+  @override
+  String get expenseDescriptionRequired => 'Por favor ingresa una descripción';
+
+  @override
+  String get expensePaidBy => 'Pagado por';
+
+  @override
+  String get expensePaidByRequired => 'Por favor selecciona quién pagó';
+
+  @override
+  String get expenseSplitWith => 'Dividir con';
+
+  @override
+  String get expenseSplitWithRequired =>
+      'Por favor selecciona miembros para dividir';
+
+  @override
+  String get expenseSplitWithHint =>
+      'Selecciona los miembros que compartirán este gasto';
+
+  @override
+  String get expenseCreateError => 'Error al añadir gasto';
+
+  @override
+  String get expenseUpdateError => 'Error al actualizar gasto';
+
+  @override
+  String get settlementViewDetail => 'View settlement details';
+
+  @override
+  String get settlementDetailTitle => 'Settlement Details';
+
+  @override
+  String get settlementDetailSubtitle =>
+      'Review each member\'s paid and owed amounts';
+
+  @override
+  String get settlementDetailEmpty => 'No expenses to settle yet';
+
+  @override
+  String get settlementTotalSpending => 'Total group spending';
+
+  @override
+  String get settlementPaid => 'Paid';
+
+  @override
+  String get settlementOwed => 'Owed';
+
+  @override
+  String get settlementNetReceive => 'Receives';
+
+  @override
+  String get settlementNetPay => 'Pays';
+
+  @override
+  String get settlementNetEven => 'Settled';
 }

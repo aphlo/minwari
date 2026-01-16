@@ -27,7 +27,7 @@ test("buildMemberOrder appends participants not in group list", () => {
   assert.deepEqual(order, ["A", "B", "C", "D", "E"]);
 });
 
-test("calculateExpenseShares assigns rounding difference to payer", () => {
+test("calculateExpenseShares assigns rounding difference to non-payers", () => {
   const expense = createExpense({
     amount: 101,
     paidBy: "A",
@@ -36,10 +36,12 @@ test("calculateExpenseShares assigns rounding difference to payer", () => {
 
   const shares = calculateExpenseShares(expense, ["A", "B", "C"], 0);
 
+  // 101 / 3 = 33 remainder 2
+  // Payer A gets 33, non-payers B and C each get 33 + 1 = 34
   assert.deepEqual(shares, [
-    { member: "A", shareMinor: 35 },
-    { member: "B", shareMinor: 33 },
-    { member: "C", shareMinor: 33 },
+    { member: "A", shareMinor: 33 },
+    { member: "B", shareMinor: 34 },
+    { member: "C", shareMinor: 34 },
   ]);
 });
 

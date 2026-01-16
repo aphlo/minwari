@@ -169,4 +169,76 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get currencyTWD => '台湾ドル (TWD)';
+
+  @override
+  String get editExpense => '立て替えを編集';
+
+  @override
+  String get expenseAmount => '金額';
+
+  @override
+  String get expenseAmountRequired => '金額を入力してください';
+
+  @override
+  String get expenseAmountInvalid => '有効な金額を入力してください';
+
+  @override
+  String get expenseDescription => '内容';
+
+  @override
+  String get expenseDescriptionHint => '例：夕食代';
+
+  @override
+  String get expenseDescriptionRequired => '内容を入力してください';
+
+  @override
+  String get expensePaidBy => '支払った人';
+
+  @override
+  String get expensePaidByRequired => '支払った人を選択してください';
+
+  @override
+  String get expenseSplitWith => '割り勘メンバー';
+
+  @override
+  String get expenseSplitWithRequired => '割り勘メンバーを選択してください';
+
+  @override
+  String get expenseSplitWithHint => '費用を分担するメンバーを選択してください';
+
+  @override
+  String get expenseCreateError => '立て替えの追加に失敗しました';
+
+  @override
+  String get expenseUpdateError => '立て替えの更新に失敗しました';
+
+  @override
+  String get settlementViewDetail => '精算の詳細を見る';
+
+  @override
+  String get settlementDetailTitle => '精算の詳細';
+
+  @override
+  String get settlementDetailSubtitle => '各メンバーの支払い額と負担額を確認';
+
+  @override
+  String get settlementDetailEmpty => 'まだ精算する支出がありません';
+
+  @override
+  String get settlementTotalSpending => 'グループの合計支出';
+
+  @override
+  String get settlementPaid => '支払い額';
+
+  @override
+  String get settlementOwed => '負担額';
+
+  @override
+  String get settlementNetReceive => '受け取り';
+
+  @override
+  String get settlementNetPay => '支払い';
+
+  @override
+  String get settlementNetEven => '精算済み';
 }

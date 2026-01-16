@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:minwari/lib/settlement_calculator.dart';
+import 'package:minwari/models/expense.dart';
 import 'package:minwari/models/group.dart';
+import 'package:minwari/repositories/expense_repository.dart';
 import 'package:minwari/repositories/group_repository.dart';
+import 'package:minwari/screens/expense_form_screen.dart';
 import 'package:minwari/screens/group_form_screen.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/expense_list.dart';
@@ -19,8 +23,11 @@ class GroupDetailScreen extends StatefulWidget {
 }
 
 class _GroupDetailScreenState extends State<GroupDetailScreen> {
-  final GroupRepository _repository = GroupRepository();
+  final GroupRepository _groupRepository = GroupRepository();
+  final ExpenseRepository _expenseRepository = ExpenseRepository();
   Group? _group;
+  List<Expense> _expenses = [];
+  List<Settlement> _settlements = [];
   bool _isLoading = true;
   String? _error;
 
@@ -37,10 +44,24 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
     });
 
     try {
-      final group = await _repository.getGroup(widget.groupId);
+      final group = await _groupRepository.getGroup(widget.groupId);
       if (group != null) {
+        // Load expenses
+        final expenses = await _expenseRepository.getExpenses(widget.groupId);
+
+        // Calculate settlements
+        final expensesForSettlement =
+            expenses.map((e) => e.toExpenseForSettlement()).toList();
+        final settlements = calculateSettlements(
+          expensesForSettlement,
+          group.members,
+          group.currency,
+        );
+
         setState(() {
           _group = group;
+          _expenses = expenses;
+          _settlements = settlements;
           _isLoading = false;
         });
       } else {
@@ -138,46 +159,68 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
       ),
       body: RefreshIndicator(
         onRefresh: _loadData,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+        child: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Group summary card with edit button
-              GroupInfoCard(
-                group: group,
-                onEdit: () => _navigateToEditGroup(group),
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.all(16),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  // Group summary card with edit button
+                  GroupInfoCard(
+                    group: group,
+                    onEdit: () => _navigateToEditGroup(group),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // No members warning
+                  if (!hasMembers) ...[
+                    _buildNoMembersWarning(context),
+                    const SizedBox(height: 16),
+                  ],
+
+                  // Add expense button
+                  _buildAddExpenseButton(context, hasMembers),
+                  const SizedBox(height: 24),
+
+                  // Records section
+                  Row(
+                    children: [
+                      Icon(
+                        CupertinoIcons.doc_text,
+                        size: 20,
+                        color: context.primaryColor,
+                      ),
+                      const SizedBox(width: 8),
+                      LargeSectionHeader(title: context.l10n.records),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  ExpenseList(
+                    expenses: _expenses,
+                    currency: group.currency,
+                    groupId: group.id,
+                    members: group.members,
+                    onExpenseUpdated: _loadData,
+                  ),
+                  const SizedBox(height: 24),
+
+                  // Settlement section
+                  SettlementList(
+                    settlements: _settlements,
+                    currency: group.currency,
+                    hasExpenses: _expenses.isNotEmpty,
+                    groupName: group.name,
+                    expenses: _expenses,
+                    members: group.members,
+                  ),
+
+                  // Bottom padding for safe area
+                  SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
+                ]),
               ),
-              const SizedBox(height: 16),
-
-              // No members warning
-              if (!hasMembers) ...[
-                _buildNoMembersWarning(context),
-                const SizedBox(height: 16),
-              ],
-
-              // Add expense button
-              _buildAddExpenseButton(context, hasMembers),
-              const SizedBox(height: 24),
-
-              // Records section
-              LargeSectionHeader(title: context.l10n.records),
-              const SizedBox(height: 12),
-              ExpenseList(
-                expenses: const [], // TODO: Load expenses
-                currency: group.currency,
-              ),
-              const SizedBox(height: 24),
-
-              // Settlement section
-              SettlementList(
-                settlements: const [], // TODO: Calculate settlements
-                currency: group.currency,
-                hasExpenses: false, // TODO: Check if has expenses
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -226,15 +269,32 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
     );
   }
 
+  Future<void> _navigateToAddExpense() async {
+    final group = _group;
+    if (group == null) return;
+
+    final result = await Navigator.of(context).push<bool>(
+      MaterialPageRoute(
+        builder: (context) => ExpenseFormScreen(
+          groupId: group.id,
+          members: group.members,
+          currency: group.currency,
+        ),
+        fullscreenDialog: true,
+      ),
+    );
+
+    // Reload data if an expense was created
+    if (result == true) {
+      _loadData();
+    }
+  }
+
   Widget _buildAddExpenseButton(BuildContext context, bool enabled) {
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton.icon(
-        onPressed: enabled
-            ? () {
-                // TODO: Navigate to add expense screen
-              }
-            : null,
+        onPressed: enabled ? _navigateToAddExpense : null,
         icon: const Icon(CupertinoIcons.add),
         label: Text(context.l10n.addExpense),
         style: OutlinedButton.styleFrom(

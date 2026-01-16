@@ -92,8 +92,19 @@ List<({String member, int shareMinor})> calculateExpenseShares(
       : [...participants];
 
   final shares = List<int>.filled(orderedParticipants.length, perPerson);
-  // Add remainder to first person (payer)
-  shares[0] += amountMinor - perPerson * count;
+
+  // Distribute remainder to non-payers (from the end) so payer gets more back
+  final remainder = amountMinor - perPerson * count;
+  for (int i = 0; i < remainder; i++) {
+    final targetIndex = shares.length - 1 - i;
+    if (targetIndex > 0) {
+      // Assign to non-payer participants
+      shares[targetIndex] += 1;
+    } else {
+      // If only payer is participating, assign to payer
+      shares[0] += 1;
+    }
+  }
 
   return [
     for (int i = 0; i < orderedParticipants.length; i++)
@@ -192,4 +203,72 @@ class _MemberBalance {
   int balance;
 
   _MemberBalance(this.name, this.balance);
+}
+
+/// Represents a member's balance (paid, owed, net)
+class MemberBalance {
+  final String name;
+  final double paid;
+  final double owed;
+  final double net;
+
+  const MemberBalance({
+    required this.name,
+    required this.paid,
+    required this.owed,
+    required this.net,
+  });
+
+  @override
+  String toString() =>
+      'MemberBalance(name: $name, paid: $paid, owed: $owed, net: $net)';
+}
+
+/// Calculate each member's paid and owed balances
+List<MemberBalance> calculateMemberBalances(
+  List<ExpenseForSettlement> expenses,
+  List<String> members,
+  String currency,
+) {
+  final memberOrder = buildMemberOrder(members, expenses);
+  final fractionDigits = getCurrencyFractionDigits(currency);
+  final balances = <String, ({int paid, int owed})>{};
+
+  // Initialize balances
+  for (final member in memberOrder) {
+    balances[member] = (paid: 0, owed: 0);
+  }
+
+  // Calculate paid and owed for each expense
+  for (final expense in expenses) {
+    final amountMinor = toMinorUnits(expense.amount, fractionDigits);
+
+    // Add to payer's paid amount
+    final payerBalance = balances[expense.paidBy] ?? (paid: 0, owed: 0);
+    balances[expense.paidBy] = (
+      paid: payerBalance.paid + amountMinor,
+      owed: payerBalance.owed,
+    );
+
+    // Add shares to each participant's owed amount
+    final shares = calculateExpenseShares(expense, memberOrder, fractionDigits);
+    for (final share in shares) {
+      final memberBalance = balances[share.member] ?? (paid: 0, owed: 0);
+      balances[share.member] = (
+        paid: memberBalance.paid,
+        owed: memberBalance.owed + share.shareMinor,
+      );
+    }
+  }
+
+  // Convert to MemberBalance list
+  return memberOrder.map((member) {
+    final balance = balances[member] ?? (paid: 0, owed: 0);
+    return MemberBalance(
+      name: member,
+      paid: fromMinorUnits(balance.paid, fractionDigits),
+      owed: fromMinorUnits(balance.owed, fractionDigits),
+      net: fromMinorUnits(balance.paid - balance.owed, fractionDigits),
+    );
+  }).toList();
 }
