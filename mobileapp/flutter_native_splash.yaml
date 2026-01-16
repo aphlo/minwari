@@ -1,6 +1,6 @@
 flutter_native_splash:
-  color: "#F6F9F4"
-  image: "../assets/oursplit_icon.png"
+  color: "#FFFFFF"
+  image: "../assets/oursplit_icon_transparent.png"
   android_12:
-    image: "../assets/oursplit_icon.png"
-    color: "#F6F9F4"
+    image: "../assets/oursplit_icon_transparent.png"
+    color: "#FFFFFF"
