@@ -40,5 +40,18 @@
   "editGroup": "그룹 편집",
   "save": "저장",
   "search": "검색",
-  "addMember": "멤버 추가"
+  "addMember": "멤버 추가",
+  "addExpense": "지출 추가",
+  "records": "기록",
+  "noRecordsYet": "아직 기록이 없습니다",
+  "noRecordsSubtitle": "\"지출 추가\"에서 기록을 추가하세요.",
+  "settlementNoExpenses": "지출을 기록하면 정산 내용이 표시됩니다",
+  "noMembersWarning": "멤버 없음",
+  "noMembersWarningDescription": "\"그룹 편집\"에서 멤버를 추가해주세요.",
+  "currencyJPY": "일본 엔 (JPY)",
+  "currencyUSD": "미국 달러 (USD)",
+  "currencyEUR": "유로 (EUR)",
+  "currencyCNY": "중국 위안 (CNY)",
+  "currencyKRW": "한국 원 (KRW)",
+  "currencyTWD": "대만 달러 (TWD)"
 }

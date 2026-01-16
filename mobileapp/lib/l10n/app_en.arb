@@ -40,5 +40,18 @@
   "editGroup": "Edit Group",
   "save": "Save",
   "search": "Search",
-  "addMember": "Add member"
+  "addMember": "Add member",
+  "addExpense": "Add expense",
+  "records": "Records",
+  "noRecordsYet": "No records yet",
+  "noRecordsSubtitle": "Add one from \"Add expense\".",
+  "settlementNoExpenses": "Settlement details will appear once expenses are added",
+  "noMembersWarning": "No members",
+  "noMembersWarningDescription": "Please add members from \"Edit group\".",
+  "currencyJPY": "Japanese Yen (JPY)",
+  "currencyUSD": "US Dollar (USD)",
+  "currencyEUR": "Euro (EUR)",
+  "currencyCNY": "Chinese Yuan (CNY)",
+  "currencyKRW": "Korean Won (KRW)",
+  "currencyTWD": "New Taiwan Dollar (TWD)"
 }

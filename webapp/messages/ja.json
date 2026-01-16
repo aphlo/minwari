@@ -314,6 +314,7 @@
       "errors": {
         "groupNameRequired": "グループ名を入力してください",
         "memberNameRequired": "メンバー名を入力してください",
+        "memberDuplicate": "同じ名前のメンバーがいます",
         "submitFailed": "グループの作成に失敗しました。もう一度お試しください。"
       },
       "actions": {
@@ -331,6 +332,7 @@
       "errors": {
         "groupNameRequired": "グループ名を入力してください",
         "memberNameRequired": "メンバー名を入力してください",
+        "memberDuplicate": "同じ名前のメンバーがいます",
         "submitFailed": "グループの更新に失敗しました。もう一度お試しください。"
       },
       "actions": {

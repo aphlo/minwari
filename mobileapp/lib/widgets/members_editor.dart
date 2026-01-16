@@ -186,24 +186,21 @@ class _MembersEditorState extends State<MembersEditor> {
           ),
         ),
         const SizedBox(width: 8),
-        // Show delete button for existing members or non-empty new fields
-        if (isExistingMember || _controllers[index].text.isNotEmpty)
-          IconButton(
-            icon: Icon(
-              CupertinoIcons.xmark,
-              color: context.textSecondary,
-              size: 20,
-            ),
-            onPressed: () {
-              if (isExistingMember) {
-                widget.onMemberRemove(index);
-              } else {
-                _controllers[index].clear();
-              }
-            },
-          )
-        else
-          const SizedBox(width: 48), // Placeholder for alignment
+        // Always show delete button
+        IconButton(
+          icon: Icon(
+            CupertinoIcons.xmark,
+            color: context.textSecondary,
+            size: 20,
+          ),
+          onPressed: () {
+            if (isExistingMember) {
+              widget.onMemberRemove(index);
+            } else {
+              _controllers[index].clear();
+            }
+          },
+        )
       ],
     );
   }

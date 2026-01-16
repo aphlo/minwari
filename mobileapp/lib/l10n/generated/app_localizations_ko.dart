@@ -130,4 +130,43 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get addMember => '멤버 추가';
+
+  @override
+  String get addExpense => '지출 추가';
+
+  @override
+  String get records => '기록';
+
+  @override
+  String get noRecordsYet => '아직 기록이 없습니다';
+
+  @override
+  String get noRecordsSubtitle => '\"지출 추가\"에서 기록을 추가하세요.';
+
+  @override
+  String get settlementNoExpenses => '지출을 기록하면 정산 내용이 표시됩니다';
+
+  @override
+  String get noMembersWarning => '멤버 없음';
+
+  @override
+  String get noMembersWarningDescription => '\"그룹 편집\"에서 멤버를 추가해주세요.';
+
+  @override
+  String get currencyJPY => '일본 엔 (JPY)';
+
+  @override
+  String get currencyUSD => '미국 달러 (USD)';
+
+  @override
+  String get currencyEUR => '유로 (EUR)';
+
+  @override
+  String get currencyCNY => '중국 위안 (CNY)';
+
+  @override
+  String get currencyKRW => '한국 원 (KRW)';
+
+  @override
+  String get currencyTWD => '대만 달러 (TWD)';
 }

@@ -73,6 +73,15 @@ export function GroupForm({
       newErrors.groupName = t("errors.groupNameRequired");
     }
 
+    // Filter out empty member names and check for duplicates
+    const cleanedMembers = members
+      .map((member) => member.name.trim())
+      .filter((name) => name !== "");
+    const uniqueMembers = new Set(cleanedMembers);
+    if (uniqueMembers.size !== cleanedMembers.length) {
+      newErrors.members = t("errors.memberDuplicate");
+    }
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -90,9 +99,7 @@ export function GroupForm({
         },
         body: JSON.stringify({
           groupName,
-          members: members
-            .map((member) => member.name.trim())
-            .filter((name) => name !== ""),
+          members: cleanedMembers,
           currency,
         }),
       });

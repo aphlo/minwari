@@ -40,5 +40,18 @@
   "editGroup": "Editar grupo",
   "save": "Guardar",
   "search": "Buscar",
-  "addMember": "Añadir miembro"
+  "addMember": "Añadir miembro",
+  "addExpense": "Añadir gasto",
+  "records": "Registros",
+  "noRecordsYet": "Aún no hay registros",
+  "noRecordsSubtitle": "Añade uno desde \"Añadir gasto\".",
+  "settlementNoExpenses": "Los detalles de liquidación aparecerán cuando se añadan gastos",
+  "noMembersWarning": "Sin miembros",
+  "noMembersWarningDescription": "Por favor añade miembros desde \"Editar grupo\".",
+  "currencyJPY": "Yen japones (JPY)",
+  "currencyUSD": "Dolar estadounidense (USD)",
+  "currencyEUR": "Euro (EUR)",
+  "currencyCNY": "Yuan chino (CNY)",
+  "currencyKRW": "Won coreano (KRW)",
+  "currencyTWD": "Nuevo dolar taiwanes (TWD)"
 }

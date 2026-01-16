@@ -131,4 +131,45 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addMember => 'Add member';
+
+  @override
+  String get addExpense => 'Add expense';
+
+  @override
+  String get records => 'Records';
+
+  @override
+  String get noRecordsYet => 'No records yet';
+
+  @override
+  String get noRecordsSubtitle => 'Add one from \"Add expense\".';
+
+  @override
+  String get settlementNoExpenses =>
+      'Settlement details will appear once expenses are added';
+
+  @override
+  String get noMembersWarning => 'No members';
+
+  @override
+  String get noMembersWarningDescription =>
+      'Please add members from \"Edit group\".';
+
+  @override
+  String get currencyJPY => 'Japanese Yen (JPY)';
+
+  @override
+  String get currencyUSD => 'US Dollar (USD)';
+
+  @override
+  String get currencyEUR => 'Euro (EUR)';
+
+  @override
+  String get currencyCNY => 'Chinese Yuan (CNY)';
+
+  @override
+  String get currencyKRW => 'Korean Won (KRW)';
+
+  @override
+  String get currencyTWD => 'New Taiwan Dollar (TWD)';
 }

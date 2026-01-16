@@ -354,6 +354,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add member'**
   String get addMember;
+
+  /// No description provided for @addExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Add expense'**
+  String get addExpense;
+
+  /// No description provided for @records.
+  ///
+  /// In en, this message translates to:
+  /// **'Records'**
+  String get records;
+
+  /// No description provided for @noRecordsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No records yet'**
+  String get noRecordsYet;
+
+  /// No description provided for @noRecordsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add one from \"Add expense\".'**
+  String get noRecordsSubtitle;
+
+  /// No description provided for @settlementNoExpenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Settlement details will appear once expenses are added'**
+  String get settlementNoExpenses;
+
+  /// No description provided for @noMembersWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'No members'**
+  String get noMembersWarning;
+
+  /// No description provided for @noMembersWarningDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please add members from \"Edit group\".'**
+  String get noMembersWarningDescription;
+
+  /// No description provided for @currencyJPY.
+  ///
+  /// In en, this message translates to:
+  /// **'Japanese Yen (JPY)'**
+  String get currencyJPY;
+
+  /// No description provided for @currencyUSD.
+  ///
+  /// In en, this message translates to:
+  /// **'US Dollar (USD)'**
+  String get currencyUSD;
+
+  /// No description provided for @currencyEUR.
+  ///
+  /// In en, this message translates to:
+  /// **'Euro (EUR)'**
+  String get currencyEUR;
+
+  /// No description provided for @currencyCNY.
+  ///
+  /// In en, this message translates to:
+  /// **'Chinese Yuan (CNY)'**
+  String get currencyCNY;
+
+  /// No description provided for @currencyKRW.
+  ///
+  /// In en, this message translates to:
+  /// **'Korean Won (KRW)'**
+  String get currencyKRW;
+
+  /// No description provided for @currencyTWD.
+  ///
+  /// In en, this message translates to:
+  /// **'New Taiwan Dollar (TWD)'**
+  String get currencyTWD;
 }
 
 class _AppLocalizationsDelegate

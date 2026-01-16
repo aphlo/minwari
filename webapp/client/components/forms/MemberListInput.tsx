@@ -76,6 +76,10 @@ export function MemberListInput({
         ))}
       </div>
 
+      {errors.members && (
+        <p className="text-sm text-danger">{errors.members}</p>
+      )}
+
       <button
         type="button"
         onClick={onAdd}

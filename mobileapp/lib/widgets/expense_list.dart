@@ -1,9 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:minwari/l10n/generated/app_localizations.dart';
 import 'package:minwari/lib/currency.dart';
 import 'package:minwari/models/expense.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
-import 'package:minwari/widgets/section_header.dart';
 
 /// Expense list widget showing group expenses
 class ExpenseList extends StatelessWidget {
@@ -20,38 +20,55 @@ class ExpenseList extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        LargeSectionHeader(title: l10n?.expenses ?? 'Expenses'),
-        const SizedBox(height: 12),
-        Container(
-          decoration: BoxDecoration(
-            color: context.cardBackground,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.04),
-                blurRadius: 12,
-                offset: const Offset(0, 4),
-              ),
-            ],
+    return Container(
+      decoration: BoxDecoration(
+        color: context.cardBackground,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
-          child: expenses.isEmpty
-              ? _buildEmptyState(l10n, context.textSecondary)
-              : _buildExpensesList(l10n, context),
-        ),
-      ],
+        ],
+      ),
+      child: expenses.isEmpty
+          ? _buildEmptyState(context)
+          : _buildExpensesList(l10n, context),
     );
   }
 
-  Widget _buildEmptyState(AppLocalizations? l10n, Color textSecondary) {
+  Widget _buildEmptyState(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
       child: Center(
-        child: Text(
-          l10n?.noExpenses ?? 'No expenses yet',
-          style: TextStyle(fontSize: 15, color: textSecondary),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              CupertinoIcons.doc_on_clipboard,
+              size: 48,
+              color: context.textSecondary.withValues(alpha: 0.5),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              context.l10n.noRecordsYet,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: context.textSecondary,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              context.l10n.noRecordsSubtitle,
+              style: TextStyle(
+                fontSize: 14,
+                color: context.textSecondary.withValues(alpha: 0.7),
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

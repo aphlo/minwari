@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:minwari/lib/currency.dart';
+
 import 'package:minwari/models/group.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/extensions/currency_extension.dart';
 
 /// Group info card showing members and currency
 class GroupInfoCard extends StatelessWidget {
   final Group group;
+  final VoidCallback? onEdit;
 
-  const GroupInfoCard({super.key, required this.group});
+  const GroupInfoCard({super.key, required this.group, this.onEdit});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,30 @@ class GroupInfoCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Title
-          Text(
-            group.name,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            ),
+          // Title with edit button
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(
+                  group.name,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: context.textPrimary,
+                  ),
+                ),
+              ),
+              if (onEdit != null)
+                GestureDetector(
+                  onTap: onEdit,
+                  child: Icon(
+                    CupertinoIcons.square_pencil,
+                    size: 22,
+                    color: context.textSecondary,
+                  ),
+                ),
+            ],
           ),
           const SizedBox(height: 16),
 
@@ -89,10 +108,11 @@ class GroupInfoCard extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '${getCurrencySymbol(group.currency)} ${group.currency}',
-                style: const TextStyle(
+                context.getLocalizedCurrencyName(group.currency),
+                style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
+                  color: context.textPrimary,
                 ),
               ),
             ],

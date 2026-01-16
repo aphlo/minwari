@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:minwari/lib/currency.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/extensions/currency_extension.dart';
 
 /// Currency selector widget for group forms
 /// Used in both group creation and editing
@@ -37,6 +38,8 @@ class CurrencySelector extends StatelessWidget {
       orElse: () => supportedCurrencies.first,
     );
 
+    final localizedName = context.getLocalizedCurrencyName(selected.code);
+
     return GestureDetector(
       onTap: () => _showCurrencyPicker(context),
       child: Container(
@@ -55,11 +58,13 @@ class CurrencySelector extends StatelessWidget {
             const SizedBox(width: 12),
             Expanded(
               child: Text(
-                '${selected.symbol} ${selected.code}',
+                localizedName,
                 style: TextStyle(
                   fontSize: 17,
                   color: context.textPrimary,
                 ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             Icon(
@@ -109,11 +114,13 @@ class _CurrencyPickerSheetState extends State<_CurrencyPickerSheet> {
       if (query.isEmpty) {
         _filteredCurrencies = supportedCurrencies;
       } else {
-        _filteredCurrencies = supportedCurrencies
-            .where((c) =>
-                c.code.toLowerCase().contains(query) ||
-                c.symbol.contains(query))
-            .toList();
+        _filteredCurrencies = supportedCurrencies.where((c) {
+          final localizedName =
+              context.getLocalizedCurrencyName(c.code).toLowerCase();
+          return c.code.toLowerCase().contains(query) ||
+              c.symbol.contains(query) ||
+              localizedName.contains(query);
+        }).toList();
       }
     });
   }
@@ -203,12 +210,14 @@ class _CurrencyPickerSheetState extends State<_CurrencyPickerSheet> {
               itemBuilder: (context, index) {
                 final currency = _filteredCurrencies[index];
                 final isSelected = widget.selectedCurrency == currency.code;
+                final localizedName =
+                    context.getLocalizedCurrencyName(currency.code);
 
                 return ListTile(
                   contentPadding: EdgeInsets.zero,
                   onTap: () => widget.onCurrencyChanged(currency.code),
                   title: Text(
-                    '${currency.symbol} ${currency.code}',
+                    localizedName,
                     style: TextStyle(
                       fontSize: 17,
                       color: context.textPrimary,

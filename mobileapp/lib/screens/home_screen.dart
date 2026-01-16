@@ -50,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => GroupDetailScreen(groupId: group.id),
-        fullscreenDialog: true,
       ),
     );
     // Reload groups when returning

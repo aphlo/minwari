@@ -314,6 +314,7 @@
       "errors": {
         "groupNameRequired": "그룹 이름을 입력하세요",
         "memberNameRequired": "멤버 이름을 입력하세요",
+        "memberDuplicate": "멤버 이름은 중복될 수 없습니다",
         "submitFailed": "그룹 생성에 실패했습니다. 다시 시도해주세요."
       },
       "actions": {
@@ -331,6 +332,7 @@
       "errors": {
         "groupNameRequired": "그룹 이름을 입력하세요",
         "memberNameRequired": "멤버 이름을 입력하세요",
+        "memberDuplicate": "멤버 이름은 중복될 수 없습니다",
         "submitFailed": "그룹 업데이트에 실패했습니다. 다시 시도해주세요."
       },
       "actions": {
