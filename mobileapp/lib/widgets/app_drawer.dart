@@ -17,6 +17,9 @@ class AppDrawer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final packageInfoAsync = ref.watch(packageInfoProvider);
 
+    final locale = Localizations.localeOf(context);
+    final lang = locale.languageCode == 'ja' ? 'ja' : 'en';
+
     return Drawer(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       backgroundColor: context.scaffoldBackgroundColor,
@@ -37,9 +40,9 @@ class AppDrawer extends ConsumerWidget {
               title: context.l10n.termsOfService,
               onTap: () => _navigateTo(
                 context,
-                const WebViewScreen(
-                  url: 'https://example.com/terms', // Replace with actual URL
-                  title: 'Terms of Service',
+                WebViewScreen(
+                  url: 'https://oursplit.us/$lang/terms',
+                  title: context.l10n.termsOfService,
                 ),
               ),
             ),
@@ -50,9 +53,9 @@ class AppDrawer extends ConsumerWidget {
               title: context.l10n.privacyPolicy,
               onTap: () => _navigateTo(
                 context,
-                const WebViewScreen(
-                  url: 'https://example.com/privacy', // Replace with actual URL
-                  title: 'Privacy Policy',
+                WebViewScreen(
+                  url: 'https://oursplit.us/$lang/privacy',
+                  title: context.l10n.privacyPolicy,
                 ),
               ),
             ),
