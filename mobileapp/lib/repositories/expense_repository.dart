@@ -47,6 +47,34 @@ class ExpenseRepository {
     return docRef.id;
   }
 
+  /// Update an expense
+  Future<void> updateExpense(
+    String groupId,
+    String expenseId, {
+    required String description,
+    required double amount,
+    required String paidBy,
+    required List<String> splitWith,
+  }) async {
+    await _firestore
+        .collection('groups')
+        .doc(groupId)
+        .collection('expenses')
+        .doc(expenseId)
+        .update({
+      'description': description,
+      'amount': amount,
+      'paidBy': paidBy,
+      'splitWith': splitWith,
+      'updatedAt': FieldValue.serverTimestamp(),
+    });
+
+    // Update group's updatedAt
+    await _firestore.collection('groups').doc(groupId).update({
+      'updatedAt': FieldValue.serverTimestamp(),
+    });
+  }
+
   /// Delete an expense
   Future<void> deleteExpense(String groupId, String expenseId) async {
     await _firestore

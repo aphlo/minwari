@@ -169,4 +169,46 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get currencyTWD => '台湾ドル (TWD)';
+
+  @override
+  String get editExpense => '立て替えを編集';
+
+  @override
+  String get expenseAmount => '金額';
+
+  @override
+  String get expenseAmountRequired => '金額を入力してください';
+
+  @override
+  String get expenseAmountInvalid => '有効な金額を入力してください';
+
+  @override
+  String get expenseDescription => '内容';
+
+  @override
+  String get expenseDescriptionHint => '例：夕食代';
+
+  @override
+  String get expenseDescriptionRequired => '内容を入力してください';
+
+  @override
+  String get expensePaidBy => '支払った人';
+
+  @override
+  String get expensePaidByRequired => '支払った人を選択してください';
+
+  @override
+  String get expenseSplitWith => '割り勘メンバー';
+
+  @override
+  String get expenseSplitWithRequired => '割り勘メンバーを選択してください';
+
+  @override
+  String get expenseSplitWithHint => '費用を分担するメンバーを選択してください';
+
+  @override
+  String get expenseCreateError => '立て替えの追加に失敗しました';
+
+  @override
+  String get expenseUpdateError => '立て替えの更新に失敗しました';
 }

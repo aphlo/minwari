@@ -53,5 +53,19 @@
   "currencyEUR": "유로 (EUR)",
   "currencyCNY": "중국 위안 (CNY)",
   "currencyKRW": "한국 원 (KRW)",
-  "currencyTWD": "대만 달러 (TWD)"
+  "currencyTWD": "대만 달러 (TWD)",
+  "editExpense": "지출 편집",
+  "expenseAmount": "금액",
+  "expenseAmountRequired": "금액을 입력하세요",
+  "expenseAmountInvalid": "유효한 금액을 입력하세요",
+  "expenseDescription": "설명",
+  "expenseDescriptionHint": "예: 저녁 식사",
+  "expenseDescriptionRequired": "설명을 입력하세요",
+  "expensePaidBy": "결제자",
+  "expensePaidByRequired": "결제자를 선택하세요",
+  "expenseSplitWith": "분담 멤버",
+  "expenseSplitWithRequired": "분담 멤버를 선택하세요",
+  "expenseSplitWithHint": "이 비용을 분담할 멤버를 선택하세요",
+  "expenseCreateError": "지출 추가 실패",
+  "expenseUpdateError": "지출 업데이트 실패"
 }

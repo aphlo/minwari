@@ -172,4 +172,48 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get currencyTWD => 'Nuevo dolar taiwanes (TWD)';
+
+  @override
+  String get editExpense => 'Editar gasto';
+
+  @override
+  String get expenseAmount => 'Cantidad';
+
+  @override
+  String get expenseAmountRequired => 'Por favor ingresa una cantidad';
+
+  @override
+  String get expenseAmountInvalid => 'Por favor ingresa una cantidad válida';
+
+  @override
+  String get expenseDescription => 'Descripción';
+
+  @override
+  String get expenseDescriptionHint => 'ej., Cena';
+
+  @override
+  String get expenseDescriptionRequired => 'Por favor ingresa una descripción';
+
+  @override
+  String get expensePaidBy => 'Pagado por';
+
+  @override
+  String get expensePaidByRequired => 'Por favor selecciona quién pagó';
+
+  @override
+  String get expenseSplitWith => 'Dividir con';
+
+  @override
+  String get expenseSplitWithRequired =>
+      'Por favor selecciona miembros para dividir';
+
+  @override
+  String get expenseSplitWithHint =>
+      'Selecciona los miembros que compartirán este gasto';
+
+  @override
+  String get expenseCreateError => 'Error al añadir gasto';
+
+  @override
+  String get expenseUpdateError => 'Error al actualizar gasto';
 }

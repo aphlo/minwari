@@ -172,6 +172,50 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get currencyTWD => 'Novo dolar taiwanes (TWD)';
+
+  @override
+  String get editExpense => 'Editar despesa';
+
+  @override
+  String get expenseAmount => 'Valor';
+
+  @override
+  String get expenseAmountRequired => 'Por favor insira um valor';
+
+  @override
+  String get expenseAmountInvalid => 'Por favor insira um valor válido';
+
+  @override
+  String get expenseDescription => 'Descrição';
+
+  @override
+  String get expenseDescriptionHint => 'ex., Jantar';
+
+  @override
+  String get expenseDescriptionRequired => 'Por favor insira uma descrição';
+
+  @override
+  String get expensePaidBy => 'Pago por';
+
+  @override
+  String get expensePaidByRequired => 'Por favor selecione quem pagou';
+
+  @override
+  String get expenseSplitWith => 'Dividir com';
+
+  @override
+  String get expenseSplitWithRequired =>
+      'Por favor selecione membros para dividir';
+
+  @override
+  String get expenseSplitWithHint =>
+      'Selecione os membros que compartilharão esta despesa';
+
+  @override
+  String get expenseCreateError => 'Falha ao adicionar despesa';
+
+  @override
+  String get expenseUpdateError => 'Falha ao atualizar despesa';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -342,4 +386,48 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get currencyTWD => 'Novo dolar taiwanes (TWD)';
+
+  @override
+  String get editExpense => 'Editar despesa';
+
+  @override
+  String get expenseAmount => 'Valor';
+
+  @override
+  String get expenseAmountRequired => 'Por favor insira um valor';
+
+  @override
+  String get expenseAmountInvalid => 'Por favor insira um valor válido';
+
+  @override
+  String get expenseDescription => 'Descrição';
+
+  @override
+  String get expenseDescriptionHint => 'ex., Jantar';
+
+  @override
+  String get expenseDescriptionRequired => 'Por favor insira uma descrição';
+
+  @override
+  String get expensePaidBy => 'Pago por';
+
+  @override
+  String get expensePaidByRequired => 'Por favor selecione quem pagou';
+
+  @override
+  String get expenseSplitWith => 'Dividir com';
+
+  @override
+  String get expenseSplitWithRequired =>
+      'Por favor selecione membros para dividir';
+
+  @override
+  String get expenseSplitWithHint =>
+      'Selecione os membros que compartilharão esta despesa';
+
+  @override
+  String get expenseCreateError => 'Falha ao adicionar despesa';
+
+  @override
+  String get expenseUpdateError => 'Falha ao atualizar despesa';
 }

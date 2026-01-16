@@ -53,5 +53,19 @@
   "currencyEUR": "歐元 (EUR)",
   "currencyCNY": "人民幣 (CNY)",
   "currencyKRW": "韓元 (KRW)",
-  "currencyTWD": "新台幣 (TWD)"
+  "currencyTWD": "新台幣 (TWD)",
+  "editExpense": "編輯支出",
+  "expenseAmount": "金額",
+  "expenseAmountRequired": "請輸入金額",
+  "expenseAmountInvalid": "請輸入有效金額",
+  "expenseDescription": "描述",
+  "expenseDescriptionHint": "例如：晚餐",
+  "expenseDescriptionRequired": "請輸入描述",
+  "expensePaidBy": "支付者",
+  "expensePaidByRequired": "請選擇支付者",
+  "expenseSplitWith": "分攤成員",
+  "expenseSplitWithRequired": "請選擇分攤成員",
+  "expenseSplitWithHint": "選擇分擔此費用的成員",
+  "expenseCreateError": "新增支出失敗",
+  "expenseUpdateError": "更新支出失敗"
 }

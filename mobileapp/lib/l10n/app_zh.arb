@@ -53,5 +53,19 @@
   "currencyEUR": "欧元 (EUR)",
   "currencyCNY": "人民币 (CNY)",
   "currencyKRW": "韩元 (KRW)",
-  "currencyTWD": "新台币 (TWD)"
+  "currencyTWD": "新台币 (TWD)",
+  "editExpense": "编辑支出",
+  "expenseAmount": "金额",
+  "expenseAmountRequired": "请输入金额",
+  "expenseAmountInvalid": "请输入有效金额",
+  "expenseDescription": "描述",
+  "expenseDescriptionHint": "例如：晚餐",
+  "expenseDescriptionRequired": "请输入描述",
+  "expensePaidBy": "支付者",
+  "expensePaidByRequired": "请选择支付者",
+  "expenseSplitWith": "分摊成员",
+  "expenseSplitWithRequired": "请选择分摊成员",
+  "expenseSplitWithHint": "选择分担此费用的成员",
+  "expenseCreateError": "添加支出失败",
+  "expenseUpdateError": "更新支出失败"
 }

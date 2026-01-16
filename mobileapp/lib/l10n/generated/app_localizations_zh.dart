@@ -169,6 +169,48 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get currencyTWD => '新台币 (TWD)';
+
+  @override
+  String get editExpense => '编辑支出';
+
+  @override
+  String get expenseAmount => '金额';
+
+  @override
+  String get expenseAmountRequired => '请输入金额';
+
+  @override
+  String get expenseAmountInvalid => '请输入有效金额';
+
+  @override
+  String get expenseDescription => '描述';
+
+  @override
+  String get expenseDescriptionHint => '例如：晚餐';
+
+  @override
+  String get expenseDescriptionRequired => '请输入描述';
+
+  @override
+  String get expensePaidBy => '支付者';
+
+  @override
+  String get expensePaidByRequired => '请选择支付者';
+
+  @override
+  String get expenseSplitWith => '分摊成员';
+
+  @override
+  String get expenseSplitWithRequired => '请选择分摊成员';
+
+  @override
+  String get expenseSplitWithHint => '选择分担此费用的成员';
+
+  @override
+  String get expenseCreateError => '添加支出失败';
+
+  @override
+  String get expenseUpdateError => '更新支出失败';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -336,6 +378,48 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get currencyTWD => '新台币 (TWD)';
+
+  @override
+  String get editExpense => '编辑支出';
+
+  @override
+  String get expenseAmount => '金额';
+
+  @override
+  String get expenseAmountRequired => '请输入金额';
+
+  @override
+  String get expenseAmountInvalid => '请输入有效金额';
+
+  @override
+  String get expenseDescription => '描述';
+
+  @override
+  String get expenseDescriptionHint => '例如：晚餐';
+
+  @override
+  String get expenseDescriptionRequired => '请输入描述';
+
+  @override
+  String get expensePaidBy => '支付者';
+
+  @override
+  String get expensePaidByRequired => '请选择支付者';
+
+  @override
+  String get expenseSplitWith => '分摊成员';
+
+  @override
+  String get expenseSplitWithRequired => '请选择分摊成员';
+
+  @override
+  String get expenseSplitWithHint => '选择分担此费用的成员';
+
+  @override
+  String get expenseCreateError => '添加支出失败';
+
+  @override
+  String get expenseUpdateError => '更新支出失败';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -503,4 +587,46 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get currencyTWD => '新台幣 (TWD)';
+
+  @override
+  String get editExpense => '編輯支出';
+
+  @override
+  String get expenseAmount => '金額';
+
+  @override
+  String get expenseAmountRequired => '請輸入金額';
+
+  @override
+  String get expenseAmountInvalid => '請輸入有效金額';
+
+  @override
+  String get expenseDescription => '描述';
+
+  @override
+  String get expenseDescriptionHint => '例如：晚餐';
+
+  @override
+  String get expenseDescriptionRequired => '請輸入描述';
+
+  @override
+  String get expensePaidBy => '支付者';
+
+  @override
+  String get expensePaidByRequired => '請選擇支付者';
+
+  @override
+  String get expenseSplitWith => '分攤成員';
+
+  @override
+  String get expenseSplitWithRequired => '請選擇分攤成員';
+
+  @override
+  String get expenseSplitWithHint => '選擇分擔此費用的成員';
+
+  @override
+  String get expenseCreateError => '新增支出失敗';
+
+  @override
+  String get expenseUpdateError => '更新支出失敗';
 }

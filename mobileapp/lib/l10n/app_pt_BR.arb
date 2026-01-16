@@ -53,5 +53,19 @@
   "currencyEUR": "Euro (EUR)",
   "currencyCNY": "Yuan chines (CNY)",
   "currencyKRW": "Won coreano (KRW)",
-  "currencyTWD": "Novo dolar taiwanes (TWD)"
+  "currencyTWD": "Novo dolar taiwanes (TWD)",
+  "editExpense": "Editar despesa",
+  "expenseAmount": "Valor",
+  "expenseAmountRequired": "Por favor insira um valor",
+  "expenseAmountInvalid": "Por favor insira um valor válido",
+  "expenseDescription": "Descrição",
+  "expenseDescriptionHint": "ex., Jantar",
+  "expenseDescriptionRequired": "Por favor insira uma descrição",
+  "expensePaidBy": "Pago por",
+  "expensePaidByRequired": "Por favor selecione quem pagou",
+  "expenseSplitWith": "Dividir com",
+  "expenseSplitWithRequired": "Por favor selecione membros para dividir",
+  "expenseSplitWithHint": "Selecione os membros que compartilharão esta despesa",
+  "expenseCreateError": "Falha ao adicionar despesa",
+  "expenseUpdateError": "Falha ao atualizar despesa"
 }

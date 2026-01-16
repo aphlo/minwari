@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:minwari/lib/currency.dart';
+import 'package:minwari/lib/settlement_calculator.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/section_header.dart';
 
 class SettlementList extends StatelessWidget {
-  final List<dynamic> settlements; // map with from, to, amount
+  final List<Settlement> settlements;
   final String currency;
   final bool hasExpenses;
 
@@ -114,6 +116,9 @@ class SettlementList extends StatelessWidget {
     }
 
     // Has settlements to show
+    final symbol = getCurrencySymbol(currency);
+    final fractionDigits = getCurrencyFractionDigits(currency);
+
     return Container(
       decoration: BoxDecoration(
         color: context.cardBackground,
@@ -138,7 +143,7 @@ class SettlementList extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        settlement['from'] ?? '',
+                        settlement.from,
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w600,
@@ -154,7 +159,7 @@ class SettlementList extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        settlement['to'] ?? '',
+                        settlement.to,
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w600,
@@ -165,7 +170,7 @@ class SettlementList extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${settlement['amount']} $currency',
+                  '$symbol${settlement.amount.toStringAsFixed(fractionDigits)}',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,

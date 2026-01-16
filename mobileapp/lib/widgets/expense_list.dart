@@ -3,17 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:minwari/l10n/generated/app_localizations.dart';
 import 'package:minwari/lib/currency.dart';
 import 'package:minwari/models/expense.dart';
+import 'package:minwari/screens/expense_form_screen.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 
 /// Expense list widget showing group expenses
 class ExpenseList extends StatelessWidget {
   final List<Expense> expenses;
   final String currency;
+  final String? groupId;
+  final List<String>? members;
+  final VoidCallback? onExpenseUpdated;
 
   const ExpenseList({
     super.key,
     required this.expenses,
     required this.currency,
+    this.groupId,
+    this.members,
+    this.onExpenseUpdated,
   });
 
   @override
@@ -74,12 +81,36 @@ class ExpenseList extends StatelessWidget {
     );
   }
 
+  Future<void> _navigateToEdit(
+    BuildContext context,
+    Expense expense,
+  ) async {
+    if (groupId == null || members == null) return;
+
+    final result = await Navigator.of(context).push<bool>(
+      MaterialPageRoute(
+        builder: (context) => ExpenseFormScreen(
+          groupId: groupId!,
+          members: members!,
+          currency: currency,
+          expense: expense,
+        ),
+        fullscreenDialog: true,
+      ),
+    );
+
+    if (result == true) {
+      onExpenseUpdated?.call();
+    }
+  }
+
   Widget _buildExpensesList(
     AppLocalizations? l10n,
     BuildContext context,
   ) {
     final symbol = getCurrencySymbol(currency);
     final fractionDigits = getCurrencyFractionDigits(currency);
+    final canEdit = groupId != null && members != null;
 
     return Column(
       children: expenses.asMap().entries.map((entry) {
@@ -89,42 +120,56 @@ class ExpenseList extends StatelessWidget {
 
         return Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          expense.description.isEmpty
-                              ? context.l10n.noDescription
-                              : expense.description,
-                          style: const TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
+            InkWell(
+              onTap: canEdit ? () => _navigateToEdit(context, expense) : null,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            expense.description.isEmpty
+                                ? context.l10n.noDescription
+                                : expense.description,
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                              color: context.textPrimary,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          '${context.l10n.paidBy} ${expense.paidBy}',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: context.textSecondary,
+                          const SizedBox(height: 2),
+                          Text(
+                            '${context.l10n.paidBy} ${expense.paidBy}',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: context.textSecondary,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Text(
-                    '$symbol${expense.amount.toStringAsFixed(fractionDigits)}',
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
+                    Text(
+                      '$symbol${expense.amount.toStringAsFixed(fractionDigits)}',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        color: context.textPrimary,
+                      ),
                     ),
-                  ),
-                ],
+                    if (canEdit) ...[
+                      const SizedBox(width: 8),
+                      Icon(
+                        CupertinoIcons.chevron_right,
+                        size: 16,
+                        color: context.textSecondary.withValues(alpha: 0.5),
+                      ),
+                    ],
+                  ],
+                ),
               ),
             ),
             if (!isLast)
