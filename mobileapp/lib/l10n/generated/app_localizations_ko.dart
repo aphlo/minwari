@@ -243,32 +243,31 @@ class AppLocalizationsKo extends AppLocalizations {
   String get settlementNetEven => '정산 완료';
 
   @override
-  String get reviewEnjoyTitle => 'Are you enjoying OurSplit?';
+  String get reviewEnjoyTitle => 'OurSplit을 즐겁게 사용하고 계신가요?';
 
   @override
-  String get reviewYes => 'Yes';
+  String get reviewYes => '네';
 
   @override
-  String get reviewNo => 'No';
+  String get reviewNo => '아니요';
 
   @override
-  String get reviewFeedbackTitle => 'Would you mind giving us some feedback?';
+  String get reviewFeedbackTitle => '피드백을 주시겠어요?';
 
   @override
-  String get reviewFeedbackContent =>
-      'Your feedback will help us improve the app.';
+  String get reviewFeedbackContent => '귀하의 피드백은 앱을 개선하는 데 도움이 됩니다.';
 
   @override
-  String get reviewSendFeedback => 'Send Feedback';
+  String get reviewSendFeedback => '피드백 보내기';
 
   @override
-  String get reviewNotNow => 'Not Now';
+  String get reviewNotNow => '나중에';
 
   @override
-  String get feedbackTitle => 'Feedback';
+  String get feedbackTitle => '피드백';
 
   @override
   String shareMessage(String groupName, String groupId, String url) {
-    return 'Check out my group \"$groupName\" on OurSplit!\nID: $groupId\nLink: $url\n';
+    return 'OurSplit에서 내 그룹 \"$groupName\"을(를) 확인하세요!\nID: $groupId\n링크: $url\n';
   }
 }

@@ -218,63 +218,62 @@ class AppLocalizationsEs extends AppLocalizations {
   String get expenseUpdateError => 'Error al actualizar gasto';
 
   @override
-  String get settlementViewDetail => 'View settlement details';
+  String get settlementViewDetail => 'Ver detalles de liquidación';
 
   @override
-  String get settlementDetailTitle => 'Settlement Details';
+  String get settlementDetailTitle => 'Detalles de liquidación';
 
   @override
-  String get settlementDetailSubtitle =>
-      'Review each member\'s paid and owed amounts';
+  String get settlementDetailSubtitle => 'Ver pagos y deudas de cada miembro';
 
   @override
-  String get settlementDetailEmpty => 'No expenses to settle yet';
+  String get settlementDetailEmpty => 'No hay gastos para liquidar aún';
 
   @override
-  String get settlementTotalSpending => 'Total group spending';
+  String get settlementTotalSpending => 'Gasto total del grupo';
 
   @override
-  String get settlementPaid => 'Paid';
+  String get settlementPaid => 'Pagado';
 
   @override
-  String get settlementOwed => 'Owed';
+  String get settlementOwed => 'Debido';
 
   @override
-  String get settlementNetReceive => 'Receives';
+  String get settlementNetReceive => 'Recibe';
 
   @override
-  String get settlementNetPay => 'Pays';
+  String get settlementNetPay => 'Paga';
 
   @override
-  String get settlementNetEven => 'Settled';
+  String get settlementNetEven => 'Saldado';
 
   @override
-  String get reviewEnjoyTitle => 'Are you enjoying OurSplit?';
+  String get reviewEnjoyTitle => '¿Te gusta OurSplit?';
 
   @override
-  String get reviewYes => 'Yes';
+  String get reviewYes => 'Sí';
 
   @override
   String get reviewNo => 'No';
 
   @override
-  String get reviewFeedbackTitle => 'Would you mind giving us some feedback?';
+  String get reviewFeedbackTitle => '¿Te importaría darnos tu opinión?';
 
   @override
   String get reviewFeedbackContent =>
-      'Your feedback will help us improve the app.';
+      'Tu opinión nos ayudará a mejorar la aplicación.';
 
   @override
-  String get reviewSendFeedback => 'Send Feedback';
+  String get reviewSendFeedback => 'Enviar opinión';
 
   @override
-  String get reviewNotNow => 'Not Now';
+  String get reviewNotNow => 'Ahora no';
 
   @override
-  String get feedbackTitle => 'Feedback';
+  String get feedbackTitle => 'Opinión';
 
   @override
   String shareMessage(String groupName, String groupId, String url) {
-    return 'Check out my group \"$groupName\" on OurSplit!\nID: $groupId\nLink: $url\n';
+    return '¡Mira mi grupo \"$groupName\" en OurSplit!\nID: $groupId\nEnlace: $url\n';
   }
 }
