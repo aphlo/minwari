@@ -67,10 +67,8 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
     if (!_formKey.currentState!.validate()) return;
 
     // Filter out empty member names and trim whitespace
-    final cleanedMembers = _members
-        .map((m) => m.trim())
-        .where((m) => m.isNotEmpty)
-        .toList();
+    final cleanedMembers =
+        _members.map((m) => m.trim()).where((m) => m.isNotEmpty).toList();
 
     // Check for duplicate member names
     final uniqueMembers = cleanedMembers.toSet();
