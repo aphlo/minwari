@@ -215,4 +215,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get expenseUpdateError => 'Failed to update expense';
+
+  @override
+  String get settlementViewDetail => 'View settlement details';
+
+  @override
+  String get settlementDetailTitle => 'Settlement Details';
+
+  @override
+  String get settlementDetailSubtitle =>
+      'Review each member\'s paid and owed amounts';
+
+  @override
+  String get settlementDetailEmpty => 'No expenses to settle yet';
+
+  @override
+  String get settlementTotalSpending => 'Total group spending';
+
+  @override
+  String get settlementPaid => 'Paid';
+
+  @override
+  String get settlementOwed => 'Owed';
+
+  @override
+  String get settlementNetReceive => 'Receives';
+
+  @override
+  String get settlementNetPay => 'Pays';
+
+  @override
+  String get settlementNetEven => 'Settled';
 }

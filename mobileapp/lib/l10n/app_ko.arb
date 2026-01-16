@@ -67,5 +67,15 @@
   "expenseSplitWithRequired": "분담 멤버를 선택하세요",
   "expenseSplitWithHint": "이 비용을 분담할 멤버를 선택하세요",
   "expenseCreateError": "지출 추가 실패",
-  "expenseUpdateError": "지출 업데이트 실패"
+  "expenseUpdateError": "지출 업데이트 실패",
+  "settlementViewDetail": "정산 상세 보기",
+  "settlementDetailTitle": "정산 상세",
+  "settlementDetailSubtitle": "각 멤버의 지불 및 부담 금액 확인",
+  "settlementDetailEmpty": "아직 정산할 지출이 없습니다",
+  "settlementTotalSpending": "그룹 총 지출",
+  "settlementPaid": "지불 금액",
+  "settlementOwed": "부담 금액",
+  "settlementNetReceive": "받을 금액",
+  "settlementNetPay": "지불할 금액",
+  "settlementNetEven": "정산 완료"
 }

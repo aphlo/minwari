@@ -211,4 +211,34 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get expenseUpdateError => '지출 업데이트 실패';
+
+  @override
+  String get settlementViewDetail => '정산 상세 보기';
+
+  @override
+  String get settlementDetailTitle => '정산 상세';
+
+  @override
+  String get settlementDetailSubtitle => '각 멤버의 지불 및 부담 금액 확인';
+
+  @override
+  String get settlementDetailEmpty => '아직 정산할 지출이 없습니다';
+
+  @override
+  String get settlementTotalSpending => '그룹 총 지출';
+
+  @override
+  String get settlementPaid => '지불 금액';
+
+  @override
+  String get settlementOwed => '부담 금액';
+
+  @override
+  String get settlementNetReceive => '받을 금액';
+
+  @override
+  String get settlementNetPay => '지불할 금액';
+
+  @override
+  String get settlementNetEven => '정산 완료';
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:minwari/l10n/generated/app_localizations.dart';
-import 'package:minwari/lib/currency.dart';
 import 'package:minwari/models/expense.dart';
 import 'package:minwari/screens/expense_form_screen.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
+import 'package:minwari/utils/currency_formatter.dart';
 
 /// Expense list widget showing group expenses
 class ExpenseList extends StatelessWidget {
@@ -108,8 +108,6 @@ class ExpenseList extends StatelessWidget {
     AppLocalizations? l10n,
     BuildContext context,
   ) {
-    final symbol = getCurrencySymbol(currency);
-    final fractionDigits = getCurrencyFractionDigits(currency);
     final canEdit = groupId != null && members != null;
 
     return Column(
@@ -153,7 +151,7 @@ class ExpenseList extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '$symbol${expense.amount.toStringAsFixed(fractionDigits)}',
+                      formatCurrency(expense.amount, currency),
                       style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w600,

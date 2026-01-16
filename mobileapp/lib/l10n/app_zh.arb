@@ -67,5 +67,15 @@
   "expenseSplitWithRequired": "请选择分摊成员",
   "expenseSplitWithHint": "选择分担此费用的成员",
   "expenseCreateError": "添加支出失败",
-  "expenseUpdateError": "更新支出失败"
+  "expenseUpdateError": "更新支出失败",
+  "settlementViewDetail": "查看结算详情",
+  "settlementDetailTitle": "结算详情",
+  "settlementDetailSubtitle": "查看每位成员的支付和负担金额",
+  "settlementDetailEmpty": "暂无需要结算的支出",
+  "settlementTotalSpending": "群组总支出",
+  "settlementPaid": "已支付",
+  "settlementOwed": "应付",
+  "settlementNetReceive": "应收",
+  "settlementNetPay": "应付",
+  "settlementNetEven": "已结清"
 }

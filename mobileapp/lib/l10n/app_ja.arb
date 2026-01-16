@@ -67,5 +67,15 @@
   "expenseSplitWithRequired": "割り勘メンバーを選択してください",
   "expenseSplitWithHint": "費用を分担するメンバーを選択してください",
   "expenseCreateError": "立て替えの追加に失敗しました",
-  "expenseUpdateError": "立て替えの更新に失敗しました"
+  "expenseUpdateError": "立て替えの更新に失敗しました",
+  "settlementViewDetail": "精算の詳細を見る",
+  "settlementDetailTitle": "精算の詳細",
+  "settlementDetailSubtitle": "各メンバーの支払い額と負担額を確認",
+  "settlementDetailEmpty": "まだ精算する支出がありません",
+  "settlementTotalSpending": "グループの合計支出",
+  "settlementPaid": "支払い額",
+  "settlementOwed": "負担額",
+  "settlementNetReceive": "受け取り",
+  "settlementNetPay": "支払い",
+  "settlementNetEven": "精算済み"
 }

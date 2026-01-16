@@ -200,6 +200,9 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                     settlements: _settlements,
                     currency: group.currency,
                     hasExpenses: _expenses.isNotEmpty,
+                    groupName: group.name,
+                    expenses: _expenses,
+                    members: group.members,
                   ),
 
                   // Bottom padding for safe area

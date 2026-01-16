@@ -211,6 +211,36 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get expenseUpdateError => '更新支出失败';
+
+  @override
+  String get settlementViewDetail => '查看结算详情';
+
+  @override
+  String get settlementDetailTitle => '结算详情';
+
+  @override
+  String get settlementDetailSubtitle => '查看每位成员的支付和负担金额';
+
+  @override
+  String get settlementDetailEmpty => '暂无需要结算的支出';
+
+  @override
+  String get settlementTotalSpending => '群组总支出';
+
+  @override
+  String get settlementPaid => '已支付';
+
+  @override
+  String get settlementOwed => '应付';
+
+  @override
+  String get settlementNetReceive => '应收';
+
+  @override
+  String get settlementNetPay => '应付';
+
+  @override
+  String get settlementNetEven => '已结清';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -420,6 +450,36 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get expenseUpdateError => '更新支出失败';
+
+  @override
+  String get settlementViewDetail => '查看结算详情';
+
+  @override
+  String get settlementDetailTitle => '结算详情';
+
+  @override
+  String get settlementDetailSubtitle => '查看每位成员的支付和负担金额';
+
+  @override
+  String get settlementDetailEmpty => '暂无需要结算的支出';
+
+  @override
+  String get settlementTotalSpending => '群组总支出';
+
+  @override
+  String get settlementPaid => '已支付';
+
+  @override
+  String get settlementOwed => '应付';
+
+  @override
+  String get settlementNetReceive => '应收';
+
+  @override
+  String get settlementNetPay => '应付';
+
+  @override
+  String get settlementNetEven => '已结清';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -629,4 +689,34 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get expenseUpdateError => '更新支出失敗';
+
+  @override
+  String get settlementViewDetail => '查看結算詳情';
+
+  @override
+  String get settlementDetailTitle => '結算詳情';
+
+  @override
+  String get settlementDetailSubtitle => '查看每位成員的支付和負擔金額';
+
+  @override
+  String get settlementDetailEmpty => '暫無需要結算的支出';
+
+  @override
+  String get settlementTotalSpending => '群組總支出';
+
+  @override
+  String get settlementPaid => '已支付';
+
+  @override
+  String get settlementOwed => '應付';
+
+  @override
+  String get settlementNetReceive => '應收';
+
+  @override
+  String get settlementNetPay => '應付';
+
+  @override
+  String get settlementNetEven => '已結清';
 }

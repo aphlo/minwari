@@ -211,4 +211,34 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get expenseUpdateError => '立て替えの更新に失敗しました';
+
+  @override
+  String get settlementViewDetail => '精算の詳細を見る';
+
+  @override
+  String get settlementDetailTitle => '精算の詳細';
+
+  @override
+  String get settlementDetailSubtitle => '各メンバーの支払い額と負担額を確認';
+
+  @override
+  String get settlementDetailEmpty => 'まだ精算する支出がありません';
+
+  @override
+  String get settlementTotalSpending => 'グループの合計支出';
+
+  @override
+  String get settlementPaid => '支払い額';
+
+  @override
+  String get settlementOwed => '負担額';
+
+  @override
+  String get settlementNetReceive => '受け取り';
+
+  @override
+  String get settlementNetPay => '支払い';
+
+  @override
+  String get settlementNetEven => '精算済み';
 }

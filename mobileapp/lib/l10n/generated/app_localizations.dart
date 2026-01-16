@@ -516,6 +516,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to update expense'**
   String get expenseUpdateError;
+
+  /// No description provided for @settlementViewDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'View settlement details'**
+  String get settlementViewDetail;
+
+  /// No description provided for @settlementDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settlement Details'**
+  String get settlementDetailTitle;
+
+  /// No description provided for @settlementDetailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review each member\'s paid and owed amounts'**
+  String get settlementDetailSubtitle;
+
+  /// No description provided for @settlementDetailEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No expenses to settle yet'**
+  String get settlementDetailEmpty;
+
+  /// No description provided for @settlementTotalSpending.
+  ///
+  /// In en, this message translates to:
+  /// **'Total group spending'**
+  String get settlementTotalSpending;
+
+  /// No description provided for @settlementPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get settlementPaid;
+
+  /// No description provided for @settlementOwed.
+  ///
+  /// In en, this message translates to:
+  /// **'Owed'**
+  String get settlementOwed;
+
+  /// No description provided for @settlementNetReceive.
+  ///
+  /// In en, this message translates to:
+  /// **'Receives'**
+  String get settlementNetReceive;
+
+  /// No description provided for @settlementNetPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pays'**
+  String get settlementNetPay;
+
+  /// No description provided for @settlementNetEven.
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get settlementNetEven;
 }
 
 class _AppLocalizationsDelegate
