@@ -8,6 +8,7 @@ resource "google_cloud_run_v2_service" "service" {
     service_account = var.service_account_email
 
     containers {
+      name  = var.container_name
       image = var.image
 
       ports {
@@ -42,7 +43,10 @@ resource "google_cloud_run_v2_service" "service" {
 
   lifecycle {
     ignore_changes = [
-      template[0].containers[0].image
+      template[0].containers[0].image,
+      client,
+      client_version,
+      scaling, # Ignore top-level scaling block which causes drift
     ]
   }
 }

@@ -55,7 +55,7 @@ variable "cloud_run_cpu" {
 variable "cloud_run_memory" {
   description = "Cloud Runメモリ"
   type        = string
-  default     = "512Mi"
+  default     = "256Mi"
 }
 
 variable "cloud_run_container_port" {
