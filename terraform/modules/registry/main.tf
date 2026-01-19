@@ -8,8 +8,7 @@ resource "google_artifact_registry_repository" "this" {
     id     = "keep-recent-3"
     action = "KEEP"
     most_recent_versions {
-      package_name_prefixes = [""]
-      keep_count            = 3
+      keep_count = 3
     }
   }
 
