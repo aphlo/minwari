@@ -84,6 +84,7 @@ module "cloud_run" {
   cpu                   = var.cloud_run_cpu
   memory                = var.cloud_run_memory
   container_port        = var.cloud_run_container_port
+  container_name        = "minwari-webapp"
   domain_name           = var.cloud_run_domain_name
 
   providers = {

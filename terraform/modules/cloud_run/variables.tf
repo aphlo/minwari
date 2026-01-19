@@ -13,6 +13,12 @@ variable "service_name" {
   type        = string
 }
 
+variable "container_name" {
+  description = "コンテナ名"
+  type        = string
+  default     = "minwari-webapp"
+}
+
 variable "image" {
   description = "デプロイするコンテナイメージ"
   type        = string
