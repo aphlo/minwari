@@ -68,12 +68,11 @@ jobs:
         run: |
           gcloud run deploy "$SERVICE" \
             --image "$IMAGE" \
-            --container minwari-webapp \
+            --container "minwari-webapp" \
             --region "$REGION" \
             --project "$PROJECT_ID" \
-            --platform managed \
             --allow-unauthenticated \
-            --memory 256Mi \
+            --memory "256Mi" \
             --min-instances 0 \
             --cpu 1 \
             --cpu-throttling \
