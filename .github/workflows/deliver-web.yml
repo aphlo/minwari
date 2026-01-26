@@ -68,7 +68,6 @@ jobs:
         run: |
           gcloud run deploy "$SERVICE" \
             --image "$IMAGE" \
-            --container "minwari-webapp" \
             --region "$REGION" \
             --project "$PROJECT_ID" \
             --allow-unauthenticated \
