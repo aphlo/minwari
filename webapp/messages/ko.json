@@ -16,7 +16,8 @@
     "newGroupDescription": "새 그룹을 만들고 멤버를 초대하세요."
   },
   "app": {
-    "name": "OurSplit"
+    "name": "OurSplit",
+    "articles": "기사 목록"
   },
   "locales": {
     "label": "언어",
@@ -156,7 +157,15 @@
       "aboutService": {
         "title": "OurSplit 소개",
         "description1": "OurSplit은 여행, 이벤트, 공동 생활 등에서의 '비용 정산'을 간단하고 스마트하게 해결하기 위해 개발된 웹 도구입니다.",
-        "description2": "'누가 얼마를 지불했는가', '누가 누구에게 얼마를 줘야 하는가'라는 복잡한 계산을 자동화하여, 계산이나 정산의 번거로움으로 즐거운 시간을 망치지 않는 것을 목표로 하고 있습니다."
+        "description2": "「누가 얼마를 냈는지」, 「누가 누구에게 얼마를 줘야 하는지」와 같은 복잡한 계산을 자동화하여, 즐거운 시간을 계산이나 정산의 번거로움으로 망치지 않도록 하는 것을 목표로 하고 있습니다."
+      },
+      "background": {
+        "title": "Development Background",
+        "description": "This app was born from the developer's own experience of feeling that 'calculating splits is a hassle and might ruin a fun time' during a trip with friends."
+      },
+      "commitment": {
+        "title": "Our Commitment",
+        "description": "We want you to 'leave the calculations to the app and spend more time making memories'. With that in mind, we pursue ease of use requiring no registration and usable in 10 seconds."
       },
       "profile": {
         "title": "운영자 프로필",

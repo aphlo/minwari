@@ -16,7 +16,8 @@
     "newGroupDescription": "Crea un nuevo grupo y invita a miembros."
   },
   "app": {
-    "name": "OurSplit"
+    "name": "OurSplit",
+    "articles": "Artículos"
   },
   "locales": {
     "label": "Idioma",
@@ -156,7 +157,15 @@
       "aboutService": {
         "title": "Sobre OurSplit",
         "description1": "OurSplit es una herramienta web desarrollada para resolver de manera simple e inteligente la 'división de gastos' en viajes, eventos y convivencia.",
-        "description2": "Su objetivo es automatizar cálculos complejos como 'quién pagó cuánto' y 'quién le debe a quién', asegurando que los buenos momentos no se arruinen por la molestia de calcular y ajustar cuentas."
+        "description2": "Su objetivo es automatizar cálculos complejos como \"quién pagó cuánto\" y \"quién debe a quién\", asegurando que los momentos divertidos no se vean arruinados por la molestia de los cálculos y la liquidación."
+      },
+      "background": {
+        "title": "Development Background",
+        "description": "This app was born from the developer's own experience of feeling that 'calculating splits is a hassle and might ruin a fun time' during a trip with friends."
+      },
+      "commitment": {
+        "title": "Our Commitment",
+        "description": "We want you to 'leave the calculations to the app and spend more time making memories'. With that in mind, we pursue ease of use requiring no registration and usable in 10 seconds."
       },
       "profile": {
         "title": "Perfil del operador",

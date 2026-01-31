@@ -16,7 +16,8 @@
     "newGroupDescription": "创建新的分摊群组并邀请成员。"
   },
   "app": {
-    "name": "OurSplit"
+    "name": "OurSplit",
+    "articles": "文章列表"
   },
   "locales": {
     "label": "语言",
@@ -157,6 +158,14 @@
         "title": "关于 OurSplit",
         "description1": "OurSplit 是为了简单智能地解决旅行、活动、合租等场景下“AA制”问题而开发的网络工具。",
         "description2": "旨在自动化“谁付了多少钱”、“谁该给谁多少钱”等复杂的计算，不让计算和结算的繁琐破坏快乐的时光。"
+      },
+      "background": {
+        "title": "Development Background",
+        "description": "This app was born from the developer's own experience of feeling that 'calculating splits is a hassle and might ruin a fun time' during a trip with friends."
+      },
+      "commitment": {
+        "title": "Our Commitment",
+        "description": "We want you to 'leave the calculations to the app and spend more time making memories'. With that in mind, we pursue ease of use requiring no registration and usable in 10 seconds."
       },
       "profile": {
         "title": "运营者简介",

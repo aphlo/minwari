@@ -29,6 +29,20 @@ export default async function AboutPage({ params }: Props) {
 
             <section className="mb-10">
               <h2 className="text-xl font-semibold mb-4 border-b pb-2">
+                {t("background.title")}
+              </h2>
+              <p>{t("background.description")}</p>
+            </section>
+
+            <section className="mb-10">
+              <h2 className="text-xl font-semibold mb-4 border-b pb-2">
+                {t("commitment.title")}
+              </h2>
+              <p>{t("commitment.description")}</p>
+            </section>
+
+            <section className="mb-10">
+              <h2 className="text-xl font-semibold mb-4 border-b pb-2">
                 {t("profile.title")}
               </h2>
               <dl className="space-y-4">

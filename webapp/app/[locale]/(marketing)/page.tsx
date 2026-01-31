@@ -6,7 +6,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Header } from "@/client/components/layout/Header";
 import {
-  addRecentGroup,
   getRecentGroups,
   type RecentGroup,
 } from "@/client/lib/recentGroups";
@@ -20,28 +19,6 @@ export default function Home() {
   const [recentGroups, setRecentGroups] = useState<RecentGroup[]>([]);
 
   useEffect(() => {
-    // Add mock recent groups
-    const mockGroups = [
-      {
-        id: "WHlvXtJhZJtOppjgqdxE",
-        name: "北海道",
-        createdAt: "2026-01-08T00:00:00.000Z",
-      },
-      {
-        id: "Wx2UrhOg1wbQt4qvnQg5",
-        name: "沖縄",
-        createdAt: "2026-01-08T00:00:00.000Z",
-      },
-      {
-        id: "m1Su3pUWdlW4hPAIIVNf",
-        name: "test",
-        createdAt: "2026-01-04T00:00:00.000Z",
-      },
-    ];
-    // Add in reverse order so the first one appears at the top
-    [...mockGroups].reverse().forEach((g) => {
-      addRecentGroup(g);
-    });
     setRecentGroups(getRecentGroups());
   }, []);
 

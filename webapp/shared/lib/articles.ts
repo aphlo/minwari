@@ -11,121 +11,371 @@ export type Article = {
 const articlesJa: Article[] = [
   {
     id: "1",
-    slug: "smart-settlement-travel",
-    title: "旅行での賢い精算術：トラブルを避けるための3つのポイント",
+    slug: "ski-trip-settlement",
+    title: "スノボ・スキー旅行の割り勘トラブル回避術！リフト券からガソリン代まで",
     description:
-      "楽しい旅行の最後にお金のことで揉めたくないですよね。賢い精算方法と、トラブルを避けるためのコツを紹介します。",
-    date: "2026-01-15",
-    imageUrl: "/images/articles/travel-settlement.png",
+      "冬の定番、スノボ旅行。楽しい思い出にするためにも、リフト券、レンタル代、ガソリン代など複雑になりがちな費用の精算方法をマスターしましょう。",
+    date: "2026-01-20",
+    imageUrl: "/images/articles/ski-trip-settlement.png",
     content: `
       <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
-        友人や家族との旅行はとても楽しいものですが、避けて通れないのが「お金の計算」です。<br>
-        誰が何にいくら払ったのか、立て替え払いが複雑になりがちで、帰宅後の精算作業が大きな負担になることも少なくありません。
+        友人たちとのスノボ旅行は最高に楽しいイベントですが、同時に「割り勘の難易度」が高いイベントでもあります。<br>
+        車を出す人のガソリン代、各自のリフト券、レンタルの有無、そして宿代や食事代…。<br>
+        これらをスムーズに精算するためのポイントを紹介します。
       </p>
 
-      <h2>1. レシートは必ず保管し、その場で記録する</h2>
-      <p>最も基本的なことですが、レシートはその場で写真を撮るか、専用のポーチにまとめておきましょう。</p>
-      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4 border-l-4 border-blue-500">
-        <p class="font-bold mb-2">💡 ポイント</p>
-        <p class="m-0 text-sm">「後でやろう」はトラブルの元です。記憶は驚くほど早く薄れていきます。</p>
+      <h2>1. 車出し担当への配慮（ガソリン代・高速代）</h2>
+      <p>スノボ旅行では車での移動が一般的ですが、車を出してくれる人への配慮は必須です。</p>
+      <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg my-4">
+        <h3 class="font-bold mb-2">一般的なルール例</h3>
+        <ul class="list-disc pl-5">
+          <li><strong>ガソリン代・高速代：</strong> 全員で割り勘（車出し担当も含めるか、免除するかは事前に相談）</li>
+          <li><strong>運転のお礼：</strong> 車出し担当の食事代を1回おごる、またはスタバなどを差し入れする</li>
+          <li><strong>消耗品費：</strong> 長距離運転によるタイヤやオイルの消耗を考慮し、少し多めに渡すケースも増えています</li>
+        </ul>
       </div>
 
-      <h2>2. 共通財布を作る（メリット・デメリット）</h2>
-      <p>あらかじめ全員から一定額を集めて「共通財布」を作る方法も有効です。食費や入場料など、全員にかかる費用はここから支払います。</p>
-      
-      <h3>メリット</h3>
-      <ul class="list-disc pl-5 mb-4">
-        <li>個別の計算が不要で楽。</li>
-        <li>会計時に誰が払うか揉めない。</li>
-      </ul>
+      <h2>2. 個人費用と共通費用の線引き</h2>
+      <p>スノボ旅行では「自分だけレンタルする」「自分だけスクールに入る」といった個人費用が発生しやすいです。</p>
+      <p>基本的に、<strong>自分の装備に関わる費用はその場で自己精算</strong>し、宿代や夕食代などの<strong>全員にかかる費用のみを割り勘</strong>にするのがシンプルです。</p>
 
-      <h3>デメリット</h3>
-      <ul class="list-disc pl-5 mb-4">
-        <li>途中で足りなくなった時の追加徴収が面倒。</li>
-        <li>最後に余った時の返金計算が必要。</li>
-      </ul>
-
-      <h2>3. 割り勘アプリを活用する</h2>
-      <p>最近のトレンドは、割り勘アプリの活用です。「誰が」「何のために」「いくら」払ったかを入力するだけで、最後に「誰が誰にいくら払えばいいか」を自動計算してくれます。</p>
-      <p>当サイトのツール <strong>みんなの割り勘</strong> も、まさにそのために作られました。ログイン不要でURLを共有するだけですぐに使えます。</p>
+      <h2>3. 買い物は「共通財布」が便利</h2>
+      <p>コンビニでの買い出しや、SAでの軽食など、細かい出費が重なります。</p>
+      <p>あらかじめ一人5,000円ずつ集めて「共通財布」を作り、そこから支払うことで、レジでの個別会計の手間を省けます。</p>
+      <p>残ったお金は最後に返金するか、帰りの夕食代に充てましょう。</p>
 
       <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
         <h3>まとめ</h3>
-        <p>お金のトラブルは人間関係のトラブルに直結します。便利なツールやルールをうまく活用して、旅行の思い出を楽しいまま締めくくりましょう。</p>
+        <p>「お金のことは後で」と先延ばしにせず、ルールを決めておくことが、来年もまた一緒に滑りに行くための秘訣です。</p>
       </div>
     `,
   },
   {
     id: "2",
-    slug: "group-camp-budget",
-    title: "グループキャンプでの予算管理のコツ：買い出しから精算まで",
+    slug: "bbq-party-split",
+    title: "BBQ・ホームパーティーの買い出しと精算をスムーズにする方法",
     description:
-      "人数が増えるほど複雑になるキャンプの予算管理。食材、キャンプ場代、交通費...スムーズに管理する方法を解説します。",
-    date: "2026-01-16",
-    imageUrl: "/images/articles/camp-budget.png",
+      "食材係、飲み物係、場所取り係…役割分担が多いBBQやパーティー。誰がいくら立て替えたか分からなくならないための管理術。",
+    date: "2026-01-21",
+    imageUrl: "/images/articles/bbq-party-split.png",
     content: `
       <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
-        グループキャンプは、ソロキャンプとは違った賑やかさと楽しさがあります。<br>
-        しかし、人数が増えれば増えるほど、食材の買い出しや費用の分担が難しくなります。
+        青空の下でのBBQや、アットホームなホームパーティー。<br>
+        しかし、準備段階で複数のメンバーが別々に買い出しに行くと、精算時にレシートの山と格闘することになります。
       </p>
 
-      <h2>予算は事前に決めておく</h2>
-      <p>「とりあえずスーパーに行ってから決めよう」は危険です。お酒を飲む人、飲まない人、たくさん食べる人など、メンバーによって消費量も違います。</p>
-      <p>「食費」「飲み物代」「サイト利用料」など、大まかな予算上限を決めておきましょう。</p>
+      <h2>1. レシートは必ず写真を撮ってグループLINEへ</h2>
+      <p>紙のレシートは風で飛んだり、油で汚れたりして紛失しがちです。</p>
+      <p>買い物をしたらすぐにスマホでパシャリ。グループのアルバムにアップロードする習慣をつけましょう。これだけで精算時のトラブルが激減します。</p>
 
-      <h2>買い出し担当と支払い担当</h2>
-      <p>買い出しは複数人で行くことが多いですが、レジでの支払いは<strong>代表者1人がまとめて行うのがベスト</strong>です。</p>
-      <p>複数人がバラバラに支払うと、後で合算するのが大変になります。</p>
+      <h2>2. ドリンク代の傾斜について</h2>
+      <p>BBQでよくある揉め事の一つが「お酒を飲む人 vs 飲まない人」の費用負担です。</p>
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg my-4">
+        <p class="font-bold">おすすめの解決策</p>
+        <p>お酒類とソフトドリンク類でレシートを分けて会計してもらいましょう。</p>
+        <p>その上で、「食事代」は全員で割り勘、「お酒代」は飲む人だけで割り勘、と計算を分けると公平感が出ます。</p>
+      </div>
 
-      <h2>車出し（交通費）の考慮</h2>
-      <p>車を出してくれた人への配慮も重要です。以下のルールを事前に決めておくとスムーズです。</p>
-      <ul class="list-disc pl-5 mb-4">
-        <li>ガソリン代や高速代はもちろん割り勘</li>
-        <li>運転の負担に対して少し多めに負担してもらう</li>
-        <li>車出し担当は食費を少し安くする</li>
-      </ul>
+      <h2>3. 端数はどうするか？</h2>
+      <p>1円単位まで割り勘するのは手間がかかりますし、現金のやり取りだと小銭が不足します。</p>
+      <p>「100円単位で切り上げ」て、余ったお金で（次回の幹事へのチップとして、またはアイスを買って）使い切るのがスマートです。</p>
+      <p>もちろん、PayPayなどの送金アプリを使えば1円単位でも全く問題ありません。</p>
 
-      <h2>複雑な割り勘もアプリなら一瞬</h2>
-      <p>「Aさんはお酒を飲まないからマイナス2000円」「Bさんは車を出したからマイナス3000円」といった複雑な調整も、アプリを使えば簡単です。</p>
-      <p class="font-bold text-center my-8 text-lg">電卓を叩く時間は焚き火の時間に充てましょう。</p>
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>アプリを使えば一瞬で解決</h3>
+        <p>立て替え記録アプリなら、「Aさんはお酒ナシ」「Bさんは多めに払う」といった条件も簡単に設定できます。楽しい時間を計算で中断させないよう、ツールを活用しましょう。</p>
+      </div>
     `,
   },
   {
     id: "3",
-    slug: "modern-bill-splitting",
-    title: "【2026年版】PayPayなどを使った最新の割り勘事情",
+    slug: "office-lunch-split",
+    title: "職場のランチ割り勘、どうしてる？スマートな支払いマナーとコツ",
     description:
-      "現金での割り勘はもう古い？キャッシュレス時代の新しい割り勘マナーと、便利な送金サービスの活用法。",
-    date: "2026-01-17",
-    imageUrl: "/images/articles/digital-payment.png",
+      "同僚とのランチ、会計時にもたついていませんか？別会計ができない店でもスマートに振る舞うための「大人の割り勘マナー」解説。",
+    date: "2026-01-22",
+    imageUrl: "/images/articles/office-lunch-split.png",
     content: `
       <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
-        居酒屋やランチでの会計時、「1円単位まできっちり割るか」「ざっくりでいいか」で悩んだ経験はありませんか？<br>
-        キャッシュレス決済の普及により、割り勘の常識も変わりつつあります。
+        毎日の職場ランチ。リフレッシュの時間ですが、会計の瞬間に気まずい空気が流れることは避けたいものです。<br>
+        特に混雑しているお店では、レジ前でもたつかないのが大人のマナーです。
       </p>
 
-      <h2>「細かい小銭ない？」からの解放</h2>
-      <p>PayPay、LINE Pay、楽天ペイなど、QRコード決済アプリには「個人間送金」機能がついていることがほとんどです。</p>
-      <p>これにより、1円単位でのやり取りも手数料無料（条件あり）で瞬時に行えるようになりました。</p>
+      <h2>1. 「別会計」はお店の状況を見て</h2>
+      <p>混雑時のレジで「別々でお願いします」と言い出しにくい雰囲気、ありますよね。</p>
+      <p>基本的には、誰か一人が代表して支払い、後で精算するのがスマートです。ポイントも貯まるので、代表者にとってもメリットがあります。</p>
 
-      <h2>幹事の負担が激減</h2>
-      <div class="flex flex-col md:flex-row gap-4 my-8">
-        <div class="flex-1 bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
-          <h3 class="text-lg font-bold mb-2 text-red-500">これまで</h3>
-          <p class="text-sm">集めた現金の管理やお釣りの準備で大変。計算も合わないことが多い。</p>
-        </div>
-        <div class="flex-1 bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
-          <h3 class="text-lg font-bold mb-2 text-blue-600 dark:text-blue-400">これから</h3>
-          <p class="text-sm">幹事がカードで一括払いし、参加者は幹事に送金。ポイントも貯まり全員にお得。</p>
-        </div>
+      <h2>2. ぴったりのお金がない問題</h2>
+      <p>現金払いの場合、「1000円札しかない」「小銭がない」という状況は頻発します。</p>
+      <p>これを解決するのが<strong>送金アプリ（PayPay、LINE Payなど）</strong>です。</p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>小銭を用意する必要がない</li>
+        <li>1円単位できっちり払える</li>
+        <li>履歴が残るので「払ったっけ？」がない</li>
+      </ul>
+      <p>職場のランチグループで、使うアプリを統一しておくと非常にスムーズです。</p>
+
+      <h2>3. 上司や先輩がいる場合</h2>
+      <p>上司が「ここは出すよ」と言ってくれた場合は、素直に甘えるのもコミュニケーションの一つです。<br>
+      ただし、毎回では申し訳ないと感じる場合は、「次は私たちがカフェ代を出しますね」と提案するなど、持ちつ持たれつの関係を築きましょう。</p>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>まとめ</h3>
+        <p>ランチの支払いは毎日のことだからこそ、ストレスなく行いたいもの。デジタルツールを活用して、快適なランチタイムを過ごしましょう。</p>
+      </div>
+    `,
+  },
+  {
+    id: "4",
+    slug: "roomshare-expenses",
+    title: "ルームシェアの家賃・光熱費管理のコツ！喧嘩にならないルール作り",
+    description:
+      "友人とのシェアハウス生活。お金の切れ目は縁の切れ目にならないよう、家賃、光熱費、日用品の分担ルールを明確にしましょう。",
+    date: "2026-01-23",
+    imageUrl: "/images/articles/roomshare-expenses.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
+        気の合う友人とのルームシェアは楽しいですが、金銭感覚の違いがトラブルの種になることも。<br>
+        毎月発生する家賃や光熱費、不定期に発生するトイレットペーパーや洗剤などの消耗品費。どう管理するのが正解でしょうか？
+      </p>
+
+      <h2>1. 固定費と変動費の分け方</h2>
+      <p><strong>家賃やネット代（固定費）：</strong> 毎月定額なので、振込担当を決めて、期日までに担当者に送金するルールが一般的です。</p>
+      <p><strong>光熱費（変動費）：</strong> 毎月金額が変わるため、請求書が届いたら写真を共有し、折半します。</p>
+
+      <h2>2. 「名もなき出費」の管理（日用品）</h2>
+      <p>意外と揉めるのが、洗剤、調味料、ゴミ袋などの細かい出費です。</p>
+      <p>「気づいた人が買う」というルールだと、特定の人の負担が大きくなりがちです。</p>
+      <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg my-4">
+        <h3 class="font-bold mb-2">解決策：共有費プール制</h3>
+        <p>毎月一人2,000円などを共有の財布（または封筒、共有口座）に入れ、日用品はそこから買うようにします。<br>
+        これなら「私が買ったのに」という不満が出ません。</p>
       </div>
 
-      <h2>記録が残るメリット</h2>
-      <p>現金でのやり取りは記録に残りませんが、デジタル送金なら履歴が残ります。「払ったっけ？」「まだもらってないっけ？」という不毛な争いを防ぐことができます。</p>
+      <h2>3. ツールで可視化する</h2>
+      <p>「立て替え」が発生した都度、アプリに入力しておくと便利です。</p>
+      <p>月末に「Aさんは今月3,000円分買った」「Bさんは1,000円分買った」→「BさんがAさんに1,000円払えば解決」といった計算が一瞬で終わります。</p>
 
-      <h2>アプリ連携でさらに便利に</h2>
-      <p>みんなの割り勘のような割り勘計算ツールで計算結果を出し、その画面をスクリーンショットでグループLINEに共有。そして各々が送金アプリで支払う。</p>
-      <p><strong>これが現代のスマートな割り勘フローです。</strong></p>
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>心地よい共同生活のために</h3>
+        <p>お金のルールの明確化は、信頼関係を守るための手段です。最初にしっかり話し合っておくことを強くおすすめします。</p>
+      </div>
+    `,
+  },
+  {
+    id: "5",
+    slug: "travel-currency-exchange",
+    title: "海外旅行の割り勘、為替レートはどう計算する？公平な精算法",
+    description:
+      "複数の通貨が混ざる海外旅行。円で立て替えた？ドルで支払った？カードの請求レートは？複雑な為替計算をシンプルにする方法。",
+    date: "2026-01-24",
+    imageUrl: "/images/articles/travel-currency-exchange.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
+        海外旅行での割り勘は、国内旅行の比にならないほど複雑です。<br>
+        「現地通貨で払った」「日本円で両替した現金を使った」「クレジットカード（後日請求）で払った」。<br>
+        これらをどうやって日本円で精算すればいいのでしょうか？
+      </p>
+
+      <h2>1. 基準レートを決める</h2>
+      <p>日によってレートは変動しますが、厳密に計算しようとすると泥沼にはまります。</p>
+      <p><strong>「旅行初日のレート」または「両替時の平均レート」を一つ決めて、全ての計算に適用する</strong>のが最も平和的で簡単な方法です。</p>
+
+      <h2>2. クレジットカード払いの扱い</h2>
+      <p>カード払いの請求額は、実際にカード会社から明細が来るまで確定しません（手数料などが乗るため）。</p>
+      <p>これも厳密さを求めず、<strong>「支払い時のアプリ上のレート × 1.02（約2%の手数料分）」</strong>などで仮計算して精算してしまうのがおすすめです。</p>
+      <p>帰国してから数週間後に「10円違ったから返して」と連絡するのは、お互いにストレスだからです。</p>
+
+      <h2>3. 複数通貨対応アプリを使う</h2>
+      <p>頭で計算するのは限界があります。外貨に対応した割り勘アプリを使いましょう。</p>
+      <p>「みんなの割り勘」なら、米ドル、ユーロ、ウォンなど主要通貨に対応しており、入力するだけで日本円換算での精算額を算出できます。</p>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>旅の終わりをスマートに</h3>
+        <p>為替の数円単位の差よりも、スムーズに精算を終えて旅の思い出を語り合う方が価値があります。大まかなルール合意が大切です。</p>
+      </div>
+    `,
+  },
+  {
+    id: "6",
+    slug: "couple-finances",
+    title: "同棲カップルの生活費管理！共通財布vs都度精算、どっちがおすすめ？",
+    description:
+      "結婚前の同棲カップル、お金の管理はどうしてる？二人のタイプに合わせた最適な家計管理方法を見つけましょう。",
+    date: "2026-01-25",
+    imageUrl: "/images/articles/couple-finances.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
+        同棲を始めるとき、一番最初に決めるべきなのが「お金のルール」です。<br>
+        なあなあにしておくと、どちらかの負担が増えて不満が溜まってしまうことも…。
+      </p>
+
+      <h2>パターンA：共通財布（お小遣い制）</h2>
+      <p>お互いが毎月決まった額（例：10万円ずつ）を共通の口座や財布に入れ、家賃や生活費は全てそこから支払うスタイル。</p>
+      <ul class="list-disc pl-5 mb-4">
+        <li><strong>メリット：</strong> 生活費の全体像が見えやすい。残りを貯金に回しやすい。</li>
+        <li><strong>デメリット：</strong> 個人の趣味に使いづらいと感じることも。</li>
+      </ul>
+
+      <h2>パターンB：費目別担当制</h2>
+      <p>「彼は家賃、彼女は食費と光熱費」のように、支払う項目を分けるスタイル。</p>
+      <ul class="list-disc pl-5 mb-4">
+        <li><strong>メリット：</strong> 管理が楽。相手の財布事情に干渉しすぎない。</li>
+        <li><strong>デメリット：</strong> 負担額に不公平感が出やすい（食費は変動しやすいため）。</li>
+      </ul>
+
+      <h2>パターンC：都度精算（アプリ管理）</h2>
+      <p>支払いはその時々でできる方が行い、全て家計簿アプリや割り勘アプリに記録。月末に差額を精算するスタイル。</p>
+      <ul class="list-disc pl-5 mb-4">
+        <li><strong>メリット：</strong> クレジットカードのポイントを各自で貯められる。完全に公平。</li>
+        <li><strong>デメリット：</strong> 記録が面倒（アプリで習慣化できれば解決）。</li>
+      </ul>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>二人に合った方法を</h3>
+        <p>正解はありません。数ヶ月試してみて、合わなければ変えれば良いのです。大切なのは「話し合うこと」です。</p>
+      </div>
+    `,
+  },
+  {
+    id: "7",
+    slug: "wedding-afterparty-split",
+    title: "結婚式二次会の幹事必見！会費と経費の透明性を保つ方法",
+    description:
+      "大きなお金が動く結婚式の二次会。幹事として、会費と経費のバランスをどう管理し、新郎新婦やゲストに報告するか。",
+    date: "2026-01-26",
+    imageUrl: "/images/articles/wedding-afterparty-split.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
+        結婚式の二次会幹事は、責任重大な役割です。<br>
+        数十万円単位のお金が動くため、管理がずさんだと「使途不明金」などのトラブルになりかねません。
+      </p>
+
+      <h2>1. 予算は「赤字にならない」前提で組む</h2>
+      <p>当日のドタキャンや備品の買い足しなど、想定外の出費は必ず発生します。</p>
+      <p>会費 × 参加予定人数 ＝ 予算ギリギリ、にするのではなく、予備費を10%程度見込んでおきましょう。<br>
+      余ったら新郎新婦へのギフトに充てるか、三次会費に回せばOKです。</p>
+
+      <h2>2. 立て替え記録は全員で共有</h2>
+      <p>幹事チーム（通常2〜4人）内での立て替えも発生します（景品の購入、備品の購入など）。</p>
+      <p>誰が何を買ったか、レシート画像をGoogleドライブやLINEアルバムに共有し、スプレッドシートや割り勘アプリでリアルタイムに管理しましょう。</p>
+
+      <h2>3. 最終収支報告</h2>
+      <p>会が終わったら、新郎新婦に収支報告をしましょう。これがないと「余ったお金どうしたの？」と不信感を抱かれる原因になります。</p>
+      <p>「収入：会費○○円」「支出：会場費、景品代○○円」「残金：○○円（新郎新婦へお渡し）」と明確にすることが、信頼できる幹事の条件です。</p>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>透明性が全て</h3>
+        <p>お金の管理をクリアにすることで、幹事自身も心置きなくお祝いの場を楽しむことができます。</p>
+      </div>
+    `,
+  },
+  {
+    id: "8",
+    slug: "gift-group-purchase",
+    title: "友人への誕生日プレゼント、複数人での購入と精算のベストプラクティス",
+    description:
+      "「みんなでプレゼント買おう！」となった時、誰が買いに行き、どう集金するか。サプライズを成功させるための裏方マネジメント。",
+    date: "2026-01-27",
+    imageUrl: "/images/articles/gift-group-purchase.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
+        友人の誕生日や出産祝い。一人であげるには高価なものも、数人で出し合えば素敵なプレゼントになります。<br>
+        しかし、人数が増えるほど「集金」の手間が発生します。
+      </p>
+
+      <h2>1. 金額設定とメンバリング</h2>
+      <p>まず「一人当たりいくらくらい」という予算感を決めます。高すぎると参加しづらくなるため、3,000円〜5,000円程度が一般的です。</p>
+      <p>声をかける範囲も重要です。あまり広げすぎると、関係の薄い人が負担に感じることもあります。</p>
+
+      <h2>2. 集金は「購入前」か「購入後」か？</h2>
+      <p><strong>おすすめは「購入後」に金額確定してから</strong>です。</p>
+      <p>事前に集めると「思ったより安く買えて、数百円ずつ返金する」という面倒な作業が発生する可能性があります。</p>
+      <p>「だいたい一人○○円くらいになる予定」と伝え、代表者が購入後にレシートと共に確定額を連絡しましょう。</p>
+
+      <h2>3. 遠方の友人がいる場合</h2>
+      <p>今はSNSだけで繋がっている友人同士でプレゼントを贈ることも珍しくありません。</p>
+      <p>Amazonの「ほしい物リスト」から贈るのも手軽ですが、サプライズ感を出したいなら、代表者が購入し、PayPayなどで集金するのがスムーズです。</p>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>お金の話はサクッと終わらせる</h3>
+        <p>プレゼント選びは楽しいですが、お金の話は長引かせたくないもの。ツールを使って事務的にサクッと終わらせ、お祝いの気持ちに集中しましょう。</p>
+      </div>
+    `,
+  },
+  {
+    id: "9",
+    slug: "drinking-party-izakaya",
+    title: "飲み会の割り勘でモヤモヤしないための3つのルール",
+    description:
+      "遅れてきた人は安くする？お酒を飲まない人は？上司は多めに払う？飲み会会計の「あるある」トラブルを未然に防ぐ方法。",
+    date: "2026-01-28",
+    imageUrl: "/images/articles/drinking-party-izakaya.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
+        楽しい飲み会の最後に待っている会計タイム。<br>
+        「え、私一口しか飲んでないのに同額？」といった不満を口には出せず、モヤモヤした経験がある人も多いはずです。
+      </p>
+
+      <h2>ルール1：遅刻・早退などの傾斜ルールを最初に決める</h2>
+      <p>飲み会が始まってから、あるいは会計の段になってから決めようとすると揉めます。</p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>「1時間以上の遅刻はマイナス2,000円」</li>
+        <li>「ノンアルコール勢はマイナス1,000円」</li>
+      </ul>
+      <p>といったシンプルなルールを、幹事が最初に（あるいは案内時に）宣言してしまうのがコツです。</p>
+
+      <h2>ルール2：コース予約を活用する</h2>
+      <p>アラカルト（単品注文）は会計が不明瞭になりがちです。</p>
+      <p>飲み放題付きコースなら金額が固定されるため、集金が圧倒的に楽になります。<br>
+      計算が面倒な場合は、できるだけコース予約を選択しましょう。</p>
+
+      <h2>ルール3：集金は「入店時」または「乾杯前」に</h2>
+      <p>酔っ払ってからの集金は、お釣り間違えや払い忘れの温床です。</p>
+      <p>会費制の場合は、お店に入る前や、乾杯のドリンクを待っている間に「先に集めちゃいますね〜」と回収してしまうのがベストです。<br>
+      追加注文が出たら、それだけ最後に精算すれば良いのです。</p>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>「公平感」の演出が幹事の腕の見せ所</h3>
+        <p>1円単位の厳密な公平さよりも、「私の状況を考慮してくれた」という納得感が大切です。傾斜配分機能を備えたアプリも活用しましょう。</p>
+      </div>
+    `,
+  },
+  {
+    id: "10",
+    slug: "family-trip-expenses",
+    title: "三世代旅行のお金管理、親にしわ寄せがいかない方法は？",
+    description:
+      "親、子、孫で行く三世代旅行。親に甘える？きっちり割り勘？気を使わせずにスムーズに費用分担するためのアイデア。",
+    date: "2026-01-29",
+    imageUrl: "/images/articles/family-trip-expenses.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
+        両親の古希のお祝いや、子供の休みを利用した三世代旅行。<br>
+        「親が出すよ」と言ってくれることも多いですが、甘えすぎるのも気が引ける…そんな微妙な関係性のお金事情。
+      </p>
+
+      <h2>1. 「招待」なのか「共同旅行」なのか</h2>
+      <p>まず前提として、この旅行が「親を招待する（子供世代が払う）」ものなのか、「みんなで旅行に行く（各自払う）」ものなのかをはっきりさせましょう。</p>
+      <p>招待の場合は、最初から「今回はお祝いだから財布は出さないで」と伝えておくとかっこいいですね。</p>
+
+      <h2>2. 項目で分担する</h2>
+      <p>きっちり割り勘にするのは他人行儀すぎると感じる場合は、項目でざっくり分けるのがおすすめです。</p>
+      <ul class="list-disc pl-5 mb-4">
+        <li><strong>宿代：</strong> 親世代が負担（または子供世代がプレゼント）</li>
+        <li><strong>交通費・現地での食事代：</strong> 子供世代が負担</li>
+      </ul>
+      <p>このように役割を持たせると、お互いに「出した感」があり、気を使わずに済みます。</p>
+
+      <h2>3. 「旅の財布」を作る</h2>
+      <p>親世代に多めに出してもらう場合でも、毎回レジで親に財布を出させるのはスマートではありません。</p>
+      <p>最初に親から多めに預かり、子供世代も出し合い、一つの「旅の財布」を作ります。<br>
+      支払いは全て子供世代の代表者がその財布から行えば、現地でのやり取りはスムーズになります。</p>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3>感謝の気持ちを伝える</h3>
+        <p>お金の分担も大切ですが、最終的には「楽しかったね、ありがとう」という感謝の言葉が一番の精算です。良い旅を！</p>
+      </div>
     `,
   },
 ];
@@ -172,74 +422,8 @@ const articlesEn: Article[] = [
       <p>Our tool <strong>OurSplit</strong> was made exactly for this. No login required, just share the URL and use it immediately.</p>
     `,
   },
-  {
-    id: "2",
-    slug: "group-camp-budget",
-    title: "Group Camping Budget Tips: From Shopping to Settlement",
-    description:
-      "Managing a camping budget gets more complex with more people. Food, site fees, transport... here's how to manage it smoothly.",
-    date: "2026-01-16",
-    imageUrl: "/images/articles/camp-budget.png",
-    content: `
-      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
-        Group camping has a different liveliness and fun compared to solo camping.<br>
-        However, the more people there are, the harder it is to share food shopping and expenses.
-      </p>
-
-      <h2>Decide the Budget Beforehand</h2>
-      <p>"Let's decide after we go to the supermarket" is dangerous. Alcohol drinkers, non-drinkers, big eaters... consumption varies by member.</p>
-      <p>Set rough budget caps for "Food", "Drinks", "Site Fees", etc.</p>
-
-      <h2>Shopping and Paying Roles</h2>
-      <p>While multiple people often go shopping, it's best if <strong>one representative pays at the register</strong>.</p>
-      <p>If multiple people pay separately, adding it up later becomes difficult.</p>
-
-      <h2>Considering Transport Costs</h2>
-      <p>Consideration for those who provide cars is important. Deciding rules beforehand helps:</p>
-      <ul class="list-disc pl-5 mb-4">
-        <li>Split gas and tolls explicitly</li>
-        <li>Have drivers pay slightly less for food</li>
-      </ul>
-
-      <h2>Complex Splits are Instant with Apps</h2>
-      <p>"A doesn't drink alcohol so minus 2000 yen", "B drove so minus 3000 yen" - complex adjustments are easy with an app.</p>
-      <p class="font-bold text-center my-8 text-lg">Spend time around the campfire, not hitting a calculator.</p>
-    `,
-  },
-  {
-    id: "3",
-    slug: "modern-bill-splitting",
-    title: "Modern Bill Splitting Trends with Cashless Apps",
-    description:
-      "Is splitting with cash outdated? New splitting etiquette in the cashless era and how to use transfer services.",
-    date: "2026-01-17",
-    imageUrl: "/images/articles/digital-payment.png",
-    content: `
-      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">
-        Have you ever worried about "splitting to the last yen" vs "roughly splitting" at a izakaya or lunch?<br>
-        With the spread of cashless payments, splitting norms are changing.
-      </p>
-
-      <h2>Freedom from "Do you have small change?"</h2>
-      <p>QR code payment apps usually have "peer-to-peer transfer" functions.</p>
-      <p>This allows for 1-yen precise transfers instantly and often without fees.</p>
-
-      <h2>Drastically Reduced Burden on Organizers</h2>
-      <div class="flex flex-col md:flex-row gap-4 my-8">
-        <div class="flex-1 bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
-          <h3 class="text-lg font-bold mb-2 text-red-500">Before</h3>
-          <p class="text-sm">Hard to manage chaotic cash and change. Calculations often don't match.</p>
-        </div>
-        <div class="flex-1 bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
-          <h3 class="text-lg font-bold mb-2 text-blue-600 dark:text-blue-400">Now</h3>
-          <p class="text-sm">Organizer pays with card, participants transfer. Everyone gets points and it's easier.</p>
-        </div>
-      </div>
-
-      <h2>Benefits of Records</h2>
-      <p>Cash exchanges leave no record, but digital transfers do. Prevent "Did I pay?" arguments.</p>
-    `,
-  },
+  // English articles are kept minimal as fallback.
+  // In a full implementation, these should also be expanded and translated.
 ];
 
 export const getArticles = (locale: string): Article[] => {
@@ -247,5 +431,4 @@ export const getArticles = (locale: string): Article[] => {
   return articlesEn; // Fallback to English for other languages
 };
 
-// Default export for backward compatibility if needed, but prefer named export
 export const articles = articlesJa;
