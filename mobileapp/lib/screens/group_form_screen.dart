@@ -177,6 +177,7 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            const BannerAdWidget(),
             Expanded(
               child: Form(
                 key: _formKey,
@@ -270,7 +271,6 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
                 ),
               ),
             ),
-            const BannerAdWidget(),
           ],
         ),
       ),

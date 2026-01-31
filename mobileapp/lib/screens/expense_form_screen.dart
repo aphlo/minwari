@@ -181,6 +181,7 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            const BannerAdWidget(),
             Expanded(
               child: Form(
                 key: _formKey,
@@ -408,7 +409,6 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
                 ),
               ),
             ),
-            const BannerAdWidget(),
           ],
         ),
       ),
