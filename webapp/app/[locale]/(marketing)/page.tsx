@@ -5,10 +5,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Header } from "@/client/components/layout/Header";
-import {
-  getRecentGroups,
-  type RecentGroup,
-} from "@/client/lib/recentGroups";
+import { getRecentGroups, type RecentGroup } from "@/client/lib/recentGroups";
 import { Link } from "@/i18n/navigation";
 import { getArticles } from "@/shared/lib/articles";
 
