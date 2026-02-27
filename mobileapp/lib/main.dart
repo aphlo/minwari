@@ -11,6 +11,7 @@ import 'l10n/generated/app_localizations.dart';
 import 'providers/shared_preferences_provider.dart';
 import 'providers/theme_provider.dart';
 import 'screens/home_screen.dart';
+import 'services/deep_link_service.dart';
 import 'services/user_review_service.dart';
 import 'theme/app_theme.dart';
 
@@ -38,16 +39,36 @@ void main() async {
   );
 }
 
-class MinwariApp extends ConsumerWidget {
+class MinwariApp extends ConsumerStatefulWidget {
   const MinwariApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<MinwariApp> createState() => _MinwariAppState();
+}
+
+class _MinwariAppState extends ConsumerState<MinwariApp> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
+  @override
+  void initState() {
+    super.initState();
+    DeepLinkService.initialize(_navigatorKey);
+  }
+
+  @override
+  void dispose() {
+    DeepLinkService.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final themeMode = ref.watch(themeProvider);
 
     return MaterialApp(
       title: 'OurSplit',
       debugShowCheckedModeBanner: false,
+      navigatorKey: _navigatorKey,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
