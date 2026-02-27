@@ -417,6 +417,10 @@
         "title": "멤버 없음",
         "description": "\"그룹 편집\"에서 멤버를 추가해주세요."
       }
+    },
+    "openInApp": {
+      "banner": "앱에서 더 편리하게 이용하세요",
+      "button": "앱에서 열기"
     }
   },
   "expenses": {

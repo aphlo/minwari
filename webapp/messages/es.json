@@ -417,6 +417,10 @@
         "title": "Sin miembros",
         "description": "Por favor agregue miembros desde \"Editar grupo\"."
       }
+    },
+    "openInApp": {
+      "banner": "Usa la app para una mejor experiencia",
+      "button": "Abrir en la app"
     }
   },
   "expenses": {
