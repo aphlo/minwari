@@ -49,6 +49,9 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
     try {
       final group = await _groupRepository.getGroup(widget.groupId);
       if (group != null) {
+        // Save to local storage so it appears in the group list
+        await _groupRepository.saveGroupToLocal(group);
+
         // Load expenses
         final expenses = await _expenseRepository.getExpenses(widget.groupId);
 

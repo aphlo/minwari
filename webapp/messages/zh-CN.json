@@ -417,6 +417,11 @@
         "title": "没有成员",
         "description": "请从“编辑群组”添加成员。"
       }
+    },
+    "openInApp": {
+      "banner": "使用应用获得更好的体验",
+      "button": "在应用中打开",
+      "dismiss": "关闭"
     }
   },
   "expenses": {

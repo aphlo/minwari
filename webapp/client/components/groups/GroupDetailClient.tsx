@@ -3,13 +3,14 @@
 import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getMemberChipColor } from "@/client/lib/memberColor";
 import { addRecentGroup } from "@/client/lib/recentGroups";
 import { Link } from "@/i18n/navigation";
 import type { CurrencyCode } from "@/shared/lib/currency";
 import { Header } from "../layout/Header";
 import { ExpenseList } from "./ExpenseList";
+import { OpenInAppBanner } from "./OpenInAppBanner";
 import { SettlementSection } from "./SettlementSection";
 
 type SerializedGroup = {
@@ -51,7 +52,11 @@ export function GroupDetailClient({
 }: Props) {
   const [expenses] = useState(initialExpenses);
   const [settlements] = useState(initialSettlements);
+  const [bannerVisible, setBannerVisible] = useState(false);
   const t = useTranslations("group");
+  const handleBannerVisibility = useCallback((visible: boolean) => {
+    setBannerVisible(visible);
+  }, []);
 
   useEffect(() => {
     addRecentGroup({
@@ -64,9 +69,15 @@ export function GroupDetailClient({
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <OpenInAppBanner
+        groupId={group.id}
+        onVisibilityChange={handleBannerVisibility}
+      />
 
       {/* Main Content */}
-      <main className="pt-20 pb-16 px-6 lg:px-8">
+      <main
+        className={`pb-16 px-6 lg:px-8 transition-[padding] ${bannerVisible ? "pt-[8.5rem] md:pt-20" : "pt-20"}`}
+      >
         <div className="max-w-md mx-auto space-y-6">
           {/* Group Summary */}
           <div className="animate-fade-in-up opacity-0 bg-card rounded-2xl border border-border p-6 shadow-sm">
