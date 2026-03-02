@@ -420,7 +420,8 @@
     },
     "openInApp": {
       "banner": "アプリでより快適に利用できます",
-      "button": "アプリで開く"
+      "button": "アプリで開く",
+      "dismiss": "閉じる"
     }
   },
   "expenses": {

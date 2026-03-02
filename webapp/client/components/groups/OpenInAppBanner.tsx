@@ -117,7 +117,7 @@ export function OpenInAppBanner({ groupId, onVisibilityChange }: Props) {
         type="button"
         onClick={handleDismiss}
         className="flex-shrink-0 p-1 text-muted hover:text-foreground transition-colors"
-        aria-label="Close"
+        aria-label={t("openInApp.dismiss")}
       >
         <svg
           className="w-4 h-4"

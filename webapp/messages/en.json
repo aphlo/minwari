@@ -420,7 +420,8 @@
     },
     "openInApp": {
       "banner": "Use the app for a better experience",
-      "button": "Open in app"
+      "button": "Open in app",
+      "dismiss": "Close"
     }
   },
   "expenses": {

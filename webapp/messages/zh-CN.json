@@ -420,7 +420,8 @@
     },
     "openInApp": {
       "banner": "使用应用获得更好的体验",
-      "button": "在应用中打开"
+      "button": "在应用中打开",
+      "dismiss": "关闭"
     }
   },
   "expenses": {

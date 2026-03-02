@@ -420,7 +420,8 @@
     },
     "openInApp": {
       "banner": "使用應用程式獲得更好的體驗",
-      "button": "在應用程式中開啟"
+      "button": "在應用程式中開啟",
+      "dismiss": "關閉"
     }
   },
   "expenses": {
