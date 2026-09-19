@@ -99,5 +99,37 @@
         "type": "String"
       }
     }
+  },
+  "hideAds24h": "Hide ads for 24 hours",
+  "hideAds24hSubtitle": "Watch a video ad to hide ads for 24 hours",
+  "adsHiddenRemaining": "Ads hidden ({hours}h {minutes}m remaining)",
+  "@adsHiddenRemaining": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdLoading": "Loading video ad...",
+  "rewardAdFailed": "Failed to load ad",
+  "rewardAdSuccess": "Ads hidden for 24 hours",
+  "groupDate": "Date",
+  "deleteGroup": "Delete Group",
+  "deleteGroupConfirmTitle": "Delete Group",
+  "deleteGroupConfirmMessage": "Are you sure you want to delete this group? This action cannot be undone.",
+  "deleteGroupSuccess": "Group deleted successfully",
+  "deleteGroupError": "Failed to delete group",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "cannotDeleteMemberInExpense": "Cannot delete {name} because they are included in existing expenses",
+  "@cannotDeleteMemberInExpense": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -630,6 +630,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Check out my group \"{groupName}\" on OurSplit!\nID: {groupId}\nLink: {url}\n'**
   String shareMessage(String groupName, String groupId, String url);
+
+  /// No description provided for @hideAds24h.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide ads for 24 hours'**
+  String get hideAds24h;
+
+  /// No description provided for @hideAds24hSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch a video ad to hide ads for 24 hours'**
+  String get hideAds24hSubtitle;
+
+  /// No description provided for @adsHiddenRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Ads hidden ({hours}h {minutes}m remaining)'**
+  String adsHiddenRemaining(String hours, String minutes);
+
+  /// No description provided for @rewardAdLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading video ad...'**
+  String get rewardAdLoading;
+
+  /// No description provided for @rewardAdFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load ad'**
+  String get rewardAdFailed;
+
+  /// No description provided for @rewardAdSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Ads hidden for 24 hours'**
+  String get rewardAdSuccess;
+
+  /// No description provided for @groupDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get groupDate;
+
+  /// No description provided for @deleteGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Group'**
+  String get deleteGroup;
+
+  /// No description provided for @deleteGroupConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Group'**
+  String get deleteGroupConfirmTitle;
+
+  /// No description provided for @deleteGroupConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this group? This action cannot be undone.'**
+  String get deleteGroupConfirmMessage;
+
+  /// No description provided for @deleteGroupSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Group deleted successfully'**
+  String get deleteGroupSuccess;
+
+  /// No description provided for @deleteGroupError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete group'**
+  String get deleteGroupError;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @cannotDeleteMemberInExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot delete {name} because they are included in existing expenses'**
+  String cannotDeleteMemberInExpense(String name);
 }
 
 class _AppLocalizationsDelegate

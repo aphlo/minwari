@@ -35,6 +35,13 @@
     "dark": "Escuro",
     "system": "Sistema"
   },
+  "ads": {
+    "hideAds24h": "Ocultar anúncios por 24 horas",
+    "hideAds24hSubtitle": "Assista a um vídeo para ocultar os anúncios por 24 horas",
+    "rewardAdLoading": "Carregando anúncio em vídeo...",
+    "rewardAdFailed": "Falha ao carregar o anúncio",
+    "rewardAdSuccess": "Anúncios ocultos por 24 horas"
+  },
   "marketing": {
     "hero": {
       "titleLine1": "Divida despesas",

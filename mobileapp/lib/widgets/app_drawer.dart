@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:minwari/providers/ad_remove_provider.dart';
 import 'package:minwari/providers/package_info_provider.dart';
 import 'package:minwari/screens/license_screen.dart';
 import 'package:minwari/screens/settings_screen.dart';
 import 'package:minwari/screens/webview_screen.dart';
+import 'package:minwari/services/reward_ad_service.dart';
 import 'package:minwari/services/user_review_service.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/banner_ad_widget.dart';
@@ -17,9 +19,15 @@ class AppDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final packageInfoAsync = ref.watch(packageInfoProvider);
+    final adRemoveUntil = ref.watch(adRemoveProvider);
 
     final locale = Localizations.localeOf(context);
     final lang = locale.languageCode == 'ja' ? 'ja' : 'en';
+
+    final isAdRemoved = adRemoveUntil != null && adRemoveUntil.isAfter(DateTime.now());
+    final adRemoveSubtitle = isAdRemoved
+        ? _formatRemainingTime(context, adRemoveUntil)
+        : context.l10n.hideAds24hSubtitle;
 
     return Drawer(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
@@ -33,6 +41,17 @@ class AppDrawer extends ConsumerWidget {
               icon: CupertinoIcons.settings,
               title: context.l10n.settings,
               onTap: () => _navigateTo(context, const SettingsScreen()),
+            ),
+            _buildDivider(context),
+            _buildMenuItem(
+              context,
+              icon: isAdRemoved
+                  ? CupertinoIcons.checkmark_seal_fill
+                  : CupertinoIcons.play_circle,
+              iconColor: isAdRemoved ? context.primaryColor : null,
+              title: context.l10n.hideAds24h,
+              subtitle: adRemoveSubtitle,
+              onTap: () => RewardAdService.showRewardAd(context, ref),
             ),
             _buildDivider(context),
             _buildMenuItem(
@@ -110,10 +129,20 @@ class AppDrawer extends ConsumerWidget {
     );
   }
 
+  String _formatRemainingTime(BuildContext context, DateTime until) {
+    final diff = until.difference(DateTime.now());
+    if (diff.isNegative) return '';
+    final hours = diff.inHours.toString();
+    final minutes = (diff.inMinutes % 60).toString();
+    return context.l10n.adsHiddenRemaining(hours, minutes);
+  }
+
   Widget _buildMenuItem(
     BuildContext context, {
     required IconData icon,
+    Color? iconColor,
     required String title,
+    String? subtitle,
     required VoidCallback onTap,
   }) {
     return Material(
@@ -124,16 +153,32 @@ class AppDrawer extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Row(
             children: [
-              Icon(icon, color: context.textPrimary, size: 22),
+              Icon(icon, color: iconColor ?? context.textPrimary, size: 22),
               const SizedBox(width: 16),
               Expanded(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w400,
-                    color: context.textPrimary,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400,
+                        color: context.textPrimary,
+                      ),
+                    ),
+                    if (subtitle != null) ...[
+                      const SizedBox(height: 2),
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: context.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
               ),
               Icon(

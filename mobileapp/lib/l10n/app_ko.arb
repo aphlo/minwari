@@ -99,5 +99,30 @@
         "type": "String"
       }
     }
-  }
+  },
+  "hideAds24h": "24시간 동안 광고 숨기기",
+  "hideAds24hSubtitle": "동영상 광고를 시청하여 24시간 동안 광고를 숨깁니다",
+  "adsHiddenRemaining": "광고 숨김 (남은 시간: {hours}시간 {minutes}분)",
+  "@adsHiddenRemaining": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdLoading": "동영상 광고를 불러오는 중...",
+  "rewardAdFailed": "광고를 불러오지 못했습니다",
+  "rewardAdSuccess": "24시간 동안 광고가 숨겨졌습니다",
+  "groupDate": "날짜",
+  "deleteGroup": "그룹 삭제",
+  "deleteGroupConfirmTitle": "그룹 삭제",
+  "deleteGroupConfirmMessage": "정말로 이 그룹을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+  "deleteGroupSuccess": "그룹이 삭제되었습니다",
+  "deleteGroupError": "그룹 삭제에 실패했습니다",
+  "cancel": "취소",
+  "delete": "삭제",
+  "cannotDeleteMemberInExpense": "{name}은(는) 정산 내역에 포함되어 있어 삭제할 수 없습니다"
 }

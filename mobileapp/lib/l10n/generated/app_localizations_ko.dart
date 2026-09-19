@@ -270,4 +270,54 @@ class AppLocalizationsKo extends AppLocalizations {
   String shareMessage(String groupName, String groupId, String url) {
     return 'OurSplit에서 내 그룹 \"$groupName\"을(를) 확인하세요!\nID: $groupId\n링크: $url\n';
   }
+
+  @override
+  String get hideAds24h => '24시간 동안 광고 숨기기';
+
+  @override
+  String get hideAds24hSubtitle => '동영상 광고를 시청하여 24시간 동안 광고를 숨깁니다';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return '광고 숨김 (남은 시간: $hours시간 $minutes분)';
+  }
+
+  @override
+  String get rewardAdLoading => '동영상 광고를 불러오는 중...';
+
+  @override
+  String get rewardAdFailed => '광고를 불러오지 못했습니다';
+
+  @override
+  String get rewardAdSuccess => '24시간 동안 광고가 숨겨졌습니다';
+
+  @override
+  String get groupDate => '날짜';
+
+  @override
+  String get deleteGroup => '그룹 삭제';
+
+  @override
+  String get deleteGroupConfirmTitle => '그룹 삭제';
+
+  @override
+  String get deleteGroupConfirmMessage =>
+      '정말로 이 그룹을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.';
+
+  @override
+  String get deleteGroupSuccess => '그룹이 삭제되었습니다';
+
+  @override
+  String get deleteGroupError => '그룹 삭제에 실패했습니다';
+
+  @override
+  String get cancel => '취소';
+
+  @override
+  String get delete => '삭제';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return '$name은(는) 정산 내역에 포함되어 있어 삭제할 수 없습니다';
+  }
 }

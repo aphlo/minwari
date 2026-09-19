@@ -32,6 +32,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
   List<Expense> _expenses = [];
   List<Settlement> _settlements = [];
   bool _isLoading = true;
+  bool _isDeleting = false;
   String? _error;
 
   @override
@@ -240,6 +241,10 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                           members: group.members,
                         ),
 
+                        // Delete Group Button
+                        const SizedBox(height: 32),
+                        _buildDeleteGroupButton(context),
+
                         // Bottom padding for safe area
                         SizedBox(
                             height: MediaQuery.of(context).padding.bottom + 16),
@@ -347,6 +352,82 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _confirmDeleteGroup() {
+    final group = _group;
+    if (group == null || _isDeleting) return;
+
+    showCupertinoDialog(
+      context: context,
+      builder: (dialogContext) => CupertinoAlertDialog(
+        title: Text(context.l10n.deleteGroupConfirmTitle),
+        content: Text(context.l10n.deleteGroupConfirmMessage),
+        actions: [
+          CupertinoDialogAction(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: Text(context.l10n.cancel),
+          ),
+          CupertinoDialogAction(
+            isDestructiveAction: true,
+            onPressed: () {
+              Navigator.of(dialogContext).pop();
+              _deleteGroup();
+            },
+            child: Text(context.l10n.delete),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _deleteGroup() async {
+    final group = _group;
+    if (group == null) return;
+
+    setState(() => _isDeleting = true);
+
+    try {
+      await _groupRepository.deleteGroup(group.id);
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(context.l10n.deleteGroupSuccess),
+        ),
+      );
+      Navigator.of(context).pop();
+    } catch (e) {
+      debugPrint('Failed to delete group: $e');
+      if (mounted) {
+        setState(() => _isDeleting = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${context.l10n.deleteGroupError}: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Widget _buildDeleteGroupButton(BuildContext context) {
+    return Center(
+      child: TextButton.icon(
+        onPressed: _isDeleting ? null : _confirmDeleteGroup,
+        icon: _isDeleting
+            ? const CupertinoActivityIndicator()
+            : const Icon(CupertinoIcons.trash, color: Colors.red, size: 18),
+        label: Text(
+          context.l10n.deleteGroup,
+          style: const TextStyle(
+            color: Colors.red,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),

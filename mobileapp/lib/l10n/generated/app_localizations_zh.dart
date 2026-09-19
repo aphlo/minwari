@@ -268,7 +268,56 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String shareMessage(String groupName, String groupId, String url) {
-    return '在 OurSplit 上查看我的群组“$groupName”！\nID: $groupId\n链接: $url\n';
+    return '在 OurSplit 上查看我的群组 \"$groupName\"！\nID: $groupId\n链接: $url\n';
+  }
+
+  @override
+  String get hideAds24h => '隐藏广告24小时';
+
+  @override
+  String get hideAds24hSubtitle => '观看视频广告即可隐藏24小时广告';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return '广告已隐藏 (还剩 $hours小时$minutes分钟)';
+  }
+
+  @override
+  String get rewardAdLoading => '正在加载视频广告...';
+
+  @override
+  String get rewardAdFailed => '加载广告失败';
+
+  @override
+  String get rewardAdSuccess => '已隐藏广告24小时';
+
+  @override
+  String get groupDate => '日期';
+
+  @override
+  String get deleteGroup => '删除群组';
+
+  @override
+  String get deleteGroupConfirmTitle => '删除群组';
+
+  @override
+  String get deleteGroupConfirmMessage => '确定要删除此群组吗？此操作无法撤销。';
+
+  @override
+  String get deleteGroupSuccess => '群组已成功删除';
+
+  @override
+  String get deleteGroupError => '删除群组失败';
+
+  @override
+  String get cancel => '取消';
+
+  @override
+  String get delete => '删除';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return '无法删除$name，因为其已包含在账目中';
   }
 }
 
@@ -536,7 +585,56 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String shareMessage(String groupName, String groupId, String url) {
-    return '在 OurSplit 上查看我的群组“$groupName”！\nID: $groupId\n链接: $url\n';
+    return '在 OurSplit 上查看我的群组 \"$groupName\"！\nID: $groupId\n链接: $url\n';
+  }
+
+  @override
+  String get hideAds24h => '隐藏广告24小时';
+
+  @override
+  String get hideAds24hSubtitle => '观看视频广告即可隐藏24小时广告';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return '广告已隐藏 (还剩 $hours小时$minutes分钟)';
+  }
+
+  @override
+  String get rewardAdLoading => '正在加载视频广告...';
+
+  @override
+  String get rewardAdFailed => '加载广告失败';
+
+  @override
+  String get rewardAdSuccess => '已隐藏广告24小时';
+
+  @override
+  String get groupDate => '日期';
+
+  @override
+  String get deleteGroup => '删除群组';
+
+  @override
+  String get deleteGroupConfirmTitle => '删除群组';
+
+  @override
+  String get deleteGroupConfirmMessage => '确定要删除此群组吗？此操作无法撤销。';
+
+  @override
+  String get deleteGroupSuccess => '群组已成功删除';
+
+  @override
+  String get deleteGroupError => '删除群组失败';
+
+  @override
+  String get cancel => '取消';
+
+  @override
+  String get delete => '删除';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return '无法删除$name，因为其已包含在账目中';
   }
 }
 
@@ -804,6 +902,55 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String shareMessage(String groupName, String groupId, String url) {
-    return '在 OurSplit 上查看我的群組「$groupName」！\nID: $groupId\n連結: $url\n';
+    return '在 OurSplit 上檢視我的群組 \"$groupName\"！\nID: $groupId\n連結: $url\n';
+  }
+
+  @override
+  String get hideAds24h => '隱藏廣告24小時';
+
+  @override
+  String get hideAds24hSubtitle => '觀看影片廣告即可隱藏24小時廣告';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return '廣告已隱藏 (剩餘 $hours小時$minutes分鐘)';
+  }
+
+  @override
+  String get rewardAdLoading => '正在載入影片廣告...';
+
+  @override
+  String get rewardAdFailed => '載入廣告失敗';
+
+  @override
+  String get rewardAdSuccess => '已隱藏廣告24小時';
+
+  @override
+  String get groupDate => '日期';
+
+  @override
+  String get deleteGroup => '刪除群組';
+
+  @override
+  String get deleteGroupConfirmTitle => '刪除群組';
+
+  @override
+  String get deleteGroupConfirmMessage => '確定要刪除此群組嗎？此操作無法復原。';
+
+  @override
+  String get deleteGroupSuccess => '群組已成功刪除';
+
+  @override
+  String get deleteGroupError => '刪除群組失敗';
+
+  @override
+  String get cancel => '取消';
+
+  @override
+  String get delete => '刪除';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return '無法刪除$name，因為其已包含在帳目中';
   }
 }

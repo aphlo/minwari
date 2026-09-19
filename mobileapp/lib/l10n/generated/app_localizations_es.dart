@@ -274,6 +274,57 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String shareMessage(String groupName, String groupId, String url) {
-    return '¡Mira mi grupo \"$groupName\" en OurSplit!\nID: $groupId\nEnlace: $url\n';
+    return '¡Echa un vistazo a mi grupo \"$groupName\" en OurSplit!\nID: $groupId\nEnlace: $url\n';
+  }
+
+  @override
+  String get hideAds24h => 'Ocultar anuncios por 24 horas';
+
+  @override
+  String get hideAds24hSubtitle =>
+      'Mira un anuncio en video para ocultar anuncios por 24 horas';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return 'Anuncios ocultos (quedan ${hours}h ${minutes}m)';
+  }
+
+  @override
+  String get rewardAdLoading => 'Cargando anuncio en video...';
+
+  @override
+  String get rewardAdFailed => 'Error al cargar el anuncio';
+
+  @override
+  String get rewardAdSuccess => '¡Anuncios ocultos por 24 horas!';
+
+  @override
+  String get groupDate => 'Fecha';
+
+  @override
+  String get deleteGroup => 'Eliminar grupo';
+
+  @override
+  String get deleteGroupConfirmTitle => 'Eliminar grupo';
+
+  @override
+  String get deleteGroupConfirmMessage =>
+      '¿Estás seguro de que deseas eliminar este grupo? Esta acción no se puede deshacer.';
+
+  @override
+  String get deleteGroupSuccess => 'Grupo eliminado con éxito';
+
+  @override
+  String get deleteGroupError => 'Error al eliminar el grupo';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get delete => 'Eliminar';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return 'No se puede eliminar a $name porque está incluido en los gastos';
   }
 }

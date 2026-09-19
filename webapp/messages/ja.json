@@ -35,6 +35,13 @@
     "dark": "ダーク",
     "system": "システム"
   },
+  "ads": {
+    "hideAds24h": "24時間広告を非表示にする",
+    "hideAds24hSubtitle": "動画広告を視聴して24時間広告を非表示にします",
+    "rewardAdLoading": "動画広告を読み込んでいます...",
+    "rewardAdFailed": "広告の読み込みに失敗しました",
+    "rewardAdSuccess": "24時間広告を非表示にしました"
+  },
   "marketing": {
     "hero": {
       "titleLine1": "割り勘を",

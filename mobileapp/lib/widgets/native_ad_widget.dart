@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:minwari/providers/ad_remove_provider.dart';
 import 'package:minwari/utils/ad_helper.dart';
 
-class NativeAdWidget extends StatefulWidget {
+class NativeAdWidget extends ConsumerStatefulWidget {
   final double height;
   final double width;
 
@@ -14,16 +16,22 @@ class NativeAdWidget extends StatefulWidget {
   });
 
   @override
-  State<NativeAdWidget> createState() => _NativeAdWidgetState();
+  ConsumerState<NativeAdWidget> createState() => _NativeAdWidgetState();
 }
 
-class _NativeAdWidgetState extends State<NativeAdWidget> {
+class _NativeAdWidgetState extends ConsumerState<NativeAdWidget> {
   NativeAd? _nativeAd;
   bool _isAdLoaded = false;
 
   @override
   void initState() {
     super.initState();
+    _checkAndLoadNativeAd();
+  }
+
+  void _checkAndLoadNativeAd() {
+    final isRemoved = ref.read(isAdRemovedProvider);
+    if (isRemoved) return;
     _loadNativeAd();
   }
 
@@ -38,9 +46,11 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
       listener: NativeAdListener(
         onAdLoaded: (ad) {
           debugPrint('$NativeAd loaded.');
-          setState(() {
-            _isAdLoaded = true;
-          });
+          if (mounted) {
+            setState(() {
+              _isAdLoaded = true;
+            });
+          }
         },
         onAdFailedToLoad: (ad, error) {
           debugPrint('$NativeAd failed to load: $error');
@@ -61,6 +71,11 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isAdRemoved = ref.watch(isAdRemovedProvider);
+    if (isAdRemoved) {
+      return const SizedBox.shrink();
+    }
+
     if (!_isAdLoaded || _nativeAd == null) {
       return const SizedBox.shrink();
     }

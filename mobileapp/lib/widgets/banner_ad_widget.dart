@@ -1,30 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:minwari/providers/ad_remove_provider.dart';
 import 'package:minwari/utils/ad_helper.dart';
 
-class BannerAdWidget extends StatefulWidget {
+class BannerAdWidget extends ConsumerStatefulWidget {
   final AdSize? size;
 
   const BannerAdWidget({super.key, this.size});
 
   @override
-  State<BannerAdWidget> createState() => _BannerAdWidgetState();
+  ConsumerState<BannerAdWidget> createState() => _BannerAdWidgetState();
 }
 
-class _BannerAdWidgetState extends State<BannerAdWidget> {
+class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
   BannerAd? _bannerAd;
   bool _isLoaded = false;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _loadAd();
+    _checkAndLoadAd();
   }
 
   @override
   void dispose() {
     _bannerAd?.dispose();
     super.dispose();
+  }
+
+  Future<void> _checkAndLoadAd() async {
+    final isRemoved = ref.read(isAdRemovedProvider);
+    if (isRemoved) {
+      if (_bannerAd != null) {
+        _bannerAd?.dispose();
+        _bannerAd = null;
+        if (mounted) {
+          setState(() {
+            _isLoaded = false;
+          });
+        }
+      }
+      return;
+    }
+
+    _loadAd();
   }
 
   Future<void> _loadAd() async {
@@ -46,7 +66,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       }
     }
 
-    // Dispose previous ad if it exists (though typically this widget won't rebuild often enough to matter)
+    // Dispose previous ad if it exists
     _bannerAd?.dispose();
 
     _bannerAd = BannerAd(
@@ -56,9 +76,11 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       listener: BannerAdListener(
         onAdLoaded: (ad) {
           debugPrint('$ad loaded.');
-          setState(() {
-            _isLoaded = true;
-          });
+          if (mounted) {
+            setState(() {
+              _isLoaded = true;
+            });
+          }
         },
         onAdFailedToLoad: (ad, err) {
           debugPrint('BannerAd failed to load: $err');
@@ -70,6 +92,11 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isAdRemoved = ref.watch(isAdRemovedProvider);
+    if (isAdRemoved) {
+      return const SizedBox.shrink();
+    }
+
     if (_bannerAd != null && _isLoaded) {
       return SafeArea(
         top: false,

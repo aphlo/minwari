@@ -41,4 +41,4 @@ final class PackageInfoProvider extends $FunctionalProvider<
   }
 }
 
-String _$packageInfoHash() => r'f7bd90882137aac7a9f28e9d10eae6efeee8c9d0';
+String _$packageInfoHash() => r'cc57db7b4684ab0d5df0f050b8ea045a3658e89a';

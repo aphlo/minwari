@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:minwari/providers/ad_remove_provider.dart';
 import 'package:minwari/providers/theme_provider.dart';
+import 'package:minwari/services/reward_ad_service.dart';
 import 'package:minwari/theme/app_theme_extension.dart';
 import 'package:minwari/widgets/banner_ad_widget.dart';
 import 'package:minwari/widgets/native_ad_widget.dart';
@@ -59,6 +61,8 @@ class SettingsScreen extends ConsumerWidget {
                   isSelected: themeMode == ThemeMode.system,
                   onTap: () => notifier.setMode(ThemeMode.system),
                 ),
+                _buildSectionHeader(context.l10n.hideAds24h, context),
+                _buildRewardAdOption(context, ref),
               ],
             ),
           ),
@@ -127,5 +131,72 @@ class SettingsScreen extends ConsumerWidget {
 
   Widget _buildDivider(BuildContext context) {
     return Divider(height: 1, indent: 56, color: context.dividerColor);
+  }
+
+  Widget _buildRewardAdOption(BuildContext context, WidgetRef ref) {
+    final adRemoveUntil = ref.watch(adRemoveProvider);
+    final isAdRemoved = adRemoveUntil != null && adRemoveUntil.isAfter(DateTime.now());
+
+    final subtitle = isAdRemoved
+        ? _formatRemainingTime(context, adRemoveUntil)
+        : context.l10n.hideAds24hSubtitle;
+
+    return Material(
+      color: context.cardBackground,
+      child: InkWell(
+        onTap: () => RewardAdService.showRewardAd(context, ref),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Row(
+            children: [
+              Icon(
+                isAdRemoved
+                    ? CupertinoIcons.checkmark_seal_fill
+                    : CupertinoIcons.play_circle,
+                color: isAdRemoved ? context.primaryColor : context.textPrimary,
+                size: 24,
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      context.l10n.hideAds24h,
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: context.textPrimary,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: context.textSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(
+                CupertinoIcons.chevron_right,
+                size: 16,
+                color: context.textSecondary.withValues(alpha: 0.5),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  String _formatRemainingTime(BuildContext context, DateTime until) {
+    final diff = until.difference(DateTime.now());
+    if (diff.isNegative) return '';
+    final hours = diff.inHours.toString();
+    final minutes = (diff.inMinutes % 60).toString();
+    return context.l10n.adsHiddenRemaining(hours, minutes);
   }
 }

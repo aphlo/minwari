@@ -278,6 +278,57 @@ class AppLocalizationsPt extends AppLocalizations {
   String shareMessage(String groupName, String groupId, String url) {
     return 'Confira meu grupo \"$groupName\" no OurSplit!\nID: $groupId\nLink: $url\n';
   }
+
+  @override
+  String get hideAds24h => 'Ocultar anúncios por 24 horas';
+
+  @override
+  String get hideAds24hSubtitle =>
+      'Assista a um vídeo para ocultar os anúncios por 24 horas';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return 'Anúncios ocultos (restam ${hours}h ${minutes}m)';
+  }
+
+  @override
+  String get rewardAdLoading => 'Carregando anúncio em vídeo...';
+
+  @override
+  String get rewardAdFailed => 'Falha ao carregar o anúncio';
+
+  @override
+  String get rewardAdSuccess => 'Anúncios ocultos por 24 horas';
+
+  @override
+  String get groupDate => 'Data';
+
+  @override
+  String get deleteGroup => 'Excluir grupo';
+
+  @override
+  String get deleteGroupConfirmTitle => 'Excluir grupo';
+
+  @override
+  String get deleteGroupConfirmMessage =>
+      'Tem certeza de que deseja excluir este grupo? Esta ação não pode ser desfeita.';
+
+  @override
+  String get deleteGroupSuccess => 'Grupo excluído com sucesso';
+
+  @override
+  String get deleteGroupError => 'Falha ao excluir o grupo';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get delete => 'Excluir';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return 'Não é possível excluir $name porque está incluído nas despesas';
+  }
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -553,5 +604,56 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String shareMessage(String groupName, String groupId, String url) {
     return 'Confira meu grupo \"$groupName\" no OurSplit!\nID: $groupId\nLink: $url\n';
+  }
+
+  @override
+  String get hideAds24h => 'Ocultar anúncios por 24 horas';
+
+  @override
+  String get hideAds24hSubtitle =>
+      'Assista a um vídeo para ocultar os anúncios por 24 horas';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return 'Anúncios ocultos (restam ${hours}h ${minutes}m)';
+  }
+
+  @override
+  String get rewardAdLoading => 'Carregando anúncio em vídeo...';
+
+  @override
+  String get rewardAdFailed => 'Falha ao carregar o anúncio';
+
+  @override
+  String get rewardAdSuccess => 'Anúncios ocultos por 24 horas';
+
+  @override
+  String get groupDate => 'Data';
+
+  @override
+  String get deleteGroup => 'Excluir grupo';
+
+  @override
+  String get deleteGroupConfirmTitle => 'Excluir grupo';
+
+  @override
+  String get deleteGroupConfirmMessage =>
+      'Tem certeza de que deseja excluir este grupo? Esta ação não pode ser desfeita.';
+
+  @override
+  String get deleteGroupSuccess => 'Grupo excluído com sucesso';
+
+  @override
+  String get deleteGroupError => 'Falha ao excluir o grupo';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get delete => 'Excluir';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return 'Não é possível excluir $name porque está incluído nas despesas';
   }
 }

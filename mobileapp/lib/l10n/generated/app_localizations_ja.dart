@@ -270,4 +270,53 @@ class AppLocalizationsJa extends AppLocalizations {
   String shareMessage(String groupName, String groupId, String url) {
     return 'みんなの割り勘でグループ「$groupName」を共有します。\nID: $groupId\nリンク: $url\n';
   }
+
+  @override
+  String get hideAds24h => '24時間広告を非表示にする';
+
+  @override
+  String get hideAds24hSubtitle => '動画広告を視聴して24時間広告を非表示にします';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return '広告非表示中 (残り$hours時間$minutes分)';
+  }
+
+  @override
+  String get rewardAdLoading => '動画広告を読み込んでいます...';
+
+  @override
+  String get rewardAdFailed => '広告の読み込みに失敗しました';
+
+  @override
+  String get rewardAdSuccess => '24時間広告を非表示にしました';
+
+  @override
+  String get groupDate => '日付';
+
+  @override
+  String get deleteGroup => 'グループを削除';
+
+  @override
+  String get deleteGroupConfirmTitle => 'グループの削除';
+
+  @override
+  String get deleteGroupConfirmMessage => '本当にこのグループを削除しますか？この操作は取り消せません。';
+
+  @override
+  String get deleteGroupSuccess => 'グループを削除しました';
+
+  @override
+  String get deleteGroupError => 'グループの削除に失敗しました';
+
+  @override
+  String get cancel => 'キャンセル';
+
+  @override
+  String get delete => '削除';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return '$nameは割り勘の記録に含まれているため削除できません';
+  }
 }

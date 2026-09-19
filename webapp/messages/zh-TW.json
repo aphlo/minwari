@@ -35,6 +35,13 @@
     "dark": "深色",
     "system": "系統"
   },
+  "ads": {
+    "hideAds24h": "隱藏廣告24小時",
+    "hideAds24hSubtitle": "觀看影片廣告即可隱藏24小時廣告",
+    "rewardAdLoading": "正在載入影片廣告...",
+    "rewardAdFailed": "載入廣告失敗",
+    "rewardAdSuccess": "已隱藏廣告24小時"
+  },
   "marketing": {
     "hero": {
       "titleLine1": "費用分攤",

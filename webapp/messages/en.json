@@ -35,6 +35,13 @@
     "dark": "Dark",
     "system": "System"
   },
+  "ads": {
+    "hideAds24h": "Hide ads for 24 hours",
+    "hideAds24hSubtitle": "Watch a video ad to hide ads for 24 hours",
+    "rewardAdLoading": "Loading video ad...",
+    "rewardAdFailed": "Failed to load ad",
+    "rewardAdSuccess": "Ads hidden for 24 hours"
+  },
   "marketing": {
     "hero": {
       "titleLine1": "Split expenses",

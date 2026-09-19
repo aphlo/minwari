@@ -86,7 +86,7 @@
   "reviewSendFeedback": "發送回饋",
   "reviewNotNow": "暫不",
   "feedbackTitle": "回饋",
-  "shareMessage": "在 OurSplit 上查看我的群組「{groupName}」！\nID: {groupId}\n連結: {url}\n",
+  "shareMessage": "在 OurSplit 上檢視我的群組 \"{groupName}\"！\nID: {groupId}\n連結: {url}\n",
   "@shareMessage": {
     "placeholders": {
       "groupName": {
@@ -99,5 +99,30 @@
         "type": "String"
       }
     }
-  }
+  },
+  "hideAds24h": "隱藏廣告24小時",
+  "hideAds24hSubtitle": "觀看影片廣告即可隱藏24小時廣告",
+  "adsHiddenRemaining": "廣告已隱藏 (剩餘 {hours}小時{minutes}分鐘)",
+  "@adsHiddenRemaining": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdLoading": "正在載入影片廣告...",
+  "rewardAdFailed": "載入廣告失敗",
+  "rewardAdSuccess": "已隱藏廣告24小時",
+  "groupDate": "日期",
+  "deleteGroup": "刪除群組",
+  "deleteGroupConfirmTitle": "刪除群組",
+  "deleteGroupConfirmMessage": "確定要刪除此群組嗎？此操作無法復原。",
+  "deleteGroupSuccess": "群組已成功刪除",
+  "deleteGroupError": "刪除群組失敗",
+  "cancel": "取消",
+  "delete": "刪除",
+  "cannotDeleteMemberInExpense": "無法刪除{name}，因為其已包含在帳目中"
 }

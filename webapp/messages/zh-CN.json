@@ -35,6 +35,13 @@
     "dark": "深色",
     "system": "系统"
   },
+  "ads": {
+    "hideAds24h": "隐藏广告24小时",
+    "hideAds24hSubtitle": "观看视频广告即可隐藏24小时广告",
+    "rewardAdLoading": "正在加载视频广告...",
+    "rewardAdFailed": "加载广告失败",
+    "rewardAdSuccess": "已隐藏广告24小时"
+  },
   "marketing": {
     "hero": {
       "titleLine1": "费用分摊",

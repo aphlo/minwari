@@ -276,4 +276,54 @@ class AppLocalizationsEn extends AppLocalizations {
   String shareMessage(String groupName, String groupId, String url) {
     return 'Check out my group \"$groupName\" on OurSplit!\nID: $groupId\nLink: $url\n';
   }
+
+  @override
+  String get hideAds24h => 'Hide ads for 24 hours';
+
+  @override
+  String get hideAds24hSubtitle => 'Watch a video ad to hide ads for 24 hours';
+
+  @override
+  String adsHiddenRemaining(String hours, String minutes) {
+    return 'Ads hidden (${hours}h ${minutes}m remaining)';
+  }
+
+  @override
+  String get rewardAdLoading => 'Loading video ad...';
+
+  @override
+  String get rewardAdFailed => 'Failed to load ad';
+
+  @override
+  String get rewardAdSuccess => 'Ads hidden for 24 hours';
+
+  @override
+  String get groupDate => 'Date';
+
+  @override
+  String get deleteGroup => 'Delete Group';
+
+  @override
+  String get deleteGroupConfirmTitle => 'Delete Group';
+
+  @override
+  String get deleteGroupConfirmMessage =>
+      'Are you sure you want to delete this group? This action cannot be undone.';
+
+  @override
+  String get deleteGroupSuccess => 'Group deleted successfully';
+
+  @override
+  String get deleteGroupError => 'Failed to delete group';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String cannotDeleteMemberInExpense(String name) {
+    return 'Cannot delete $name because they are included in existing expenses';
+  }
 }

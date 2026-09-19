@@ -86,7 +86,7 @@
   "reviewSendFeedback": "Enviar opinión",
   "reviewNotNow": "Ahora no",
   "feedbackTitle": "Opinión",
-  "shareMessage": "¡Mira mi grupo \"{groupName}\" en OurSplit!\nID: {groupId}\nEnlace: {url}\n",
+  "shareMessage": "¡Echa un vistazo a mi grupo \"{groupName}\" en OurSplit!\nID: {groupId}\nEnlace: {url}\n",
   "@shareMessage": {
     "placeholders": {
       "groupName": {
@@ -99,5 +99,30 @@
         "type": "String"
       }
     }
-  }
+  },
+  "hideAds24h": "Ocultar anuncios por 24 horas",
+  "hideAds24hSubtitle": "Mira un anuncio en video para ocultar anuncios por 24 horas",
+  "adsHiddenRemaining": "Anuncios ocultos (quedan {hours}h {minutes}m)",
+  "@adsHiddenRemaining": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdLoading": "Cargando anuncio en video...",
+  "rewardAdFailed": "Error al cargar el anuncio",
+  "rewardAdSuccess": "¡Anuncios ocultos por 24 horas!",
+  "groupDate": "Fecha",
+  "deleteGroup": "Eliminar grupo",
+  "deleteGroupConfirmTitle": "Eliminar grupo",
+  "deleteGroupConfirmMessage": "¿Estás seguro de que deseas eliminar este grupo? Esta acción no se puede deshacer.",
+  "deleteGroupSuccess": "Grupo eliminado con éxito",
+  "deleteGroupError": "Error al eliminar el grupo",
+  "cancel": "Cancelar",
+  "delete": "Eliminar",
+  "cannotDeleteMemberInExpense": "No se puede eliminar a {name} porque está incluido en los gastos"
 }

@@ -16,12 +16,15 @@ class GroupRepository {
     required String name,
     required List<String> members,
     required String currency,
+    DateTime? createdAt,
   }) async {
     final docRef = await _firestore.collection('groups').add({
       'name': name,
       'members': members,
       'currency': currency,
-      'createdAt': FieldValue.serverTimestamp(),
+      'createdAt': createdAt != null
+          ? Timestamp.fromDate(createdAt)
+          : FieldValue.serverTimestamp(),
       'updatedAt': FieldValue.serverTimestamp(),
     });
     return docRef.id;
@@ -42,6 +45,7 @@ class GroupRepository {
     String? name,
     List<String>? members,
     String? currency,
+    DateTime? createdAt,
   }) async {
     final updates = <String, dynamic>{
       'updatedAt': FieldValue.serverTimestamp(),
@@ -49,8 +53,32 @@ class GroupRepository {
     if (name != null) updates['name'] = name;
     if (members != null) updates['members'] = members;
     if (currency != null) updates['currency'] = currency;
+    if (createdAt != null) {
+      updates['createdAt'] = Timestamp.fromDate(createdAt);
+    }
 
     await _firestore.collection('groups').doc(groupId).update(updates);
+  }
+
+  /// Delete a group from Firestore and local storage
+  Future<void> deleteGroup(String groupId) async {
+    // 1. Delete all expenses in the subcollection
+    final expensesSnapshot = await _firestore
+        .collection('groups')
+        .doc(groupId)
+        .collection('expenses')
+        .get();
+
+    final batch = _firestore.batch();
+    for (final doc in expensesSnapshot.docs) {
+      batch.delete(doc.reference);
+    }
+    // Delete group document
+    batch.delete(_firestore.collection('groups').doc(groupId));
+    await batch.commit();
+
+    // 2. Remove from local storage
+    await removeGroupFromLocal(groupId);
   }
 
   // ============ SharedPreferences Operations ============
@@ -98,5 +126,27 @@ class GroupRepository {
   Future<String?> getLastOpenedGroupId() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_lastOpenedGroupIdKey);
+  }
+
+  /// Remove group from local storage (history)
+  Future<void> removeGroupFromLocal(String groupId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final List<String> groupsJson = prefs.getStringList(_groupsKey) ?? [];
+
+    groupsJson.removeWhere((json) {
+      try {
+        final data = jsonDecode(json) as Map<String, dynamic>;
+        return data['id'] == groupId;
+      } catch (_) {
+        return false;
+      }
+    });
+
+    await prefs.setStringList(_groupsKey, groupsJson);
+
+    final lastOpened = prefs.getString(_lastOpenedGroupIdKey);
+    if (lastOpened == groupId) {
+      await prefs.remove(_lastOpenedGroupIdKey);
+    }
   }
 }

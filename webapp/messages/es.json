@@ -35,6 +35,13 @@
     "dark": "Oscuro",
     "system": "Sistema"
   },
+  "ads": {
+    "hideAds24h": "Ocultar anuncios por 24 horas",
+    "hideAds24hSubtitle": "Mira un anuncio en video para ocultar anuncios por 24 horas",
+    "rewardAdLoading": "Cargando anuncio en video...",
+    "rewardAdFailed": "Error al cargar el anuncio",
+    "rewardAdSuccess": "¡Anuncios ocultos por 24 horas!"
+  },
   "marketing": {
     "hero": {
       "titleLine1": "Divide gastos",

@@ -99,5 +99,30 @@
         "type": "String"
       }
     }
-  }
+  },
+  "hideAds24h": "Ocultar anúncios por 24 horas",
+  "hideAds24hSubtitle": "Assista a um vídeo para ocultar os anúncios por 24 horas",
+  "adsHiddenRemaining": "Anúncios ocultos (restam {hours}h {minutes}m)",
+  "@adsHiddenRemaining": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdLoading": "Carregando anúncio em vídeo...",
+  "rewardAdFailed": "Falha ao carregar o anúncio",
+  "rewardAdSuccess": "Anúncios ocultos por 24 horas",
+  "groupDate": "Data",
+  "deleteGroup": "Excluir grupo",
+  "deleteGroupConfirmTitle": "Excluir grupo",
+  "deleteGroupConfirmMessage": "Tem certeza de que deseja excluir este grupo? Esta ação não pode ser desfeita.",
+  "deleteGroupSuccess": "Grupo excluído com sucesso",
+  "deleteGroupError": "Falha ao excluir o grupo",
+  "cancel": "Cancelar",
+  "delete": "Excluir",
+  "cannotDeleteMemberInExpense": "Não é possível excluir {name} porque está incluído nas despesas"
 }
