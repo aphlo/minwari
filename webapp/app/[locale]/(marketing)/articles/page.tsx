@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Header } from "@/client/components/layout/Header";
 import { Link } from "@/i18n/navigation";
+import { pageMetadata } from "@/server/lib/pageMetadata";
 import { getArticles } from "@/shared/lib/articles";
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
 
 export default async function ArticlesPage({ params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const articles = getArticles(locale);
   const t = await getTranslations({ locale, namespace: "marketing.articles" });
 
@@ -77,4 +79,14 @@ export default async function ArticlesPage({ params }: Props) {
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "marketing.articles" });
+  return pageMetadata(locale, "articles", t("title"));
 }

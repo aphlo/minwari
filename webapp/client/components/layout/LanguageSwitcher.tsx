@@ -22,7 +22,9 @@ export function LanguageSwitcher() {
       onSelectionChange={(keys) => {
         const selected = Array.from(keys)[0];
         if (selected) {
-          router.replace(pathname, { locale: String(selected) });
+          router.replace(`${pathname}${window.location.search}`, {
+            locale: String(selected),
+          });
         }
       }}
       radius="full"

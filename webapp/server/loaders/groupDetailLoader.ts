@@ -1,64 +1,40 @@
 import { getExpenses } from "@/server/repositories/expenseRepository";
 import { getGroup } from "@/server/repositories/groupRepository";
+import { calculateMemberBalances } from "@/server/usecases/calculateMemberBalances";
 import { calculateSettlements } from "@/server/usecases/calculateSettlements";
-import type { CurrencyCode } from "@/shared/lib/currency";
+import {
+  fromMinorUnits,
+  getCurrencyFractionDigits,
+  toMinorUnits,
+} from "@/shared/lib/currency";
+import type { GroupDetail } from "@/shared/types/groupDetail";
 
-export type SerializedGroup = {
-  id: string;
-  name: string;
-  members: string[];
-  currency: CurrencyCode;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type SerializedExpense = {
-  id: string;
-  groupId: string;
-  description: string;
-  amount: number;
-  paidBy: string;
-  splitWith: string[];
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type SerializedSettlement = {
-  from: string;
-  to: string;
-  amount: number;
-};
-
-export async function loadGroupDetail(groupId: string) {
+export async function loadGroupDetail(
+  groupId: string
+): Promise<GroupDetail | null> {
   const group = await getGroup(groupId);
-  if (!group) {
-    return null;
-  }
-
+  if (!group) return null;
   const expenses = await getExpenses(groupId);
-  const settlements = calculateSettlements(
-    expenses,
-    group.members,
-    group.currency
-  );
-
-  const serializedGroup: SerializedGroup = {
-    ...group,
-    currency: group.currency,
-    createdAt: group.createdAt.toISOString(),
-    updatedAt: group.updatedAt.toISOString(),
-  };
-
-  const serializedExpenses: SerializedExpense[] = expenses.map((expense) => ({
-    ...expense,
-    createdAt: expense.createdAt.toISOString(),
-    updatedAt: expense.updatedAt.toISOString(),
-  }));
-
+  const fractionDigits = getCurrencyFractionDigits(group.currency);
   return {
-    group,
-    serializedGroup,
-    serializedExpenses,
-    settlements,
+    group: {
+      ...group,
+      createdAt: group.createdAt.toISOString(),
+      updatedAt: group.updatedAt.toISOString(),
+    },
+    expenses: expenses.map((expense) => ({
+      ...expense,
+      createdAt: expense.createdAt.toISOString(),
+      updatedAt: expense.updatedAt.toISOString(),
+    })),
+    settlements: calculateSettlements(expenses, group.members, group.currency),
+    balances: calculateMemberBalances(expenses, group.members, group.currency),
+    totalAmount: fromMinorUnits(
+      expenses.reduce(
+        (sum, expense) => sum + toMinorUnits(expense.amount, fractionDigits),
+        0
+      ),
+      fractionDigits
+    ),
   };
 }

@@ -1,0 +1,22 @@
+{
+  "hosting": {
+    "public": "webapp/out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "headers": [
+      {"source": "/_next/static/**", "headers": [{"key": "Cache-Control", "value": "public,max-age=31536000,immutable"}]},
+      {"source": "/**/groups{,/**}", "headers": [{"key": "X-Robots-Tag", "value": "noindex, nofollow"}]}
+    ],
+    "redirects": [
+      {"source": "/", "destination": "/en/", "type": 302},
+      {"source": "/groups", "destination": "/en/groups/", "type": 302},
+      {"regex": "^/groups/(?P<id>[A-Za-z0-9_-]+)(/.*)?$", "destination": "/en/groups/?id=:id", "type": 301},
+      {"regex": "^/(?P<locale>en|ja|zh-CN|zh-TW|ko|es|pt-BR)/groups/(?P<id>[A-Za-z0-9_-]+)/settlement/?$", "destination": "/:locale/groups/?id=:id&view=settlement", "type": 301},
+      {"regex": "^/(?P<locale>en|ja|zh-CN|zh-TW|ko|es|pt-BR)/groups/(?P<id>[A-Za-z0-9_-]+)(/.*)?$", "destination": "/:locale/groups/?id=:id", "type": 301},
+      {"regex": "^/(?P<locale>en|ja|zh-CN|zh-TW|ko|es|pt-BR)/new/?$", "destination": "/:locale/#download", "type": 301},
+      {"source": "/new", "destination": "/en/#download", "type": 301},
+      {"regex": "^/(?P<page>about|articles|contact|privacy|terms)/?$", "destination": "/en/:page/", "type": 301},
+      {"source": "/articles/:slug", "destination": "/en/articles/:slug/", "type": 301}
+    ],
+    "rewrites": [{"source": "/api/**", "run": {"serviceId": "minwari-api", "region": "asia-northeast1"}}]
+  }
+}

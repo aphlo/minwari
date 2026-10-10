@@ -1,5 +1,6 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Header } from "@/client/components/layout/Header";
+import { pageMetadata } from "@/server/lib/pageMetadata";
 
 type Props = {
   params: Promise<{
@@ -9,6 +10,7 @@ type Props = {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "marketing.about" });
 
   return (
@@ -72,4 +74,14 @@ export default async function AboutPage({ params }: Props) {
       </div>
     </>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "marketing.about" });
+  return pageMetadata(locale, "about", t("title"));
 }

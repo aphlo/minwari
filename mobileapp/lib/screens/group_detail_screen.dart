@@ -104,7 +104,8 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
     final group = _group;
     if (group == null) return;
 
-    final url = 'https://oursplit.us/groups/${group.id}';
+    final url =
+        'https://oursplit.aphlo.com/en/groups?id=${Uri.encodeQueryComponent(group.id)}';
     final text = context.l10n.shareMessage(group.name, group.id, url);
     // ignore: deprecated_member_use
     Share.share(text);

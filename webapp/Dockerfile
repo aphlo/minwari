@@ -1,24 +1,17 @@
-FROM node:20-slim AS base
+FROM node:20-slim AS deps
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --prod --frozen-lockfile
 
-FROM base AS deps
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-
-FROM base AS build
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN pnpm build
-RUN pnpm prune --prod
-
-FROM base AS runner
+FROM node:20-slim AS runner
+WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=8080
-ENV NEXT_TELEMETRY_DISABLED=1
-COPY --from=build /app/package.json ./
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/public ./public
+COPY --from=deps /app/node_modules ./node_modules
+COPY package.json tsconfig.json ./
+COPY server ./server
+COPY shared ./shared
+USER node
 EXPOSE 8080
-CMD ["pnpm", "exec", "next", "start", "-p", "8080"]
+CMD ["node", "--import", "tsx", "server/api/index.ts"]

@@ -118,6 +118,8 @@ variable "github_service_account_roles" {
   default = [
     "roles/artifactregistry.writer",
     "roles/run.admin",
-    "roles/iam.serviceAccountUser"
+    "roles/iam.serviceAccountUser",
+    "roles/firebasehosting.admin",
+    "roles/serviceusage.serviceUsageConsumer"
   ]
 }

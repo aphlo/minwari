@@ -6,7 +6,9 @@ on:
       - main
     paths:
       - "webapp/**"
-      - ".github/workflows/cd.yml"
+      - ".github/workflows/deliver-web.yml"
+      - "firebase.json"
+      - ".firebaserc"
   workflow_dispatch:
 
 jobs:
@@ -20,7 +22,7 @@ jobs:
     env:
       PROJECT_ID: minwarikan
       REGION: asia-northeast1
-      SERVICE: minwari-webapp
+      SERVICE: minwari-api
       REPOSITORY: minwari
 
     steps:
@@ -35,6 +37,22 @@ jobs:
 
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@v2
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: webapp/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: webapp
+        run: pnpm install --frozen-lockfile
 
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker "$REGION-docker.pkg.dev" --quiet
@@ -53,7 +71,18 @@ jobs:
       - name: Decrypt .env.production
         env:
           DOTENV_PRIVATE_KEY_PRODUCTION: ${{ secrets.DOTENV_PRIVATE_KEY_PRODUCTION }}
-        run: dotenvx decrypt -f webapp/.env.production --stdout > webapp/.env.production
+        run: |
+          dotenvx decrypt -f webapp/.env.production --stdout > "$RUNNER_TEMP/oursplit.env.production"
+          mv "$RUNNER_TEMP/oursplit.env.production" webapp/.env.production
+
+      - name: Check and build static site
+        working-directory: webapp
+        run: |
+          pnpm lint
+          pnpm check
+          pnpm typecheck
+          pnpm test
+          pnpm build
 
       - name: Build Docker image
         run: |
@@ -64,15 +93,29 @@ jobs:
       - name: Push Docker image
         run: docker push "$IMAGE"
 
-      - name: Deploy to Cloud Run
+      - name: Deploy read-only API to separate Cloud Run service
         run: |
+          # Refuse to replace the legacy SSR service during coexistence.
+          test "$SERVICE" = "minwari-api"
           gcloud run deploy "$SERVICE" \
             --image "$IMAGE" \
             --region "$REGION" \
             --project "$PROJECT_ID" \
             --allow-unauthenticated \
+            --service-account "minwari-api-reader@$PROJECT_ID.iam.gserviceaccount.com" \
+            --clear-env-vars \
+            --port 8080 \
+            --max-instances 10 \
             --memory "256Mi" \
             --min-instances 0 \
             --cpu 1 \
             --cpu-throttling \
             --quiet
+
+      - name: Verify API before publishing static site
+        run: |
+          API_URL="$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT_ID" --format='value(status.url)')"
+          curl --fail --silent --show-error --retry 5 --retry-all-errors --retry-delay 3 "$API_URL/api/health"
+
+      - name: Deploy static site to Firebase Hosting
+        run: pnpm dlx firebase-tools@14 deploy --only hosting --project "$PROJECT_ID" --non-interactive

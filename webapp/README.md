@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OurSplit Web
 
-## Getting Started
+Next.jsの静的書き出し（SSG）とグループ閲覧のCSRをFirebase Hostingで配信します。
+グループ作成・支出の変更はスマホアプリのみ。閲覧APIはCloud RunのNode.jsサーバーです。
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+pnpm install --frozen-lockfile
+pnpm build
+pnpm lint
+pnpm check
+pnpm typecheck
+pnpm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+静的ファイルは `out/` に生成されます。記事更新時は再ビルドが必要です。
+グループ詳細: `/ja/groups/?id={groupId}`、精算の内訳: 同URLに `&view=settlement`。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+APIのローカル起動は `pnpm api:local`（8081）。Firestore Emulatorまたは読み取り専用ADCを用意してください。
+静的サイトのローカル検証は、`pnpm build` 後に `pnpm preview`（4173）。`/api/**` を8081へプロキシします。
+Webの見た目の開発には `pnpm local`（3000）も利用できますが、APIを含む動作確認はpreviewで行ってください。
+本番は `firebase.json` のHosting rewriteでCloud Runへ転送します。
+デプロイとカスタムドメインの設定は `../docs/gcp-infra.md` を参照してください。

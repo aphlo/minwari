@@ -8,6 +8,7 @@ on:
       - "webapp/**"
       - "mobileapp/**"
       - ".github/workflows/pr_check.yml"
+      - "firebase.json"
 
 jobs:
   webapp:
@@ -44,6 +45,9 @@ jobs:
 
       - name: Run tests
         run: pnpm test
+
+      - name: Build static site
+        run: pnpm build
 
   mobileapp:
     name: Mobile App - Format, Lint & Test

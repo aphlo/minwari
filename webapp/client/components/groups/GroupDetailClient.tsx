@@ -1,12 +1,10 @@
 "use client";
 
-import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
+import { type ReactNode, useCallback, useEffect, useState } from "react";
 import { getMemberChipColor } from "@/client/lib/memberColor";
 import { addRecentGroup } from "@/client/lib/recentGroups";
-import { Link } from "@/i18n/navigation";
 import type { CurrencyCode } from "@/shared/lib/currency";
 import { Header } from "../layout/Header";
 import { ExpenseList } from "./ExpenseList";
@@ -43,15 +41,17 @@ type Props = {
   group: SerializedGroup;
   initialExpenses: SerializedExpense[];
   initialSettlements: SerializedSettlement[];
+  controls: ReactNode;
 };
 
 export function GroupDetailClient({
   group,
   initialExpenses,
   initialSettlements,
+  controls,
 }: Props) {
-  const [expenses] = useState(initialExpenses);
-  const [settlements] = useState(initialSettlements);
+  const expenses = initialExpenses;
+  const settlements = initialSettlements;
   const [bannerVisible, setBannerVisible] = useState(false);
   const t = useTranslations("group");
   const handleBannerVisibility = useCallback((visible: boolean) => {
@@ -79,6 +79,7 @@ export function GroupDetailClient({
         className={`pb-16 px-6 lg:px-8 transition-[padding] ${bannerVisible ? "pt-[8.5rem] md:pt-20" : "pt-20"}`}
       >
         <div className="max-w-md mx-auto space-y-6">
+          {controls}
           {/* Group Summary */}
           <div className="animate-fade-in-up opacity-0 bg-card rounded-2xl border border-border p-6 shadow-sm">
             <div className="flex items-start justify-between">
@@ -99,86 +100,7 @@ export function GroupDetailClient({
                   ))}
                 </div>
               </div>
-              <Link
-                href={`/groups/${group.id}/edit`}
-                className="flex-shrink-0 ml-4 p-2 rounded-full hover:bg-bg-secondary transition-colors"
-                aria-label={t("actions.edit")}
-              >
-                <svg
-                  className="w-5 h-5 text-muted"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                  />
-                </svg>
-              </Link>
             </div>
-          </div>
-
-          {group.members.length === 0 && (
-            <div className="animate-fade-in-up delay-50 opacity-0 bg-warning-50 text-warning-600 px-4 py-3 rounded-lg flex items-start gap-3">
-              <svg
-                className="w-5 h-5 flex-shrink-0 mt-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                />
-              </svg>
-              <div>
-                <p className="font-medium text-sm">
-                  {t("warnings.noMembers.title")}
-                </p>
-                <p className="text-sm mt-1">
-                  {t("warnings.noMembers.description")}
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Add Expense Button */}
-          <div className="animate-fade-in-up delay-100 opacity-0">
-            <Button
-              as={group.members.length === 0 ? "button" : Link}
-              href={
-                group.members.length === 0
-                  ? undefined
-                  : `/groups/${group.id}/expenses/new`
-              }
-              isDisabled={group.members.length === 0}
-              color="primary"
-              size="lg"
-              radius="full"
-              className="w-full font-medium"
-              startContent={
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 4v16m8-8H4"
-                  />
-                </svg>
-              }
-            >
-              {t("actions.addExpense")}
-            </Button>
           </div>
 
           {/* Expense List */}
@@ -199,11 +121,7 @@ export function GroupDetailClient({
               </svg>
               {t("sections.expenses")}
             </h2>
-            <ExpenseList
-              groupId={group.id}
-              expenses={expenses}
-              currency={group.currency}
-            />
+            <ExpenseList expenses={expenses} currency={group.currency} />
           </div>
 
           {/* Settlement Section */}

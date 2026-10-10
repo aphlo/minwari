@@ -49,7 +49,7 @@
       "subtitleLine1": "Calcula automaticamente liquidaciones de viajes o eventos.",
       "subtitleLine2": "Ve quien debe cuanto de un vistazo.",
       "actions": {
-        "start": "Empezar",
+        "start": "Descargar la app",
         "learnMore": "Saber mas"
       }
     },
@@ -62,7 +62,7 @@
       "items": {
         "create": {
           "title": "Fácil configuración",
-          "description": "No se requiere registro ni iniciar sesión. Simplemente ingrese un nombre de grupo para crear un grupo de división al instante. Comparta la URL generada a través de aplicaciones de mensajería para invitar a amigos sin que necesiten instalar una aplicación."
+          "description": "Crea un grupo en la app y comparte su enlace para que tus amigos vean los gastos y la liquidación en la web."
         },
         "record": {
           "title": "Seguimiento de gastos",
@@ -79,7 +79,7 @@
       "items": {
         "create": {
           "title": "Crea un grupo",
-          "description": "Solo escribe el nombre del grupo. Sin cuenta."
+          "description": "Crea un grupo en la aplicación móvil. No necesitas una cuenta."
         },
         "add": {
           "title": "Agrega miembros y gastos",
@@ -93,9 +93,9 @@
     },
     "cta": {
       "title": "Empieza ahora",
-      "subtitleLine1": "Crea un grupo",
-      "subtitleLine2": "y liquida facilmente.",
-      "action": "Crear grupo"
+      "subtitleLine1": "Crea grupos y registra gastos en la app. Cualquier persona con el enlace compartido puede consultar los resultados en la web.",
+      "subtitleLine2": "",
+      "action": "Descargar la app"
     },
     "useCases": {
       "title": "Perfecto para cualquier ocasión",
@@ -124,7 +124,7 @@
       "items": {
         "account": {
           "question": "¿Se requiere registro?",
-          "answer": "No. Puede utilizar todas las funciones de forma gratuita simplemente creando un grupo y compartiendo la URL."
+          "answer": "Crea un grupo en la aplicación móvil. No necesitas una cuenta. Crea un grupo en la app y comparte su enlace para que tus amigos vean los gastos y la liquidación en la web."
         },
         "expire": {
           "question": "¿Cuánto tiempo se guardan los datos?",
@@ -163,7 +163,7 @@
       "title": "Sobre nosotros",
       "aboutService": {
         "title": "Sobre OurSplit",
-        "description1": "OurSplit es una herramienta web desarrollada para resolver de manera simple e inteligente la 'división de gastos' en viajes, eventos y convivencia.",
+        "description1": "Crea grupos y registra gastos en la app. Cualquier persona con el enlace compartido puede consultar los resultados en la web.",
         "description2": "Su objetivo es automatizar cálculos complejos como \"quién pagó cuánto\" y \"quién debe a quién\", asegurando que los momentos divertidos no se vean arruinados por la molestia de los cálculos y la liquidación."
       },
       "background": {
@@ -481,5 +481,20 @@
       "record": "Registra gastos y divide costos",
       "check": "Ve quien debe cuanto de un vistazo"
     }
+  },
+  "viewer": {
+    "title": "Detalles del grupo | OurSplit",
+    "loading": "Cargando grupo…",
+    "missingId": "Este enlace no incluye un ID de grupo.",
+    "notFound": "Grupo no encontrado.",
+    "error": "No se pudo cargar el grupo. Inténtalo de nuevo.",
+    "refresh": "Actualizar",
+    "readOnly": "Esta página es de solo lectura. Crea grupos y añade o edita gastos en la aplicación móvil."
+  },
+  "download": {
+    "title": "Descargar la app",
+    "description": "Crea grupos y registra gastos en la app. Cualquier persona con el enlace compartido puede consultar los resultados en la web.",
+    "ios": "Descargar en App Store",
+    "android": "Obtener en Google Play"
   }
 }

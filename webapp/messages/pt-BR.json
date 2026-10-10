@@ -49,7 +49,7 @@
       "subtitleLine1": "Calcule automaticamente acertos de viagens e eventos.",
       "subtitleLine2": "Veja quem deve quanto rapidamente.",
       "actions": {
-        "start": "Comecar",
+        "start": "Baixar o aplicativo",
         "learnMore": "Saiba mais"
       }
     },
@@ -62,7 +62,7 @@
       "items": {
         "create": {
           "title": "Criação fácil",
-          "description": "Nenhum registro ou login necessário. Basta inserir um nome de grupo para criar um grupo de divisão instantaneamente. Compartilhe o URL gerado via aplicativos de mensagens para convidar amigos sem que eles precisem instalar um aplicativo."
+          "description": "Crie um grupo no aplicativo e compartilhe o link para seus amigos consultarem despesas e acertos na web."
         },
         "record": {
           "title": "Acompanhe despesas",
@@ -79,7 +79,7 @@
       "items": {
         "create": {
           "title": "Crie um grupo",
-          "description": "Digite o nome do grupo e pronto. Sem conta."
+          "description": "Crie um grupo no aplicativo móvel. Não é necessário ter uma conta."
         },
         "add": {
           "title": "Adicione membros e despesas",
@@ -93,9 +93,9 @@
     },
     "cta": {
       "title": "Vamos comecar",
-      "subtitleLine1": "Crie um grupo",
-      "subtitleLine2": "e acerte sem stress.",
-      "action": "Criar grupo"
+      "subtitleLine1": "Crie grupos e registre despesas no aplicativo. Qualquer pessoa com o link compartilhado pode consultar os resultados na web.",
+      "subtitleLine2": "",
+      "action": "Baixar o aplicativo"
     },
     "useCases": {
       "title": "Perfeito para qualquer ocasião",
@@ -124,7 +124,7 @@
       "items": {
         "account": {
           "question": "É necessário registro?",
-          "answer": "Não. Você pode usar todos os recursos gratuitamente simplesmente criando um grupo e compartilhando o URL."
+          "answer": "Crie um grupo no aplicativo móvel. Não é necessário ter uma conta. Crie um grupo no aplicativo e compartilhe o link para seus amigos consultarem despesas e acertos na web."
         },
         "expire": {
           "question": "Por quanto tempo os dados são salvos?",
@@ -163,7 +163,7 @@
       "title": "Sobre Nós",
       "aboutService": {
         "title": "Sobre o OurSplit",
-        "description1": "O OurSplit é uma ferramenta web desenvolvida para resolver de forma simples e inteligente a 'divisão de contas' em viagens, eventos e moradia compartilhada.",
+        "description1": "Crie grupos e registre despesas no aplicativo. Qualquer pessoa com o link compartilhado pode consultar os resultados na web.",
         "description2": "O objetivo é automatizar cálculos complexos como \"quem pagou quanto\" e \"quem deve a quem\", garantindo que os momentos divertidos não sejam estragados pelo incômodo de cálculos e acertos de contas."
       },
       "background": {
@@ -481,5 +481,20 @@
       "record": "Registre despesas e divida custos",
       "check": "Veja quem deve quanto de relance"
     }
+  },
+  "viewer": {
+    "title": "Detalhes do grupo | OurSplit",
+    "loading": "Carregando grupo…",
+    "missingId": "Este link não contém um ID de grupo.",
+    "notFound": "Grupo não encontrado.",
+    "error": "Não foi possível carregar o grupo. Tente novamente.",
+    "refresh": "Atualizar",
+    "readOnly": "Esta página é somente para consulta. Crie grupos e adicione ou edite despesas no aplicativo móvel."
+  },
+  "download": {
+    "title": "Baixar o aplicativo",
+    "description": "Crie grupos e registre despesas no aplicativo. Qualquer pessoa com o link compartilhado pode consultar os resultados na web.",
+    "ios": "Baixar na App Store",
+    "android": "Obter no Google Play"
   }
 }

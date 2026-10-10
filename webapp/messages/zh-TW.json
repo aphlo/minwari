@@ -49,7 +49,7 @@
       "subtitleLine1": "自動計算旅行或活動的分攤。",
       "subtitleLine2": "誰該付多少，一目了然。",
       "actions": {
-        "start": "開始使用",
+        "start": "下載應用程式",
         "learnMore": "了解更多"
       }
     },
@@ -62,7 +62,7 @@
       "items": {
         "create": {
           "title": "輕鬆建立",
-          "description": "無需註冊或登入。只需輸入群組名稱即可立即建立分攤群組。透過通訊軟體分享產生的連結，邀請朋友加入，無需安裝應用程式。"
+          "description": "在應用程式中建立群組並分享連結，朋友即可在網頁上查看支出和結算結果。"
         },
         "record": {
           "title": "記錄支出",
@@ -79,7 +79,7 @@
       "items": {
         "create": {
           "title": "建立群組",
-          "description": "輸入群組名稱即可開始，無需帳號。"
+          "description": "在手機應用程式中建立群組，無需帳號。"
         },
         "add": {
           "title": "新增成員與支出",
@@ -93,9 +93,9 @@
     },
     "cta": {
       "title": "現在開始",
-      "subtitleLine1": "建立群組，",
-      "subtitleLine2": "讓結算更順暢。",
-      "action": "建立群組"
+      "subtitleLine1": "在應用程式中建立群組並記錄支出。任何持有分享連結的人都可以在網頁上查看結果。",
+      "subtitleLine2": "",
+      "action": "下載應用程式"
     },
     "useCases": {
       "title": "適用於任何場合",
@@ -124,7 +124,7 @@
       "items": {
         "account": {
           "question": "需要註冊嗎？",
-          "answer": "不需要。您只需建立一個群組並分享連結，即可免費使用所有功能。"
+          "answer": "在手機應用程式中建立群組，無需帳號。 在應用程式中建立群組並分享連結，朋友即可在網頁上查看支出和結算結果。"
         },
         "expire": {
           "question": "資料保存多久？",
@@ -163,7 +163,7 @@
       "title": "關於我們",
       "aboutService": {
         "title": "關於 OurSplit",
-        "description1": "OurSplit 是為了簡單智能地解決旅行、活動、合租等場景下「AA制」問題而開發的網路工具。",
+        "description1": "在應用程式中建立群組並記錄支出。任何持有分享連結的人都可以在網頁上查看結果。",
         "description2": "旨在自動化「誰付了多少錢」、「誰該給誰多少錢」等複雜的計算，不讓計算和結算的繁瑣破壞快樂的時光。"
       },
       "background": {
@@ -481,5 +481,20 @@
       "record": "記錄支出並計算分攤",
       "check": "一眼看清誰該付多少"
     }
+  },
+  "viewer": {
+    "title": "群組詳情 | OurSplit",
+    "loading": "正在載入群組…",
+    "missingId": "此連結缺少群組ID。",
+    "notFound": "找不到群組。",
+    "error": "無法載入群組，請重試。",
+    "refresh": "重新整理",
+    "readOnly": "此頁面僅供查看。請在手機應用程式中建立群組、新增或編輯支出。"
+  },
+  "download": {
+    "title": "下載應用程式",
+    "description": "在應用程式中建立群組並記錄支出。任何持有分享連結的人都可以在網頁上查看結果。",
+    "ios": "在App Store下載",
+    "android": "在Google Play取得"
   }
 }

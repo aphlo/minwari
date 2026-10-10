@@ -49,7 +49,7 @@
       "subtitleLine1": "Automatically calculate travel and event settlements.",
       "subtitleLine2": "See who owes how much at a glance.",
       "actions": {
-        "start": "Get started",
+        "start": "Get the app",
         "learnMore": "Learn more"
       }
     },
@@ -62,7 +62,7 @@
       "items": {
         "create": {
           "title": "Easy setup",
-          "description": "No registration or login required. Simply enter a group name to create a split group instantly. Share the generated URL via messaging apps to invite friends without them needing to install an app."
+          "description": "Create a group in the app and share its link so friends can view expenses and settlements on the web."
         },
         "record": {
           "title": "Track expenses",
@@ -79,7 +79,7 @@
       "items": {
         "create": {
           "title": "Create a group",
-          "description": "Enter a group name to get started. No account needed."
+          "description": "Create a group in the mobile app. No account needed."
         },
         "add": {
           "title": "Add members and expenses",
@@ -93,9 +93,9 @@
     },
     "cta": {
       "title": "Let’s get started",
-      "subtitleLine1": "Create a group",
-      "subtitleLine2": "and settle with ease.",
-      "action": "Create a group"
+      "subtitleLine1": "Create groups and record expenses in the app. Anyone with a shared link can view the results on the web.",
+      "subtitleLine2": "",
+      "action": "Get the app"
     },
     "useCases": {
       "title": "Perfect for any occasion",
@@ -124,7 +124,7 @@
       "items": {
         "account": {
           "question": "Is registration required?",
-          "answer": "No. You can use all features for free by simply creating a group and sharing the URL."
+          "answer": "Create a group in the mobile app. No account needed. Create a group in the app and share its link so friends can view expenses and settlements on the web."
         },
         "expire": {
           "question": "How long is data saved?",
@@ -163,7 +163,7 @@
       "title": "About Us",
       "aboutService": {
         "title": "About OurSplit",
-        "description1": "OurSplit is a web tool developed to simply and smartly solve 'bill splitting' for travel, events, and shared living.",
+        "description1": "Create groups and record expenses in the app. Anyone with a shared link can view the results on the web.",
         "description2": "It aims to automate complex calculations like 'who paid how much' and 'who owes whom', ensuring that fun times aren't spoiled by the hassle of calculation and settlement."
       },
       "background": {
@@ -481,5 +481,20 @@
       "record": "Track expenses and split costs",
       "check": "See who owes what at a glance"
     }
+  },
+  "viewer": {
+    "title": "Group details | OurSplit",
+    "loading": "Loading group…",
+    "missingId": "This link is missing a group ID.",
+    "notFound": "Group not found.",
+    "error": "Unable to load the group. Please try again.",
+    "refresh": "Refresh",
+    "readOnly": "This page is read-only. Create groups and add or edit expenses in the mobile app."
+  },
+  "download": {
+    "title": "Get the app",
+    "description": "Create groups and record expenses in the app. Anyone with a shared link can view the results on the web.",
+    "ios": "Download on the App Store",
+    "android": "Get it on Google Play"
   }
 }

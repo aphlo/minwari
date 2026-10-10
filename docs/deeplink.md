@@ -1,3 +1,7 @@
+> 現在のWeb共有URLは `https://oursplit.aphlo.com/en/groups/?id={groupId}` です。
+> アプリ起動には `oursplit://groups/{groupId}` を使用しています。
+> 以下は過去のUniversal Links / App Linksの設計資料です。新ドメインのHTTPS自動起動を実装済みとする資料ではありません。
+
 ## 0) 目標の挙動（今回の方針に合う）
 
 * ユーザーが **`https://oursplit.us/groups/{id}` を開く**

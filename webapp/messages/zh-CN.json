@@ -49,7 +49,7 @@
       "subtitleLine1": "自动计算旅行或活动的分摊。",
       "subtitleLine2": "谁该付多少，一目了然。",
       "actions": {
-        "start": "开始使用",
+        "start": "下载应用",
         "learnMore": "了解更多"
       }
     },
@@ -62,7 +62,7 @@
       "items": {
         "create": {
           "title": "轻松创建",
-          "description": "无需注册或登录。只需输入群组名称即可立即创建拆分群组。通过消息应用分享生成的链接，邀请朋友加入，无需下载APP。"
+          "description": "在应用中创建群组并分享链接，朋友即可在网页上查看支出和结算结果。"
         },
         "record": {
           "title": "记录支出",
@@ -79,7 +79,7 @@
       "items": {
         "create": {
           "title": "创建群组",
-          "description": "输入群组名称即可，无需账号。"
+          "description": "在手机应用中创建群组，无需账号。"
         },
         "add": {
           "title": "添加成员与支出",
@@ -93,9 +93,9 @@
     },
     "cta": {
       "title": "现在开始",
-      "subtitleLine1": "创建群组，",
-      "subtitleLine2": "让结算更顺畅。",
-      "action": "创建群组"
+      "subtitleLine1": "在应用中创建群组并记录支出。任何持有分享链接的人都可以在网页上查看结果。",
+      "subtitleLine2": "",
+      "action": "下载应用"
     },
     "useCases": {
       "title": "适用于任何场合",
@@ -124,7 +124,7 @@
       "items": {
         "account": {
           "question": "需要注册吗？",
-          "answer": "不需要。您只需创建一个群组并分享链接，即可免费使用所有功能。"
+          "answer": "在手机应用中创建群组，无需账号。 在应用中创建群组并分享链接，朋友即可在网页上查看支出和结算结果。"
         },
         "expire": {
           "question": "数据保存多久？",
@@ -163,7 +163,7 @@
       "title": "关于我们",
       "aboutService": {
         "title": "关于 OurSplit",
-        "description1": "OurSplit 是为了简单智能地解决旅行、活动、合租等场景下“AA制”问题而开发的网络工具。",
+        "description1": "在应用中创建群组并记录支出。任何持有分享链接的人都可以在网页上查看结果。",
         "description2": "旨在自动化“谁付了多少钱”、“谁该给谁多少钱”等复杂的计算，不让计算和结算的繁琐破坏快乐的时光。"
       },
       "background": {
@@ -481,5 +481,20 @@
       "record": "记录支出并计算分摊",
       "check": "一眼看清谁该付多少"
     }
+  },
+  "viewer": {
+    "title": "群组详情 | OurSplit",
+    "loading": "正在加载群组…",
+    "missingId": "此链接缺少群组ID。",
+    "notFound": "未找到群组。",
+    "error": "无法加载群组，请重试。",
+    "refresh": "刷新",
+    "readOnly": "此页面仅供查看。请在手机应用中创建群组、添加或编辑支出。"
+  },
+  "download": {
+    "title": "下载应用",
+    "description": "在应用中创建群组并记录支出。任何持有分享链接的人都可以在网页上查看结果。",
+    "ios": "在App Store下载",
+    "android": "在Google Play获取"
   }
 }

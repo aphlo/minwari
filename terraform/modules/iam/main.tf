@@ -11,3 +11,15 @@ resource "google_project_iam_member" "cloud_run_roles" {
   role    = each.value
   member  = "serviceAccount:${google_service_account.cloud_run.email}"
 }
+
+resource "google_service_account" "api_reader" {
+  account_id   = "minwari-api-reader"
+  display_name = "OurSplit read-only API"
+  project      = var.project_id
+}
+
+resource "google_project_iam_member" "api_reader" {
+  project = var.project_id
+  role    = "roles/datastore.viewer"
+  member  = "serviceAccount:${google_service_account.api_reader.email}"
+}

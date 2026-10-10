@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Header } from "@/client/components/layout/Header";
 import { Link } from "@/i18n/navigation";
+import { pageMetadata } from "@/server/lib/pageMetadata";
 import { getArticles } from "@/shared/lib/articles";
 
 type Props = {
@@ -12,8 +13,12 @@ type Props = {
   }>;
 };
 
-export async function generateStaticParams() {
-  const articles = getArticles("ja");
+export async function generateStaticParams({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const articles = getArticles(params.locale);
   return articles.map((article) => ({
     slug: article.slug,
   }));
@@ -21,6 +26,7 @@ export async function generateStaticParams() {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug, locale } = await params;
+  setRequestLocale(locale);
   const articles = getArticles(locale);
   const article = articles.find((a) => a.slug === slug);
 
@@ -91,7 +97,7 @@ export default async function ArticlePage({ params }: Props) {
               {tCta("subtitleLine2")}
             </p>
             <Link
-              href="/new"
+              href="/#download"
               className="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 px-10 rounded-full transition-all duration-300 shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 text-lg"
             >
               {tCta("action")}
@@ -135,5 +141,17 @@ export default async function ArticlePage({ params }: Props) {
         )}
       </div>
     </article>
+  );
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale, slug } = await params;
+  const article = getArticles(locale).find((item) => item.slug === slug);
+  if (!article) notFound();
+  return pageMetadata(
+    locale,
+    `articles/${slug}`,
+    article.title,
+    article.description
   );
 }

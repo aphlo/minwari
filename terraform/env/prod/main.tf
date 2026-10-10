@@ -49,7 +49,8 @@ module "project" {
     "iam.googleapis.com",
     "iamcredentials.googleapis.com",
     "run.googleapis.com",
-    "sts.googleapis.com"
+    "sts.googleapis.com",
+    "firebasehosting.googleapis.com"
   ]
 }
 

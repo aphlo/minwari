@@ -3,7 +3,6 @@
 import { Chip } from "@heroui/chip";
 import { useFormatter, useTranslations } from "next-intl";
 import { getMemberChipColor } from "@/client/lib/memberColor";
-import { Link } from "@/i18n/navigation";
 import {
   type CurrencyCode,
   getCurrencyFractionDigits,
@@ -21,12 +20,11 @@ type SerializedExpense = {
 };
 
 type Props = {
-  groupId: string;
   expenses: SerializedExpense[];
   currency: CurrencyCode;
 };
 
-export function ExpenseList({ groupId, expenses, currency }: Props) {
+export function ExpenseList({ expenses, currency }: Props) {
   const t = useTranslations("expenses");
   const format = useFormatter();
   const fractionDigits = getCurrencyFractionDigits(currency);
@@ -107,25 +105,6 @@ export function ExpenseList({ groupId, expenses, currency }: Props) {
               <span className="text-lg font-semibold text-foreground">
                 {formatAmount(expense.amount)}
               </span>
-              <Link
-                href={`/groups/${groupId}/expenses/${expense.id}/edit`}
-                className="p-2 rounded-full text-muted hover:bg-bg-secondary transition-colors"
-                aria-label={t("actions.edit")}
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                  />
-                </svg>
-              </Link>
             </div>
           </div>
         </div>

@@ -24,7 +24,8 @@ class AppDrawer extends ConsumerWidget {
     final locale = Localizations.localeOf(context);
     final lang = locale.languageCode == 'ja' ? 'ja' : 'en';
 
-    final isAdRemoved = adRemoveUntil != null && adRemoveUntil.isAfter(DateTime.now());
+    final isAdRemoved =
+        adRemoveUntil != null && adRemoveUntil.isAfter(DateTime.now());
     final adRemoveSubtitle = isAdRemoved
         ? _formatRemainingTime(context, adRemoveUntil)
         : context.l10n.hideAds24hSubtitle;
@@ -74,7 +75,7 @@ class AppDrawer extends ConsumerWidget {
               onTap: () => _navigateTo(
                 context,
                 WebViewScreen(
-                  url: 'https://oursplit.us/$lang/terms',
+                  url: 'https://oursplit.aphlo.com/$lang/terms',
                   title: context.l10n.termsOfService,
                 ),
               ),
@@ -87,7 +88,7 @@ class AppDrawer extends ConsumerWidget {
               onTap: () => _navigateTo(
                 context,
                 WebViewScreen(
-                  url: 'https://oursplit.us/$lang/privacy',
+                  url: 'https://oursplit.aphlo.com/$lang/privacy',
                   title: context.l10n.privacyPolicy,
                 ),
               ),
