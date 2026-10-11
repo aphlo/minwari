@@ -1,5 +1,15 @@
 packages:
   - .
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+publicHoistPattern:
+  - "*@heroui/*"
+overrides:
+  "@firebase/firestore>@grpc/grpc-js": "^1.14.6"
+allowBuilds:
+  "@firebase/util": true
+  "@heroui/shared-utils": true
+  "@parcel/watcher": true
+  "@swc/core": true
+  esbuild: true
+  protobufjs: true
+  sharp: false
+  unrs-resolver: false

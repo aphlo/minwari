@@ -3,7 +3,15 @@
 Next.jsの静的書き出し（SSG）とグループ閲覧のCSRをFirebase Hostingで配信します。
 グループ作成・支出の変更はスマホアプリのみ。閲覧APIはCloud RunのNode.jsサーバーです。
 
+Node.js 24 LTSとpnpm 11.19.0を使用します（Docker・CIと共通）。
+pnpmの設定は`pnpm-workspace.yaml`で管理します。
+Firebase JS SDK内のFirestoreが古いgRPCを要求するため、`overrides`で
+修正版の`@grpc/grpc-js`に統一しています。
+上流SDKの更新時には、この指定を外しても`pnpm audit`が通るか確認してください。
+
 ```sh
+corepack enable
+corepack prepare pnpm@11.19.0 --activate
 pnpm install --frozen-lockfile
 pnpm build
 pnpm lint
