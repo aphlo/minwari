@@ -56,6 +56,11 @@ test("postbuild generates public sitemap URLs and robots.txt", async () => {
           `https://oursplit.aphlo.com/${locale}/articles/ski-trip-settlement/`
         )
       );
+      assert.ok(
+        urls.includes(
+          `https://oursplit.aphlo.com/${locale}/articles/multiple-payers-settlement/`
+        )
+      );
     }
     assert.equal(
       await readFile(join(directory, "out/robots.txt"), "utf8"),

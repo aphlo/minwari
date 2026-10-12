@@ -2,6 +2,8 @@ export type Article = {
   id: string;
   slug: string;
   title: string;
+  seoTitle?: string;
+  relatedSlugs?: string[];
   description: string;
   content: string; // HTML or Markdown
   date: string;
@@ -9,6 +11,42 @@ export type Article = {
 };
 
 const articlesJa: Article[] = [
+  {
+    id: "16",
+    slug: "multiple-payers-settlement",
+    title: "立て替えた人が複数いるときの割り勘計算｜3人の精算例で解説",
+    seoTitle: "複数人が立て替えた割り勘の計算方法｜3人の精算例",
+    description:
+      "複数人が立て替えたときの割り勘は、立替額と負担額の差で整理できます。3人・合計12,000円の架空の例で、誰が誰にいくら返すか、計算から精算後の確認まで解説します。",
+    relatedSlugs: ["bbq-party-split", "ski-trip-settlement"],
+    date: "",
+    imageUrl: "/images/articles/family-trip-expenses.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">旅行や食事で、Aさんは宿代、Bさんは夕食代を立て替えた。そんなときは、全員の支払いをまとめてから「立て替えた額」と「負担する額」の差を計算すると、誰が誰にいくら返せばよいか整理できます。</p>
+      <p>この記事では、日本円で全員が同じ金額を負担する場合を、架空の3人の計算例で解説します。</p>
+      <h2>1. 全員で分ける支出を合計する</h2>
+      <p>最初に、支払った人、内容、金額を確認します。レシートや支払い履歴を見ながら、同じ支出を二重に数えないようにしましょう。</p>
+      <p>今回の架空の例では、Aさん・Bさん・Cさんの3人で日帰り旅行に行き、次の費用を分けることにします。</p>
+      <ul><li>Aさん：レンタカー代9,000円を立て替え</li><li>Bさん：3人分の食事代3,000円を立て替え</li><li>Cさん：立て替えなし</li></ul>
+      <p>共通の支出は、9,000円＋3,000円＝12,000円です。</p>
+      <p>個人のお土産など、その人だけの買い物は合計に含めません。一部の人しか利用していない費用も、全員で分ける費用と分けておくと混乱を防げます。</p>
+      <h2>2. 1人あたりの負担額を求める</h2>
+      <p>全員で均等に負担するので、合計を3人で割ります。</p>
+      <p>12,000円÷3人＝1人4,000円</p>
+      <p>次に、それぞれの立替額から4,000円を引きます。差額がプラスなら受け取る側、マイナスなら追加で払う側です。</p>
+      <ul><li>Aさん：9,000円−4,000円＝5,000円受け取る</li><li>Bさん：3,000円−4,000円＝1,000円払う</li><li>Cさん：0円−4,000円＝4,000円払う</li></ul>
+      <p>Bさんもすでに立て替えていますが、負担額の4,000円には1,000円足りません。「立て替えた人は全員お金を受け取る」とは限らない点がポイントです。</p>
+      <h2>3. 差額を精算し、全員の負担を確認する</h2>
+      <p>この例では、次の2回の支払いで精算できます。</p>
+      <ul><li>BさんからAさんへ1,000円</li><li>CさんからAさんへ4,000円</li></ul>
+      <p>Aさんが受け取る合計は5,000円。精算後の負担額は、Aさんが9,000円−5,000円＝4,000円、Bさんが3,000円＋1,000円＝4,000円、Cさんが4,000円です。全員が同じ金額になりました。</p>
+      <p>計算した結果と、実際にお金を渡した記録は分けて確認しましょう。誰がいくら払うか決まっても、支払い自体が完了したわけではありません。</p>
+      <h2>支出が増えるときは、その都度記録する</h2>
+      <p>立て替えが増えたら、記憶に頼らず「誰が・いくら・誰の分を払ったか」を残しておきましょう。割り切れない端数が出る場合は、誰が何円多く負担するかも全員で決めておくとスムーズです。</p>
+      <p>「みんなの割り勘」では、アプリでグループを作成し、支払った人・金額・参加者を記録できます。共有リンクからは、友達もWebで支出や精算結果を確認できます。旅行や食事の立替をまとめたいときに活用してみてください。</p>
+      <p><a href="/ja/#download">アプリをダウンロード</a></p>
+    `,
+  },
   {
     id: "1",
     slug: "ski-trip-settlement",
@@ -650,6 +688,44 @@ const articlesJa: Article[] = [
 ];
 
 const articlesEn: Article[] = [
+  {
+    id: "16",
+    slug: "multiple-payers-settlement",
+    title:
+      "Splitting expenses when multiple people have paid: a three-person example",
+    seoTitle:
+      "How to split expenses with multiple payers: a three-person settlement",
+    description:
+      "Settle shared expenses by comparing what each person paid with their share. A fictional three-person example totaling JPY 12,000 explains who repays whom and how to check the final costs.",
+    relatedSlugs: ["bbq-party-split", "ski-trip-settlement"],
+    date: "",
+    imageUrl: "/images/articles/family-trip-expenses.png",
+    content: `
+      <p class="lead text-xl text-gray-600 dark:text-gray-300 font-medium mb-8">On a trip or at a meal, A pays for accommodation and B pays for dinner. Combine everyone's payments and calculate the difference between the amount each person paid and their share to work out who should repay whom.</p>
+      <p>This article uses a fictional three-person example in Japanese yen, with everyone bearing an equal share.</p>
+      <h2>1. Add up the expenses to be shared</h2>
+      <p>First, check the payer, description, and amount. Look at receipts or payment history to avoid counting the same expense twice.</p>
+      <p>In this fictional example, A, B, and C take a day trip and agree to split these costs:</p>
+      <ul><li>A pays JPY 9,000 for a rental car.</li><li>B pays JPY 3,000 for meals for all three people.</li><li>C has paid nothing yet.</li></ul>
+      <p>The shared expenses total JPY 9,000 + JPY 3,000 = JPY 12,000.</p>
+      <p>Exclude personal purchases such as souvenirs. Keep costs used by only some people separate from costs shared by everyone to avoid confusion.</p>
+      <h2>2. Calculate each person's share</h2>
+      <p>Since everyone pays an equal share, divide the total by three.</p>
+      <p>JPY 12,000 ÷ 3 people = JPY 4,000 each</p>
+      <p>Then subtract JPY 4,000 from each person's payments. A positive difference means they receive money; a negative difference means they pay more.</p>
+      <ul><li>A: 9,000 − 4,000 = receives JPY 5,000</li><li>B: 3,000 − 4,000 = pays JPY 1,000</li><li>C: 0 − 4,000 = pays JPY 4,000</li></ul>
+      <p>B has already paid some expenses but is still JPY 1,000 short of their JPY 4,000 share. Someone who has paid an expense does not necessarily receive money at settlement.</p>
+      <h2>3. Settle the difference and check everyone's cost</h2>
+      <p>This example can be settled with two payments:</p>
+      <ul><li>B pays A JPY 1,000.</li><li>C pays A JPY 4,000.</li></ul>
+      <p>A receives JPY 5,000 in total. After settlement, A bears 9,000 − 5,000 = JPY 4,000, B bears 3,000 + 1,000 = JPY 4,000, and C bears JPY 4,000. Everyone bears the same amount.</p>
+      <p>Check the calculated result separately from records of money actually exchanged. Deciding who owes what does not mean the payments have been completed.</p>
+      <h2>Record additional expenses as they happen</h2>
+      <p>As more expenses are paid, record who paid, how much, and for whom instead of relying on memory. If there is a rounding remainder, agree together on who bears the extra amount.</p>
+      <p>In OurSplit, create a group in the app and record payers, amounts, and participants. Friends can also view expenses and settlement results on the Web through a sharing link. Use it to organize expenses paid for trips or meals.</p>
+      <p><a href="/en/#download">Download the app</a></p>
+    `,
+  },
   {
     id: "1",
     slug: "ski-trip-settlement",

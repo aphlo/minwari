@@ -72,6 +72,43 @@ test("returns empty settlements when there are no expenses", () => {
   assert.deepEqual(settlements, []);
 });
 
+test("multiple-payers article example leaves each member paying JPY 4000", () => {
+  const members = ["A", "B", "C"];
+  const expenses = [
+    createExpense({ amount: 9000, paidBy: "A", splitWith: members }),
+    createExpense({ amount: 3000, paidBy: "B", splitWith: members }),
+  ];
+  const settlements = calculateSettlements(expenses, members, "JPY");
+  assert.deepEqual(
+    [...settlements].sort((a, b) => a.from.localeCompare(b.from)),
+    [
+      { from: "B", to: "A", amount: 1000 },
+      { from: "C", to: "A", amount: 4000 },
+    ]
+  );
+
+  const finalCosts = new Map([
+    ["A", 9000],
+    ["B", 3000],
+    ["C", 0],
+  ]);
+  for (const settlement of settlements) {
+    finalCosts.set(
+      settlement.from,
+      (finalCosts.get(settlement.from) ?? 0) + settlement.amount
+    );
+    finalCosts.set(
+      settlement.to,
+      (finalCosts.get(settlement.to) ?? 0) - settlement.amount
+    );
+  }
+  assert.deepEqual([...finalCosts.values()], [4000, 4000, 4000]);
+  assert.equal(
+    [...finalCosts.values()].reduce((sum, amount) => sum + amount, 0),
+    12000
+  );
+});
+
 test("returns empty settlements when members is empty", () => {
   const settlements = calculateSettlements([], [], "JPY");
 
