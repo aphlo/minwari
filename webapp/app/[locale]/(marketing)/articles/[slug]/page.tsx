@@ -39,7 +39,11 @@ export default async function ArticlePage({ params }: Props) {
 
   // Related articles (excluding current)
   const relatedArticles = articles
-    .filter((a) => a.id !== article.id)
+    .filter((a) =>
+      article.relatedSlugs
+        ? article.relatedSlugs.includes(a.slug)
+        : a.id !== article.id
+    )
     .slice(0, 3);
 
   return (
@@ -148,10 +152,27 @@ export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params;
   const article = getArticles(locale).find((item) => item.slug === slug);
   if (!article) notFound();
-  return pageMetadata(
+  const metadata = pageMetadata(
     locale,
     `articles/${slug}`,
-    article.title,
+    article.seoTitle ?? article.title,
     article.description
   );
+  if (slug === "multiple-payers-settlement") {
+    return {
+      ...metadata,
+      openGraph: {
+        ...metadata.openGraph,
+        type: "article",
+        images: [{ url: article.imageUrl, alt: article.title }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: article.seoTitle ?? article.title,
+        description: article.description,
+        images: [article.imageUrl],
+      },
+    };
+  }
+  return metadata;
 }

@@ -135,7 +135,8 @@ class SettingsScreen extends ConsumerWidget {
 
   Widget _buildRewardAdOption(BuildContext context, WidgetRef ref) {
     final adRemoveUntil = ref.watch(adRemoveProvider);
-    final isAdRemoved = adRemoveUntil != null && adRemoveUntil.isAfter(DateTime.now());
+    final isAdRemoved =
+        adRemoveUntil != null && adRemoveUntil.isAfter(DateTime.now());
 
     final subtitle = isAdRemoved
         ? _formatRemainingTime(context, adRemoveUntil)

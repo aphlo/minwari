@@ -220,8 +220,8 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
         if (!cleanedMembers.contains(expense.paidBy)) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content:
-                  Text(context.l10n.cannotDeleteMemberInExpense(expense.paidBy)),
+              content: Text(
+                  context.l10n.cannotDeleteMemberInExpense(expense.paidBy)),
               backgroundColor: Colors.red,
             ),
           );
@@ -231,8 +231,8 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
           if (!cleanedMembers.contains(splitMember)) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(
-                    context.l10n.cannotDeleteMemberInExpense(splitMember)),
+                content:
+                    Text(context.l10n.cannotDeleteMemberInExpense(splitMember)),
                 backgroundColor: Colors.red,
               ),
             );
@@ -402,9 +402,8 @@ class _GroupFormScreenState extends State<GroupFormScreen> {
                             const SizedBox(width: 12),
                             Expanded(
                               child: Text(
-                                DateFormat.yMMMd(
-                                        Localizations.localeOf(context)
-                                            .toString())
+                                DateFormat.yMMMd(Localizations.localeOf(context)
+                                        .toString())
                                     .format(_selectedDate),
                                 style: TextStyle(
                                   fontSize: 17,

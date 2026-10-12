@@ -57,7 +57,8 @@ class RewardAdService {
           );
 
           ad.show(
-            onUserEarnedReward: (AdWithoutView ad, RewardItem rewardItem) async {
+            onUserEarnedReward:
+                (AdWithoutView ad, RewardItem rewardItem) async {
               await ref.read(adRemoveProvider.notifier).removeAdsFor24Hours();
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
