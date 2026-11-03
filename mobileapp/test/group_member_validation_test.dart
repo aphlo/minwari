@@ -27,8 +27,8 @@ void main() {
     bool isMemberUsedInExpenses(String member, List<Expense> expenseList) {
       final trimmed = member.trim();
       if (trimmed.isEmpty) return false;
-      return expenseList.any((e) =>
-          e.paidBy == trimmed || e.splitWith.contains(trimmed));
+      return expenseList
+          .any((e) => e.paidBy == trimmed || e.splitWith.contains(trimmed));
     }
 
     test('Alice is paidBy in e1, so cannot be deleted', () {

@@ -7,8 +7,13 @@ on:
     paths:
       - "webapp/**"
       - "mobileapp/**"
+      - ".fvmrc"
+      - "scripts/check_security_dependencies.py"
       - ".github/workflows/pr_check.yml"
       - "firebase.json"
+
+permissions:
+  contents: read
 
 jobs:
   webapp:
@@ -73,7 +78,10 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get
+        run: flutter pub get --enforce-lockfile
+
+      - name: Verify patched SDK and Firestore locks
+        run: python3 ../scripts/check_security_dependencies.py .
 
       - name: Create dummy Firebase options
         run: |
